@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "plan_actuals.schema.json",
+  "title": "Reported actuals for plan targets",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "actuals"
+  ],
+  "properties": {
+    "actuals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target_id",
+          "year",
+          "value",
+          "source",
+          "placeholder"
+        ],
+        "properties": {
+          "target_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_]*$"
+          },
+          "year": {
+            "type": "integer",
+            "minimum": 1949,
+            "maximum": 2100
+          },
+          "value": {
+            "type": "number"
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "url"
+            ],
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^https?://"
+              },
+              "retrieved": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "quote": {
+                "description": "Short verbatim excerpt (<= 200 chars) the value was read from.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 300
+              },
+              "confidence": {
+                "description": "high = read from the primary document; medium = official figure via a reputable secondary report; low = unconfirmed.",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              }
+            }
+          },
+          "placeholder": {
+            "type": "boolean"
+          },
+          "as_of": {
+            "description": "Date the value refers to (YYYY-MM-DD). Anything other than 31 December marks a PARTIAL-YEAR figure, which the status engine never treats as a year-end result.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "qualifier": {
+            "description": "How the printed figure bounds the true value: floor = '超过/以上' (true value >= value); ceiling = '不超过/以下' (<= value); approx = '约/左右'. Absent or null = exact as printed. Shown as ≥ / ≤ / ≈ in the UI; the status engine scores the printed value.",
+            "enum": [
+              "floor",
+              "ceiling",
+              "approx",
+              null
+            ]
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          }
+        }
+      }
+    }
+  }
+}

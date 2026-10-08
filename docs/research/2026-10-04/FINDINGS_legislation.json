@@ -1,0 +1,1677 @@
+{
+  "verifications": [
+    {
+      "id": "mlps_regulation_draft_2018",
+      "verified": false,
+      "corrections": {
+        "source": {
+          "title": "公安部关于《网络安全等级保护条例（征求意见稿）》公开征求意见的公告, 公安部网站",
+          "url": "https://www.mps.gov.cn/n2254536/n4904355/c6159136/content.html",
+          "language": "zh"
+        },
+        "note": "Still a draft: the 国务院2026年度立法工作计划 (国办发〔2026〕14号, 2026-05-08) lists 网络安全等级保护条例 under 预备制定的行政法规 (confirmed on the MEE copy https://www.mee.gov.cn/zcwj/gwywj/202605/t20260514_1152263.shtml). No final version has been promulgated as of 2026-10-04. The 2018-06-27 date and the drafting bodies could not be re-read from the MPS page (server unreachable from here); they rest on secondary reports."
+      },
+      "official_url": "https://www.mps.gov.cn/n2254536/n4904355/c6159136/content.html",
+      "comment": "Official MPS consultation page exists (title confirmed via search index) but mps.gov.cn returned HTTP 521 / robots failure; provincial mirrors (sjt.sc.gov.cn, gaj.zhanjiang.gov.cn) timed out. Status confirmed from the 2026 State Council legislative plan: 预备制定 (preparatory drafting) — i.e. the 2018 draft was never finalised and no final regulation exists. Replace the Hunton (Tier C) source with the MPS URL; keep verified=false until the MPS page can be read."
+    },
+    {
+      "id": "gb_40879_2021_dc_energy_efficiency_standard",
+      "verified": true,
+      "corrections": {
+        "source": {
+          "title": "GB 40879-2021 数据中心能效限定值及能效等级, 国家标准全文公开系统 (openstd.samr.gov.cn)",
+          "url": "https://openstd.samr.gov.cn/bzgk/gb/std_list?p.p1=0&p.p90=circulation_date&p.p91=desc&p.p2=GB%2040879-2021",
+          "language": "zh"
+        },
+        "date_published": "2021-10-11",
+        "note": "openstd.samr.gov.cn: 发布日期 2021-10-11, 实施日期 2022-11-01, 状态 现行, 强制性国家标准. Grade thresholds (PUE) are in the standard text, not on the listing page."
+      },
+      "official_url": "https://openstd.samr.gov.cn/bzgk/gb/std_list?p.p1=0&p.p90=circulation_date&p.p91=desc&p.p2=GB%2040879-2021",
+      "comment": "Dates confirmed on SAMR's official standards portal; replaces the chinesestandard.net reseller source."
+    },
+    {
+      "id": "green_dc_5g_implementation_plan_2021",
+      "verified": true,
+      "corrections": {
+        "source": {
+          "title": "贯彻落实碳达峰碳中和目标要求 推动数据中心和5G等新型基础设施绿色高质量发展实施方案（发改高技〔2021〕1742号）, 北京市科学技术委员会（ncsti.gov.cn）转载国家发展改革委网站",
+          "url": "https://www.ncsti.gov.cn/kjdt/ztbd/yf5gzhwl/zcdx/202204/t20220414_69453.html",
+          "language": "zh"
+        },
+        "note": "NDRC original page (ndrc.gov.cn/xxgk/zcfb/tz/202112/t20211208_1307015.html) now returns 404. 发文字号 发改高技〔2021〕1742号, four issuers and signature date 2021年11月30日 confirmed on the Beijing Municipal S&T Commission (gov.cn) repost, which cites 来源：国家发展和改革委员会网站 and dates the release 2021-12-08."
+      },
+      "official_url": "https://www.ncsti.gov.cn/kjdt/ztbd/yf5gzhwl/zcdx/202204/t20220414_69453.html",
+      "comment": "Document number, issuers, 成文日期 2021-11-30 and 发布 2021-12-08 all confirmed on a *.gov.cn repost of the NDRC text (Tier A). Existing field values are correct."
+    },
+    {
+      "id": "fourteenth_fyp_national_informatization_plan",
+      "verified": true,
+      "corrections": {
+        "date_precision": "month",
+        "date_published": "2021-12-27",
+        "note": "CAC release of 2021-12-27 (https://www.cac.gov.cn/2021-12/27/c_1642205312337636.htm) states '近日，中央网络安全和信息化委员会印发《“十四五”国家信息化规划》'; the exact 印发 day is not published, so date_adopted is the release date with month precision. Full text PDF: https://www.cac.gov.cn/2021-12/27/c_1642205314518676.htm. 2025 goal: '数字中国建设取得决定性进展，信息化发展水平大幅跃升'."
+      },
+      "official_url": "https://www.cac.gov.cn/2021-12/27/c_1642205312337636.htm",
+      "comment": "Issuer (中央网络安全和信息化委员会) confirmed on the CAC news release; no document number is printed. Plan period 2021–2025 ended, status expired is correct."
+    },
+    {
+      "id": "digital_china_overall_layout_plan_2023",
+      "verified": true,
+      "corrections": {
+        "date_precision": "month",
+        "date_published": "2023-02-27",
+        "note": "Both gov.cn and CAC carry the Xinhua text (新华社北京2月27日电: '近日，中共中央、国务院印发了《数字中国建设整体布局规划》'); no 成文日期 is published anywhere official, so date_adopted is the release date with month precision."
+      },
+      "official_url": "https://www.gov.cn/xinwen/2023-02/27/content_5743484.htm",
+      "comment": "Title, issuers, release date and the 2025/2035 qualitative goals confirmed on gov.cn; existing summary is accurate."
+    },
+    {
+      "id": "data_element_x_action_plan_2024_2026",
+      "verified": true,
+      "corrections": {
+        "source": {
+          "title": "关于印发《“数据要素×”三年行动计划（2024—2026年）》的通知（国数政策〔2023〕11号）, 国家数据局",
+          "url": "https://www.nda.gov.cn/sjj/xxgk/gknr/ghjh/0909/20240909160155798592998_pc.html",
+          "language": "zh"
+        },
+        "issuer": "国家数据局、中央网信办、科技部、工业和信息化部、交通运输部、农业农村部、商务部、文化和旅游部、国家卫生健康委、应急管理部、中国人民银行、金融监管总局、国家医保局、中国科学院、中国气象局、国家文物局、国家中医药局",
+        "summary_en": "Twelve sector-level actions to multiply the value of data; by end-2026: 300+ demonstrative application scenarios, a cohort of data vendors and third-party service providers, data-industry average annual growth above 20%.",
+        "note": "Signed 2023-12-31, released 2024-01-04 (NDA page); CAC repost https://www.cac.gov.cn/2024-01/05/c_1706119078060945.htm."
+      },
+      "official_url": "https://www.nda.gov.cn/sjj/xxgk/gknr/ghjh/0909/20240909160155798592998_pc.html",
+      "comment": "Document number, all 17 issuers, signature date 2023-12-31 and release 2024-01-04 confirmed on the NDA's own page; replaces the county-government repost."
+    },
+    {
+      "id": "data_center_green_low_carbon_action_plan_2024",
+      "verified": true,
+      "corrections": {
+        "date_adopted": "2024-07-03",
+        "date_precision": "day",
+        "date_published": "2024-07-23",
+        "source": {
+          "title": "关于印发《数据中心绿色低碳发展专项行动计划》的通知（发改环资〔2024〕970号）, 国家发展改革委",
+          "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202407/t20240723_1391894.html",
+          "language": "zh"
+        },
+        "note": "Signed 2024-07-03; published by NDRC 2024-07-23 and on gov.cn 2024-07-24 (https://www.gov.cn/zhengce/zhengceku/202407/content_6964165.htm). 2025 targets verbatim: '整体上架率不低于60%，平均电能利用效率降至1.5以下，可再生能源利用率年均增长10%'."
+      },
+      "official_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202407/t20240723_1391894.html",
+      "comment": "Exact issuance day found (2024-07-03) — existing value 2024-07-01/month precision was a placeholder. Document number and four issuers confirmed."
+    },
+    {
+      "id": "national_data_infrastructure_guidelines_2025",
+      "verified": true,
+      "corrections": {
+        "doc_number": "发改数据〔2024〕1853号",
+        "date_adopted": "2024-12-31",
+        "date_published": "2025-01-06",
+        "source": {
+          "title": "关于印发《国家数据基础设施建设指引》的通知（发改数据〔2024〕1853号）, 国家发展改革委",
+          "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202501/t20250106_1395455.html",
+          "language": "zh"
+        },
+        "note": "Signed 2024-12-31 (NDRC and NDA pages; gov.cn's metadata box shows 成文日期 2025-01-01 but its own signature line reads 2024年12月31日). NDA copy: https://www.nda.gov.cn/sjj/zwgk/zcfb/0106/20250106095112713400492_pc.html; gov.cn: https://www.gov.cn/zhengce/zhengceku/202501/content_6996487.htm."
+      },
+      "official_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202501/t20250106_1395455.html",
+      "comment": "Existing date 2025-01-07 was the gov.cn news date; the notice is dated 2024-12-31 and was published 2025-01-06. Document number added."
+    },
+    {
+      "id": "computing_interconnection_action_plan_2025",
+      "verified": true,
+      "corrections": {
+        "doc_number": "工信部信管〔2025〕119号",
+        "date_adopted": "2025-05-21",
+        "date_published": "2025-05-30",
+        "source": {
+          "title": "工业和信息化部关于印发《算力互联互通行动计划》的通知（工信部信管〔2025〕119号）, 工业和信息化部",
+          "url": "https://wap.miit.gov.cn/zwgk/zcwj/wjfb/tz/art/2025/art_1bbbd7e75dcc4fd8b75d6d2109f2e9ab.html",
+          "language": "zh"
+        },
+        "note": "gov.cn copy: https://www.gov.cn/zhengce/zhengceku/202505/content_7025968.htm. The 2026/2028 milestones are in the PDF annex."
+      },
+      "official_url": "https://wap.miit.gov.cn/zwgk/zcwj/wjfb/tz/art/2025/art_1bbbd7e75dcc4fd8b75d6d2109f2e9ab.html",
+      "comment": "Existing date 2025-05-30 was the publication date; signed 2025-05-21. Document number added; Xinhua source replaced by MIIT page."
+    },
+    {
+      "id": "ict_industry_fifteenth_fyp_2026",
+      "verified": true,
+      "corrections": {
+        "doc_number": "工信部规〔2026〕188号",
+        "date_adopted": "2026-08-12",
+        "date_published": "2026-09-07",
+        "source": {
+          "title": "工业和信息化部关于印发《信息通信行业发展“十五五”规划》的通知（工信部规〔2026〕188号）, 工业和信息化部",
+          "url": "https://www.miit.gov.cn/jgsj/txs/wjfb/art/2026/art_f55fe09a1e26411fa6926e5195850990.html",
+          "language": "zh"
+        },
+        "note": "Signed 2026-08-12, published 2026-09-07. 2030 targets per MIIT release (ncsti.gov.cn repost): industry revenue 4.1 trillion yuan, 5G(incl. 5G-A) penetration 95%, 50 5G base stations per 10,000 people, intelligent computing 9,800 EFLOPS, cumulative information-infrastructure investment 3.8 trillion yuan, telecom business volume +7%/yr. The 1,700 EB / 320 million gigabit figures in the existing summary were not re-read on an official page."
+      },
+      "official_url": "https://www.miit.gov.cn/jgsj/txs/wjfb/art/2026/art_f55fe09a1e26411fa6926e5195850990.html",
+      "comment": "Official MIIT notice located: 成文 2026-08-12 (existing 2026-09-07 was the release date). Keep the storage/gigabit targets only if re-confirmed in the plan PDF."
+    }
+  ],
+  "new_records": [
+    {
+      "id": "ecommerce_law_2018",
+      "title_en": "E-Commerce Law of the People's Republic of China",
+      "title_zh": "中华人民共和国电子商务法",
+      "doc_type": "law",
+      "issuer": "全国人民代表大会常务委员会",
+      "issuer_level": "national",
+      "doc_number": "中华人民共和国主席令第七号",
+      "date_adopted": "2018-08-31",
+      "date_published": null,
+      "date_effective": "2019-01-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "e_commerce",
+        "platform_economy",
+        "consumer_protection",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "中华人民共和国主席令（第七号）, 中国政府网",
+        "url": "https://www.gov.cn/xinwen/2018-08/31/content_5318194.htm",
+        "language": "zh"
+      },
+      "summary_en": "China's framework statute for e-commerce: obligations of e-commerce operators and platform operators, consumer and IP protection, contract and dispute rules. Adopted by the 5th session of the 13th NPC Standing Committee.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "electronic_signature_law",
+      "title_en": "Electronic Signature Law of the People's Republic of China",
+      "title_zh": "中华人民共和国电子签名法",
+      "doc_type": "law",
+      "issuer": "全国人民代表大会常务委员会",
+      "issuer_level": "national",
+      "doc_number": null,
+      "date_adopted": "2004-08-28",
+      "date_published": null,
+      "date_effective": "2005-04-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "e_commerce",
+        "digital_government",
+        "data_governance",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "中华人民共和国电子签名法（2019年修正）, 工业和信息化部",
+        "url": "https://www.miit.gov.cn/jgsj/zfs/fl/art/2022/art_e3f623f70c23497e88a941170093446a.html",
+        "language": "zh"
+      },
+      "summary_en": "Gives data messages and reliable electronic signatures the same legal effect as paper documents and handwritten signatures; 5 chapters, 36 articles. Legal basis for electronic contracts and e-government transactions.",
+      "note": "date_adopted is the original adoption (10th NPCSC 11th session). Amended 2015-04-24 (关于修改《中华人民共和国电力法》等六部法律的决定) and 2019-04-23 (关于修改《中华人民共和国建筑法》等八部法律的决定).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "cryptography_law_2019",
+      "title_en": "Cryptography Law of the People's Republic of China",
+      "title_zh": "中华人民共和国密码法",
+      "doc_type": "law",
+      "issuer": "全国人民代表大会常务委员会",
+      "issuer_level": "national",
+      "doc_number": "中华人民共和国主席令第三十五号",
+      "date_adopted": "2019-10-26",
+      "date_published": null,
+      "date_effective": "2020-01-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "cybersecurity",
+        "data_security",
+        "critical_infrastructure",
+        "standards"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "中华人民共和国主席令（第三十五号）, 中国政府网",
+        "url": "https://www.gov.cn/xinwen/2019-10/26/content_5445366.htm",
+        "language": "zh"
+      },
+      "summary_en": "Classifies cryptography into core, common and commercial categories, regulates commercial cryptography and requires its use for critical information infrastructure protection. Adopted by the 14th session of the 13th NPC Standing Committee.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "anti_monopoly_law_2022_amendment",
+      "title_en": "Anti-Monopoly Law of the People's Republic of China (2022 Amendment)",
+      "title_zh": "中华人民共和国反垄断法（2022年修正）",
+      "doc_type": "law",
+      "issuer": "全国人民代表大会常务委员会",
+      "issuer_level": "national",
+      "doc_number": "中华人民共和国主席令第一一六号",
+      "date_adopted": "2022-06-24",
+      "date_published": null,
+      "date_effective": "2022-08-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "antitrust",
+        "platform_economy",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "中华人民共和国主席令（第一一六号）关于修改《中华人民共和国反垄断法》的决定, 全国哲学社会科学工作办公室网站（nopss.gov.cn）",
+        "url": "http://www.nopss.gov.cn/n1/2022/0627/c432288-32457207.html",
+        "language": "zh"
+      },
+      "summary_en": "First amendment of the 2007 Anti-Monopoly Law: strengthens the 'fundamental position of competition policy', adds platform-economy provisions on abuse of data, algorithms, technology, capital and platform rules, and raises penalties.",
+      "note": "date_adopted is the 2022 amending decision (13th NPCSC 35th session); the original law was adopted 2007-08-30 and took effect 2008-08-01. NPC pages (npc.gov.cn) could not be fetched; the 主席令 text was read on a *.gov.cn mirror. SAMR is the enforcement authority.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "anti_unfair_competition_law_2025_revision",
+      "title_en": "Anti-Unfair Competition Law of the People's Republic of China (2025 Revision)",
+      "title_zh": "中华人民共和国反不正当竞争法（2025年修订）",
+      "doc_type": "law",
+      "issuer": "全国人民代表大会常务委员会",
+      "issuer_level": "national",
+      "doc_number": "中华人民共和国主席令第五十号",
+      "date_adopted": "2025-06-27",
+      "date_published": null,
+      "date_effective": "2025-10-15",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "antitrust",
+        "platform_economy",
+        "e_commerce",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "中华人民共和国主席令（第五十号）, 中国政府网",
+        "url": "https://www.gov.cn/yaowen/liebiao/202506/content_7029686.htm",
+        "language": "zh"
+      },
+      "summary_en": "Full revision adopted by the 16th session of the 14th NPC Standing Committee; updates the rules on online unfair competition (data, algorithms, platform rules, abuse of relative advantage over platform merchants).",
+      "note": "Revision (修订) of the 1993 law previously amended in 2017 and 2019; the earlier text is replaced in full from 2025-10-15.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "private_economy_promotion_law_2025",
+      "title_en": "Private Economy Promotion Law of the People's Republic of China",
+      "title_zh": "中华人民共和国民营经济促进法",
+      "doc_type": "law",
+      "issuer": "全国人民代表大会常务委员会",
+      "issuer_level": "national",
+      "doc_number": "中华人民共和国主席令第四十六号",
+      "date_adopted": "2025-04-30",
+      "date_published": null,
+      "date_effective": "2025-05-20",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "digital_economy",
+        "data_factor_market",
+        "platform_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "中华人民共和国主席令（第四十六号）, 中国政府网",
+        "url": "https://www.gov.cn/yaowen/liebiao/202504/content_7021962.htm",
+        "language": "zh"
+      },
+      "summary_en": "Adopted by the 15th session of the 14th NPC Standing Committee. Digital-economy provisions: Art. 29 supports private enterprises' participation in digital/intelligent common-technology R&D and in building the data-factor market, lawful use of data and development of open public data; Art. 13 equal treatment in public-data openness.",
+      "note": "Articles read on the National Bureau of Statistics copy (https://www.stats.gov.cn/gk/tjfg/xgfxfg/202506/t20250609_1960123.html).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "consumer_rights_protection_law_implementing_regulation_2024",
+      "title_en": "Implementing Regulation of the Consumer Rights and Interests Protection Law",
+      "title_zh": "中华人民共和国消费者权益保护法实施条例",
+      "doc_type": "administrative_regulation",
+      "issuer": "国务院",
+      "issuer_level": "national",
+      "doc_number": "国务院令第778号",
+      "date_adopted": "2024-03-15",
+      "date_published": null,
+      "date_effective": "2024-07-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "consumer_protection",
+        "platform_economy",
+        "e_commerce",
+        "personal_information"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "中华人民共和国消费者权益保护法实施条例（国务院令第778号）, 中国政府网",
+        "url": "https://www.gov.cn/zhengce/content/202403/content_6940158.htm",
+        "language": "zh"
+      },
+      "summary_en": "Passed by the 26th State Council executive meeting on 2024-02-23 and promulgated 2024-03-15. Art. 9 bans differential pricing for the same goods/services under the same conditions without the consumer's knowledge ('大数据杀熟'); Art. 10 requires conspicuous notice before automatic renewal; also covers live-stream commerce and prepaid consumption.",
+      "note": "date_adopted is the promulgation (签署) date; the executive-meeting adoption date is 2024-02-23.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "minors_online_protection_regulation_2023",
+      "title_en": "Regulations on the Protection of Minors Online",
+      "title_zh": "未成年人网络保护条例",
+      "doc_type": "administrative_regulation",
+      "issuer": "国务院",
+      "issuer_level": "national",
+      "doc_number": "国务院令第766号",
+      "date_adopted": "2023-10-16",
+      "date_published": null,
+      "date_effective": "2024-01-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "minors_protection",
+        "personal_information",
+        "platform_economy",
+        "cybersecurity"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "未成年人网络保护条例（国务院令第766号）, 中国网信网",
+        "url": "https://www.cac.gov.cn/2023-10/24/c_1699806932316206.htm",
+        "language": "zh"
+      },
+      "summary_en": "7 chapters, 60 articles: network literacy, content governance, personal-information protection for minors and anti-addiction duties for platforms, with obligations on large platforms (minor-protection compliance audits).",
+      "note": "Passed by the 15th State Council executive meeting on 2023-09-20; promulgated 2023-10-16.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "non_bank_payment_institutions_regulation_2023",
+      "title_en": "Regulations on the Supervision and Administration of Non-Bank Payment Institutions",
+      "title_zh": "非银行支付机构监督管理条例",
+      "doc_type": "administrative_regulation",
+      "issuer": "国务院",
+      "issuer_level": "national",
+      "doc_number": "国务院令第768号",
+      "date_adopted": "2023-12-09",
+      "date_published": "2023-12-17",
+      "date_effective": "2024-05-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "fintech",
+        "platform_economy",
+        "consumer_protection",
+        "data_security"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "非银行支付机构监督管理条例（国务院令第768号）, 中国政府网",
+        "url": "https://www.gov.cn/zhengce/zhengceku/202312/content_6920725.htm",
+        "language": "zh"
+      },
+      "summary_en": "First State Council-level regulation of non-bank payment institutions (6 chapters, 60 articles): licensing, business rules, user-fund and data protection, PBOC supervision. Legal basis for regulating platform payment businesses.",
+      "note": "Passed by the 19th State Council executive meeting on 2023-11-24; promulgated 2023-12-09.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "cybersecurity_review_measures_2021",
+      "title_en": "Cybersecurity Review Measures (2021 revision)",
+      "title_zh": "网络安全审查办法",
+      "doc_type": "departmental_rule",
+      "issuer": "国家互联网信息办公室、国家发展和改革委员会、工业和信息化部、公安部、国家安全部、财政部、商务部、中国人民银行、国家市场监督管理总局、国家广播电视总局、中国证券监督管理委员会、国家保密局、国家密码管理局",
+      "issuer_level": "ministerial",
+      "doc_number": "国家互联网信息办公室等13部门令第8号",
+      "date_adopted": "2021-12-28",
+      "date_published": null,
+      "date_effective": "2022-02-15",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "cybersecurity",
+        "critical_infrastructure",
+        "data_security",
+        "cross_border_data"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "网络安全审查办法（国家互联网信息办公室等13部门令第8号）, 中国网信网",
+        "url": "https://www.cac.gov.cn/2022-01/04/c_1642894602182845.htm",
+        "language": "zh"
+      },
+      "summary_en": "Extends cybersecurity review from CII procurement to data-processing activities affecting national security; Art. 7 requires network-platform operators holding personal information of more than 1 million users to apply for review before listing abroad.",
+      "note": "Adopted at the CAC's 20th office meeting of 2021 (2021-11-16) and promulgated 2021-12-28; replaces the 2020 measures (12-department order No. 6).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "deep_synthesis_provisions_2022",
+      "title_en": "Provisions on the Administration of Deep Synthesis in Internet Information Services",
+      "title_zh": "互联网信息服务深度合成管理规定",
+      "doc_type": "departmental_rule",
+      "issuer": "国家互联网信息办公室、工业和信息化部、公安部",
+      "issuer_level": "ministerial",
+      "doc_number": "国家互联网信息办公室、工业和信息化部、公安部令第12号",
+      "date_adopted": "2022-11-25",
+      "date_published": null,
+      "date_effective": "2023-01-10",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "ai",
+        "cybersecurity",
+        "personal_information",
+        "platform_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "互联网信息服务深度合成管理规定（国家互联网信息办公室、工业和信息化部、公安部令第12号）, 中国网信网",
+        "url": "https://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm",
+        "language": "zh"
+      },
+      "summary_en": "Regulates deep-synthesis (deepfake / generative) services: provider and technical-support duties, labelling of synthetic content, security assessments and algorithm filing. Precursor of the 2023 generative-AI measures.",
+      "note": "Adopted at the CAC's 21st office meeting of 2022 (2022-11-03); promulgated 2022-11-25.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "pi_export_standard_contract_measures_2023",
+      "title_en": "Measures for the Standard Contract for Outbound Transfer of Personal Information",
+      "title_zh": "个人信息出境标准合同办法",
+      "doc_type": "departmental_rule",
+      "issuer": "国家互联网信息办公室",
+      "issuer_level": "ministerial",
+      "doc_number": "国家互联网信息办公室令第13号",
+      "date_adopted": "2023-02-22",
+      "date_published": null,
+      "date_effective": "2023-06-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "cross_border_data",
+        "personal_information",
+        "data_security"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "个人信息出境标准合同办法（国家互联网信息办公室令第13号）, 中国网信网",
+        "url": "https://www.cac.gov.cn/2023-02/24/c_1678884830036813.htm",
+        "language": "zh"
+      },
+      "summary_en": "Standard-contract route for personal-information exports by non-CII operators processing data of fewer than 1 million people and having exported fewer than 100,000 persons' PI (10,000 for sensitive PI) since 1 January of the previous year; filing with provincial CAC within 10 working days.",
+      "note": "Thresholds were later relaxed by 促进和规范数据跨境流动规定 (2024, existing id cross_border_data_flow_provisions).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "online_violence_information_governance_provisions_2024",
+      "title_en": "Provisions on the Governance of Online Violence Information",
+      "title_zh": "网络暴力信息治理规定",
+      "doc_type": "departmental_rule",
+      "issuer": "国家互联网信息办公室、公安部、文化和旅游部、国家广播电视总局",
+      "issuer_level": "ministerial",
+      "doc_number": "国家互联网信息办公室、公安部、文化和旅游部、国家广播电视总局令第17号",
+      "date_adopted": "2024-06-12",
+      "date_published": null,
+      "date_effective": "2024-08-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "cybersecurity",
+        "platform_economy",
+        "personal_information"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "网络暴力信息治理规定（国家互联网信息办公室、公安部、文化和旅游部、国家广播电视总局令第17号）, 西藏自治区党委网信办转载",
+        "url": "https://wxb.xzdw.gov.cn/zcfg/bmgz/202406/t20240615_479057.html",
+        "language": "zh"
+      },
+      "summary_en": "7 chapters, 34 articles: platform duties to prevent, warn of and dispose of online-violence information, user-protection tools and liability. Adopted at the CAC's 28th office meeting of 2023 (2023-12-25).",
+      "note": "The CAC's own page could not be retrieved (404 on the guessed URL; mps.gov.cn unreachable); text read on a provincial CAC-office (*.gov.cn) repost.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "online_unfair_competition_interim_provisions_2024",
+      "title_en": "Interim Provisions on Anti-Unfair Competition on the Internet",
+      "title_zh": "网络反不正当竞争暂行规定",
+      "doc_type": "departmental_rule",
+      "issuer": "国家市场监督管理总局",
+      "issuer_level": "ministerial",
+      "doc_number": "国家市场监督管理总局令第91号",
+      "date_adopted": "2024-05-06",
+      "date_published": null,
+      "date_effective": "2024-09-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "antitrust",
+        "platform_economy",
+        "e_commerce",
+        "consumer_protection"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "网络反不正当竞争暂行规定（国家市场监督管理总局令第91号）, 国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/fgs/art/2024/art_80019fe59e464196bef173dc56678a42.html",
+        "language": "zh"
+      },
+      "summary_en": "5 chapters, 43 articles listing 17 categories of online unfair competition (confusion, false publicity, technical interference, data misuse, abuse of platform position) and prohibiting platforms from imposing unreasonable restrictions on in-platform merchants.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "online_trading_platform_rules_supervision_measures_2025",
+      "title_en": "Measures for the Supervision and Administration of Online Trading Platform Rules",
+      "title_zh": "网络交易平台规则监督管理办法",
+      "doc_type": "departmental_rule",
+      "issuer": "国家市场监督管理总局、国家互联网信息办公室",
+      "issuer_level": "ministerial",
+      "doc_number": "国家市场监督管理总局、国家互联网信息办公室令第116号",
+      "date_adopted": "2025-12-18",
+      "date_published": null,
+      "date_effective": "2026-02-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "platform_economy",
+        "e_commerce",
+        "consumer_protection",
+        "data_security"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "网络交易平台规则监督管理办法（国家市场监督管理总局、国家互联网信息办公室令第116号）, 国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/fgs/art/2026/art_85b474fc5a08494bb60ca6a280b98d7d.html",
+        "language": "zh"
+      },
+      "summary_en": "8 chapters, 47 articles regulating how online trading platforms draft, amend and enforce platform rules, protecting in-platform merchants and consumers and adding network/data-security duties. Passed by the SAMR executive meeting on 2025-11-24 with CAC consent; published 2025-12-18.",
+      "note": "Also printed in 国务院公报 2026年第10号 (https://www.gov.cn/gongbao/2026/issue_12666/202604/content_7065115.html).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "public_data_resources_registration_measures_2025",
+      "title_en": "Interim Measures for the Registration and Administration of Public Data Resources",
+      "title_zh": "公共数据资源登记管理暂行办法",
+      "doc_type": "departmental_rule",
+      "issuer": "国家发展改革委、国家数据局",
+      "issuer_level": "ministerial",
+      "doc_number": "发改数据规〔2025〕26号",
+      "date_adopted": "2025-01-08",
+      "date_published": null,
+      "date_effective": "2025-03-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_governance",
+        "data_factor_market",
+        "digital_government"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家发展改革委 国家数据局关于印发《公共数据资源登记管理暂行办法》的通知（发改数据规〔2025〕26号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/xxgk/zc/xzgfxwj/0121/ff808081-93de5a43-0194-8680d3e3-0ba7.pdf",
+        "language": "zh"
+      },
+      "summary_en": "Establishes a national registration system for public data resources held by government bodies and public institutions (6 chapters, 24 articles); effective 2025-03-01 with a five-year validity period. Part of the '1+3' public-data policy package under the 2024 CPC/State Council opinions.",
+      "note": "Listed as a 行政规范性文件 on nda.gov.cn; HTML page https://www.nda.gov.cn/sjj/xxgk/zc/xzgfxwj/0121/20250121093048138340841_pc.html.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "public_data_authorized_operation_implementation_norms_2025",
+      "title_en": "Implementation Norms for the Authorised Operation of Public Data Resources (Trial)",
+      "title_zh": "公共数据资源授权运营实施规范（试行）",
+      "doc_type": "departmental_rule",
+      "issuer": "国家发展改革委、国家数据局",
+      "issuer_level": "ministerial",
+      "doc_number": "发改数据规〔2025〕27号",
+      "date_adopted": "2025-01-08",
+      "date_published": "2025-01-20",
+      "date_effective": "2025-03-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_governance",
+        "data_factor_market",
+        "digital_government"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家发展改革委 国家数据局关于印发《公共数据资源授权运营实施规范（试行）》的通知（发改数据规〔2025〕27号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/xxgk/zc/xzgfxwj/0120/20250120175648588490013_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "7 chapters, 27 articles on how authorities select and supervise operators of public data resources (plan preparation, authorisation agreements, operation and oversight); effective 2025-03-01, valid five years.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "enterprise_data_resources_accounting_provisions_2023",
+      "title_en": "Interim Provisions on Accounting Treatment of Enterprise Data Resources",
+      "title_zh": "企业数据资源相关会计处理暂行规定",
+      "doc_type": "departmental_rule",
+      "issuer": "财政部",
+      "issuer_level": "ministerial",
+      "doc_number": "财会〔2023〕11号",
+      "date_adopted": "2023-08-01",
+      "date_published": null,
+      "date_effective": "2024-01-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_factor_market",
+        "data_governance",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "财政部关于印发《企业数据资源相关会计处理暂行规定》的通知（财会〔2023〕11号）, 财政部",
+        "url": "https://www.mof.gov.cn/gkml/caizhengwengao/wg2023/wg202308/202312/t20231227_3924258.htm",
+        "language": "zh"
+      },
+      "summary_en": "Allows enterprise data resources meeting asset-recognition criteria to be recognised as intangible assets or inventories according to the business model, and adds balance-sheet sub-items and disclosure requirements ('数据资产入表'); effective 2024-01-01.",
+      "note": "Effective date and recognition rule read from the MOF Q&A reposted on gov.cn (https://www.gov.cn/zhengce/202308/content_6899399.htm).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "gbt_45654_2025_genai_security_requirements",
+      "title_en": "Cybersecurity Technology — Basic Security Requirements for Generative AI Services (GB/T 45654-2025)",
+      "title_zh": "网络安全技术 生成式人工智能服务安全基本要求（GB/T 45654-2025）",
+      "doc_type": "other",
+      "issuer": "国家市场监督管理总局、国家标准化管理委员会",
+      "issuer_level": "ministerial",
+      "doc_number": "GB/T 45654-2025",
+      "date_adopted": "2025-04-25",
+      "date_published": null,
+      "date_effective": "2025-11-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "ai",
+        "standards",
+        "cybersecurity",
+        "data_security"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "GB/T 45654-2025, 国家标准全文公开系统 (openstd.samr.gov.cn)",
+        "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=F67D3F376E0A0A0FF5317FB36B32A30A",
+        "language": "zh"
+      },
+      "summary_en": "Recommended national standard (ICS 35.030, CCS L80) specifying training-data, model and security-measure requirements for generative-AI services; the technical basis for security assessments under the 2023 interim measures.",
+      "note": "推荐性国家标准; 发布 2025-04-25, 实施 2025-11-01.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "gb_45438_2025_ai_content_labeling_standard",
+      "title_en": "Cybersecurity Technology — Labeling Methods for AI-Generated and Synthetic Content (GB 45438-2025)",
+      "title_zh": "网络安全技术 人工智能生成合成内容标识方法（GB 45438-2025）",
+      "doc_type": "other",
+      "issuer": "国家市场监督管理总局、国家标准化管理委员会",
+      "issuer_level": "ministerial",
+      "doc_number": "GB 45438-2025",
+      "date_adopted": "2025-02-28",
+      "date_published": null,
+      "date_effective": "2025-09-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "ai",
+        "standards",
+        "cybersecurity"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "GB 45438-2025, 国家标准全文公开系统 (openstd.samr.gov.cn)",
+        "url": "https://openstd.samr.gov.cn/bzgk/std/std_list?p.p2=GB+45438-2025",
+        "language": "zh"
+      },
+      "summary_en": "Mandatory national standard defining explicit and implicit (metadata) labels for AI-generated text, image, audio, video and virtual-scene content; implemented 2025-09-01 together with the 人工智能生成合成内容标识办法.",
+      "note": "强制性国家标准; openstd lists 发布日期 2025-02-28 (publicly announced with the Measures on 2025-03-14). Companion to existing id ai_generated_content_labeling_measures.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "gbt_43697_2024_data_classification_grading_rules",
+      "title_en": "Data Security Technology — Rules for Data Classification and Grading (GB/T 43697-2024)",
+      "title_zh": "数据安全技术 数据分类分级规则（GB/T 43697-2024）",
+      "doc_type": "other",
+      "issuer": "国家市场监督管理总局、国家标准化管理委员会",
+      "issuer_level": "ministerial",
+      "doc_number": "GB/T 43697-2024",
+      "date_adopted": "2024-03-15",
+      "date_published": null,
+      "date_effective": "2024-10-01",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_security",
+        "standards",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "GB/T 43697-2024, 国家标准全文公开系统 (openstd.samr.gov.cn)",
+        "url": "https://openstd.samr.gov.cn/bzgk/std/std_list?p.p2=GB%2FT+43697-2024",
+        "language": "zh"
+      },
+      "summary_en": "National standard operationalising the Data Security Law's classification-and-grading regime (core / important / general data) with identification rules for important data; implemented 2024-10-01.",
+      "note": "推荐性国家标准.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "platform_economy_antimonopoly_guidelines_2021",
+      "title_en": "Anti-Monopoly Guidelines of the State Council Anti-Monopoly Committee on the Platform Economy",
+      "title_zh": "国务院反垄断委员会关于平台经济领域的反垄断指南",
+      "doc_type": "other",
+      "issuer": "国务院反垄断委员会",
+      "issuer_level": "national",
+      "doc_number": null,
+      "date_adopted": "2021-02-07",
+      "date_published": null,
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "antitrust",
+        "platform_economy",
+        "digital_economy",
+        "e_commerce"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国务院反垄断委员会关于平台经济领域的反垄断指南, 国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn/zt/ndzt/2025n/sqxzjcgs/jcbz/art/2025/art_27c2be1ca40b42a9949c12dbd213ba8e.html",
+        "language": "zh"
+      },
+      "summary_en": "5 chapters, 23 articles applying the Anti-Monopoly Law to platforms: market definition, hub-and-spoke agreements, abuse of dominance ('二选一', differential pricing via big data), merger review of VIE structures.",
+      "note": "The document number commonly cited (国反垄发〔2021〕1号) is not printed on the SAMR page read; gkml.samr.gov.cn was unreachable.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "platform_economy_guiding_opinions_2019",
+      "title_en": "Guiding Opinions of the General Office of the State Council on Promoting the Regulated and Healthy Development of the Platform Economy",
+      "title_zh": "国务院办公厅关于促进平台经济规范健康发展的指导意见",
+      "doc_type": "policy_notice",
+      "issuer": "国务院办公厅",
+      "issuer_level": "national",
+      "doc_number": "国办发〔2019〕38号",
+      "date_adopted": "2019-08-01",
+      "date_published": "2019-08-08",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "platform_economy",
+        "digital_economy",
+        "e_commerce"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国务院办公厅关于促进平台经济规范健康发展的指导意见（国办发〔2019〕38号）, 中国政府网",
+        "url": "https://www.gov.cn/zhengce/content/2019-08/08/content_5419761.htm",
+        "language": "zh"
+      },
+      "summary_en": "First State Council-level platform-economy policy: inclusive and prudent regulation, market-access reform, platform data-sharing and new-employment support.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "platform_economy_sustained_development_opinions_2021",
+      "title_en": "Several Opinions on Promoting the Regulated, Healthy and Sustained Development of the Platform Economy",
+      "title_zh": "关于推动平台经济规范健康持续发展的若干意见",
+      "doc_type": "policy_notice",
+      "issuer": "国家发展改革委、市场监管总局、中央网信办、工业和信息化部、人力资源社会保障部、农业农村部、商务部、人民银行、税务总局",
+      "issuer_level": "ministerial",
+      "doc_number": "发改高技〔2021〕1872号",
+      "date_adopted": "2021-12-24",
+      "date_published": "2022-01-19",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "platform_economy",
+        "digital_economy",
+        "antitrust",
+        "data_security"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "关于推动平台经济规范健康持续发展的若干意见（发改高技〔2021〕1872号）, 北京市人民政府网站转载",
+        "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/202202/t20220226_2617192.html",
+        "language": "zh"
+      },
+      "summary_en": "Nine-department opinions closing the 2021 rectification phase: platform rules, data-security and algorithm governance, financial regulation of platforms, protection of gig workers, and support for platform innovation and internationalisation.",
+      "note": "NDRC's own notice page did not surface; signature date and number read on the Beijing municipal (gov.cn) repost; NDRC 解读 pages dated 2022-01-19 (https://www.ndrc.gov.cn/xxgk/jd/jd/202201/t20220119_1312336.html).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "new_generation_ai_development_plan_2017",
+      "title_en": "New Generation Artificial Intelligence Development Plan",
+      "title_zh": "新一代人工智能发展规划",
+      "doc_type": "plan",
+      "issuer": "国务院",
+      "issuer_level": "national",
+      "doc_number": "国发〔2017〕35号",
+      "date_adopted": "2017-07-08",
+      "date_published": "2017-07-20",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "ai",
+        "digital_economy",
+        "standards"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国务院关于印发新一代人工智能发展规划的通知（国发〔2017〕35号）, 中国政府网",
+        "url": "https://www.gov.cn/zhengce/content/2017-07/20/content_5211996.htm",
+        "language": "zh"
+      },
+      "summary_en": "Three-step strategy: by 2020 AI core industry >150 billion yuan (related industries >1 trillion); by 2025 core >400 billion (related >5 trillion); by 2030 core >1 trillion yuan (related >10 trillion) and world-leading AI.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "digital_village_development_strategy_outline_2019",
+      "title_en": "Outline of the Digital Village Development Strategy",
+      "title_zh": "数字乡村发展战略纲要",
+      "doc_type": "plan",
+      "issuer": "中共中央办公厅、国务院办公厅",
+      "issuer_level": "national",
+      "doc_number": null,
+      "date_adopted": "2019-05-16",
+      "date_published": "2019-05-16",
+      "date_effective": null,
+      "date_precision": "month",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "digital_economy",
+        "digital_china",
+        "telecom"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "中共中央办公厅 国务院办公厅印发《数字乡村发展战略纲要》, 中国政府网",
+        "url": "https://www.gov.cn/zhengce/2019-05/16/content_5392269.htm",
+        "language": "zh"
+      },
+      "summary_en": "Staged goals: by 2020 rural 4G coverage above 98%; by 2025 narrowed urban–rural digital divide and 5G applications; by 2035 basic equalisation of urban–rural public services; digital villages fully built by mid-century.",
+      "note": "Issued '近日' per the Xinhua release of 2019-05-16; exact issuance day not published (month precision).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "digital_government_guiding_opinions_2022",
+      "title_en": "Guiding Opinions of the State Council on Strengthening the Construction of Digital Government",
+      "title_zh": "国务院关于加强数字政府建设的指导意见",
+      "doc_type": "policy_notice",
+      "issuer": "国务院",
+      "issuer_level": "national",
+      "doc_number": "国发〔2022〕14号",
+      "date_adopted": "2022-06-06",
+      "date_published": "2022-06-23",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "digital_government",
+        "digital_china",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国务院关于加强数字政府建设的指导意见（国发〔2022〕14号）, 中国政府网",
+        "url": "https://www.gov.cn/zhengce/zhengceku/2022-06/23/content_5697299.htm",
+        "language": "zh"
+      },
+      "summary_en": "By 2025 the digital-government framework (digital performance of duties, security, rules, data resources, platform support) is basically formed; by 2035 an integrated, agile, intelligent, open and inclusive digital government is basically built.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "fintech_development_plan_2022_2025",
+      "title_en": "FinTech Development Plan (2022–2025)",
+      "title_zh": "金融科技发展规划（2022—2025年）",
+      "doc_type": "plan",
+      "issuer": "中国人民银行",
+      "issuer_level": "ministerial",
+      "doc_number": null,
+      "date_adopted": "2022-01-07",
+      "date_published": null,
+      "date_effective": null,
+      "date_precision": "month",
+      "status": "expired",
+      "superseded_by": null,
+      "topics": [
+        "fintech",
+        "digital_economy",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "《金融科技发展规划（2022-2025年）》印发——金融与科技加快深度融合, 中国政府网（政策解读）",
+        "url": "https://www.gov.cn/zhengce/2022-01/07/content_5666817.htm",
+        "language": "zh"
+      },
+      "summary_en": "Second PBOC fintech plan: 4 principles, 6 development goals, 8 key tasks and 5 safeguards for the digital transformation of finance during the 14th FYP; plan period ended 2025.",
+      "note": "PBOC pages (pbc.gov.cn) are blocked to fetching; gov.cn reports '近日，中国人民银行印发' on 2022-01-07. The document number 银发〔2021〕335号 appears only in non-official listings and is therefore not recorded.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "digital_economy_common_prosperity_plan_2023",
+      "title_en": "Implementation Plan for the Digital Economy to Promote Common Prosperity",
+      "title_zh": "数字经济促进共同富裕实施方案",
+      "doc_type": "plan",
+      "issuer": "国家发展改革委、国家数据局",
+      "issuer_level": "ministerial",
+      "doc_number": "发改数据〔2023〕1770号",
+      "date_adopted": "2023-12-23",
+      "date_published": "2024-01-05",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "digital_economy",
+        "data_factor_market",
+        "digital_government",
+        "digital_china"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "数字经济促进共同富裕实施方案（发改数据〔2023〕1770号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/xxgk/gknr/qtzc/0909/20240909151045180623871_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "Uses digital means to narrow regional, urban–rural, income and basic-public-service gaps (digital infrastructure for underdeveloped areas, digital inclusion, data-factor benefits sharing).",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "urban_digital_transformation_guiding_opinions_2024",
+      "title_en": "Guiding Opinions on Deepening Smart City Development and Promoting City-Wide Digital Transformation",
+      "title_zh": "关于深化智慧城市发展 推进城市全域数字化转型的指导意见",
+      "doc_type": "policy_notice",
+      "issuer": "国家发展改革委、国家数据局、财政部、自然资源部",
+      "issuer_level": "ministerial",
+      "doc_number": "发改数据〔2024〕660号",
+      "date_adopted": "2024-05-14",
+      "date_published": "2024-05-20",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "smart_city",
+        "digital_government",
+        "digital_china",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "关于深化智慧城市发展 推进城市全域数字化转型的指导意见（发改数据〔2024〕660号）, 国家发展改革委",
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202405/t20240520_1386326.html",
+        "language": "zh"
+      },
+      "summary_en": "By 2027 city-wide digital transformation shows clear results with a cohort of liveable, resilient smart cities; by 2030 comprehensive breakthroughs and globally competitive 'Chinese-style modern cities'.",
+      "note": "NDA copy: https://www.nda.gov.cn/sjj/zwgk/zcfb/0830/20240830175752608663956_pc.html; gov.cn: https://www.gov.cn/zhengce/zhengceku/202405/content_6952353.htm.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "ai_industry_standardization_system_guide_2024",
+      "title_en": "Guidelines for Building a National Comprehensive Standardisation System for the AI Industry (2024 edition)",
+      "title_zh": "国家人工智能产业综合标准化体系建设指南（2024版）",
+      "doc_type": "policy_notice",
+      "issuer": "工业和信息化部、中央网络安全和信息化委员会办公室、国家发展和改革委员会、国家标准化管理委员会",
+      "issuer_level": "ministerial",
+      "doc_number": "工信部联科〔2024〕113号",
+      "date_adopted": "2024-06-05",
+      "date_published": "2024-07-02",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "ai",
+        "standards",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "四部门关于印发国家人工智能产业综合标准化体系建设指南（2024版）的通知（工信部联科〔2024〕113号）, 工业和信息化部",
+        "url": "https://wap.miit.gov.cn/zwgk/zcwj/wjfb/tz/art/2024/art_e8ebf5600ec24d3db644150873712c5f.html",
+        "language": "zh"
+      },
+      "summary_en": "By 2026: formulate/revise 50+ national and industry AI standards, participate in 20+ international standards, and involve 1,000+ enterprises in standardisation work.",
+      "note": "CAC repost: https://www.cac.gov.cn/2024-07/03/c_1721686809220407.htm.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "national_data_standards_system_guide_2024",
+      "title_en": "Guidelines for Building the National Data Standards System",
+      "title_zh": "国家数据标准体系建设指南",
+      "doc_type": "policy_notice",
+      "issuer": "国家发展改革委、国家数据局、中央网信办、工业和信息化部、财政部、国家标准委",
+      "issuer_level": "ministerial",
+      "doc_number": "发改数据〔2024〕1426号",
+      "date_adopted": "2024-09-25",
+      "date_published": "2024-10-08",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "standards",
+        "data_governance",
+        "data_factor_market"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "关于印发《国家数据标准体系建设指南》的通知（发改数据〔2024〕1426号）, 国家发展改革委",
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241008_1393509.html",
+        "language": "zh"
+      },
+      "summary_en": "By end-2026 the national data standards system is basically built, with 30+ basic national standards formulated or revised on data-circulation infrastructure, data management and services, training datasets, public-data authorised operation, data rights confirmation, pricing and enterprise data trading.",
+      "note": "2026 target sentence read on the Beijing S&T Commission repost (https://www.ncsti.gov.cn/kjdt/kjrd/qtrd_kjrd/202410/t20241010_181441.html). NDA copy: https://www.nda.gov.cn/sjj/zwgk/zcfb/1009/20241009101438632290639_pc.html.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "enterprise_data_resources_utilization_opinions_2024",
+      "title_en": "Opinions on Promoting the Development and Utilisation of Enterprise Data Resources",
+      "title_zh": "关于促进企业数据资源开发利用的意见",
+      "doc_type": "policy_notice",
+      "issuer": "国家数据局、中央网信办、工业和信息化部、公安部、国务院国资委",
+      "issuer_level": "ministerial",
+      "doc_number": "国数资源〔2024〕125号",
+      "date_adopted": "2024-12-20",
+      "date_published": "2024-12-25",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_factor_market",
+        "data_governance",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "关于促进企业数据资源开发利用的意见（国数资源〔2024〕125号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/xxgk/gknr/qtzc/1225/20241225154636252082589_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "Protects enterprises' lawful data rights and promotes classified development of enterprise data (industrial-chain data sharing, data-asset recognition, trusted circulation) to 'fully release the value of enterprise data resources'.",
+      "note": "Issued December 2024 (not 2025 as sometimes listed).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "data_industry_high_quality_development_opinions_2024",
+      "title_en": "Guiding Opinions on Promoting the High-Quality Development of the Data Industry",
+      "title_zh": "关于促进数据产业高质量发展的指导意见",
+      "doc_type": "policy_notice",
+      "issuer": "国家发展改革委、国家数据局、教育部、财政部、金融监管总局、中国证监会",
+      "issuer_level": "ministerial",
+      "doc_number": "发改数据〔2024〕1836号",
+      "date_adopted": "2024-12-28",
+      "date_published": "2024-12-30",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_factor_market",
+        "digital_economy",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "关于促进数据产业高质量发展的指导意见（发改数据〔2024〕1836号）, 国家发展改革委",
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202412/t20241230_1395341.html",
+        "language": "zh"
+      },
+      "summary_en": "Defines the data industry (collection, computing/storage, circulation, utilisation, security governance, data infrastructure) and targets a compound annual growth rate above 15% for the data industry by 2029.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "data_circulation_security_governance_plan_2025",
+      "title_en": "Implementation Plan on Improving Data-Circulation Security Governance to Better Promote the Marketisation and Valorisation of Data Factors",
+      "title_zh": "关于完善数据流通安全治理 更好促进数据要素市场化价值化的实施方案",
+      "doc_type": "plan",
+      "issuer": "国家发展改革委、国家数据局、中央网信办、工业和信息化部、公安部、市场监管总局",
+      "issuer_level": "ministerial",
+      "doc_number": "发改数据〔2025〕18号",
+      "date_adopted": "2025-01-06",
+      "date_published": "2025-01-15",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_security",
+        "data_factor_market",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "印发《关于完善数据流通安全治理 更好促进数据要素市场化价值化的实施方案》的通知（发改数据〔2025〕18号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/xxgk/gknr/qtzc/0115/20250115173302396617093_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "Clarifies security responsibilities for enterprise, public and personal data in circulation, promotes privacy-enhancing technologies and trusted data spaces, and builds a data-circulation security-governance system.",
+      "note": "NDRC notice: https://www.ndrc.gov.cn/xwdt/tzgg/202501/t20250115_1395694.html.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "vat_telecom_opening_pilot_notice_2024",
+      "title_en": "Announcement on Launching Pilots to Expand the Opening-Up of Value-Added Telecommunications Services",
+      "title_zh": "工业和信息化部关于开展增值电信业务扩大对外开放试点工作的通告",
+      "doc_type": "policy_notice",
+      "issuer": "工业和信息化部",
+      "issuer_level": "ministerial",
+      "doc_number": "工信部通信函〔2024〕107号",
+      "date_adopted": "2024-04-08",
+      "date_published": "2024-04-10",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "telecom",
+        "data_center",
+        "cloud",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "工业和信息化部关于开展增值电信业务扩大对外开放试点工作的通告（工信部通信函〔2024〕107号）, 工业和信息化部",
+        "url": "https://wap.miit.gov.cn/zwgk/zcwj/wjfb/tg/art/2024/art_2326271e1b424e09b6e5924ad2948863.html",
+        "language": "zh"
+      },
+      "summary_en": "Removes foreign-equity caps on internet data centres (IDC), content delivery networks (CDN), internet access services (ISP), online data processing and transaction processing, and certain information services in four pilot zones (Beijing, Shanghai Lingang/Pudong, Hainan FTP, Shenzhen).",
+      "note": "Excludes internet news, online publishing, online audio-visual and internet cultural services.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "digital_economy_innovative_enterprises_measures_2025",
+      "title_en": "Several Measures on Strengthening the Cultivation of Innovative Digital-Economy Enterprises",
+      "title_zh": "关于加强数字经济创新型企业培育的若干措施",
+      "doc_type": "policy_notice",
+      "issuer": "国家发展改革委、国家数据局、财政部、中国人民银行、金融监管总局、中国证监会",
+      "issuer_level": "ministerial",
+      "doc_number": "发改数据〔2025〕1154号",
+      "date_adopted": "2025-09-04",
+      "date_published": "2025-09-26",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "digital_economy",
+        "data_factor_market",
+        "computing_power",
+        "fintech"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家发展改革委等部门关于印发《关于加强数字经济创新型企业培育的若干措施》的通知（发改数据〔2025〕1154号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/xxgk/gknr/qtzc/0926/20250926162823983586641_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "Ten measures (talent, financing, data access, computing-power vouchers/resources, innovation environment, international cooperation) to grow gazelle and unicorn companies in new digital-economy tracks.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "scenario_cultivation_opinions_2025",
+      "title_en": "Implementation Opinions of the General Office of the State Council on Accelerating Scenario Cultivation and Opening to Promote Large-Scale Application of New Scenarios",
+      "title_zh": "国务院办公厅关于加快场景培育和开放推动新场景大规模应用的实施意见",
+      "doc_type": "policy_notice",
+      "issuer": "国务院办公厅",
+      "issuer_level": "national",
+      "doc_number": "国办发〔2025〕37号",
+      "date_adopted": "2025-11-02",
+      "date_published": "2025-11-07",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "digital_economy",
+        "ai",
+        "green_development"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国务院办公厅关于加快场景培育和开放推动新场景大规模应用的实施意见（国办发〔2025〕37号）, 生态环境部网站转载",
+        "url": "https://www.mee.gov.cn/zcwj/gwywj/202511/t20251111_1132672.shtml",
+        "language": "zh"
+      },
+      "summary_en": "Builds comprehensive major scenarios, industry-integrated scenarios and high-value niche scenarios across 22 fields (digital economy, AI, clean energy, etc.) to form a 'technology breakthrough – scenario validation – industrial application – system upgrade' pathway for new quality productive forces.",
+      "note": "Often mis-dated 2024: it is a State Council General Office document signed 2025-11-02 and released 2025-11-07 (gov.cn: https://www.gov.cn/yaowen/liebiao/202511/content_7047426.htm; NDA: https://www.nda.gov.cn/sjj/swdt/xwfb/1107/20251107204605243708889_pc.html).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "data_science_technology_innovation_opinions_2025",
+      "title_en": "Implementation Opinions of the National Data Administration on Strengthening Data Science and Technology Innovation",
+      "title_zh": "国家数据局关于加强数据科技创新的实施意见",
+      "doc_type": "policy_notice",
+      "issuer": "国家数据局",
+      "issuer_level": "ministerial",
+      "doc_number": "国数科基〔2025〕70号",
+      "date_adopted": "2025-12-25",
+      "date_published": "2025-12-27",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_governance",
+        "digital_economy",
+        "ai"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家数据局关于加强数据科技创新的实施意见（国数科基〔2025〕70号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/zwgk/zcfb/1227/20251227100433509018891_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "By 2027 a cohort of leading data-technology innovation platforms is built; by 2030 key data technologies reach a world-leading level and the data-technology innovation and industrial ecosystem achieves an overall leap.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "green_power_direct_connection_notice_2025",
+      "title_en": "Notice on Orderly Promoting the Development of Green Power Direct Connection",
+      "title_zh": "国家发展改革委 国家能源局关于有序推动绿电直连发展有关事项的通知",
+      "doc_type": "policy_notice",
+      "issuer": "国家发展改革委、国家能源局",
+      "issuer_level": "ministerial",
+      "doc_number": "发改能源〔2025〕650号",
+      "date_adopted": "2025-05-21",
+      "date_published": "2025-05-30",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "energy_law",
+        "green_development",
+        "carbon"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "关于有序推动绿电直连发展有关事项的通知（发改能源〔2025〕650号）, 国家发展改革委",
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202505/t20250530_1398138.html",
+        "language": "zh"
+      },
+      "summary_en": "Framework for single-user green-power direct connection (dedicated lines from wind/solar to a load) with grid-connected and off-grid models and a requirement to pay system costs; the policy that the 2026 multi-user notice extends to computing facilities.",
+      "note": "The text does not mention data centres or computing power explicitly; relevance is as the predecessor of 发改能源〔2026〕688号 (existing id green_power_direct_connection_notice_2026).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "automotive_data_export_security_guidelines_2026",
+      "title_en": "Security Guidelines for Outbound Transfer of Automotive Data (2026 edition)",
+      "title_zh": "汽车数据出境安全指引（2026版）",
+      "doc_type": "other",
+      "issuer": "工业和信息化部、国家互联网信息办公室、国家发展和改革委员会、国家数据局、公安部、自然资源部、交通运输部、国家市场监督管理总局",
+      "issuer_level": "ministerial",
+      "doc_number": "工信部联网安〔2026〕27号",
+      "date_adopted": "2026-01-30",
+      "date_published": "2026-02-03",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "cross_border_data",
+        "data_security",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "工信部等八部门联合发文 推进汽车数据高效便利安全跨境流动（工信部联网安〔2026〕27号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/zwgk/zcfb/0203/20260203171849356062918_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "Scenario-based guidance (R&D, manufacturing, autonomous driving, OTA, connected operations) on which automotive data may leave China and how, with nine exemption categories to streamline outbound transfers while safeguarding security.",
+      "note": "Sector-specific application of the 2024 cross-border data provisions; included because vehicle data is a major cross-border data-flow use case.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "data_circulation_service_institutions_opinions_2026",
+      "title_en": "Opinions on Cultivating Data-Circulation Service Institutions to Accelerate the Marketisation and Valorisation of Data Factors",
+      "title_zh": "国家数据局等部门关于培育数据流通服务机构 加快推进数据要素市场化价值化的意见",
+      "doc_type": "policy_notice",
+      "issuer": "国家数据局、工业和信息化部、公安部、中国证监会",
+      "issuer_level": "ministerial",
+      "doc_number": "国数政策〔2026〕6号",
+      "date_adopted": "2026-02-03",
+      "date_published": "2026-02-07",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_factor_market",
+        "data_governance",
+        "digital_economy"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家数据局等部门关于培育数据流通服务机构 加快推进数据要素市场化价值化的意见（国数政策〔2026〕6号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/zwgk/zcfb/0205/20260205185635251370340_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "By end-2029 data-circulation service institutions (exchanges, brokers, trusted third parties) have markedly stronger capabilities, trading forms are more diverse and society-wide data circulation and use clearly improve.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "inclusive_computing_sme_action_2026",
+      "title_en": "Notice on Launching a Special Action on Inclusive Computing Power Empowering SME Development",
+      "title_zh": "工业和信息化部办公厅关于开展普惠算力赋能中小企业发展专项行动的通知",
+      "doc_type": "policy_notice",
+      "issuer": "工业和信息化部办公厅",
+      "issuer_level": "ministerial",
+      "doc_number": "工信厅通信〔2026〕14号",
+      "date_adopted": "2026-03-27",
+      "date_published": "2026-04-02",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "computing_power",
+        "digital_economy",
+        "cloud"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "工业和信息化部办公厅关于开展普惠算力赋能中小企业发展专项行动的通知（工信厅通信〔2026〕14号）, 工业和信息化部",
+        "url": "https://www.miit.gov.cn/jgsj/txs/wjfb/art/2026/art_e5c990d4ec924dbc9da5818da97940ac.html",
+        "language": "zh"
+      },
+      "summary_en": "By end-2028 an inclusive computing-power service system covering at least 10 of the 15 SME-classification industries, lowering SMEs' barriers to obtaining and using computing resources (demand-side driver for public computing utilisation).",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "ai_energy_mutual_empowerment_action_plan_2026",
+      "title_en": "Action Plan on Promoting Mutual Empowerment of Artificial Intelligence and Energy",
+      "title_zh": "关于促进人工智能与能源双向赋能的行动方案",
+      "doc_type": "plan",
+      "issuer": "国家发展改革委、国家能源局、工业和信息化部、国家数据局",
+      "issuer_level": "ministerial",
+      "doc_number": "国能发科技〔2026〕34号",
+      "date_adopted": "2026-04-08",
+      "date_published": "2026-05-08",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "ai",
+        "energy_law",
+        "green_development",
+        "computing_power",
+        "data_center"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家发展改革委 国家能源局 工业和信息化部 国家数据局印发《关于促进人工智能与能源双向赋能的行动方案》的通知（国能发科技〔2026〕34号）, 国家能源局",
+        "url": "https://www.nea.gov.cn/20260508/4dae97ca01d348e4871bb8654be34b3a/c.html",
+        "language": "zh"
+      },
+      "summary_en": "By 2027 a safe, green and economical energy-supply system for AI is initially built and the interaction capability between clean energy and computing facilities is markedly improved; by 2030 clean-energy supply for AI computing facilities and energy-sector AI reach a world-leading level ('算电协同').",
+      "note": "The formal national 算电协同 (computing–power coordination) document; NDA copy https://www.nda.gov.cn/sjj/zwgk/zcfb/0508/20260508194112925527578_pc.html.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "nda_digital_economy_work_points_2026",
+      "title_en": "2026 Key Work Points for Digital Economy Development",
+      "title_zh": "2026年数字经济发展工作要点",
+      "doc_type": "policy_notice",
+      "issuer": "国家数据局",
+      "issuer_level": "ministerial",
+      "doc_number": null,
+      "date_adopted": "2026-05-19",
+      "date_published": null,
+      "date_effective": null,
+      "date_precision": "month",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "digital_economy",
+        "computing_power",
+        "data_factor_market",
+        "ai"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家数据局印发2026年数字经济发展工作要点, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/szjj/0519/20260519194643007508935_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "Annual work programme with eight task areas: deepen market-based allocation of data factors (incl. a unified national data property-rights registration system), build the national integrated computing-power network, data for AI (high-quality datasets), digital–real economy integration, digital governance and international cooperation.",
+      "note": "NDA release dated 2026-05-19 says the document was issued '近日'; no document number shown (month precision). A companion 2026年数字社会发展工作要点 was issued the same week.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "industry_high_quality_datasets_action_plan_2026",
+      "title_en": "Implementation Plan for the Action on Building High-Quality Industry Datasets",
+      "title_zh": "关于推进行业高质量数据集建设行动的实施方案",
+      "doc_type": "plan",
+      "issuer": "国家数据局",
+      "issuer_level": "ministerial",
+      "doc_number": "国数科基〔2026〕25号",
+      "date_adopted": "2026-06-03",
+      "date_published": "2026-06-08",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "ai",
+        "data_factor_market",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家数据局关于印发《关于推进行业高质量数据集建设行动的实施方案》的通知（国数科基〔2026〕25号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/zwgk/zcfb/0608/20260608172117399715004_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "By end-2028 a batch of application-validated high-quality datasets covering key sectors is built and a 'data flywheel' ecosystem of co-evolving data and AI models is formed — the data-supply leg of the 'AI Plus' initiative.",
+      "note": null,
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "data_property_rights_registration_guidelines_2026",
+      "title_en": "Working Guidelines for Data Property Rights Registration (Trial)",
+      "title_zh": "数据产权登记工作指引（试行）",
+      "doc_type": "other",
+      "issuer": "国家数据局综合司",
+      "issuer_level": "ministerial",
+      "doc_number": "国数综政策〔2026〕35号",
+      "date_adopted": "2026-07-01",
+      "date_published": "2026-07-04",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_factor_market",
+        "data_governance"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "国家数据局综合司关于印发《数据产权登记工作指引（试行）》的通知（国数综政策〔2026〕35号）, 国家数据局",
+        "url": "https://www.nda.gov.cn/sjj/zwgk/zcfb/0704/20260703230745065425855_pc.html",
+        "language": "zh"
+      },
+      "summary_en": "Operational guidance for a unified national data property-rights registration system (registration types, procedures, negative list), to be followed by provincial data authorities; the national registration service system (sjcqdj.nda.gov.cn) began trial operation on 2026-09-11.",
+      "note": "Issued by the NDA General Office (综合司), i.e. a working guideline rather than a departmental rule. System launch: https://www.nda.gov.cn/sjj/swdt/xwfb/0911/20260911171614017938821_pc.html.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "green_computing_facilities_recommendation_notice_2026",
+      "title_en": "Notice on Organising the 2026 Recommendation of National Green Computing Facilities",
+      "title_zh": "工业和信息化部等五部门关于组织开展2026年度国家绿色算力设施推荐工作的通知",
+      "doc_type": "policy_notice",
+      "issuer": "工业和信息化部、国家发展改革委、金融监管总局、国管局、国家能源局",
+      "issuer_level": "ministerial",
+      "doc_number": "工信厅联节函〔2026〕433号",
+      "date_adopted": "2026-09-08",
+      "date_published": "2026-09-21",
+      "date_effective": null,
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "computing_power",
+        "data_center",
+        "green_development",
+        "energy_efficiency"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "工业和信息化部等五部门关于组织开展2026年度国家绿色算力设施推荐工作的通知（工信厅联节函〔2026〕433号）, 北京市科学技术委员会（ncsti.gov.cn）转载",
+        "url": "https://www.ncsti.gov.cn/kjdt/tzgg/202609/t20260921_256885.html",
+        "language": "zh"
+      },
+      "summary_en": "Eligibility for 'national green computing facility' status: PUE at grade 2 or better of GB 40879, at least 3,000 standard racks, rack utilisation ≥60%, renewable electricity share not below the province's renewable consumption-responsibility weight, and GB/T 44989 green data centre grade 2 or above.",
+      "note": "Successor to the national green data centre recommendation programme; shows the operational use of GB 40879 grades and the 'standard rack' unit (definition in the notice annex). MIIT's own page not fetched; read on a Beijing municipal gov.cn repost.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "ndrc_new_infrastructure_definition_2020",
+      "title_en": "NDRC Statement Defining the Scope of 'New Infrastructure'",
+      "title_zh": "国家发展改革委关于新型基础设施范围的说明（2020年4月新闻发布会）",
+      "doc_type": "other",
+      "issuer": "国家发展改革委",
+      "issuer_level": "ministerial",
+      "doc_number": null,
+      "date_adopted": "2020-04-27",
+      "date_published": null,
+      "date_effective": null,
+      "date_precision": "month",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "digital_economy",
+        "computing_power",
+        "data_center",
+        "industrial_internet"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "新型基础设施（社会关切回应）, 国家发展改革委",
+        "url": "https://www.ndrc.gov.cn/fggz/fgzy/shgqhy/202004/t20200427_1226808.html",
+        "language": "zh"
+      },
+      "summary_en": "First official definition: new infrastructure is 'an infrastructure system led by new development concepts, driven by technological innovation and based on information networks', comprising information infrastructure (5G, IoT, industrial internet, satellite internet, data centres, intelligent computing centres), converged infrastructure and innovation infrastructure.",
+      "note": "Not a formal policy document but a press-conference definition (NDRC 高技术司, April 2020) posted in the NDRC '社会关切回应' section; included because it is the reference definition for 新基建 statistics. Date is the NDRC page date (month precision).",
+      "verified": true,
+      "placeholder": false
+    }
+  ],
+  "not_found": [
+    {
+      "title": "互联网平台分类分级指南（征求意见稿）／互联网平台落实主体责任指南（征求意见稿）（市场监管总局，2021-10-29）",
+      "what_was_tried": "Searched samr.gov.cn; the only official trace is a 2023 SAMR 反馈 page (https://www.samr.gov.cn/hd/zjdc/jgfk/art/2023/art_9f056bd8ae4f4ea6a67c8faedaf7a929.html) which now returns 404. No finalised version was found on samr.gov.cn or gov.cn as of 2026-10-04; the two documents remain drafts (Tier C 2021-10-29 news only), so no record was created."
+    },
+    {
+      "title": "国家发展改革委/国家能源局 standalone '算力电力协同' document for the national hub nodes (2024–2026)",
+      "what_was_tried": "Searched ndrc.gov.cn / nea.gov.cn / nda.gov.cn for 算力电力协同 / 算电协同 notices. Found only an NDA official's remarks (2025-03-18) and NEA commentary (2026-07-10); the formal instrument is the 2026 《关于促进人工智能与能源双向赋能的行动方案》 (recorded) plus the 2025/2026 绿电直连 notices (recorded). No separate 算力电力协同 implementation document exists on official sites."
+    },
+    {
+      "title": "国家数据局 全国一体化算力网 监测/算力互联网 formal policy (2025–2026)",
+      "what_was_tried": "nda.gov.cn shows only standards-consultation notices (《全国一体化算力网 监测调度平台建设指南》 draft, 2025-04-28; TC609 technical documents on 算力池化/算网安全, 2025-08-06) and a 2026-05 press report on technical standards. These are draft standards, not policy documents, so none was recorded."
+    },
+    {
+      "title": "MIIT 新型数据中心 / 智算中心 plan 2025–2026",
+      "what_was_tried": "Searched miit.gov.cn for 2025–2026 新型数据中心 / 智算中心 action plans; found only the 普惠算力 SME action (recorded) and the 2026 green computing facility recommendation notice (recorded). No successor to the 2021 三年行动计划 was found."
+    },
+    {
+      "title": "国务院 2026 政府工作报告 digital-economy items",
+      "what_was_tried": "Not searched as a legislation record: the Government Work Report is a policy speech, not a legal/planning instrument, and would duplicate the 15th FYP outline already recorded."
+    },
+    {
+      "title": "“十五五”数字经济发展规划 / 数字中国建设 2026 overall plan",
+      "what_was_tried": "Searched nda.gov.cn and cac.gov.cn for a 15th-FYP digital-economy sub-plan or a 2026 Digital China plan; as of 2026-10-04 only the NDA '2026年数字经济发展工作要点' (recorded) and the 《数字中国发展报告（2025年）》 (a report, not a plan) were found."
+    },
+    {
+      "title": "GB/T 44989 绿色数据中心评价 (referenced by the 2026 green computing notice)",
+      "what_was_tried": "Not fetched on openstd.samr.gov.cn in this pass; cited only inside the 2026 notice's eligibility criteria. Candidate for a later standards record."
+    }
+  ]
+}

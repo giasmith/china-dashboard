@@ -1,0 +1,49 @@
+# Registry of candidate sources. NOTHING here has been fetched yet.
+# Before enabling a source: read its terms of use and robots.txt, set `access_checked: true`, and record what you found
+# in `access_notes`. The fetcher refuses sources whose status is not "enabled".
+version: 1
+sources:
+  - id: npc_flk
+    name: National Laws and Regulations Database (NPC)
+    base_url: https://flk.npc.gov.cn/
+    kind: legislation
+    language: zh
+    status: planned
+    access_checked: false
+    access_notes: "Official database of laws and regulations. Check terms, robots.txt and whether an export/API exists before scraping."
+
+  - id: gov_zhengce
+    name: State Council policy library
+    base_url: https://www.gov.cn/
+    kind: policy
+    language: zh
+    status: planned
+    access_checked: false
+    access_notes: "Plans, opinions and notices (including five-year plan outlines)."
+
+  - id: ndrc
+    name: National Development and Reform Commission
+    base_url: https://www.ndrc.gov.cn/
+    kind: policy
+    language: zh
+    status: planned
+    access_checked: false
+    access_notes: "Issuer of the computing-hub / East Data West Computing documents."
+
+  - id: nbs
+    name: National Bureau of Statistics
+    base_url: https://www.stats.gov.cn/
+    kind: statistics
+    language: zh
+    status: planned
+    access_checked: false
+    access_notes: "Statistical communiques and data releases: the main source for plan 'actuals'."
+
+  - id: miit
+    name: Ministry of Industry and Information Technology
+    base_url: https://www.miit.gov.cn/
+    kind: statistics
+    language: zh
+    status: planned
+    access_checked: false
+    access_notes: "Telecom, computing power and data center statistics."

@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Secrets - never commit these
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Pipeline working data: raw downloads are large and may carry licensing restrictions.
+# Only curated, validated output goes in site/data/.
+pipeline/data/raw/
+pipeline/data/cache/
+
+# Project inventory generated from a spreadsheet whose licence is not yet confirmed. Kept local only;
+# see README "Project inventory" before publishing it (and set CONFIG.showProjectLayer = true).
+site/data/edwc_projects.json

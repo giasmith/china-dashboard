@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "meta.schema.json",
+  "title": "Dataset metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "data_status", "as_of", "generated_at"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "data_status": {
+      "description": "scaffold = placeholder data; partial = some real data; live = all records verified.",
+      "enum": ["scaffold", "partial", "live"]
+    },
+    "as_of": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "generated_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$" },
+    "notes": { "type": ["string", "null"], "maxLength": 2000 }
+  }
+}

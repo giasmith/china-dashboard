@@ -1,0 +1,7 @@
+{
+  "schema_version": "0.3.0",
+  "data_status": "partial",
+  "as_of": "2026-10-04",
+  "generated_at": "2026-10-04T19:30:00Z",
+  "notes": "All values come from official primary sources (government documents, statistical communiqués and bulletins, ministry briefings), or from Xinhua/People's Daily reproductions of them (tagged medium). Figures published as floors (超过/以上) are shown with ≥. Secondary estimates (CAICT, trade press) appear only in notes. Cluster metrics are the latest official figures and mix scopes (city, hub, AI-only); coordinates are start-up-zone centroids."
+}

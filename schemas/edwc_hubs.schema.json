@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "edwc_hubs.schema.json",
+  "title": "East Data West Computing clusters (GeoJSON)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type",
+    "features"
+  ],
+  "properties": {
+    "type": {
+      "const": "FeatureCollection"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "geometry",
+          "properties"
+        ],
+        "properties": {
+          "type": {
+            "const": "Feature"
+          },
+          "geometry": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "coordinates"
+            ],
+            "properties": {
+              "type": {
+                "const": "Point"
+              },
+              "coordinates": {
+                "description": "GeoJSON order: [longitude, latitude].",
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name_en",
+              "hub",
+              "region",
+              "province",
+              "status",
+              "racks_k",
+              "location_precision",
+              "placeholder",
+              "verified"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_]*$",
+                "maxLength": 80
+              },
+              "name_en": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name_zh": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hub": {
+                "type": "string",
+                "minLength": 1
+              },
+              "region": {
+                "enum": [
+                  "east",
+                  "west"
+                ]
+              },
+              "province": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "designated",
+                  "under_construction",
+                  "operating"
+                ]
+              },
+              "racks_k": {
+                "description": "Reported standard racks, in thousands. null = not reported.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "designated": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\d{4}-\\d{2}$"
+              },
+              "location_precision": {
+                "enum": [
+                  "point",
+                  "district",
+                  "county",
+                  "city",
+                  "area"
+                ]
+              },
+              "placeholder": {
+                "type": "boolean"
+              },
+              "verified": {
+                "type": "boolean"
+              },
+              "hub_zh": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "start_zone_zh": {
+                "description": "Official 起步区 (start-up zone) wording from the NDRC approval letter.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 300
+              },
+              "start_zone_en": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 300
+              },
+              "approval_doc": {
+                "description": "Document number of the hub approval letter (发改高技〔yyyy〕nnn号).",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 120
+              },
+              "approval_url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^https?://"
+              },
+              "racks_as_of": {
+                "description": "Month the racks_k figure refers to.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\d{4}-\\d{2}$"
+              },
+              "compute_eflops": {
+                "description": "Reported computing power in EFLOPS (see compute_note for precision/scope). null = not reported.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "compute_as_of": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\d{4}-\\d{2}$"
+              },
+              "compute_note": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 400
+              },
+              "pue": {
+                "description": "Reported average power usage effectiveness of the cluster's facilities (see note for scope). null = not reported.",
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 1
+              },
+              "pue_as_of": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\d{4}-\\d{2}$"
+              },
+              "metrics_source": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": false,
+                "required": [
+                  "title",
+                  "url"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^https?://"
+                  },
+                  "confidence": {
+                    "enum": [
+                      "high",
+                      "medium",
+                      "low"
+                    ]
+                  }
+                }
+              },
+              "coord_reference": {
+                "description": "What the point stands for and where the coordinates came from.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 400
+              },
+              "note": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 700
+              },
+              "part_of": {
+                "description": "Set on an additional site of a cluster whose start-up zone spans separate places (e.g. 和林格尔集群's Jining site). Points to the cluster's primary feature id; counts of clusters de-duplicate on it.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[a-z0-9][a-z0-9_]*$"
+              },
+              "site_label": {
+                "description": "Short label for the specific site when a cluster has more than one point.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 120
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

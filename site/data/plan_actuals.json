@@ -1,0 +1,1860 @@
+{
+  "actuals": [
+    {
+      "target_id": "fyp14_urbanization",
+      "year": 2021,
+      "value": 64.72,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "年末全国常住人口城镇化率为64.72%，比上年末提高0.83个百分点",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_urbanization",
+      "year": 2022,
+      "value": 65.22,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "年末全国常住人口城镇化率为65.22%，比上年末提高0.50个百分点",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_urbanization",
+      "year": 2023,
+      "value": 66.16,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "年末全国常住人口城镇化率为66.16%，比上年末提高0.94个百分点",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_urbanization",
+      "year": 2024,
+      "value": 67.0,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "年末全国常住人口城镇化率为67.00%，比上年末提高0.84个百分点",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_urbanization",
+      "year": 2025,
+      "value": 67.89,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "年末全国常住人口城镇化率为67.89%，比上年末提高0.89个百分点",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_rd_growth",
+      "year": 2021,
+      "value": 14.2,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "研究与试验发展（R&D）经费支出27864亿元，比上年增长14.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_rd_growth",
+      "year": 2022,
+      "value": 10.4,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "研究与试验发展（R&D）经费支出30870亿元，比上年增长10.4%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_rd_growth",
+      "year": 2023,
+      "value": 8.1,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "研究与试验发展（R&D）经费支出33278亿元，比上年增长8.1%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_rd_growth",
+      "year": 2024,
+      "value": 8.3,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "研究与试验发展（R&D）经费支出36130亿元，比上年增长8.3%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_rd_growth",
+      "year": 2025,
+      "value": 8.1,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "研究与试验发展（R&D）经费支出39262亿元，比上年增长8.1%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_hv_patents",
+      "year": 2021,
+      "value": 7.5,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "每万人口高价值发明专利拥有量7.5件",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_hv_patents",
+      "year": 2022,
+      "value": 9.4,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "每万人口高价值发明专利拥有量9.4件",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_hv_patents",
+      "year": 2023,
+      "value": 11.8,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "每万人口高价值发明专利拥有量11.8件",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_hv_patents",
+      "year": 2024,
+      "value": 14,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "每万人口高价值发明专利拥有量14件",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_hv_patents",
+      "year": 2025,
+      "value": 16,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "每万人口高价值发明专利拥有量16件",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_digital_core_share",
+      "year": 2023,
+      "value": 9.9,
+      "source": {
+        "title": "NBS: 2023年全国数字经济核心产业增加值占GDP比重为9.9% (2024-12-31)",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202412/t20241231_1958126.html",
+        "retrieved": "2026-10-02",
+        "quote": "2023年我国数字经济核心产业增加值为127555亿元，占GDP的比重为9.9%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_digital_core_share",
+      "year": 2024,
+      "value": 10.5,
+      "source": {
+        "title": "NBS: 2024年全国数字经济核心产业增加值占GDP比重为10.5% (2025-12-30)",
+        "url": "https://www.stats.gov.cn/sj/zxfbhjd/202512/t20251230_1962177.html",
+        "retrieved": "2026-10-02",
+        "quote": "2024年全国数字经济核心产业增加值为140891亿元，占GDP的比重为10.5%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_digital_core_share",
+      "year": 2025,
+      "value": 10.5,
+      "as_of": null,
+      "source": {
+        "title": "政府工作报告——2026年3月5日在第十四届全国人民代表大会第四次会议上 (国务院公报 2026年第8号, gov.cn)",
+        "url": "https://www.gov.cn/gongbao/2026/issue_12646/202603/content_7064134.html",
+        "retrieved": "2026-10-04",
+        "quote": "数据要素潜力加快释放，数字经济核心产业增加值占国内生产总值的比重提高到10.5%以上。",
+        "confidence": "high"
+      },
+      "note": "FLOOR ('10.5%以上'), preliminary. Also NBS 十四五成就系列报告之一 (2026-06-02): \"数字经济核心产业增加值占GDP比重超过10.5%\". NBS's final 2025 accounting (usually released around year-end) was not yet available on 2026-10-04.",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "fyp14_unemployment",
+      "year": 2021,
+      "value": 5.1,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年全国城镇调查失业率平均值为5.1%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_unemployment",
+      "year": 2022,
+      "value": 5.6,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年全国城镇调查失业率平均值为5.6%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_unemployment",
+      "year": 2023,
+      "value": 5.2,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年全国城镇调查失业率平均值为5.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_unemployment",
+      "year": 2024,
+      "value": 5.1,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年全国城镇调查失业率平均值为5.1%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_unemployment",
+      "year": 2025,
+      "value": 5.2,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年全国城镇调查失业率平均值为5.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_schooling",
+      "year": 2022,
+      "value": 10.93,
+      "as_of": null,
+      "source": {
+        "title": "王萍萍：人口总量略有下降 城镇化水平继续提高 (NBS 人口和就业统计司司长 data commentary, 2023-01-18)",
+        "url": "https://www.stats.gov.cn/xxgk/jd/sjjd2020/202301/t20230118_1892285.html",
+        "retrieved": "2026-10-04",
+        "quote": "2022年，我国16—59岁劳动年龄人口平均受教育年限达到10.93年，比2021年提高0.11年，比2020年提高0.18年。",
+        "confidence": "high"
+      },
+      "note": "Definition: 16—59岁劳动年龄人口. The sentence implies 2021 ≈ 10.82 and 2020 = 10.75, but those are not printed as values; 2021 left not_found.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_schooling",
+      "year": 2023,
+      "value": 11.05,
+      "as_of": null,
+      "source": {
+        "title": "王萍萍：人口总量有所下降 人口高质量发展取得成效 (NBS, 2024-01-18)",
+        "url": "https://www.stats.gov.cn/xxgk/jd/sjjd2020/202401/t20240118_1946711.html",
+        "retrieved": "2026-10-04",
+        "quote": "16—59岁劳动年龄人口平均受教育年限达11.05年，比2022年提高0.12年。",
+        "confidence": "high"
+      },
+      "note": "Also NBS 新中国75年成就系列报告之十五 (2024-09-20): \"劳动年龄人口平均受教育年限由1982年刚刚超过8年提高到2023年的11.05年\".",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_schooling",
+      "year": 2024,
+      "value": 11.21,
+      "as_of": null,
+      "source": {
+        "title": "王萍萍：人口总量降幅收窄 人口素质持续提升 (NBS, 2025-01-17)",
+        "url": "https://www.stats.gov.cn/sj/sjjd/202501/t20250117_1958337.html",
+        "retrieved": "2026-10-04",
+        "quote": "2024年，16—59岁劳动年龄人口平均受教育年限达11.21年，比2023年提高0.16年。",
+        "confidence": "high"
+      },
+      "note": "Also NBS 社会民生统计报告 (2025-09-28): \"全国16—59岁劳动年龄人口平均受教育年限达11.21年，比2020年提高0.46年\".",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_schooling",
+      "year": 2025,
+      "value": 11.3,
+      "as_of": null,
+      "source": {
+        "title": "中华人民共和国2025年国民经济和社会发展统计公报 (NBS, 2026-02-28)",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-04",
+        "quote": "16—59岁人口平均受教育年限为11.3年，比上年提高0.1年。",
+        "confidence": "high"
+      },
+      "note": "Primary statistical source (one decimal). Consistent with the 15th FYP table (11.3) and the 2026 政府工作报告 (\"劳动年龄人口平均受教育年限增加到11.3年\").",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_physicians",
+      "year": 2021,
+      "value": 3.04,
+      "as_of": null,
+      "source": {
+        "title": "2022年我国卫生健康事业发展统计公报 (NHC; PDF on gov.cn, 2023-10-12), 表2 全国卫生人员数",
+        "url": "https://www.gov.cn/lianbo/bumen/202310/P020231012649046990925.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "表2 全国卫生人员数 | 指标 2021 2022 | 每千人口执业（助理）医师（人） 3.04 3.15",
+        "confidence": "high"
+      },
+      "note": "2021 column of the 2022 bulletin's table 2 (the 2021 bulletin itself returned HTTP 412 on nhc.gov.cn). Indicator incl. assistant physicians, matching the 14th FYP definition.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_physicians",
+      "year": 2022,
+      "value": 3.15,
+      "as_of": null,
+      "source": {
+        "title": "2022年我国卫生健康事业发展统计公报 (NHC; PDF on gov.cn, 2023-10-12)",
+        "url": "https://www.gov.cn/lianbo/bumen/202310/P020231012649046990925.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "2022年，每千人口执业（助理）医师3.15人，每千人口注册护士3.71人",
+        "confidence": "high"
+      },
+      "note": null,
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_physicians",
+      "year": 2023,
+      "value": 3.4,
+      "as_of": null,
+      "source": {
+        "title": "2023年我国卫生健康事业发展统计公报 (NHC; PDF on gov.cn, 2024-08-29)",
+        "url": "https://www.gov.cn/lianbo/bumen/202408/P020240829729470466631.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "2023年，每千人口执业（助理）医师3.40人，每千人口注册护士4.00人",
+        "confidence": "high"
+      },
+      "note": "Table 2 of the same bulletin: 执业（助理）医师 478.2万人 (2023), 执业医师 401.0万人.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_physicians",
+      "year": 2024,
+      "value": 3.61,
+      "as_of": null,
+      "source": {
+        "title": "2024年我国卫生健康事业发展统计公报 (NHC, nhc.gov.cn PDF, 2025-12-01)",
+        "url": "https://www.nhc.gov.cn/guihuaxxs/c100133/202512/f1c3a3c617484a27a1a26a468afbaeee/files/2024%E5%B9%B4%E6%88%91%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%81%A5%E5%BA%B7%E4%BA%8B%E4%B8%9A%E5%8F%91%E5%B1%95%E7%BB%9F%E8%AE%A1%E5%85%AC%E6%8A%A5-20251201161542231.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "2024年，每千人口执业（助理）医师3.61人，每千人口注册护士4.16人",
+        "confidence": "high"
+      },
+      "note": "Table 2: 执业（助理）医师 508.2万人, 注册护士 585.5万人 (2024).",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_physicians",
+      "year": 2025,
+      "value": 3.78,
+      "as_of": null,
+      "source": {
+        "title": "2025年我国卫生健康事业发展统计公报 (NHC, nhc.gov.cn PDF, 2026-08-28)",
+        "url": "https://www.nhc.gov.cn/guihuaxxs/c100133/202608/1b45959033524f48867d90e822be5394/files/2025%E5%B9%B4%E6%88%91%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%81%A5%E5%BA%B7%E4%BA%8B%E4%B8%9A%E5%8F%91%E5%B1%95%E7%BB%9F%E8%AE%A1%E5%85%AC%E6%8A%A5-20260828105402342.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "2025年，每千人口执业（助理）医师3.78人，每千人口执业医师3.25人，每千人口注册护士4.32人",
+        "confidence": "high"
+      },
+      "note": "Direct official ratio for the 14th FYP definition (incl. assistants): 3.78 vs target 3.2 — target exceeded. Table 2 of the bulletin: 执业（助理）医师 530.6万人, 执业医师 456.5万人, 注册护士 606.2万人. The NBS 2025 communiqué gives preliminary headcounts 执业医师和执业助理医师529万人, 注册护士603万人 and year-end population 140489万人; NHC's ratio is the official one and no computation is needed. The existing dataset note ('No comparable actual recorded') can be removed.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_pension_coverage",
+      "year": 2025,
+      "value": 95,
+      "as_of": null,
+      "source": {
+        "title": "应变克难开新局 凝心聚力谱华章——\"十四五\"经济社会发展成就系列报告之一 (NBS, 2026-06-02)",
+        "url": "https://www.stats.gov.cn/sj/sjjd/202606/t20260602_1963864.html",
+        "retrieved": "2026-10-04",
+        "quote": "\"十四五\"以来，基本养老保险参保率超过95%，基本医疗保险参保率稳定在95%左右。",
+        "confidence": "medium"
+      },
+      "note": "FLOOR value ('超过95%'), period stated as '十四五以来' (not a dated 2025 point). Corroborated by NDRC Director 郑栅洁 at the SCIO press conference 2025-07-09 (ndrc.gov.cn transcript): \"义务教育巩固率和基本养老保险、基本医疗保险参保率都在95%以上\" and by MOHRSS Minister 王晓萍 2025-09-26 (Xinhua): \"参保率从91%提高到95%以上\" (as of end-Aug 2025). No official point estimate of the rate was located; MOHRSS 2025年度统计公报 page could not be fetched (mohrss.gov.cn returns empty/403).",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "fyp14_nursery_places",
+      "year": 2021,
+      "value": 2.03,
+      "as_of": null,
+      "source": {
+        "title": "2021年《中国儿童发展纲要（2021—2030年）》统计监测报告 (NBS, 2023-04-17)",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202304/t20230417_1938688.html",
+        "retrieved": "2026-10-04",
+        "quote": "开展普惠托育服务专项行动，给予每个新增托位1万元补助，2021年底全国每千人口托位数2.03个。",
+        "confidence": "high"
+      },
+      "note": "Same figure given by NHC official 杜希学 at the NHC press conference 2022-08-17 (\"截至2021年底，我国每千人口拥有3岁以下婴幼儿托位数为2.03个\", via 中新网).",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nursery_places",
+      "year": 2022,
+      "value": 2.57,
+      "as_of": null,
+      "source": {
+        "title": "2022年我国卫生健康事业发展统计公报 (NHC; PDF on gov.cn, 2023-10-12)",
+        "url": "https://www.gov.cn/lianbo/bumen/202310/P020231012649046990925.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "2022年全国托育服务机构总数7.57万家，提供的托位数362.4万个，全国千人口托位数2.57个。",
+        "confidence": "high"
+      },
+      "note": "Also NBS 2022年《中国儿童发展纲要》统计监测报告 (2023-12-29): \"截至2022年末…托位总数362.4万个，全国千人口托位数2.57个，比2021年末增加0.54个\".",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nursery_places",
+      "year": 2023,
+      "value": 3.38,
+      "as_of": null,
+      "source": {
+        "title": "2023年《中国儿童发展纲要（2021—2030年）》统计监测报告 (NBS, 2025-01-24)",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202501/t20250124_1958440.html",
+        "retrieved": "2026-10-04",
+        "quote": "截至2023年末，全国共有9.97万家机构提供托育服务，托位总数477万个，全国每千人口拥有3岁以下婴幼儿托位数3.38个，比2022年末增加0.81个。",
+        "confidence": "high"
+      },
+      "note": "Also in 国务院关于推进托育服务工作情况的报告 (NHC Director 雷海潮 to NPCSC, 2024-09-10, via 人民日报 2024-09-12): \"截至2023年底，全国千人口托位数达到3.38个，共有托位477万个\". The NHC 2023 bulletin itself has no 托位 sentence.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nursery_places",
+      "year": 2024,
+      "value": 4.08,
+      "as_of": null,
+      "source": {
+        "title": "2024年我国卫生健康事业发展统计公报 (NHC, nhc.gov.cn PDF, 2025-12-01)",
+        "url": "https://www.nhc.gov.cn/guihuaxxs/c100133/202512/f1c3a3c617484a27a1a26a468afbaeee/files/2024%E5%B9%B4%E6%88%91%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%81%A5%E5%BA%B7%E4%BA%8B%E4%B8%9A%E5%8F%91%E5%B1%95%E7%BB%9F%E8%AE%A1%E5%85%AC%E6%8A%A5-20251201161542231.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "截至2024年底，全国每千人口3岁以下婴幼儿托位数达到4.08个",
+        "confidence": "high"
+      },
+      "note": "Same bulletin: 托位总数573.7万.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nursery_places",
+      "year": 2025,
+      "value": 4.73,
+      "as_of": null,
+      "source": {
+        "title": "2025年我国卫生健康事业发展统计公报 (NHC, nhc.gov.cn PDF, 2026-08-28)",
+        "url": "https://www.nhc.gov.cn/guihuaxxs/c100133/202608/1b45959033524f48867d90e822be5394/files/2025%E5%B9%B4%E6%88%91%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%81%A5%E5%BA%B7%E4%BA%8B%E4%B8%9A%E5%8F%91%E5%B1%95%E7%BB%9F%E8%AE%A1%E5%85%AC%E6%8A%A5-20260828105402342.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "2025年末全国每千人口拥有3岁以下婴幼儿托位数达到4.73个，托育服务县级覆盖率98.8%。托育服务机构总数12.6万家，比上年增加10.5%。托位总数665.7万个，比上年增加16.0%。",
+        "confidence": "high"
+      },
+      "note": "14th FYP target 4.5 exceeded (4.73). The existing dataset note ('No official annual series located') can be removed.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_life_expectancy",
+      "year": 2021,
+      "value": 78.2,
+      "as_of": null,
+      "source": {
+        "title": "卫生健康事业取得长足发展 人民健康权益得到有效保障——新中国75年经济社会发展成就系列报告之二十二 (NBS, 2024-09-25)",
+        "url": "https://www.stats.gov.cn/sj/sjjd/202409/t20240925_1956696.html",
+        "retrieved": "2026-10-04",
+        "quote": "到2021年人均预期寿命超过78岁，达到78.2岁，2023年进一步提高到78.6岁",
+        "confidence": "high"
+      },
+      "note": "Originally published in the NHC 2021年我国卫生健康事业发展统计公报 (2022-07-12), whose nhc.gov.cn page returned HTTP 412; the NBS report reproduces the official figure.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_life_expectancy",
+      "year": 2023,
+      "value": 78.6,
+      "source": {
+        "title": "2023年我国卫生健康事业发展统计公报 (NHC, via gov.cn 2024-08-29)",
+        "url": "https://www.gov.cn/lianbo/bumen/202408/content_6971241.htm",
+        "retrieved": "2026-10-02",
+        "quote": "2023年，我国居民人均预期寿命达到78.6岁",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_life_expectancy",
+      "year": 2024,
+      "value": 79.0,
+      "as_of": null,
+      "source": {
+        "title": "2024年我国卫生健康事业发展统计公报 (NHC, nhc.gov.cn PDF, 2025-12-01)",
+        "url": "https://www.nhc.gov.cn/guihuaxxs/c100133/202512/f1c3a3c617484a27a1a26a468afbaeee/files/2024%E5%B9%B4%E6%88%91%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%81%A5%E5%BA%B7%E4%BA%8B%E4%B8%9A%E5%8F%91%E5%B1%95%E7%BB%9F%E8%AE%A1%E5%85%AC%E6%8A%A5-20251201161542231.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "我国居民人均预期寿命达到79.0岁，孕产妇死亡率下降至14.3/10万，婴儿死亡率下降至4.0‰",
+        "confidence": "high"
+      },
+      "note": "NBS 社会民生统计报告 (2025-09-28) gives the same: \"2024年，我国人口平均预期寿命达到79.0岁，比2020年提高1.07岁\".",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_life_expectancy",
+      "year": 2025,
+      "value": 79.25,
+      "as_of": null,
+      "source": {
+        "title": "2025年我国卫生健康事业发展统计公报 (NHC, nhc.gov.cn PDF, 2026-08-28)",
+        "url": "https://www.nhc.gov.cn/guihuaxxs/c100133/202608/1b45959033524f48867d90e822be5394/files/2025%E5%B9%B4%E6%88%91%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%81%A5%E5%BA%B7%E4%BA%8B%E4%B8%9A%E5%8F%91%E5%B1%95%E7%BB%9F%E8%AE%A1%E5%85%AC%E6%8A%A5-20260828105402342.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "2025年，我国居民人均预期寿命达到79.25岁，孕产妇死亡率下降至13.4/10万，婴儿死亡率下降至3.8‰。",
+        "confidence": "high"
+      },
+      "note": "Final NHC figure; identical to the 15th FYP table baseline and to the 2026 政府工作报告 (\"人均预期寿命提高到79.25岁\"). Upgrade confidence from medium to high and drop 'likely a preliminary estimate'.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_energy_intensity",
+      "year": 2025,
+      "value": 16.1,
+      "as_of": null,
+      "source": {
+        "title": "能源转型跨越发展 绿色低碳成效显著——\"十四五\"经济社会发展成就系列报告之十四 (NBS, 2026-06-05)",
+        "url": "https://www.stats.gov.cn/sj/zxfbhjd/202606/t20260604_1963892.html",
+        "retrieved": "2026-10-04",
+        "quote": "2021—2025年，扣除原料用能和非化石能源消费量后，全国万元国内生产总值能耗累计降低16.1%，年均下降3.0%，超额完成\"十四五\"累计降低13.5%的约束性目标",
+        "confidence": "high"
+      },
+      "note": "Official NBS five-year cumulative figure on the ADJUSTED basis (扣除原料用能和非化石能源消费量). Not comparable with the 2021–2022 communiqué figures, which were on the unadjusted basis. NBS report No.1 (2026-06-02) says \"累计降幅超过16%\". No official cumulative figure on the original (unadjusted) definition has been published.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_co2_intensity",
+      "year": 2025,
+      "value": 17.7,
+      "as_of": null,
+      "source": {
+        "title": "中华人民共和国国民经济和社会发展第十五个五年规划纲要 (NDRC PDF, 2026-03), 专栏1 p.10, 2025 column",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.10) 14.单位GDP二氧化碳排放降低（%） 〔17.7〕 — 〔17〕 约束性 ... 注：①〔〕为5年累计数。",
+        "confidence": "high"
+      },
+      "note": "Same value; URL upgraded from the gov.cn HTML (table is an image) to the text-extractable NDRC PDF. Confirmed verbatim. NBS has published no separate cumulative CO2 statement; annual communiqué changes were −3.8% (2021), −0.8% (2022), 与上年持平 (2023), −3.4% (2024), −5.0% (2025, 初步测算).",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nonfossil_share",
+      "year": 2021,
+      "value": 16.6,
+      "as_of": null,
+      "source": {
+        "title": "中国落实国家自主贡献目标进展报告（2022） (MEE, 2022-11), p.13",
+        "url": "https://www.mee.gov.cn/ywgz/ydqhbh/qhbhlf/202211/W020221111763716523691.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.13) 2021年，非化石能源占能源消费比重达到16.6%，风电、太阳能发电总装机容量达到6.35亿千瓦",
+        "confidence": "high"
+      },
+      "note": "Official MEE report replaces China Daily. The same report (p.6) gives \"2021年，中国碳排放强度比2020年降低3.8%，比2005年累计下降50.8%\".",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nonfossil_share",
+      "year": 2022,
+      "value": 17.5,
+      "as_of": null,
+      "source": {
+        "title": "生态环境部召开10月例行新闻发布会 (transcript, mee.gov.cn, 2023-10-27; speaker 夏应显, 应对气候变化司司长)",
+        "url": "https://www.mee.gov.cn/ywdt/xwfb/202310/t20231027_1044184.shtml",
+        "retrieved": "2026-10-04",
+        "quote": "2022年，我国碳排放强度较2005年下降超过51%，非化石能源占能源消费比重达到17.5%。",
+        "confidence": "high"
+      },
+      "note": "Official MEE transcript (release of 《中国应对气候变化的政策与行动2023年度报告》) replaces S&P Global.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nonfossil_share",
+      "year": 2023,
+      "value": 17.9,
+      "as_of": null,
+      "source": {
+        "title": "11月例行新闻发布会实录 (mee.gov.cn, 2024-11-06; speaker 夏应显)",
+        "url": "https://www.mee.gov.cn/ywdt/xwfb/202411/t20241106_1093622.shtml",
+        "retrieved": "2026-10-04",
+        "quote": "2023年，中国持续推动碳强度下降工作，非化石能源消费占能源消费比重达到了17.9%。",
+        "confidence": "high"
+      },
+      "note": "Official MEE transcript replaces the 中新网 relay of 人民日报 (which was Tier C/B, not 'high').",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nonfossil_share",
+      "year": 2024,
+      "value": 19.8,
+      "as_of": null,
+      "source": {
+        "title": "国务院新闻办公室发布《碳达峰碳中和的中国行动》白皮书（附全文） (mee.gov.cn, 2025-11-08)",
+        "url": "https://www.mee.gov.cn/ywgz/ydqhbh/qhbhlf/202511/t20251108_1132414.shtml",
+        "retrieved": "2026-10-04",
+        "quote": "推进非化石能源消费比重由2020年的16.0%增至2024年的19.8%，年均提高近1个百分点",
+        "confidence": "high"
+      },
+      "note": "Full white-paper text on a ministry site replaces the 中新网 relay. Also confirms the 2020 baseline 16.0%.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_nonfossil_share",
+      "year": 2025,
+      "value": 21.7,
+      "as_of": null,
+      "source": {
+        "title": "能源转型跨越发展 绿色低碳成效显著——\"十四五\"经济社会发展成就系列报告之十四 (NBS, 2026-06-05)",
+        "url": "https://www.stats.gov.cn/sj/zxfbhjd/202606/t20260604_1963892.html",
+        "retrieved": "2026-10-04",
+        "quote": "一次电力及其他能源占比由16.0%提升至21.7%，提高5.7个百分点，顺利实现非化石能源消费比重达到20%以上的\"十四五\"规划目标",
+        "confidence": "high"
+      },
+      "note": "NBS measures non-fossil consumption as 一次电力及其他能源 share (2020→2025). Also 2026 政府工作报告 (gov.cn gazette): \"非化石能源消费占比达到21.7%\" and NBS report No.1: \"非化石能源消费占能源消费总量比重由2020年的16.0%提升至2025年的21.7%\".",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_air_quality_days",
+      "year": 2021,
+      "value": 87.5,
+      "as_of": null,
+      "source": {
+        "title": "生态环境部通报2021年12月和1-12月全国地表水、环境空气质量状况 (MEE, 2022-01-31)",
+        "url": "https://www.mee.gov.cn/ywdt/xwfb/202201/t20220131_968703.shtml",
+        "retrieved": "2026-10-04",
+        "quote": "全国339个地级及以上城市平均优良天数比例为87.5%，同比上升0.5个百分点",
+        "confidence": "high"
+      },
+      "note": "Ministry release replaces 中国证券报.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_air_quality_days",
+      "year": 2022,
+      "value": 86.5,
+      "as_of": null,
+      "source": {
+        "title": "生态环境部通报2022年12月和1—12月全国环境空气质量状况 (MEE, 2023-01-28)",
+        "url": "https://www.mee.gov.cn/ywdt/xwfb/202301/t20230128_1014006.shtml",
+        "retrieved": "2026-10-04",
+        "quote": "1—12月，全国339个地级及以上城市平均空气质量优良天数比例为86.5%，同比下降1.0个百分点",
+        "confidence": "high"
+      },
+      "note": "Ministry release replaces 人民日报.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_air_quality_days",
+      "year": 2023,
+      "value": 85.5,
+      "as_of": null,
+      "source": {
+        "title": "生态环境部公布2023年12月和1—12月全国环境空气质量状况 (MEE, 2024-01-25)",
+        "url": "https://www.mee.gov.cn/ywdt/xwfb/202401/t20240125_1064784.shtml",
+        "retrieved": "2026-10-04",
+        "quote": "平均空气质量优良天数比例为85.5%，扣除沙尘异常超标天后，实际为86.8%",
+        "confidence": "high"
+      },
+      "note": "Direct printed figure replaces the derived value (87.2 − 1.7). Same release: PM2.5 30 µg/m³; 重度及以上污染天数比例1.6%. The 2023中国生态环境状况公报 PDF (P020240604551536165161.pdf) exceeded the fetch size limit, so the January release is used.",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_air_quality_days",
+      "year": 2024,
+      "value": 87.2,
+      "source": {
+        "title": "《2024中国生态环境状况公报》 (MEE, 2025-06-05)",
+        "url": "https://www.mee.gov.cn/ywgz/sthjjcgl/hjzljcypj/202506/t20250605_1120773.shtml",
+        "retrieved": "2026-10-02",
+        "quote": "空气质量优良天数比例为87.2%，比2023年上升1.7个百分点",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_air_quality_days",
+      "year": 2025,
+      "value": 88.1,
+      "source": {
+        "title": "MEE: 2025年12月和1—12月全国环境空气质量状况 (2026-01-28)",
+        "url": "https://www.mee.gov.cn/ywdt/xwfb/202601/t20260128_1142783.shtml",
+        "retrieved": "2026-10-02",
+        "quote": "全国339个地级及以上城市平均空气质量优良天数比例为88.1%，扣除沙尘异常超标天后为89.3%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_surface_water",
+      "year": 2021,
+      "value": 84.9,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "3641个国家地表水考核断面中，全年水质优良（Ⅰ～Ⅲ类）断面比例为84.9%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_surface_water",
+      "year": 2022,
+      "value": 87.9,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "3641个国家地表水考核断面中，全年水质优良（Ⅰ～Ⅲ类）断面比例为87.9%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_surface_water",
+      "year": 2023,
+      "value": 89.4,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "3641个国家地表水考核断面中，水质优良（Ⅰ～Ⅲ类）断面比例为89.4%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_surface_water",
+      "year": 2024,
+      "value": 90.4,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "3641个国家地表水考核断面中，水质优良（Ⅰ～Ⅲ类）断面比例为90.4%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_surface_water",
+      "year": 2025,
+      "value": 91.4,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "3641个国家地表水考核断面中，水质优良（Ⅰ～Ⅲ类）断面比例为91.4%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_forest_cover",
+      "year": 2022,
+      "value": 24.02,
+      "source": {
+        "title": "《2022年中国国土绿化状况公报》 via China Daily (2023-03-14)",
+        "url": "https://cn.chinadaily.com.cn/a/202303/14/WS64103790a3102ada8b2338b5.html",
+        "retrieved": "2026-10-02",
+        "quote": "目前，我国森林覆盖率达24.02%",
+        "confidence": "medium"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_forest_cover",
+      "year": 2023,
+      "value": 25,
+      "source": {
+        "title": "新华网: 我国森林覆盖率已超过25% (NFGA, 2024-11-25)",
+        "url": "https://www.xinhuanet.com/politics/20241125/716a048862904682a26e292b9f4969dc/c.html",
+        "retrieved": "2026-10-02",
+        "quote": "截至2023年底，我国森林覆盖率超过25%，森林蓄积量超过200亿立方米",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": "Reported as a floor ('超过25%')."
+    },
+    {
+      "target_id": "fyp14_forest_cover",
+      "year": 2024,
+      "value": 25.09,
+      "as_of": null,
+      "source": {
+        "title": "国务院新闻办公室发布《碳达峰碳中和的中国行动》白皮书（附全文） (mee.gov.cn, 2025-11-08)",
+        "url": "https://www.mee.gov.cn/ywgz/ydqhbh/qhbhlf/202511/t20251108_1132414.shtml",
+        "retrieved": "2026-10-04",
+        "quote": "2024年，森林覆盖率达25.09%，森林蓄积量达209.88亿立方米",
+        "confidence": "high"
+      },
+      "note": "Two-decimal official value; rounds to the 25.1* printed in the 15th FYP table. 14th FYP target 24.1 exceeded (partly reflecting the new forest-resource survey base, as the existing note says).",
+      "placeholder": false
+    },
+    {
+      "target_id": "fyp14_grain_capacity",
+      "year": 2021,
+      "value": 6.83,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年粮食产量68285万吨，比上年增加1336万吨，增产2.0%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_grain_capacity",
+      "year": 2022,
+      "value": 6.87,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年粮食产量68653万吨，比上年增加368万吨，增产0.5%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_grain_capacity",
+      "year": 2023,
+      "value": 6.95,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年粮食产量69541万吨，比上年增加888万吨，增产1.3%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_grain_capacity",
+      "year": 2024,
+      "value": 7.07,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年粮食产量70650万吨，比上年增加1109万吨，增产1.6%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_grain_capacity",
+      "year": 2025,
+      "value": 7.15,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年粮食产量71488万吨，比上年增加838万吨，增产1.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_energy_capacity",
+      "year": 2021,
+      "value": 43.3,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "一次能源生产总量43.3亿吨标准煤，比上年增长6.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_energy_capacity",
+      "year": 2022,
+      "value": 46.6,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "一次能源生产总量46.6亿吨标准煤，比上年增长9.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_energy_capacity",
+      "year": 2023,
+      "value": 48.3,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年一次能源生产总量48.3亿吨标准煤，比上年增长4.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_energy_capacity",
+      "year": 2024,
+      "value": 49.8,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年一次能源生产总量49.8亿吨标准煤，比上年增长4.6%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "fyp14_energy_capacity",
+      "year": 2025,
+      "value": 51.3,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "初步核算，全年一次能源生产总量51.3亿吨标准煤，比上年增长3.6%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_core_share",
+      "year": 2023,
+      "value": 9.9,
+      "source": {
+        "title": "NBS: 2023年全国数字经济核心产业增加值占GDP比重为9.9% (2024-12-31)",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202412/t20241231_1958126.html",
+        "retrieved": "2026-10-02",
+        "quote": "2023年我国数字经济核心产业增加值为127555亿元，占GDP的比重为9.9%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_core_share",
+      "year": 2024,
+      "value": 10.5,
+      "source": {
+        "title": "NBS: 2024年全国数字经济核心产业增加值占GDP比重为10.5% (2025-12-30)",
+        "url": "https://www.stats.gov.cn/sj/zxfbhjd/202512/t20251230_1962177.html",
+        "retrieved": "2026-10-02",
+        "quote": "2024年全国数字经济核心产业增加值为140891亿元，占GDP的比重为10.5%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_core_share",
+      "year": 2025,
+      "value": 10.5,
+      "as_of": null,
+      "source": {
+        "title": "政府工作报告——2026年3月5日在第十四届全国人民代表大会第四次会议上 (国务院公报, gov.cn)",
+        "url": "https://www.gov.cn/gongbao/2026/issue_12646/202603/content_7064134.html",
+        "retrieved": "2026-10-04",
+        "quote": "数据要素潜力加快释放，数字经济核心产业增加值占国内生产总值的比重提高到10.5%以上。",
+        "confidence": "high"
+      },
+      "note": "Same as fyp14_digital_core_share 2025 (floor, preliminary).",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "de14_ipv6_users",
+      "year": 2021,
+      "value": 608,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2021年） (CAC, 2022-08-02), p.2 and p.16",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1675765283208335/1675765283208335.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.16) IPv6活跃用户数达6.08亿，物联网IPv6连接数达1.4亿",
+        "confidence": "high"
+      },
+      "note": "Official CAC report replaces the 中新网 relay.",
+      "placeholder": false
+    },
+    {
+      "target_id": "de14_ipv6_users",
+      "year": 2022,
+      "value": 728,
+      "source": {
+        "title": "数字中国发展报告（2022年）",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1686402331296991/1686402331296991.pdf",
+        "retrieved": "2026-10-02",
+        "quote": "IPv6活跃用户数达7.28亿，移动网络IPv6流量占比近50%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_ipv6_users",
+      "year": 2023,
+      "value": 778,
+      "source": {
+        "title": "CAC: 2024年深入推进IPv6规模部署和应用统筹协调机制会议 (2024-04-19)",
+        "url": "https://www.cac.gov.cn/2024-04/19/c_1715219485504944.htm",
+        "retrieved": "2026-10-02",
+        "quote": "截至2023年12月，我国IPv6活跃用户数达7.78亿",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_ipv6_users",
+      "year": 2024,
+      "value": 823,
+      "source": {
+        "title": "数字中国发展报告（2024年） (copy hosted by 内蒙古自治区政务服务与数据管理局)",
+        "url": "https://zsj.nmg.gov.cn/xwzx/sznmg/202506/P020250603712115743005.pdf",
+        "retrieved": "2026-10-02",
+        "quote": "IPv6活跃用户数达8.23亿",
+        "confidence": "medium"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_ipv6_users",
+      "year": 2025,
+      "value": 869,
+      "source": {
+        "title": "CAC: 王京涛出席第五届中国IPv6创新发展大会 (2026-07-28)",
+        "url": "https://www.cac.gov.cn/2026-07/28/c_1786986055126702.htm",
+        "retrieved": "2026-10-02",
+        "quote": "截至2025年底，我国IPv6活跃用户数达8.69亿，五年增长88%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_gigabit_users",
+      "year": 2021,
+      "value": 34.56,
+      "source": {
+        "title": "MIIT 2021年通信业统计公报",
+        "url": "https://www.miit.gov.cn/gxsj/tjfx/txy/art/2022/art_e8b64ba8f29d4ce18a1003c4f4d88234.html",
+        "retrieved": "2026-10-02",
+        "quote": "1000Mbps及以上接入速率的用户为3456万户，比上年末净增2816万户",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_gigabit_users",
+      "year": 2022,
+      "value": 91.75,
+      "source": {
+        "title": "MIIT 2022年通信业统计公报 (via IT之家)",
+        "url": "https://www.ithome.com/0/668/933.htm",
+        "retrieved": "2026-10-02",
+        "quote": "1000Mbps及以上接入速率的用户为9175万户，全年净增5716万户，占总用户数的15.6%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_gigabit_users",
+      "year": 2023,
+      "value": 163,
+      "source": {
+        "title": "MIIT 2023年通信业统计公报 (via 新浪财经)",
+        "url": "https://finance.sina.cn/2024-01-24/detail-inaermff9601767.d.html",
+        "retrieved": "2026-10-02",
+        "quote": "1000Mbps及以上接入速率的用户为1.63亿户，全年净增7153万户，占总用户数的25.7%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_gigabit_users",
+      "year": 2024,
+      "value": 207,
+      "source": {
+        "title": "MIIT 2024年通信业统计公报 (gov.cn reprint)",
+        "url": "https://www.gov.cn/lianbo/bumen/202501/content_7003010.htm",
+        "retrieved": "2026-10-02",
+        "quote": "1000Mbps及以上接入速率的用户为2.07亿户，全年净增4355万户，占总用户数的30.9%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_gigabit_users",
+      "year": 2025,
+      "value": 238,
+      "source": {
+        "title": "MIIT 2025年通信业统计公报 (via 中国新闻网)",
+        "url": "https://www.chinanews.com.cn/gn/2026/01-28/10560597.shtml",
+        "retrieved": "2026-10-02",
+        "quote": "1000Mbps及以上接入速率的用户为2.38亿户，全年净增3157万户，占总用户数的34.5%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_software_revenue",
+      "year": 2021,
+      "value": 9.5,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年软件和信息技术服务业完成软件业务收入94994亿元，按可比口径计算，比上年增长17.7%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_software_revenue",
+      "year": 2022,
+      "value": 10.81,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年软件和信息技术服务业完成软件业务收入108126亿元，按可比口径计算，比上年增长11.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_software_revenue",
+      "year": 2023,
+      "value": 12.33,
+      "source": {
+        "title": "MIIT 2023 software-industry data via China Daily/Xinhua (2024-02-14)",
+        "url": "https://cn.chinadaily.com.cn/a/202402/14/WS65cc0a25a31026469ab1841f.html",
+        "retrieved": "2026-10-02",
+        "quote": "累计完成软件业务收入123258亿元，同比增长13.4%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_software_revenue",
+      "year": 2024,
+      "value": 13.73,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "软件和信息技术服务业完成软件业务收入137276亿元，比上年增长10.0%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_software_revenue",
+      "year": 2025,
+      "value": 15.48,
+      "source": {
+        "title": "科技日报 citing MIIT: 2025年我国软件业务收入154831亿元 (2026-01-30)",
+        "url": "https://www.stdaily.com/web/gdxw/2026-01/30/content_468379.html",
+        "retrieved": "2026-10-02",
+        "quote": "2025年，我国软件业务收入154831亿元，同比增长13.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_online_retail",
+      "year": 2021,
+      "value": 13.09,
+      "source": {
+        "title": "NBS 2021年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230203_1901393.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年网上零售额130884亿元，按可比口径计算，比上年增长14.1%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_online_retail",
+      "year": 2022,
+      "value": 13.79,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年网上零售额137853亿元，按可比口径计算，比上年增长4.0%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_online_retail",
+      "year": 2023,
+      "value": 15.43,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "全国网上零售额为154264亿元，比上年增长11.0%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_online_retail",
+      "year": 2024,
+      "value": 15.23,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "网上零售额152287亿元，比上年增长7.2%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": "Lower than the 2023 level because NBS revised the base; growth rates are on a comparable basis."
+    },
+    {
+      "target_id": "de14_online_retail",
+      "year": 2025,
+      "value": 15.97,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年网上零售额159722亿元，比上年增长8.6%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_ecommerce",
+      "year": 2022,
+      "value": 43.83,
+      "source": {
+        "title": "NBS 2022年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202302/t20230228_1919011.html",
+        "retrieved": "2026-10-02",
+        "quote": "全年电子商务交易额438299亿元，按可比口径计算，比上年增长3.5%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_ecommerce",
+      "year": 2023,
+      "value": 46.83,
+      "source": {
+        "title": "NBS 2023年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202402/t20240228_1947915.html",
+        "retrieved": "2026-10-02",
+        "quote": "电子商务交易额468273亿元，比上年增长9.4%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_ecommerce",
+      "year": 2024,
+      "value": 46.41,
+      "source": {
+        "title": "NBS 2024年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html",
+        "retrieved": "2026-10-02",
+        "quote": "电子商务交易额464091亿元，比上年增长3.9%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": "Level below 2023 despite reported growth: NBS revised the base."
+    },
+    {
+      "target_id": "de14_ecommerce",
+      "year": 2025,
+      "value": 46.73,
+      "source": {
+        "title": "NBS 2025年国民经济和社会发展统计公报",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+        "retrieved": "2026-10-02",
+        "quote": "电子商务交易额467339亿元，比上年增长2.5%",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "de14_gov_users",
+      "year": 2021,
+      "value": 1000,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2021年） (CAC, 2022-08-02), p.7",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1675765283208335/1675765283208335.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.7) 全国一体化政务服务平台实名用户已超过10亿人",
+        "confidence": "high"
+      },
+      "note": "FLOOR value ('超过10亿人'). Shows the 8亿 target was already exceeded in 2021; the 2022 report repeats '超过10亿人'. No later official point value located.",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "de14_gov_users",
+      "year": 2022,
+      "value": 1000,
+      "source": {
+        "title": "数字中国发展报告（2022年）",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1686402331296991/1686402331296991.pdf",
+        "retrieved": "2026-10-02",
+        "quote": "全国一体化政务服务平台实名注册用户超过10亿人",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": "Floor value ('超过10亿人').",
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "ndc3_total_compute",
+      "year": 2021,
+      "value": 140,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2021年） (国家互联网信息办公室, PDF on cac.gov.cn, 2022-08)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1675765283208335/1675765283208335.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.3) 我国算力规模达到140 EFLOPS（每秒一万四千亿亿次浮点运算），位居全球第二。",
+        "confidence": "high"
+      },
+      "note": "Replaces the 中国证券报-sourced 140 EFLOPS. Precision basis not stated (MIIT series, generally FP32-equivalent). Same report p.16: 截至2021年底在用数据中心机架总规模超过520万标准机架，平均上架率超过55%，存储容量达到800EB。",
+      "placeholder": false
+    },
+    {
+      "target_id": "ndc3_total_compute",
+      "year": 2022,
+      "value": 180,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2022年） (国家互联网信息办公室, PDF on cac.gov.cn, 2023-05)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1686402331296991/1686402331296991.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.3) 在用数据中心算力总规模超180EFLOPS，位居世界第二。",
+        "confidence": "high"
+      },
+      "note": "Floor ('超180'). Upgrades the existing People's Daily source to the report itself. Same report p.3: 截至2022年底，我国数据中心机架总规模已超过650万标准机架; p.5: 存力总规模超1000EB。",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "ndc3_total_compute",
+      "year": 2023,
+      "value": 230,
+      "source": {
+        "title": "数字中国发展报告（2023年） (cac.gov.cn release)",
+        "url": "https://www.cac.gov.cn/2024-05/27/c_1718487050712431.htm",
+        "retrieved": "2026-10-02",
+        "quote": "算力总规模达到230EFLOPS，居全球第二位",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "ndc3_utilization",
+      "year": 2021,
+      "value": 55,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2021年） (cac.gov.cn PDF)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1675765283208335/1675765283208335.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.16) 截至2021年底，我国在用数据中心机架总规模超过520万标准机架，平均上架率超过55%",
+        "confidence": "high"
+      },
+      "note": "Floor. Baseline before the 2023 target (≥60%). No national 2023 or end-2025 上架率 located.",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "ndc3_new_dc_pue",
+      "year": 2022,
+      "value": 1.3,
+      "source": {
+        "title": "数字中国发展报告（2022年）",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1686402331296991/1686402331296991.pdf",
+        "retrieved": "2026-10-02",
+        "quote": "规划在建的大型以上数据中心平均设计电能利用效率（PUE）降至1.3",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": "Design PUE of planned/under-construction large data centers."
+    },
+    {
+      "target_id": "cpi23_total_compute",
+      "year": 2023,
+      "value": 230,
+      "source": {
+        "title": "数字中国发展报告（2023年） (cac.gov.cn release)",
+        "url": "https://www.cac.gov.cn/2024-05/27/c_1718487050712431.htm",
+        "retrieved": "2026-10-02",
+        "quote": "算力总规模达到230EFLOPS，居全球第二位",
+        "confidence": "high"
+      },
+      "placeholder": false,
+      "as_of": null,
+      "note": null
+    },
+    {
+      "target_id": "cpi23_total_compute",
+      "year": 2024,
+      "value": 280,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2024年） (国家数据局, PDF on nda.gov.cn, 2025-05)",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.12) 截至2024年底，全国在用算力中心标准机架数超过900万，算力规模达到280EFLOPS（每秒百亿亿次浮点运算，FP32），位居全球前列。",
+        "confidence": "high"
+      },
+      "note": "Precision explicitly FP32 — the first official statement of the basis of the 算力总规模 series. Upgrades the 光明网 source. MIIT repeated 280 EFLOPS 'as of end-March 2025' at the 2025-04-18 SCIO briefing (miit.gov.cn/xwfb/bldhd/art/2025/art_2c3e9dd628e04e87a5f79ba542cd2581.html: 在用算力中心机架总规模超过900万标准机架，算力总规模达到280EFLOPS).",
+      "placeholder": false
+    },
+    {
+      "target_id": "cpi23_storage",
+      "year": 2023,
+      "value": 1200,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2023年） (国家数据局, PDF hosted on szzg.gov.cn)",
+        "url": "https://www.szzg.gov.cn/2024/xwzx/szkx/202406/P020240630600725771219.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.4) 存力总规模约1.2 ZB",
+        "confidence": "medium"
+      },
+      "note": "Printed as 约1.2 ZB; written here as 1,200 EB (1 ZB = 1,000 EB, decimal) to match the cpi23 baseline wording '1200EB'. Approximate ('约').",
+      "placeholder": false,
+      "qualifier": "approx"
+    },
+    {
+      "target_id": "cpi23_storage",
+      "year": 2025,
+      "value": 1680,
+      "as_of": "2025-06-30",
+      "source": {
+        "title": "MIIT Vice Minister 熊继军 at 2025中国算力大会 (中新社 report hosted on dzswgf.mofcom.gov.cn, 2025-08-25)",
+        "url": "https://dzswgf.mofcom.gov.cn/news/43/2025/8/1756100846352.html",
+        "retrieved": "2026-10-04",
+        "quote": "存力总规模超过1680 EB（2^60字节）",
+        "confidence": "medium"
+      },
+      "note": "Mid-year floor. No official end-2025 存力总规模 was found (数字中国发展报告（2025年）gives only 数据存储总量 2.53 ZB, a different metric). The 2,021 EB / 32% advanced figures for mid-2026 originate from CAICT/算力产业发展方阵《2026存力发展报告》(Tier C) even where reprinted by 人民日报海外版 — the dataset's cpi23_storage 2026 and cpi23_adv_storage_share 2026 records should be marked Tier C.",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "edwc23_new_compute_share",
+      "year": 2024,
+      "value": 60,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2024年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.11) 内蒙古、河北、甘肃、宁夏等八大枢纽节点建设提速加力，枢纽节点地区各类新增算力占全国新增算力的60%以上。",
+        "confidence": "high"
+      },
+      "note": "Floor ('60%以上'). Upgrades the 光明网 source.",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "edwc23_new_compute_share",
+      "year": 2025,
+      "value": 80,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2025年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0608/ff808081-9e81e648-019e-a78ceae4-00c3.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.9) 深入实施“东数西算”工程，推动各类新增算力向国家枢纽集聚，内蒙古、京津冀、甘肃、宁夏等八大枢纽建设提速加力，枢纽地区各类新增算力占全国新增算力的 80%以上。",
+        "confidence": "high"
+      },
+      "note": "CONTRADICTS the dataset's 2025 value of 60 (taken from a mid-year Xinhua statement): the full-year official figure is a floor of 80%. Target (≥60%) exceeded.",
+      "placeholder": false,
+      "qualifier": "floor"
+    },
+    {
+      "target_id": "gdc24_utilization",
+      "year": 2026,
+      "value": 71.4,
+      "as_of": "2026-06-30",
+      "source": {
+        "title": "持续向新向优发展！国新办就2026年上半年工业和信息化发展情况举行新闻发布会 (miit.gov.cn, 2026-07-20)",
+        "url": "https://www.miit.gov.cn/xwfb/bldhd/art/2026/art_bc4cf76777cb4fd2896082ca2ff7039d.html",
+        "retrieved": "2026-10-04",
+        "quote": "全国算力设施整体上架率达71.4%",
+        "confidence": "high"
+      },
+      "note": "Speaker 谢存; 截至今年6月底. Upgrades the existing 新华网 source to the MIIT page.",
+      "placeholder": false
+    },
+    {
+      "target_id": "gdc24_avg_pue",
+      "year": 2023,
+      "value": 1.48,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2023年） (国家数据局, PDF hosted on szzg.gov.cn)",
+        "url": "https://www.szzg.gov.cn/2024/xwzx/szkx/202406/P020240630600725771219.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.37) 数据中心的平均电能利用效率（PUE）为1.48，与2022年相比进一步优化。",
+        "confidence": "medium"
+      },
+      "note": "Same page: 国家绿色数据中心的平均电能利用效率（PUE）相对较低，为1.27.",
+      "placeholder": false
+    },
+    {
+      "target_id": "gdc24_avg_pue",
+      "year": 2024,
+      "value": 1.46,
+      "as_of": null,
+      "source": {
+        "title": "数字中国发展报告（2024年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.12) 算力中心平均电能利用效率（PUE）降至1.46，超140个算力中心绿色低碳等级达到4A级以上。",
+        "confidence": "high"
+      },
+      "note": "Upgrades the existing zsj.nmg.gov.cn mirror to the NDA original (confidence high). MIIT gave 1.47 for mid-2024 (赵志国, 2024中国算力大会: 全国算力中心平均电能利用效率（PUE）降至1.47; 光明网 copy on xxzx.fj.gov.cn).",
+      "placeholder": false
+    },
+    {
+      "target_id": "gdc24_avg_pue",
+      "year": 2025,
+      "value": 1.42,
+      "as_of": "2025-06-30",
+      "source": {
+        "title": "MIIT Vice Minister 熊继军 at 2025中国算力大会 (中新社 report hosted on dzswgf.mofcom.gov.cn, 2025-08-25)",
+        "url": "https://dzswgf.mofcom.gov.cn/news/43/2025/8/1756100846352.html",
+        "retrieved": "2026-10-04",
+        "quote": "全国算力中心平均电能利用效率（PUE）降至1.42",
+        "confidence": "medium"
+      },
+      "note": "Mid-year. Replaces the Tier C 澎湃新闻 citation. MIIT's 2025 国家绿色算力设施 notice (miit.gov.cn/jgsj/jns/nyjy/art/2025/art_7caf70f0c83b459a956e0aaa1c16ad00.html) says the listed facilities' PUE 平均值降至1.25，较全国算力设施PUE平均值低14.4% — implies a national average of about 1.46 but the national value is not printed, so it is not recorded.",
+      "placeholder": false
+    },
+    {
+      "target_id": "gdc24_new_large_pue",
+      "year": 2025,
+      "value": 1.25,
+      "as_of": null,
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工业和信息化部, PDF on miit.gov.cn, 2026-09-07)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.2, 专栏1) 新建大型超大型算力设施运行电能利用效率（PUE） 2025年 1.25 2030年 <1.2 〔>0.05〕",
+        "confidence": "high"
+      },
+      "note": "2025 base-year column of the plan's indicator table; wording is 运行PUE of 新建大型超大型算力设施, close to the gdc24 target wording (新建及改扩建大型和超大型数据中心 ≤1.25). The 2030 target is <1.2.",
+      "placeholder": false
+    },
+    {
+      "target_id": "ict15_ai_compute",
+      "year": 2025,
+      "value": 1590,
+      "as_of": null,
+      "source": {
+        "title": "工业和信息化部：2025年工业和信息化发展主要目标任务顺利完成 (国新办发布会实录, miit.gov.cn, 2026-01-21)",
+        "url": "https://www.miit.gov.cn/xwfb/bldhd/art/2026/art_4ba01aa6d2f54ced8ba3490ea4fb52c4.html",
+        "retrieved": "2026-10-04",
+        "quote": "在算力设施方面，建成万卡智算集群42个，智能算力规模超过1590EFLOPS，位居全球前列。",
+        "confidence": "high"
+      },
+      "note": "Speaker 谢存 (MIIT spokesperson). Floor ('超过1590'); 张云明 at the same briefing: 智能算力规模达1590EFLOPS. FP16 is stated explicitly in 数字中国发展报告（2025年）(p.9: 智能算力规模达到159万PFLOPS（FP16，下同）) and in the 十五五 plan indicator table (2025 = 1590). UNIT MISMATCH: not comparable with the FP32 算力总规模 series (280 EFLOPS, 2024); no FP32 total for end-2025 has been published.",
+      "placeholder": false
+    },
+    {
+      "target_id": "ict15_ai_compute",
+      "year": 2026,
+      "value": 2185,
+      "as_of": "2026-06-30",
+      "source": {
+        "title": "持续向新向优发展！国新办就2026年上半年工业和信息化发展情况举行新闻发布会 (miit.gov.cn, 2026-07-20)",
+        "url": "https://www.miit.gov.cn/xwfb/bldhd/art/2026/art_bc4cf76777cb4fd2896082ca2ff7039d.html",
+        "retrieved": "2026-10-04",
+        "quote": "截至今年6月底，我国智能算力规模达2185EFLOPS（FP16）",
+        "confidence": "high"
+      },
+      "note": "Upgrades the existing 新华网 source to the MIIT page. Same page: 东部、中部、西部、东北地区智算规模占全国比例分别是55.9%、10.6%、32.6%、0.9%.",
+      "placeholder": false
+    },
+    {
+      "target_id": "ict15_adv_storage",
+      "year": 2025,
+      "value": 540,
+      "as_of": null,
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工业和信息化部, PDF on miit.gov.cn, 2026-09-07)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.2, 专栏1) 先进存力规模（EB） 2025年 540 2030年 1700 〔1160〕",
+        "confidence": "high"
+      },
+      "note": "2025 column of the plan's 主要指标 table (base-year value). First official figure for advanced storage capacity. No official 先进存力占比 (cpi23_adv_storage_share) is published; do not divide 540 by an unofficial total.",
+      "placeholder": false
+    },
+    {
+      "target_id": "ict15_gigabit_users",
+      "year": 2025,
+      "value": 238,
+      "as_of": null,
+      "source": {
+        "title": "2025年通信业统计公报 (工业和信息化部, miit.gov.cn, 2026-01-28)",
+        "url": "https://www.miit.gov.cn/jgsj/yxj/xxfb/art/2026/art_bea806f4dd20457cb0158795cc210aa7.html",
+        "retrieved": "2026-10-04",
+        "quote": "1000Mbps及以上接入速率的用户为2.38亿户,全年净增3157万户,占总用户数的34.5%",
+        "confidence": "high"
+      },
+      "note": "NBS 2025年国民经济和社会发展统计公报 gives the precise count: 1000M速率及以上的宽带接入用户23839万户 (https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html). The 十五五 plan table rounds to 2.4亿户.",
+      "placeholder": false
+    },
+    {
+      "target_id": "ict15_5g_penetration",
+      "year": 2025,
+      "value": 85.7,
+      "as_of": null,
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工业和信息化部, PDF on miit.gov.cn, 2026-09-07)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.2, 专栏1) 5G（含5G-A）用户普及率（%） 2025年 85.7 2030年 95 〔9.3〕",
+        "confidence": "high"
+      },
+      "note": "DEFINITION: MIIT's 普及率 is 5G users per 100 population (cf. 5G用户普及率达到了75.9% for March 2025 at the 2025-04-18 briefing). It is NOT the share of mobile users: the 2025年通信业统计公报 gives 5G移动电话用户达到12.04亿户,占移动电话用户的65.9%,比上年末提高9.2个百分点 — do not mix the two series.",
+      "placeholder": false
+    },
+    {
+      "target_id": "ict15_ict_revenue",
+      "year": 2025,
+      "value": 3.8,
+      "as_of": null,
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工业和信息化部, PDF on miit.gov.cn, 2026-09-07)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.2, 专栏1) 信息通信行业收入（万亿元） 2025年 3.8 2030年 4.1 1.5% ... 注：③信息通信行业收入…包括基础电信企业及规模以上互联网企业数据。",
+        "confidence": "high"
+      },
+      "note": "Broad definition (basic telecom operators + above-scale internet firms). The narrower 电信业务收入 in the 2025年通信业统计公报 is 2025年电信业务收入累计完成1.75万亿元,比上年增长0.7% — a component, not the same indicator.",
+      "placeholder": false
+    }
+  ]
+}

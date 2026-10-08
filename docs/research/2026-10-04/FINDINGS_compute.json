@@ -1,0 +1,833 @@
+{
+  "national": [
+    {
+      "target_id": "ndc3_total_compute",
+      "indicator": "算力总规模",
+      "unit": "EFLOPS",
+      "year": 2021,
+      "value": 140,
+      "as_of": "2021-12-31",
+      "source": {
+        "title": "数字中国发展报告（2021年） (国家互联网信息办公室, PDF on cac.gov.cn, 2022-08)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1675765283208335/1675765283208335.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.3) 我国算力规模达到140 EFLOPS（每秒一万四千亿亿次浮点运算），位居全球第二。",
+        "confidence": "high"
+      },
+      "note": "Replaces the 中国证券报-sourced 140 EFLOPS. Precision basis not stated (MIIT series, generally FP32-equivalent). Same report p.16: 截至2021年底在用数据中心机架总规模超过520万标准机架，平均上架率超过55%，存储容量达到800EB。"
+    },
+    {
+      "target_id": "ndc3_total_compute",
+      "indicator": "算力总规模",
+      "unit": "EFLOPS",
+      "year": 2022,
+      "value": 180,
+      "as_of": "2022-12-31",
+      "source": {
+        "title": "数字中国发展报告（2022年） (国家互联网信息办公室, PDF on cac.gov.cn, 2023-05)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1686402331296991/1686402331296991.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.3) 在用数据中心算力总规模超180EFLOPS，位居世界第二。",
+        "confidence": "high"
+      },
+      "note": "Floor ('超180'). Upgrades the existing People's Daily source to the report itself. Same report p.3: 截至2022年底，我国数据中心机架总规模已超过650万标准机架; p.5: 存力总规模超1000EB。"
+    },
+    {
+      "target_id": "cpi23_total_compute",
+      "indicator": "算力总规模",
+      "unit": "EFLOPS",
+      "year": 2024,
+      "value": 280,
+      "as_of": "2024-12-31",
+      "source": {
+        "title": "数字中国发展报告（2024年） (国家数据局, PDF on nda.gov.cn, 2025-05)",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.12) 截至2024年底，全国在用算力中心标准机架数超过900万，算力规模达到280EFLOPS（每秒百亿亿次浮点运算，FP32），位居全球前列。",
+        "confidence": "high"
+      },
+      "note": "Precision explicitly FP32 — the first official statement of the basis of the 算力总规模 series. Upgrades the 光明网 source. MIIT repeated 280 EFLOPS 'as of end-March 2025' at the 2025-04-18 SCIO briefing (miit.gov.cn/xwfb/bldhd/art/2025/art_2c3e9dd628e04e87a5f79ba542cd2581.html: 在用算力中心机架总规模超过900万标准机架，算力总规模达到280EFLOPS)."
+    },
+    {
+      "target_id": null,
+      "indicator": "智能算力规模 (MIIT series, basis not stated)",
+      "unit": "EFLOPS",
+      "year": 2023,
+      "value": 70,
+      "as_of": "2023-12-31",
+      "source": {
+        "title": "数字中国发展报告（2023年） (国家数据局, PDF hosted on szzg.gov.cn, 2024-06); same figure given by MIIT Vice Minister 单忠德 at the 2024-04-18 SCIO briefing (人民日报 2024-04-19)",
+        "url": "https://www.szzg.gov.cn/2024/xwzx/szkx/202406/P020240630600725771219.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.5) 截至2023年底，智能算力规模达到70EFLOPS，增速超过70%",
+        "confidence": "medium"
+      },
+      "note": "Precision basis not stated; published alongside 算力总规模 230 EFLOPS (p.4). Do NOT divide to obtain cpi23_ai_share — the official 25.4% share figure in the dataset is CAICT (Tier C). People's Daily quote: 截至去年底，我国智能算力规模达到了每秒70百亿亿次浮点运算，增速超70% (https://paper.people.com.cn/rmrb/html/2024-04/19/nw.D110000renmrb_20240419_3-02.htm)."
+    },
+    {
+      "target_id": "ict15_ai_compute",
+      "indicator": "智能算力规模 (FP16)",
+      "unit": "EFLOPS",
+      "year": 2025,
+      "value": 788,
+      "as_of": "2025-06-30",
+      "source": {
+        "title": "MIIT Vice Minister 熊继军 at 2025中国算力大会 (中新社 report hosted on dzswgf.mofcom.gov.cn, 2025-08-25)",
+        "url": "https://dzswgf.mofcom.gov.cn/news/43/2025/8/1756100846352.html",
+        "retrieved": "2026-10-04",
+        "quote": "截至今年6月底，中国在用算力中心标准机架达1085万架，智能算力规模达788 EFLOPS，存力总规模超过1680 EB（2^60字节），全国算力中心平均电能利用效率（PUE）降至1.42",
+        "confidence": "medium"
+      },
+      "note": "Mid-year figure. MIIT's own page for this speech was not located (szzg.gov.cn copy blocked); the gov.cn-hosted 中新社 text and the Xinhuanet/经济参考报 text (https://www.xinhuanet.com/tech/20250825/e0c74211b58d40048e0bbd278b0bfcef/c.html) agree. Precision not stated by the minister; Xinhuanet and CAICT describe it as FP16. The existing dataset cites 澎湃新闻 (Tier C) with confidence 'high' for these figures — should be downgraded/replaced."
+    },
+    {
+      "target_id": "ict15_ai_compute",
+      "indicator": "智能算力规模 (FP16)",
+      "unit": "EFLOPS",
+      "year": 2025,
+      "value": 1590,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "工业和信息化部：2025年工业和信息化发展主要目标任务顺利完成 (国新办发布会实录, miit.gov.cn, 2026-01-21)",
+        "url": "https://www.miit.gov.cn/xwfb/bldhd/art/2026/art_4ba01aa6d2f54ced8ba3490ea4fb52c4.html",
+        "retrieved": "2026-10-04",
+        "quote": "在算力设施方面，建成万卡智算集群42个，智能算力规模超过1590EFLOPS，位居全球前列。",
+        "confidence": "high"
+      },
+      "note": "Speaker 谢存 (MIIT spokesperson). Floor ('超过1590'); 张云明 at the same briefing: 智能算力规模达1590EFLOPS. FP16 is stated explicitly in 数字中国发展报告（2025年）(p.9: 智能算力规模达到159万PFLOPS（FP16，下同）) and in the 十五五 plan indicator table (2025 = 1590). UNIT MISMATCH: not comparable with the FP32 算力总规模 series (280 EFLOPS, 2024); no FP32 total for end-2025 has been published."
+    },
+    {
+      "target_id": "ict15_ai_compute",
+      "indicator": "智能算力规模 (FP16)",
+      "unit": "EFLOPS",
+      "year": 2026,
+      "value": 2185,
+      "as_of": "2026-06-30",
+      "source": {
+        "title": "持续向新向优发展！国新办就2026年上半年工业和信息化发展情况举行新闻发布会 (miit.gov.cn, 2026-07-20)",
+        "url": "https://www.miit.gov.cn/xwfb/bldhd/art/2026/art_bc4cf76777cb4fd2896082ca2ff7039d.html",
+        "retrieved": "2026-10-04",
+        "quote": "截至今年6月底，我国智能算力规模达2185EFLOPS（FP16）",
+        "confidence": "high"
+      },
+      "note": "Upgrades the existing 新华网 source to the MIIT page. Same page: 东部、中部、西部、东北地区智算规模占全国比例分别是55.9%、10.6%、32.6%、0.9%."
+    },
+    {
+      "target_id": null,
+      "indicator": "在用标准机架数 (全国)",
+      "unit": "thousand racks",
+      "year": 2023,
+      "value": 8100,
+      "as_of": "2023-12-31",
+      "source": {
+        "title": "数字中国发展报告（2023年） (国家数据局, PDF hosted on szzg.gov.cn, 2024-06)",
+        "url": "https://www.szzg.gov.cn/2024/xwzx/szkx/202406/P020240630600725771219.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.5) 截至2023年底，全国在用数据中心标准机架超过810万架",
+        "confidence": "medium"
+      },
+      "note": "Floor. Also stated by MIIT (单忠德, 2024-04-18): 我国在用数据中心机架总规模超过810万标准机架. Series label was '数据中心机架' through 2023, '算力中心机架' in 2024–mid-2025 and '算力设施机架' for end-2025 — watch for definition drift."
+    },
+    {
+      "target_id": null,
+      "indicator": "在用标准机架数 (全国)",
+      "unit": "thousand racks",
+      "year": 2024,
+      "value": 9000,
+      "as_of": "2024-12-31",
+      "source": {
+        "title": "数字中国发展报告（2024年） (国家数据局, PDF on nda.gov.cn, 2025-05)",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.12) 截至2024年底，全国在用算力中心标准机架数超过900万",
+        "confidence": "high"
+      },
+      "note": "Floor. DISCREPANCY: MIIT at the 2025-01-21 briefing said 在用算力中心标准机架数超过880万 for end-2024 (科技日报 report, Tier C; MIIT page not located). MIIT's 2025-04-18 briefing gives 超过900万 as of end-March 2025."
+    },
+    {
+      "target_id": null,
+      "indicator": "在用标准机架数 (全国)",
+      "unit": "thousand racks",
+      "year": 2025,
+      "value": 10850,
+      "as_of": "2025-06-30",
+      "source": {
+        "title": "MIIT Vice Minister 熊继军 at 2025中国算力大会 (中新社 report hosted on dzswgf.mofcom.gov.cn, 2025-08-25)",
+        "url": "https://dzswgf.mofcom.gov.cn/news/43/2025/8/1756100846352.html",
+        "retrieved": "2026-10-04",
+        "quote": "截至今年6月底，中国在用算力中心标准机架达1085万架",
+        "confidence": "medium"
+      },
+      "note": "Mid-year figure."
+    },
+    {
+      "target_id": null,
+      "indicator": "在用标准机架数 (全国)",
+      "unit": "thousand racks",
+      "year": 2025,
+      "value": 13730,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "数字中国发展报告（2025年） (国家数据局, PDF on nda.gov.cn, 2026-05, released 2026-06-08)",
+        "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0608/ff808081-9e81e648-019e-a78ceae4-00c3.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.9) 截至 2025 年底，全国在用算力设施机架数超过 1373 万标准机架，建成万卡智算集群 42 个，智能算力规模达到 159 万 PFLOPS（FP16，下同），位居全球第二。",
+        "confidence": "high"
+      },
+      "note": "Floor. Label changed to '算力设施机架' (from '算力中心机架'). The 2025 report contains NO FP32 算力总规模 figure. Separately, the 2025年通信业统计公报 (miit.gov.cn) gives 93.8万 racks, but that covers only the three basic telecom operators: 中国电信、中国移动和中国联通三家基础电信企业…截至2025年底,对外提供服务数据中心机架数量93.8万个,较上年增加10.8万个 — not a national total."
+    },
+    {
+      "target_id": null,
+      "indicator": "可监测总算力规模 (全国一体化算力网试验验证平台)",
+      "unit": "EFLOPS",
+      "year": 2025,
+      "value": 1020,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "数字中国发展报告（2025年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0608/ff808081-9e81e648-019e-a78ceae4-00c3.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.10) 监测范围覆盖八大枢纽十大集群，新疆、河南等 9 个非枢纽省份以及部分企业，已监测 1129 个算力设施，可监测总算力规模为 102 万 PFLOPS，其中智算规模为 83.4 万 PFLOPS，可调度算力达到 11 万 PFLOPS。",
+        "confidence": "high"
+      },
+      "note": "Platform-monitored scope only (1,129 facilities), NOT the national total; 102万PFLOPS = 1,020 EFLOPS, of which 智算 834 EFLOPS (FP16 per '下同' on p.9). Recorded for context; do not use as cpi23_total_compute."
+    },
+    {
+      "target_id": "cpi23_storage",
+      "indicator": "存力总规模",
+      "unit": "EB",
+      "year": 2021,
+      "value": 800,
+      "as_of": "2021-12-31",
+      "source": {
+        "title": "数字中国发展报告（2021年） (cac.gov.cn PDF)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1675765283208335/1675765283208335.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.16) 在用数据中心服务器规模1900万台，存储容量达到800EB（1EB=1024PB）。",
+        "confidence": "high"
+      },
+      "note": "Labelled 存储容量 (binary EB)."
+    },
+    {
+      "target_id": "cpi23_storage",
+      "indicator": "存力总规模",
+      "unit": "EB",
+      "year": 2022,
+      "value": 1000,
+      "as_of": "2022-12-31",
+      "source": {
+        "title": "数字中国发展报告（2022年） (cac.gov.cn PDF)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1686402331296991/1686402331296991.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.5) 截至2022年底，我国存力总规模超1000EB，数据存储量达724.5EB，同比增长21.1%",
+        "confidence": "high"
+      },
+      "note": "Floor ('超1000'). Note the distinct metric 数据存储量 (data actually stored) vs 存力总规模 (capacity)."
+    },
+    {
+      "target_id": "cpi23_storage",
+      "indicator": "存力总规模",
+      "unit": "EB",
+      "year": 2023,
+      "value": 1200,
+      "as_of": "2023-12-31",
+      "source": {
+        "title": "数字中国发展报告（2023年） (国家数据局, PDF hosted on szzg.gov.cn)",
+        "url": "https://www.szzg.gov.cn/2024/xwzx/szkx/202406/P020240630600725771219.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.4) 存力总规模约1.2 ZB",
+        "confidence": "medium"
+      },
+      "note": "Printed as 约1.2 ZB; written here as 1,200 EB (1 ZB = 1,000 EB, decimal) to match the cpi23 baseline wording '1200EB'. Approximate ('约')."
+    },
+    {
+      "target_id": "cpi23_storage",
+      "indicator": "存力总规模",
+      "unit": "EB",
+      "year": 2025,
+      "value": 1680,
+      "as_of": "2025-06-30",
+      "source": {
+        "title": "MIIT Vice Minister 熊继军 at 2025中国算力大会 (中新社 report hosted on dzswgf.mofcom.gov.cn, 2025-08-25)",
+        "url": "https://dzswgf.mofcom.gov.cn/news/43/2025/8/1756100846352.html",
+        "retrieved": "2026-10-04",
+        "quote": "存力总规模超过1680 EB（2^60字节）",
+        "confidence": "medium"
+      },
+      "note": "Mid-year floor. No official end-2025 存力总规模 was found (数字中国发展报告（2025年）gives only 数据存储总量 2.53 ZB, a different metric). The 2,021 EB / 32% advanced figures for mid-2026 originate from CAICT/算力产业发展方阵《2026存力发展报告》(Tier C) even where reprinted by 人民日报海外版 — the dataset's cpi23_storage 2026 and cpi23_adv_storage_share 2026 records should be marked Tier C."
+    },
+    {
+      "target_id": "ict15_adv_storage",
+      "indicator": "先进存力规模",
+      "unit": "EB",
+      "year": 2025,
+      "value": 540,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工业和信息化部, PDF on miit.gov.cn, 2026-09-07)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.2, 专栏1) 先进存力规模（EB） 2025年 540 2030年 1700 〔1160〕",
+        "confidence": "high"
+      },
+      "note": "2025 column of the plan's 主要指标 table (base-year value). First official figure for advanced storage capacity. No official 先进存力占比 (cpi23_adv_storage_share) is published; do not divide 540 by an unofficial total."
+    },
+    {
+      "target_id": "gdc24_avg_pue",
+      "indicator": "全国数据中心平均PUE",
+      "unit": "PUE",
+      "year": 2023,
+      "value": 1.48,
+      "as_of": "2023-12-31",
+      "source": {
+        "title": "数字中国发展报告（2023年） (国家数据局, PDF hosted on szzg.gov.cn)",
+        "url": "https://www.szzg.gov.cn/2024/xwzx/szkx/202406/P020240630600725771219.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.37) 数据中心的平均电能利用效率（PUE）为1.48，与2022年相比进一步优化。",
+        "confidence": "medium"
+      },
+      "note": "Same page: 国家绿色数据中心的平均电能利用效率（PUE）相对较低，为1.27."
+    },
+    {
+      "target_id": "gdc24_avg_pue",
+      "indicator": "全国数据中心平均PUE",
+      "unit": "PUE",
+      "year": 2024,
+      "value": 1.46,
+      "as_of": "2024-12-31",
+      "source": {
+        "title": "数字中国发展报告（2024年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.12) 算力中心平均电能利用效率（PUE）降至1.46，超140个算力中心绿色低碳等级达到4A级以上。",
+        "confidence": "high"
+      },
+      "note": "Upgrades the existing zsj.nmg.gov.cn mirror to the NDA original (confidence high). MIIT gave 1.47 for mid-2024 (赵志国, 2024中国算力大会: 全国算力中心平均电能利用效率（PUE）降至1.47; 光明网 copy on xxzx.fj.gov.cn)."
+    },
+    {
+      "target_id": "gdc24_avg_pue",
+      "indicator": "全国数据中心平均PUE",
+      "unit": "PUE",
+      "year": 2025,
+      "value": 1.42,
+      "as_of": "2025-06-30",
+      "source": {
+        "title": "MIIT Vice Minister 熊继军 at 2025中国算力大会 (中新社 report hosted on dzswgf.mofcom.gov.cn, 2025-08-25)",
+        "url": "https://dzswgf.mofcom.gov.cn/news/43/2025/8/1756100846352.html",
+        "retrieved": "2026-10-04",
+        "quote": "全国算力中心平均电能利用效率（PUE）降至1.42",
+        "confidence": "medium"
+      },
+      "note": "Mid-year. Replaces the Tier C 澎湃新闻 citation. MIIT's 2025 国家绿色算力设施 notice (miit.gov.cn/jgsj/jns/nyjy/art/2025/art_7caf70f0c83b459a956e0aaa1c16ad00.html) says the listed facilities' PUE 平均值降至1.25，较全国算力设施PUE平均值低14.4% — implies a national average of about 1.46 but the national value is not printed, so it is not recorded."
+    },
+    {
+      "target_id": null,
+      "indicator": "全国超大型算力设施平均PUE (definition change: hyperscale only)",
+      "unit": "PUE",
+      "year": 2025,
+      "value": 1.34,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "数字中国发展报告（2025年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0608/ff808081-9e81e648-019e-a78ceae4-00c3.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.9) 算力绿色化发展特征显著，截至 2025 年底，全国超大型算力设施平均电能利用效率（PUE）降至 1.34，超 160 个算力设施绿色低碳等级达到 4A 级以上。",
+        "confidence": "high"
+      },
+      "note": "DEFINITION CHANGE: the 2024 report gave the average of all 算力中心 (1.46); the 2025 report reports only 超大型 (hyperscale) facilities. Does NOT score gdc24_avg_pue (≤1.5, all data centers). No all-facility national average for end-2025 was found."
+    },
+    {
+      "target_id": "gdc24_new_large_pue",
+      "indicator": "新建大型超大型算力设施运行PUE",
+      "unit": "PUE",
+      "year": 2025,
+      "value": 1.25,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工业和信息化部, PDF on miit.gov.cn, 2026-09-07)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.2, 专栏1) 新建大型超大型算力设施运行电能利用效率（PUE） 2025年 1.25 2030年 <1.2 〔>0.05〕",
+        "confidence": "high"
+      },
+      "note": "2025 base-year column of the plan's indicator table; wording is 运行PUE of 新建大型超大型算力设施, close to the gdc24 target wording (新建及改扩建大型和超大型数据中心 ≤1.25). The 2030 target is <1.2."
+    },
+    {
+      "target_id": "ndc3_utilization",
+      "indicator": "全国数据中心平均上架率",
+      "unit": "%",
+      "year": 2021,
+      "value": 55,
+      "as_of": "2021-12-31",
+      "source": {
+        "title": "数字中国发展报告（2021年） (cac.gov.cn PDF)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1675765283208335/1675765283208335.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.16) 截至2021年底，我国在用数据中心机架总规模超过520万标准机架，平均上架率超过55%",
+        "confidence": "high"
+      },
+      "note": "Floor. Baseline before the 2023 target (≥60%). No national 2023 or end-2025 上架率 located."
+    },
+    {
+      "target_id": "gdc24_utilization",
+      "indicator": "全国算力设施整体上架率",
+      "unit": "%",
+      "year": 2026,
+      "value": 71.4,
+      "as_of": "2026-06-30",
+      "source": {
+        "title": "持续向新向优发展！国新办就2026年上半年工业和信息化发展情况举行新闻发布会 (miit.gov.cn, 2026-07-20)",
+        "url": "https://www.miit.gov.cn/xwfb/bldhd/art/2026/art_bc4cf76777cb4fd2896082ca2ff7039d.html",
+        "retrieved": "2026-10-04",
+        "quote": "全国算力设施整体上架率达71.4%",
+        "confidence": "high"
+      },
+      "note": "Speaker 谢存; 截至今年6月底. Upgrades the existing 新华网 source to the MIIT page."
+    },
+    {
+      "target_id": "edwc23_new_compute_share",
+      "indicator": "枢纽节点地区新增算力占全国新增算力比重",
+      "unit": "%",
+      "year": 2024,
+      "value": 60,
+      "as_of": "2024-12-31",
+      "source": {
+        "title": "数字中国发展报告（2024年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.11) 内蒙古、河北、甘肃、宁夏等八大枢纽节点建设提速加力，枢纽节点地区各类新增算力占全国新增算力的60%以上。",
+        "confidence": "high"
+      },
+      "note": "Floor ('60%以上'). Upgrades the 光明网 source."
+    },
+    {
+      "target_id": "edwc23_new_compute_share",
+      "indicator": "枢纽地区新增算力占全国新增算力比重",
+      "unit": "%",
+      "year": 2025,
+      "value": 80,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "数字中国发展报告（2025年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0608/ff808081-9e81e648-019e-a78ceae4-00c3.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.9) 深入实施“东数西算”工程，推动各类新增算力向国家枢纽集聚，内蒙古、京津冀、甘肃、宁夏等八大枢纽建设提速加力，枢纽地区各类新增算力占全国新增算力的 80%以上。",
+        "confidence": "high"
+      },
+      "note": "CONTRADICTS the dataset's 2025 value of 60 (taken from a mid-year Xinhua statement): the full-year official figure is a floor of 80%. Target (≥60%) exceeded."
+    },
+    {
+      "target_id": "ict15_gigabit_users",
+      "indicator": "千兆及以上宽带用户数",
+      "unit": "million subscribers",
+      "year": 2025,
+      "value": 238,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "2025年通信业统计公报 (工业和信息化部, miit.gov.cn, 2026-01-28)",
+        "url": "https://www.miit.gov.cn/jgsj/yxj/xxfb/art/2026/art_bea806f4dd20457cb0158795cc210aa7.html",
+        "retrieved": "2026-10-04",
+        "quote": "1000Mbps及以上接入速率的用户为2.38亿户,全年净增3157万户,占总用户数的34.5%",
+        "confidence": "high"
+      },
+      "note": "NBS 2025年国民经济和社会发展统计公报 gives the precise count: 1000M速率及以上的宽带接入用户23839万户 (https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html). The 十五五 plan table rounds to 2.4亿户."
+    },
+    {
+      "target_id": "ict15_5g_penetration",
+      "indicator": "5G（含5G-A）用户普及率",
+      "unit": "%",
+      "year": 2025,
+      "value": 85.7,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工业和信息化部, PDF on miit.gov.cn, 2026-09-07)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.2, 专栏1) 5G（含5G-A）用户普及率（%） 2025年 85.7 2030年 95 〔9.3〕",
+        "confidence": "high"
+      },
+      "note": "DEFINITION: MIIT's 普及率 is 5G users per 100 population (cf. 5G用户普及率达到了75.9% for March 2025 at the 2025-04-18 briefing). It is NOT the share of mobile users: the 2025年通信业统计公报 gives 5G移动电话用户达到12.04亿户,占移动电话用户的65.9%,比上年末提高9.2个百分点 — do not mix the two series."
+    },
+    {
+      "target_id": "ict15_ict_revenue",
+      "indicator": "信息通信行业收入",
+      "unit": "trillion yuan",
+      "year": 2025,
+      "value": 3.8,
+      "as_of": "2025-12-31",
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工业和信息化部, PDF on miit.gov.cn, 2026-09-07)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.2, 专栏1) 信息通信行业收入（万亿元） 2025年 3.8 2030年 4.1 1.5% ... 注：③信息通信行业收入…包括基础电信企业及规模以上互联网企业数据。",
+        "confidence": "high"
+      },
+      "note": "Broad definition (basic telecom operators + above-scale internet firms). The narrower 电信业务收入 in the 2025年通信业统计公报 is 2025年电信业务收入累计完成1.75万亿元,比上年增长0.7% — a component, not the same indicator."
+    }
+  ],
+  "clusters": [
+    {
+      "id": "zhangjiakou",
+      "status": "operating",
+      "racks_k": 810,
+      "racks_basis": "in_use",
+      "racks_as_of": "2026-04",
+      "compute_eflops": null,
+      "compute_basis": "unknown",
+      "compute_as_of": null,
+      "pue": null,
+      "dc_count": 49,
+      "source": {
+        "title": "河北张家口：算力和电力协同发展 (新华社石家庄4月9日电, news.cn, 2026-04-09)",
+        "url": "https://www.news.cn/local/20260409/cc83e167d55f4b199f3254decd54d504/c.html",
+        "retrieved": "2026-10-04",
+        "quote": "目前张家口市已建成数据中心49个、投运标准机架81万架",
+        "confidence": "medium"
+      },
+      "note": "Figure attributed to 张家口市数据和政务服务局局长刘永刚; it is CITY-wide (张家口市), not explicitly the cluster start zone, and '投运' = in service. Confirms the dataset's 81万 (2026-04). No official EFLOPS or PUE found; zhangjiakou.gov.cn and hebei.gov.cn were unreachable from this environment. Same article: 2025年全市大数据行业用电量达95.43亿千瓦时."
+    },
+    {
+      "id": "csj_demo",
+      "status": "operating",
+      "racks_k": null,
+      "racks_basis": "unknown",
+      "racks_as_of": null,
+      "compute_eflops": null,
+      "compute_basis": "unknown",
+      "compute_as_of": null,
+      "pue": null,
+      "dc_count": null,
+      "source": {
+        "title": "长三角生态绿色一体化发展示范区数据中心集群建设取得新进展 (上海市青浦区人民政府, 2025-07-20 / published 2025-09-17)",
+        "url": "https://www.shqp.gov.cn/shqp/qpzdjcbs/xxdt/20250917/1328096.html",
+        "retrieved": "2026-10-04",
+        "quote": "吴江算力调度中心1号算力中心建成投用，已接入全国一体化算力网络，提供智能算力规模约506PFLOPS",
+        "confidence": "high"
+      },
+      "note": "Only project-level official figures: 吴江算力调度中心 (>1万 high-power racks planned, 5000 PFLOPS planned, 506 PFLOPS in service), 中国移动5G生态谷 4768 机架, 中国电信嘉兴算力中心 约1.56万架, 青浦云湖 约4000机柜. No cluster-level rack/EFLOPS/PUE total published; sheitc.sh.gov.cn 2021 notice only sets ~3万 racks of approved new build for 2021."
+    },
+    {
+      "id": "wuhu",
+      "status": "operating",
+      "racks_k": 120,
+      "racks_basis": "built",
+      "racks_as_of": "2025-10",
+      "compute_eflops": 26,
+      "compute_basis": "unknown",
+      "compute_as_of": "2025-10",
+      "pue": null,
+      "dc_count": 6,
+      "source": {
+        "title": "从无到有 算力“芜”限 (芜湖市人民政府, 2025-10-31)",
+        "url": "https://www.wuhu.gov.cn/xwzx/zwyw/40341013.html",
+        "retrieved": "2026-10-04",
+        "quote": "建成标准机架12万架…智算规模达2.6万P…已签约落地…15个数据中心项目…已投运6个",
+        "confidence": "high"
+      },
+      "note": "Re-verified. compute is 智算 (AI) capacity only, 2.6万P = 26 EFLOPS, precision not stated (智算 figures are normally FP16). End-2025 targets: 18万 racks, >3.5万P; 2027: 6万P. dc_count = 6 projects 投运 of 15 signed. No newer (2026) official page found: wuhu.gov.cn/sjzyj.wuhu.gov.cn news indexes (Sept–Oct 2026) had no data-center items."
+    },
+    {
+      "id": "shaoguan",
+      "status": "operating",
+      "racks_k": null,
+      "racks_basis": "unknown",
+      "racks_as_of": null,
+      "compute_eflops": null,
+      "compute_basis": "unknown",
+      "compute_as_of": null,
+      "pue": null,
+      "dc_count": null,
+      "source": {
+        "title": "迈入智能算力时代——记者探秘韶关数据中心集群落地后首个投入运营的智算中心 (韶关市人民政府门户网站, 韶关日报, 2024-03-16)",
+        "url": "https://www.sg.gov.cn/zsyz/tzdt/content/post_2611472.html",
+        "retrieved": "2026-10-04",
+        "quote": "首个投入运营的智算中心 (华南数谷智算中心) … 预计2024年底前后集群智算算力规模可达40000P",
+        "confidence": "high"
+      },
+      "note": "STATUS CHANGE: the municipal portal confirms the cluster's first 智算中心 was operating by March 2024, so 'under_construction' is outdated; 'operating' (partially, with large build-out ongoing) is supported by Tier A. Capacity figures exist only in Tier C press: mayor 吴庆华 (Jan–Feb 2026, 科技日报/新浪): 已具备承载12万标准机架及18万P智算的能力…力争到今年底建成30万标准机架承载能力、上架算力达250兆瓦; 科技日报 2026-06-13: 形成17.3万标准机架算力承载能力, 三大运营商一期、鹰硕、华韶一期等6个项目已建成投用, 规划建设标准机架超130万架; 科技日报 via news.cn 2026-07-14: 已建成17万标准机架承载能力，15万标准机架正在赶建; 5个万卡集群已投产，上架智算规模达4万P. These are '承载能力' (built capacity), not racks in use, and are not value-bearing under the rules. sg.gov.cn 2023-05-25 (Tier A, stale): 12个项目已入驻韶关集群，建设36.1万个标准机架，计划总投资395亿元. gd.gov.cn pages were unreachable."
+    },
+    {
+      "id": "tianfu",
+      "status": "operating",
+      "racks_k": null,
+      "racks_basis": "unknown",
+      "racks_as_of": null,
+      "compute_eflops": null,
+      "compute_basis": "unknown",
+      "compute_as_of": null,
+      "pue": null,
+      "dc_count": null,
+      "source": {
+        "title": "四川省算力基础设施优化布局实施方案（2026—2028年）as reported by 第一财经 / 川观新闻 (2026-08-03) — official text not retrieved",
+        "url": "https://www.yicai.com/news/103302700.html",
+        "retrieved": "2026-10-04",
+        "quote": "以天府数据中心集群(成都)为支撑…到2026年底智算规模较“十四五”末实现翻番、达到60EFLOPS",
+        "confidence": "medium"
+      },
+      "note": "No cluster-level official figure exists. Province-level only: 四川省通信管理局副局长钱海燕 (2025-12-04, C114 report, Tier C): 全省在用算力设施达到36万标准机架，智能算力的规模达25.4EFLOPS. The provincial plan's 2026 target (60 EFLOPS = double the end-2025 level) implies but does not print a 2025 baseline — not computed. sc.gov.cn / chengdu.gov.cn were not reachable; Chengdu's 2025 city target was 全市算力规模力争扩大至20000P (成都市经信局 briefing, 2025-03-25, via IT之家)."
+    },
+    {
+      "id": "chongqing",
+      "status": "operating",
+      "racks_k": null,
+      "racks_basis": "unknown",
+      "racks_as_of": null,
+      "compute_eflops": null,
+      "compute_basis": "unknown",
+      "compute_as_of": null,
+      "pue": null,
+      "dc_count": null,
+      "source": {
+        "title": "重庆市建设新型能源算力枢纽实施方案（2025—2027年）（公开征求意见稿） (重庆市大数据应用发展管理局, dsjj.cq.gov.cn, 2025-09)",
+        "url": "https://dsjj.cq.gov.cn/zwgk_533/zdmsxx/202509/W020250924641832088212.doc",
+        "retrieved": "2026-10-04",
+        "quote": "调度智算规模 3万P(2025) → 5万P(2026) → 11万P(2027); PUE值 1.50(2025) → 1.40(2026) → 1.35(2027); 绿色算力占比 50%(2025) → 60%(2026) → 70%(2027)",
+        "confidence": "high"
+      },
+      "note": "Targets only (draft plan); the document has no baseline/current figures and no cluster-level racks. cq.gov.cn and dsjj.cq.gov.cn news indexes were unreachable. Dataset's city-level '>1000P (2023)' remains the only historical point."
+    },
+    {
+      "id": "horinger",
+      "status": "operating",
+      "racks_k": null,
+      "racks_basis": "unknown",
+      "racks_as_of": null,
+      "compute_eflops": null,
+      "compute_basis": "unknown",
+      "compute_as_of": null,
+      "pue": null,
+      "dc_count": null,
+      "source": {
+        "title": "数读我国绿色算力：十组数据背后的时代答卷 (新华财经 cnfin.com, 2026-08-22) — Tier C, context only",
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458983_1.html",
+        "retrieved": "2026-10-04",
+        "quote": "内蒙古算力规模达到33.8万P (内蒙古自治区政务服务与数据管理局副局长高敬, 2026-08-18); 和林格尔新区已投入运营的数据中心绿电使用比例超过85%",
+        "confidence": "medium"
+      },
+      "note": "No official cluster-level page retrievable: nmg.gov.cn, zsj.nmg.gov.cn and huhhot.gov.cn all blocked (403/SSL) from this environment. The 33.8万P (338 EFLOPS, likely FP16 智算-dominated) is PROVINCE-wide, not the cluster; the 22万架 rack figure in the dataset (end-2023, 通信产业网) remains stale and unverified. Approval target PUE <1.2."
+    },
+    {
+      "id": "guian",
+      "status": "operating",
+      "racks_k": null,
+      "racks_basis": "unknown",
+      "racks_as_of": null,
+      "compute_eflops": 174,
+      "compute_basis": "FP16",
+      "compute_as_of": "2026-07",
+      "pue": 1.19,
+      "dc_count": null,
+      "source": {
+        "title": "文字实录 | 2026中国国际大数据产业博览会新闻发布会 (国家数据局, nda.gov.cn, 2026-07-28)",
+        "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0728/20260728171544950646970_pc.html",
+        "retrieved": "2026-10-04",
+        "quote": "目前，贵阳贵安算力规模已突破174EFLOPS、智算占比超98%、平均PUE低至1.19。…力争到今年年底算力规模达190EFLOPS，2030年突破300EFLOPS。",
+        "confidence": "high"
+      },
+      "note": "Speaker 贵阳市人民政府市长王宏. Scope is 贵阳贵安 (city + new area), which contains the 贵安 cluster start zone; floor ('已突破'). FP16 basis inferred from the NDRC page of 2026-08-31 (刘烈宏 at 数博会): 贵阳贵安 算力规模已突破17.6万PFLOPS（FP16）… PUE最低达到1.12 (https://www.ndrc.gov.cn/fzggw/wld/llh/zyhd/202608/t20260831_1407318.html, as of end-July 2026, speaker 郑莉). Supersedes the dataset's 9.2万P (2025-08, Xinhua) — note the Xinhua figure was Guizhou-hub-wide incl. under-construction. PUE 1.19 is the average across 贵阳贵安 facilities. Racks not published."
+    },
+    {
+      "id": "qingyang",
+      "status": "operating",
+      "racks_k": null,
+      "racks_basis": "unknown",
+      "racks_as_of": null,
+      "compute_eflops": null,
+      "compute_basis": "unknown",
+      "compute_as_of": null,
+      "pue": null,
+      "dc_count": null,
+      "source": {
+        "title": "数字中国发展报告（2024年） (国家数据局, PDF on nda.gov.cn)",
+        "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.12) 算力绿色化发展特征显著，甘肃庆阳等绿电使用率超过80%。",
+        "confidence": "high"
+      },
+      "note": "Only official cluster-specific metric found: green-power use >80% (2024). No official rack/EFLOPS/PUE page retrievable — zgqingyang.gov.cn (403) and gansu.gov.cn (412) blocked. The dataset's 1.5万 racks (end-2023) and 11.4万P (2025-12) are Tier C (通信产业网) and remain unverified."
+    },
+    {
+      "id": "zhongwei",
+      "status": "operating",
+      "racks_k": null,
+      "racks_basis": "unknown",
+      "racks_as_of": null,
+      "compute_eflops": null,
+      "compute_basis": "unknown",
+      "compute_as_of": null,
+      "pue": null,
+      "dc_count": null,
+      "source": null,
+      "note": "No official cluster-level figure found. nxzw.gov.cn and nx.gov.cn homepages loaded but carried no data-center items; search budget was exhausted before deeper navigation. Dataset's 13万P (2025-12) remains Tier C (通信产业网)."
+    }
+  ],
+  "aggregates": [
+    {
+      "target_id": null,
+      "indicator": "八大国家枢纽节点 机架总规模",
+      "unit": "thousand racks",
+      "year": 2024,
+      "value": 1950,
+      "as_of": "2024-06-30",
+      "source": {
+        "title": "“东数西算”八大国家枢纽节点直接投资超过435亿元 (新华社, hosted on gov.cn 政务联播, 2024-08-29)",
+        "url": "https://www.gov.cn/lianbo/bumen/202408/content_6971147.htm",
+        "retrieved": "2026-10-04",
+        "quote": "截至2024年6月底，“东数西算”八大国家枢纽节点直接投资超过435亿元，拉动投资超过2000亿元，机架总规模超过195万架，整体上架率达63%左右。",
+        "confidence": "high"
+      },
+      "note": "Speaker 国家数据局局长刘烈宏. Floor ('超过195万'). Companion value: 整体上架率 63%左右 (recorded separately)."
+    },
+    {
+      "target_id": null,
+      "indicator": "八大国家枢纽节点 整体上架率",
+      "unit": "%",
+      "year": 2024,
+      "value": 63,
+      "as_of": "2024-06-30",
+      "source": {
+        "title": "“东数西算”八大国家枢纽节点直接投资超过435亿元 (新华社, gov.cn, 2024-08-29)",
+        "url": "https://www.gov.cn/lianbo/bumen/202408/content_6971147.htm",
+        "retrieved": "2026-10-04",
+        "quote": "机架总规模超过195万架，整体上架率达63%左右",
+        "confidence": "high"
+      },
+      "note": "Approximate ('左右'). Hub-only, not national; relates to but does not score gdc24_utilization/ndc3_utilization."
+    },
+    {
+      "target_id": null,
+      "indicator": "10个国家数据中心集群 算力总规模（机架）",
+      "unit": "thousand racks",
+      "year": 2024,
+      "value": 1460,
+      "as_of": "2024-03-31",
+      "source": {
+        "title": "10个国家数据中心集群算力规模超146万标准机架 (北京日报 report of SCIO briefing, hosted on ncsti.gov.cn, 2024-07-23)",
+        "url": "https://www.ncsti.gov.cn/kjdt/kjrd/qtrd_kjrd/202407/t20240723_172472.html",
+        "retrieved": "2026-10-04",
+        "quote": "截至今年3月底，10个国家数据中心集群算力总规模超过146万标准机架，整体上架率为62.72%，较2022年提升4个百分点",
+        "confidence": "medium"
+      },
+      "note": "Speaker 国家数据局数字科技和基础设施建设司司长杜巍 (SCIO 2024-07-22). gov.cn/scio.gov.cn transcript not reachable; gov.cn-domain copy used. Note: '集群' (10 start zones) vs '枢纽节点' (8 provinces) scopes differ (146万 vs 195万)."
+    },
+    {
+      "target_id": null,
+      "indicator": "10个国家数据中心集群 整体上架率",
+      "unit": "%",
+      "year": 2024,
+      "value": 62.72,
+      "as_of": "2024-03-31",
+      "source": {
+        "title": "10个国家数据中心集群算力规模超146万标准机架 (北京日报, hosted on ncsti.gov.cn, 2024-07-23)",
+        "url": "https://www.ncsti.gov.cn/kjdt/kjrd/qtrd_kjrd/202407/t20240723_172472.html",
+        "retrieved": "2026-10-04",
+        "quote": "整体上架率为62.72%，较2022年提升4个百分点",
+        "confidence": "medium"
+      },
+      "note": "Cluster-only scope (the figure already referenced in the ndc3_utilization target note)."
+    },
+    {
+      "target_id": null,
+      "indicator": "八大枢纽节点数据中心集群平均PUE (all existing facilities)",
+      "unit": "PUE",
+      "year": 2025,
+      "value": 1.3,
+      "as_of": "2025-03-18",
+      "source": {
+        "title": "国家能源局绿证专题新闻发布会文字实录 (nea.gov.cn, 2025-03-18)",
+        "url": "https://www.nea.gov.cn/20250318/764a752a063f48e590068bdd521d0cee/c.html",
+        "retrieved": "2026-10-04",
+        "quote": "目前八大枢纽节点数据中心集群平均PUE（电能利用效率）达到1.3左右，最先进数据中心PUE最低降至1.04。",
+        "confidence": "high"
+      },
+      "note": "Speaker 国家数据局综合司副司长高波. Approximate ('左右'), covers all facilities, so it does not score gdc24_hub_pue (new projects ≤1.2). Same transcript: 力争在2025年实现国家枢纽节点新建数据中心绿电占比达到80%的目标 (target restated; no outcome figure published)."
+    },
+    {
+      "target_id": null,
+      "indicator": "八大国家算力枢纽 已建成智算总规模占全国比重 (stock share, 智算 only)",
+      "unit": "%",
+      "year": 2026,
+      "value": 80,
+      "as_of": "2026-07-28",
+      "source": {
+        "title": "文字实录 | 2026中国国际大数据产业博览会新闻发布会 (国家数据局, nda.gov.cn, 2026-07-28)",
+        "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0728/20260728171544950646970_pc.html",
+        "retrieved": "2026-10-04",
+        "quote": "全国智算总规模为240万PFLOPS，八大国家算力枢纽已建成智算总规模占全国比重超80%。",
+        "confidence": "high"
+      },
+      "note": "Speaker 国家数据局副局长余英. Floor ('超80%'). This is a STOCK share of intelligent computing (not the new-capacity share of edwc23_new_compute_share, nor the all-compute stock share of ndc3_hub_share). National 智算 240万PFLOPS = 2,400 EFLOPS (NDA figure; MIIT gives 2,185 EFLOPS FP16 for end-June — different agency/date). NDRC 2026-08-31 (刘烈宏): 截至2026年7月底，全国智算总规模达到245万PFLOPS（FP16）…八大国家算力枢纽和三个算电协同发展区已建成智算规模占全国比重超85% (https://www.ndrc.gov.cn/fzggw/wld/llh/zyhd/202608/t20260831_1407318.html)."
+    },
+    {
+      "target_id": null,
+      "indicator": "八大枢纽 新建数据中心规模（2022年当年）",
+      "unit": "thousand racks",
+      "year": 2022,
+      "value": 1300,
+      "as_of": "2022-12-31",
+      "source": {
+        "title": "数字中国发展报告（2022年） (cac.gov.cn PDF)",
+        "url": "https://www.cac.gov.cn/rootimages/uploadimg/1686402331296991/1686402331296991.pdf",
+        "retrieved": "2026-10-04",
+        "quote": "(p.4) 2022年，京津冀等8个国家算力枢纽建设进入深化实施阶段，新开工数据中心项目超60个，新建数据中心规模超130万标准机架。",
+        "confidence": "high"
+      },
+      "note": "Flow (new build in 2022), not stock."
+    }
+  ],
+  "not_found": [
+    {
+      "item": "cpi23_total_compute 2025 (算力总规模 end-2025, FP32 EFLOPS)",
+      "what_was_tried": "数字中国发展报告（2025年）PDF (nda.gov.cn) — contains only 智能算力 159万PFLOPS (FP16) and platform-monitored 102万PFLOPS; MIIT 2026-01-21 and 2026-07-20 SCIO briefings (miit.gov.cn) — only 智能算力; NBS 2025 统计公报 — no 算力 item; NDA 2026-07-28 transcript — 智算 only; searches '算力总规模 截至2025年底 EFLOPS FP32'. Conclusion: the FP32 series appears to have been discontinued after 280 EFLOPS (end-2024 / March 2025); the 300 EFLOPS target cannot be scored on a like-for-like basis."
+    },
+    {
+      "item": "cpi23_ai_share 2024 and 2025 (智能算力占比)",
+      "what_was_tried": "数字中国发展报告 2024/2025, MIIT briefings 2025-01/2025-04/2026-01/2026-07, NDA transcripts. Only 智算 in EFLOPS (FP16) and total in FP32 are published; no official share. Not divided (unit mismatch)."
+    },
+    {
+      "item": "cpi23_storage end-2025 and cpi23_adv_storage_share 2025 (存力总规模 / 先进存力占比)",
+      "what_was_tried": "数字中国发展报告（2025年）(only 数据存储总量 2.53 ZB — a different metric), MIIT briefings, 十五五 plan (gives 先进存力 540 EB but no total). The 2,021 EB / 32% mid-2026 figures are CAICT (《2026存力发展报告》, stdaily 2026-09-28) — Tier C."
+    },
+    {
+      "item": "gdc24_avg_pue end-2025 (national all-facility average)",
+      "what_was_tried": "数字中国发展报告（2025年）switched to 超大型 only (1.34); MIIT 2026 briefings silent; MIIT green-facility notice gives only a relative statement (-14.4%). Not inferred."
+    },
+    {
+      "item": "gdc24_hub_pue (国家枢纽节点新建数据中心 PUE outcome) 2024/2025",
+      "what_was_tried": "NEA 2025-03-18 transcript gives all-facility hub average 1.3左右 and minimum 1.04; gov.cn 2024-08-29 gives minimum 1.04; no new-build average published."
+    },
+    {
+      "item": "ndc3_utilization 2023 and gdc24_utilization end-2025 (national 上架率)",
+      "what_was_tried": "Only 2021 (55%, CAC), cluster/hub figures for 2024 (62.72% / 63%), and national 71.4% for June 2026 exist. No 2023 or end-2025 national figure located."
+    },
+    {
+      "item": "edwc23_new_compute_share 2023 and ndc3_hub_share 2023 (hub stock share)",
+      "what_was_tried": "数字中国发展报告（2023年）only says 8个国家算力枢纽节点进入落地应用阶段; no share figure. Stock share of 智算 (>80%, mid-2026) is a different measure."
+    },
+    {
+      "item": "edwc23_green_power 2024/2025 (national hub new-DC green-power share outcome)",
+      "what_was_tried": "NEA 2025-03-18 transcript restates the 80% target; 数字中国发展报告（2024年）gives only '甘肃庆阳等绿电使用率超过80%'; 2025 report has no 绿电 sentence; MIIT 2025 green-facility notice gives 可再生能源利用率平均值超过70% for listed facilities only."
+    },
+    {
+      "item": "Cluster-level official racks/EFLOPS/PUE for 韶关, 天府, 重庆, 长三角示范区, 和林格尔, 庆阳, 中卫",
+      "what_was_tried": "Direct fetches of sg.gov.cn (OK but no 2026 capacity article), gd.gov.cn, gdstc.gd.gov.cn, sc.gov.cn, chengdu.gov.cn, cq.gov.cn, dsjj.cq.gov.cn index, nmg.gov.cn, zsj.nmg.gov.cn, huhhot.gov.cn, zgqingyang.gov.cn, gansu.gov.cn, hebei.gov.cn, zhangjiakou.gov.cn, guizhou.gov.cn, gaxq.gov.cn — all blocked (403/412/robots/SSL/DNS) from this environment; nxzw.gov.cn and nx.gov.cn reachable but no relevant items on the homepage. WebSearch budget (200 calls) was exhausted midway through Part 2."
+    },
+    {
+      "item": "NDA/NDRC 8-hub aggregate of in-use racks or total EFLOPS for 2025–2026",
+      "what_was_tried": "NDA 2026-07-28 transcript (only 智算 share >80% and 140万PFLOPS connected to the platform), NDRC 2026-08-31 (245万PFLOPS national; >85% for 8 hubs + 3 zones), 数字中国发展报告（2025年）(1129 monitored facilities, 102万PFLOPS monitored). No rack aggregate after the June-2024 195万架."
+    }
+  ],
+  "unit_notes": [
+    "FP32 vs FP16: 算力总规模 (140→180→230→280 EFLOPS, 2021–2024) is explicitly FP32 in 数字中国发展报告（2024年）; 智能算力 (788 mid-2025, 1,590 end-2025, 1,882 Mar-2026, 2,185 Jun-2026 EFLOPS) is FP16. Never divide the FP16 智算 figure by the FP32 total to get a share.",
+    "PFLOPS→EFLOPS: 159万PFLOPS = 1,590 EFLOPS; 102万PFLOPS = 1,020 EFLOPS; 240万PFLOPS = 2,400 EFLOPS; 17.6万PFLOPS = 176 EFLOPS; 33.8万P = 338 EFLOPS (1 EFLOPS = 1,000 PFLOPS).",
+    "Racks: all national figures are '标准机架' (2.5 kW equivalent); 万架 converted to thousands (1373万 → 13,730). Series label drift: 数据中心机架 (≤2023) → 算力中心机架 (2024–mid-2025) → 算力设施机架 (end-2025). The 通信业统计公报 93.8万 figure covers only the three basic telecom operators.",
+    "PUE definition change: 2024 report = average of all 算力中心 (1.46); 2025 report = 超大型算力设施 only (1.34). The 十五五 plan's 1.25 (2025) is the 运行PUE of 新建大型超大型算力设施 (new builds). The NEA 1.3左右 is the average of all facilities in the 8 hub clusters.",
+    "Utilization scopes: 55% (2021) and 71.4% (Jun-2026) are national; 62.72% (Mar-2024) covers the 10 clusters; 63% (Jun-2024) covers the 8 hub nodes.",
+    "Hub share: edwc23_new_compute_share is a flow (share of NEW capacity each year: 60%以上 2024, 80%以上 2025); the NDA July-2026 '超80%' is a STOCK share of 智算 only; ndc3_hub_share (stock share of all compute) has never been published.",
+    "Storage: 存力总规模 (capacity: 800 EB 2021, >1000 EB 2022, ~1.2 ZB 2023, >1680 EB mid-2025) differs from 数据存储量/数据存储总量 (data stored: 724.5 EB 2022, 1.73 ZB 2023, 2.53 ZB 2025). 先进存力 540 EB (2025) is the only official advanced-storage figure.",
+    "5G 普及率 (per 100 population; 85.7% end-2025, 75.9% Mar-2025) ≠ 5G share of mobile users (65.9% end-2025). 千兆用户 2.38亿户 (公报) = 23,839万户 (NBS) ≈ 2.4亿 (plan table rounding).",
+    "ICT revenue: 信息通信行业收入 3.8万亿 (2025; basic telecom + above-scale internet firms) vs 电信业务收入 1.75万亿 (2025; telecom only).",
+    "Cluster figures: 张家口 81万架 is city-wide and '投运' (in service); 芜湖 12万架 is '建成' (built); 韶关 Tier C figures are '承载能力' (built capacity) not in-use; 贵阳贵安 174 EFLOPS is city+new-area scope, 智算 >98%, so effectively FP16.",
+    "Floors: many official figures are '超过/以上' floors (140, 180, 900万, 1373万, 1590, 60%, 80%, 1680 EB) and are recorded at the floor value."
+  ]
+}

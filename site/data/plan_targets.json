@@ -1,0 +1,1711 @@
+{
+  "plans": [
+    {
+      "id": "fyp14",
+      "name_en": "14th Five-Year Plan Outline (2021–2025)",
+      "name_zh": "中华人民共和国国民经济和社会发展第十四个五年规划和2035年远景目标纲要",
+      "period": {
+        "start": 2021,
+        "end": 2025
+      },
+      "issuer": "第十三届全国人民代表大会第四次会议",
+      "doc_number": null,
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "note": "The headline table has 20 indicators; 18 numeric ones are tracked (GDP增长 '保持在合理区间' and 全员劳动生产率增长 '高于GDP增长' are qualitative). 非化石能源 share is included from Chapter 11 because it is a quantified binding-style goal that the 15th FYP later promoted into its table."
+    },
+    {
+      "id": "fyp15",
+      "name_en": "15th Five-Year Plan Outline (2026–2030)",
+      "name_zh": "中华人民共和国国民经济和社会发展第十五个五年规划纲要",
+      "period": {
+        "start": 2026,
+        "end": 2030
+      },
+      "issuer": "第十四届全国人民代表大会第四次会议",
+      "doc_number": null,
+      "source": {
+        "title": "15th FYP Outline, 专栏1 “十五五”时期经济社会发展主要指标 (NDRC PDF p.10, text-extractable; gov.cn publication of 2026-03-13 carries the table as an image)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "note": "The table has 20 numbered rows (21 lines with the nurse sub-row). 18 are tracked here; the three with qualitative targets are omitted: GDP增长 (保持在合理区间、各年度视情提出), 全员劳动生产率增长 (高于GDP增长), 居民人均可支配收入增长 (与GDP增长同步). Values marked * in the 2025 column are 2024 data (footnote ②); 〔〕 marks five-year cumulative figures (footnote ①)."
+    },
+    {
+      "id": "de14",
+      "name_en": "14th FYP for Digital Economy Development (2021–2025)",
+      "name_zh": "“十四五”数字经济发展规划",
+      "period": {
+        "start": 2021,
+        "end": 2025
+      },
+      "issuer": "国务院",
+      "doc_number": "国发〔2021〕29号",
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      }
+    },
+    {
+      "id": "ndc3",
+      "name_en": "New Data Center Three-Year Action Plan (2021–2023)",
+      "name_zh": "新型数据中心发展三年行动计划（2021—2023年）",
+      "period": {
+        "start": 2021,
+        "end": 2023
+      },
+      "issuer": "工业和信息化部",
+      "doc_number": "工信部通信〔2021〕76号",
+      "source": {
+        "title": "新型数据中心发展三年行动计划（2021—2023年） (gov.cn 政策文件库)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/2021-07/14/content_5624964.htm"
+      }
+    },
+    {
+      "id": "cpi23",
+      "name_en": "Computing Infrastructure High-Quality Development Action Plan (2023–2025)",
+      "name_zh": "算力基础设施高质量发展行动计划",
+      "period": {
+        "start": 2023,
+        "end": 2025
+      },
+      "issuer": "工业和信息化部等六部门",
+      "doc_number": "工信部联通信〔2023〕180号",
+      "source": {
+        "title": "算力基础设施高质量发展行动计划 (cac.gov.cn, 2023-10-10)",
+        "url": "https://www.cac.gov.cn/2023-10/10/c_1698598959340810.htm"
+      }
+    },
+    {
+      "id": "edwc23",
+      "name_en": "EDWC Implementation Opinions: national integrated computing network (2024–2025)",
+      "name_zh": "关于深入实施“东数西算”工程 加快构建全国一体化算力网的实施意见",
+      "period": {
+        "start": 2024,
+        "end": 2025
+      },
+      "issuer": "国家发展改革委、国家数据局、中央网信办、工业和信息化部、国家能源局",
+      "doc_number": "发改数据〔2023〕1779号",
+      "source": {
+        "title": "关于深入实施“东数西算”工程 加快构建全国一体化算力网的实施意见 (ndrc.gov.cn, 2023-12-29)",
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202312/t20231229_1363000.html"
+      }
+    },
+    {
+      "id": "gdc24",
+      "name_en": "Data Center Green and Low-Carbon Special Action Plan (2024–2025)",
+      "name_zh": "数据中心绿色低碳发展专项行动计划",
+      "period": {
+        "start": 2024,
+        "end": 2025
+      },
+      "issuer": "国家发展改革委、工业和信息化部、国家能源局、国家数据局",
+      "doc_number": "发改环资〔2024〕970号",
+      "source": {
+        "title": "数据中心绿色低碳发展专项行动计划 (gov.cn PDF, 2024-07-24)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/202407/P020240724272072479001.pdf"
+      }
+    },
+    {
+      "id": "ict15",
+      "name_en": "ICT Industry 15th Five-Year Plan (2026–2030)",
+      "name_zh": "信息通信行业发展“十五五”规划",
+      "period": {
+        "start": 2026,
+        "end": 2030
+      },
+      "issuer": "工业和信息化部",
+      "doc_number": "工信部规〔2026〕188号",
+      "source": {
+        "title": "信息通信行业发展“十五五”规划 (工信部规〔2026〕188号, signed 2026-08-12, published 2026-09-07), 专栏1 主要指标 (MIIT PDF p.2)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf"
+      },
+      "note": "Notice page: https://www.miit.gov.cn/jgsj/txs/wjfb/art/2026/art_f55fe09a1e26411fa6926e5195850990.html. Indicator table read from the MIIT PDF; the earlier Xinhua summary is no longer the source."
+    }
+  ],
+  "targets": [
+    {
+      "id": "fyp14_urbanization",
+      "plan_id": "fyp14",
+      "category": "society",
+      "indicator_en": "Urbanization rate of permanent residents",
+      "indicator_zh": "常住人口城镇化率",
+      "unit": "%",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2019,
+        "value": 60.6
+      },
+      "target": {
+        "year": 2025,
+        "value": 65
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "60.6* → 65",
+      "note": "Baseline printed 60.6* — the asterisk marks 2019 data (footnote ②)."
+    },
+    {
+      "id": "fyp14_rd_growth",
+      "plan_id": "fyp14",
+      "category": "innovation",
+      "indicator_en": "Growth of society-wide R&D expenditure",
+      "indicator_zh": "全社会研发经费投入增长",
+      "unit": "% per year",
+      "binding": "anticipated",
+      "kind": "rate",
+      "direction": "increase",
+      "target": {
+        "year": 2025,
+        "value": 7
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": ">7、力争投入强度高于“十三五”时期实际",
+      "note": "Annual-average target. NBS communiqués report nominal growth; the 15th FYP table restates 2025 as 9.1% at constant prices.",
+      "period": {
+        "start": 2021,
+        "end": 2025
+      }
+    },
+    {
+      "id": "fyp14_hv_patents",
+      "plan_id": "fyp14",
+      "category": "innovation",
+      "indicator_en": "High-value invention patents per 10,000 people",
+      "indicator_zh": "每万人口高价值发明专利拥有量",
+      "unit": "patents per 10,000 people",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 6.3
+      },
+      "target": {
+        "year": 2025,
+        "value": 12
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "6.3 → 12",
+      "note": null
+    },
+    {
+      "id": "fyp14_digital_core_share",
+      "plan_id": "fyp14",
+      "category": "digital",
+      "indicator_en": "Value added of core digital-economy industries as a share of GDP",
+      "indicator_zh": "数字经济核心产业增加值占GDP比重",
+      "unit": "% of GDP",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 7.8
+      },
+      "target": {
+        "year": 2025,
+        "value": 10
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "7.8 → 10",
+      "note": "NBS publishes this share with a one-year lag (2024 value 10.5% released 2025-12-30). The 2025 value is the Government Work Report floor '10.5%以上' (gov.cn gazette, 2026-03); NBS's final 2025 accounting was not yet available on 2026-10-04."
+    },
+    {
+      "id": "fyp14_unemployment",
+      "plan_id": "fyp14",
+      "category": "society",
+      "indicator_en": "Surveyed urban unemployment rate (annual average)",
+      "indicator_zh": "城镇调查失业率",
+      "unit": "%",
+      "binding": "anticipated",
+      "kind": "threshold",
+      "direction": "decrease",
+      "target": {
+        "year": 2025,
+        "value": 5.5
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "<5.5",
+      "note": "Scored on the year-end (annual average) value only; 2022 averaged 5.6%, above the ceiling, before falling back."
+    },
+    {
+      "id": "fyp14_schooling",
+      "plan_id": "fyp14",
+      "category": "society",
+      "indicator_en": "Average years of schooling, working-age population",
+      "indicator_zh": "劳动年龄人口平均受教育年限",
+      "unit": "years",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 10.8
+      },
+      "target": {
+        "year": 2025,
+        "value": 11.3
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "10.8 → 11.3",
+      "note": "NBS definition: 16—59岁劳动年龄人口平均受教育年限. NBS commentaries give two decimals (2020 10.75, 2022 10.93, 2023 11.05, 2024 11.21); the 2025 communiqué prints one decimal (11.3). 2021 is not printed anywhere official (implied ≈10.82, not recorded)."
+    },
+    {
+      "id": "fyp14_physicians",
+      "plan_id": "fyp14",
+      "category": "society",
+      "indicator_en": "Licensed (assistant) physicians per 1,000 people",
+      "indicator_zh": "每千人口拥有执业（助理）医师数",
+      "unit": "per 1,000 people",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 2.9
+      },
+      "target": {
+        "year": 2025,
+        "value": 3.2
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "2.9 → 3.2",
+      "note": "Indicator includes assistant physicians (执业（助理）医师). Official series from NHC statistical bulletins: 3.04 (2021), 3.15, 3.40, 3.61, 3.78 (2025) — target 3.2 exceeded. The 15th FYP switched to 执业医师 only (3.25 in 2025), so the two plans' series are not interchangeable."
+    },
+    {
+      "id": "fyp14_pension_coverage",
+      "plan_id": "fyp14",
+      "category": "society",
+      "indicator_en": "Basic old-age insurance participation rate",
+      "indicator_zh": "基本养老保险参保率",
+      "unit": "%",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 91
+      },
+      "target": {
+        "year": 2025,
+        "value": 95
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "91 → 95",
+      "note": "Rate = participants / legally covered population; MOHRSS does not publish the denominator. Official statements are floors only: '基本养老保险参保率超过95%' (NBS 十四五成就报告之一, 2026-06-02; NDRC 2025-07-09 '95%以上'). Recorded as ≥95 for 2025. NBS 2025 communiqué participants: 107,599万 (城镇职工 54,680万, 城乡居民 52,919万)."
+    },
+    {
+      "id": "fyp14_nursery_places",
+      "plan_id": "fyp14",
+      "category": "society",
+      "indicator_en": "Nursery places for children under 3 per 1,000 people",
+      "indicator_zh": "每千人口拥有3岁以下婴幼儿托位数",
+      "unit": "per 1,000 people",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 1.8
+      },
+      "target": {
+        "year": 2025,
+        "value": 4.5
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "1.8 → 4.5",
+      "note": "Places per 1,000 TOTAL population (not per 1,000 children). Official series (NBS 儿童发展纲要 monitoring reports and NHC bulletins): 2.03, 2.57, 3.38, 4.08, 4.73 (2025) — target 4.5 exceeded. The 15th FYP replaced the indicator with an enrolment-rate gain."
+    },
+    {
+      "id": "fyp14_life_expectancy",
+      "plan_id": "fyp14",
+      "category": "society",
+      "indicator_en": "Life expectancy at birth",
+      "indicator_zh": "人均预期寿命",
+      "unit": "years",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2019,
+        "value": 77.3
+      },
+      "target": {
+        "year": 2025,
+        "value": 78.3
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "77.3* → 〔1〕",
+      "note": "The plan sets a cumulative gain of 1 year (〔1〕) on the 2019 baseline of 77.3; the 78.3 target shown is that implied level. NHC publishes life expectancy irregularly: 78.2 (2021), not published for 2022, 78.6 (2023), 79.0 (2024), 79.25 (2025, final NHC bulletin 2026-08-28)."
+    },
+    {
+      "id": "fyp14_energy_intensity",
+      "plan_id": "fyp14",
+      "category": "energy",
+      "indicator_en": "Cumulative reduction in energy consumption per unit of GDP since 2020",
+      "indicator_zh": "单位GDP能源消耗降低（五年累计）",
+      "unit": "% cumulative reduction",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 0
+      },
+      "target": {
+        "year": 2025,
+        "value": 13.5
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "〔13.5〕",
+      "note": "Modelled as cumulative reduction from a 2020 base of 0. DEFINITION CHANGE: from the 2023 communiqué the official basis excludes feedstock energy and non-fossil consumption (扣除原料用能和非化石能源消费量). Annual communiqué figures −2.7 (2021), −0.1 (2022), −0.5 (2023), −3.8 (2024), −5.1 (2025) are therefore not compounded here. The official five-year outcome on the adjusted basis is −16.1% (NBS 十四五成就报告之十四, 2026-06-05; NDRC gave −11.6% for 2021–2024). No cumulative figure on the original definition has been published."
+    },
+    {
+      "id": "fyp14_co2_intensity",
+      "plan_id": "fyp14",
+      "category": "environment",
+      "indicator_en": "Cumulative reduction in CO₂ emissions per unit of GDP since 2020",
+      "indicator_zh": "单位GDP二氧化碳排放降低（五年累计）",
+      "unit": "% cumulative reduction",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 0
+      },
+      "target": {
+        "year": 2025,
+        "value": 18
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "〔18〕",
+      "note": "Modelled as cumulative reduction from a 2020 base of 0. The official five-year result is the 〔17.7〕 printed in the 15th FYP table (vs the 〔18〕 target). The annual NBS communiqué changes (−3.8, −0.8, 与上年持平, −3.4, −5.0 初步测算) compound to ≈12.4%, which does not reconcile with 17.7; the official documents do not explain the gap (the annual figures are preliminary 初步测算 and subject to revision), so only the printed cumulative figure is scored."
+    },
+    {
+      "id": "fyp14_nonfossil_share",
+      "plan_id": "fyp14",
+      "category": "energy",
+      "indicator_en": "Share of non-fossil energy in total energy consumption",
+      "indicator_zh": "非化石能源占能源消费总量比重",
+      "unit": "%",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 16.0
+      },
+      "target": {
+        "year": 2025,
+        "value": 20
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "提高到20%左右 (Chapter 11 text, not in 专栏1)",
+      "note": "Set in the outline's energy chapter rather than in 专栏1 ('提高到20%左右'). NBS measures it as 一次电力及其他能源占能源消费总量比重; the 2020 baseline was revised from 15.9% (NEA, 2021) to 16.0% (2025 white paper / NBS). Do not confuse with the communiqués' 清洁能源消费占比 (25.5–30.4%), which includes natural gas."
+    },
+    {
+      "id": "fyp14_air_quality_days",
+      "plan_id": "fyp14",
+      "category": "environment",
+      "indicator_en": "Share of days with good air quality, cities at prefecture level and above",
+      "indicator_zh": "地级及以上城市空气质量优良天数比率",
+      "unit": "%",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 87
+      },
+      "target": {
+        "year": 2025,
+        "value": 87.5
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "87 → 87.5",
+      "note": "Footnote ④: the 2020 baseline was COVID-affected and unusually high. MEE publishes a headline 优良天数比例 and a variant 扣除沙尘异常超标天后 (e.g. 2023: 85.5% vs 86.8%); the target refers to the headline value, which is used here."
+    },
+    {
+      "id": "fyp14_surface_water",
+      "plan_id": "fyp14",
+      "category": "environment",
+      "indicator_en": "Share of surface-water sections at Grade III or better",
+      "indicator_zh": "地表水达到或好于Ⅲ类水体比例",
+      "unit": "%",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 83.4
+      },
+      "target": {
+        "year": 2025,
+        "value": 85
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "83.4 → 85",
+      "note": "Actuals are the share of the 3,641 national assessment sections (国考断面) rated Ⅰ–Ⅲ."
+    },
+    {
+      "id": "fyp14_forest_cover",
+      "plan_id": "fyp14",
+      "category": "environment",
+      "indicator_en": "Forest coverage rate",
+      "indicator_zh": "森林覆盖率",
+      "unit": "%",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2019,
+        "value": 23.2
+      },
+      "target": {
+        "year": 2025,
+        "value": 24.1
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": "23.2* → 24.1",
+      "note": "The jump above 25% in 2023–2024 reflects a new forest-resource survey base, not a single year's planting. 2024 = 25.09% (State Council white paper 2025-11-08). The 2025 国土绿化状况公报 could not be located; official 2025 statements are floors only ('25%以上')."
+    },
+    {
+      "id": "fyp14_grain_capacity",
+      "plan_id": "fyp14",
+      "category": "agriculture",
+      "indicator_en": "Comprehensive grain production capacity (actuals: annual grain output)",
+      "indicator_zh": "粮食综合生产能力",
+      "unit": "100 million tonnes",
+      "binding": "binding",
+      "kind": "threshold",
+      "direction": "increase",
+      "target": {
+        "year": 2025,
+        "value": 6.5
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": ">6.5",
+      "note": "Capacity is not measured directly; annual grain output (粮食产量) is used as the actual."
+    },
+    {
+      "id": "fyp14_energy_capacity",
+      "plan_id": "fyp14",
+      "category": "energy",
+      "indicator_en": "Comprehensive energy production capacity (actuals: primary energy production)",
+      "indicator_zh": "能源综合生产能力",
+      "unit": "100 million tce",
+      "binding": "binding",
+      "kind": "threshold",
+      "direction": "increase",
+      "target": {
+        "year": 2025,
+        "value": 46
+      },
+      "source": {
+        "title": "14th FYP Outline, 专栏1 “十四五”时期经济社会发展主要指标 (gov.cn, 2021-03-13)",
+        "url": "https://www.gov.cn/xinwen/2021-03/13/content_5592681.htm"
+      },
+      "placeholder": false,
+      "target_text": ">46",
+      "note": "Footnote ③ defines capacity as coal + oil + gas + non-fossil production capacity; annual primary energy production is used as the actual."
+    },
+    {
+      "id": "fyp15_urbanization",
+      "plan_id": "fyp15",
+      "category": "society",
+      "indicator_en": "Urbanization rate of permanent residents",
+      "indicator_zh": "常住人口城镇化率",
+      "unit": "%",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 67.9
+      },
+      "target": {
+        "year": 2030,
+        "value": 71
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "67.9 → 71",
+      "note": null
+    },
+    {
+      "id": "fyp15_rd_growth",
+      "plan_id": "fyp15",
+      "category": "innovation",
+      "indicator_en": "Growth of society-wide R&D expenditure (constant prices)",
+      "indicator_zh": "全社会研发经费投入增长",
+      "unit": "% per year",
+      "binding": "anticipated",
+      "kind": "rate",
+      "direction": "increase",
+      "target": {
+        "year": 2030,
+        "value": 7
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": ">7",
+      "note": "Printed row: '全社会研发经费投入增长（%） 9.1 — ＞7 预期性'; footnote ③: 按不变价格计算 (constant prices). 9.1 is the 2025 growth rate; ＞7 is the 2026–2030 average annual rate. NBS communiqués report nominal growth, so the comparable constant-price series must come from NBS R&D releases.",
+      "period": {
+        "start": 2026,
+        "end": 2030
+      }
+    },
+    {
+      "id": "fyp15_hv_patents",
+      "plan_id": "fyp15",
+      "category": "innovation",
+      "indicator_en": "High-value invention patents per 10,000 people",
+      "indicator_zh": "每万人口高价值发明专利拥有量",
+      "unit": "patents per 10,000 people",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 16
+      },
+      "target": {
+        "year": 2030,
+        "value": 22
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "16 → >22",
+      "note": null
+    },
+    {
+      "id": "fyp15_digital_core_share",
+      "plan_id": "fyp15",
+      "category": "digital",
+      "indicator_en": "Value added of core digital-economy industries as a share of GDP",
+      "indicator_zh": "数字经济核心产业增加值占GDP比重",
+      "unit": "% of GDP",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2024,
+        "value": 10.5
+      },
+      "target": {
+        "year": 2030,
+        "value": 12.5
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "10.5* → 12.5",
+      "note": "Baseline printed 10.5* = 2024 data (footnote ②)."
+    },
+    {
+      "id": "fyp15_unemployment",
+      "plan_id": "fyp15",
+      "category": "society",
+      "indicator_en": "Surveyed urban unemployment rate (annual average)",
+      "indicator_zh": "城镇调查失业率",
+      "unit": "%",
+      "binding": "anticipated",
+      "kind": "threshold",
+      "direction": "decrease",
+      "target": {
+        "year": 2030,
+        "value": 5.5
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "<5.5",
+      "note": "Printed row: '城镇调查失业率（%） 5.2 — ＜5.5 预期性' — 5.2 is the 2025 value, and ＜5.5 sits in the 年均/累计 column, i.e. an annual ceiling for every year 2026–2030 rather than a 2030 level. Modelled as a threshold with deadline 2030."
+    },
+    {
+      "id": "fyp15_schooling",
+      "plan_id": "fyp15",
+      "category": "society",
+      "indicator_en": "Average years of schooling, working-age population",
+      "indicator_zh": "劳动年龄人口平均受教育年限",
+      "unit": "years",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 11.3
+      },
+      "target": {
+        "year": 2030,
+        "value": 11.7
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "11.3 → 11.7",
+      "note": null
+    },
+    {
+      "id": "fyp15_physicians",
+      "plan_id": "fyp15",
+      "category": "society",
+      "indicator_en": "Licensed physicians per 1,000 people",
+      "indicator_zh": "每千人口拥有医护人员数——执业医师数",
+      "unit": "per 1,000 people",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 3.1
+      },
+      "target": {
+        "year": 2030,
+        "value": 3.7
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "3.1 → 3.7",
+      "note": "Printed as parent row '每千人口拥有医护人员数' with sub-row '执业医师数（人） 3.1 → 3.7' (excludes assistant physicians; the 14th FYP counted 执业（助理）医师). The NHC 2025 bulletin (2026-08-28) gives 3.25 per 1,000 for the same definition, so the plan's 2025 column was a preliminary figure; progress is scored against NHC bulletins."
+    },
+    {
+      "id": "fyp15_nurses",
+      "plan_id": "fyp15",
+      "category": "society",
+      "indicator_en": "Registered nurses per 1,000 people",
+      "indicator_zh": "每千人口拥有医护人员数——注册护士数",
+      "unit": "per 1,000 people",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 4.3
+      },
+      "target": {
+        "year": 2030,
+        "value": 5.1
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "4.3 → 5.1",
+      "note": "Sub-row of '每千人口拥有医护人员数'. NHC 2025 bulletin: 4.32 per 1,000 (rounds to the printed 4.3)."
+    },
+    {
+      "id": "fyp15_nursing_beds",
+      "plan_id": "fyp15",
+      "category": "society",
+      "indicator_en": "Share of nursing-care beds in elderly-care institutions",
+      "indicator_zh": "养老机构护理型床位占比",
+      "unit": "%",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 68
+      },
+      "target": {
+        "year": 2030,
+        "value": 73
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "68 → 73",
+      "note": null
+    },
+    {
+      "id": "fyp15_childcare_enrolment",
+      "plan_id": "fyp15",
+      "category": "society",
+      "indicator_en": "Increase in childcare enrolment rate of children under 3 since 2025",
+      "indicator_zh": "3岁以下婴幼儿入托率提高（五年累计）",
+      "unit": "percentage points",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 0
+      },
+      "target": {
+        "year": 2030,
+        "value": 6
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "〔6〕",
+      "note": "Cumulative five-year gain in percentage points, modelled from a 2025 base of 0."
+    },
+    {
+      "id": "fyp15_life_expectancy",
+      "plan_id": "fyp15",
+      "category": "society",
+      "indicator_en": "Life expectancy at birth",
+      "indicator_zh": "人均预期寿命",
+      "unit": "years",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 79.25
+      },
+      "target": {
+        "year": 2030,
+        "value": 80
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "79.25 → 80",
+      "note": null
+    },
+    {
+      "id": "fyp15_co2_intensity",
+      "plan_id": "fyp15",
+      "category": "environment",
+      "indicator_en": "Cumulative reduction in CO₂ emissions per unit of GDP since 2025",
+      "indicator_zh": "单位GDP二氧化碳排放降低（五年累计）",
+      "unit": "% cumulative reduction",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 0
+      },
+      "target": {
+        "year": 2030,
+        "value": 17
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "〔17〕",
+      "note": "Printed row: '单位GDP二氧化碳排放降低（%） 〔17.7〕 — 〔17〕 约束性'. The 2025 column prints the 2021–2025 cumulative outcome 〔17.7〕 (the 14th FYP target was 〔18〕); the 2026–2030 target is 〔17〕. Modelled as cumulative reduction from a 2025 base of 0."
+    },
+    {
+      "id": "fyp15_nonfossil_share",
+      "plan_id": "fyp15",
+      "category": "energy",
+      "indicator_en": "Share of non-fossil energy in total energy consumption",
+      "indicator_zh": "非化石能源占能源消费总量比重",
+      "unit": "%",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 21.7
+      },
+      "target": {
+        "year": 2030,
+        "value": 25
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "21.7 → 25",
+      "note": "The 15th FYP table has no energy-intensity row at all; the non-fossil share, which the 14th FYP set only in its energy chapter, is promoted into the headline table as a binding indicator."
+    },
+    {
+      "id": "fyp15_pm25",
+      "plan_id": "fyp15",
+      "category": "environment",
+      "indicator_en": "PM2.5 concentration, cities at prefecture level and above",
+      "indicator_zh": "地级及以上城市细颗粒物（PM2.5）浓度",
+      "unit": "µg/m³",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "decrease",
+      "baseline": {
+        "year": 2025,
+        "value": 28
+      },
+      "target": {
+        "year": 2030,
+        "value": 27
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "28 → <27",
+      "note": null
+    },
+    {
+      "id": "fyp15_good_water",
+      "plan_id": "fyp15",
+      "category": "environment",
+      "indicator_en": "Share of water bodies of good or excellent quality",
+      "indicator_zh": "优良水体比例",
+      "unit": "%",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 80
+      },
+      "target": {
+        "year": 2030,
+        "value": 85
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "80 → 85",
+      "note": "Different (broader) definition from the 14th FYP surface-water indicator (whose 2025 value was 91.4%); not comparable."
+    },
+    {
+      "id": "fyp15_forest_cover",
+      "plan_id": "fyp15",
+      "category": "environment",
+      "indicator_en": "Forest coverage rate",
+      "indicator_zh": "森林覆盖率",
+      "unit": "%",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2024,
+        "value": 25.1
+      },
+      "target": {
+        "year": 2030,
+        "value": 25.8
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "25.1* → 25.8",
+      "note": "Baseline printed 25.1* = 2024 data."
+    },
+    {
+      "id": "fyp15_grain_capacity",
+      "plan_id": "fyp15",
+      "category": "agriculture",
+      "indicator_en": "Comprehensive grain production capacity",
+      "indicator_zh": "粮食综合生产能力",
+      "unit": "trillion jin",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 1.39
+      },
+      "target": {
+        "year": 2030,
+        "value": 1.45
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "1.39 → 1.45左右",
+      "note": "Unit changed from 亿吨 to 万亿斤 (1.39 万亿斤 ≈ 6.95 亿吨). Footnote ④: 粮食综合生产能力指可以稳定达到的粮食产出能力 — a capacity concept; 2025 grain OUTPUT was 1.43 万亿斤 (2026 政府工作报告), above the printed 1.39, so NBS output figures should not be scored directly against it."
+    },
+    {
+      "id": "fyp15_energy_capacity",
+      "plan_id": "fyp15",
+      "category": "energy",
+      "indicator_en": "Comprehensive energy production capacity",
+      "indicator_zh": "能源综合生产能力",
+      "unit": "100 million tce",
+      "binding": "binding",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 51.3
+      },
+      "target": {
+        "year": 2030,
+        "value": 58
+      },
+      "source": {
+        "title": "15th FYP Outline, 专栏1 (NDRC PDF, p.10)",
+        "url": "https://www.ndrc.gov.cn/fggz/fzzlgh/gjfzgh/202603/U020260317369114704096.pdf"
+      },
+      "placeholder": false,
+      "target_text": "51.3 → 58",
+      "note": "51.3 (2025) equals the NBS primary-energy production total (一次能源生产总量51.3亿吨标准煤, 十四五成就报告之十四)."
+    },
+    {
+      "id": "de14_core_share",
+      "plan_id": "de14",
+      "category": "digital",
+      "indicator_en": "Value added of core digital-economy industries as a share of GDP",
+      "indicator_zh": "数字经济核心产业增加值占GDP比重",
+      "unit": "% of GDP",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 7.8
+      },
+      "target": {
+        "year": 2025,
+        "value": 10
+      },
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      },
+      "placeholder": false,
+      "target_text": "7.8 → 10",
+      "note": "Same indicator as fyp14_digital_core_share; 2025 value is the Government Work Report floor '10.5%以上'."
+    },
+    {
+      "id": "de14_ipv6_users",
+      "plan_id": "de14",
+      "category": "digital",
+      "indicator_en": "IPv6 active users",
+      "indicator_zh": "IPv6活跃用户数",
+      "unit": "million users",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 460
+      },
+      "target": {
+        "year": 2025,
+        "value": 800
+      },
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      },
+      "placeholder": false,
+      "target_text": "4.6亿 → 8亿",
+      "note": "A separate 2025 work plan (中央网信办 etc., 2025-05-20) raised the end-2025 aim to 8.5亿. 2024 value (8.23亿) is from a gov.cn-hosted copy of 数字中国发展报告（2024年）."
+    },
+    {
+      "id": "de14_gigabit_users",
+      "plan_id": "de14",
+      "category": "infrastructure",
+      "indicator_en": "Gigabit broadband subscribers (1000 Mbps and above)",
+      "indicator_zh": "千兆宽带用户数",
+      "unit": "million subscribers",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 6.4
+      },
+      "target": {
+        "year": 2025,
+        "value": 60
+      },
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      },
+      "placeholder": false,
+      "target_text": "640万户 → 6000万户",
+      "note": null
+    },
+    {
+      "id": "de14_software_revenue",
+      "plan_id": "de14",
+      "category": "economy",
+      "indicator_en": "Software and IT services revenue",
+      "indicator_zh": "软件和信息技术服务业规模",
+      "unit": "trillion yuan",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 8.16
+      },
+      "target": {
+        "year": 2025,
+        "value": 14
+      },
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      },
+      "placeholder": false,
+      "target_text": "8.16万亿元 → 14万亿元",
+      "note": "Actuals are 软件业务收入 as reported by NBS/MIIT (comparable basis, 按可比口径)."
+    },
+    {
+      "id": "de14_industrial_internet",
+      "plan_id": "de14",
+      "category": "digital",
+      "indicator_en": "Industrial internet platform application penetration rate",
+      "indicator_zh": "工业互联网平台应用普及率",
+      "unit": "%",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 14.7
+      },
+      "target": {
+        "year": 2025,
+        "value": 45
+      },
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      },
+      "placeholder": false,
+      "target_text": "14.7 → 45",
+      "note": "工业互联网平台应用普及率 is a CAICT survey indicator; no ministry statistical release of it for 2021–2025 was found, so no actual is recorded (official-sources-only rule)."
+    },
+    {
+      "id": "de14_online_retail",
+      "plan_id": "de14",
+      "category": "economy",
+      "indicator_en": "National online retail sales",
+      "indicator_zh": "全国网上零售额",
+      "unit": "trillion yuan",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 11.76
+      },
+      "target": {
+        "year": 2025,
+        "value": 17
+      },
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      },
+      "placeholder": false,
+      "target_text": "11.76万亿元 → 17万亿元",
+      "note": "NBS revises prior-year levels (2024 was later restated to 15.52 trillion in 数字中国发展报告); the communiqué values are used throughout."
+    },
+    {
+      "id": "de14_ecommerce",
+      "plan_id": "de14",
+      "category": "economy",
+      "indicator_en": "E-commerce transaction volume",
+      "indicator_zh": "电子商务交易规模",
+      "unit": "trillion yuan",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 37.21
+      },
+      "target": {
+        "year": 2025,
+        "value": 46
+      },
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      },
+      "placeholder": false,
+      "target_text": "37.21万亿元 → 46万亿元",
+      "note": "The 2020 baseline sits in the plan's image-only table and was not re-read from it (confidence: medium)."
+    },
+    {
+      "id": "de14_gov_users",
+      "plan_id": "de14",
+      "category": "digital",
+      "indicator_en": "Real-name users of online government services",
+      "indicator_zh": "在线政务服务实名用户规模",
+      "unit": "million users",
+      "binding": "anticipated",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2020,
+        "value": 400
+      },
+      "target": {
+        "year": 2025,
+        "value": 800
+      },
+      "source": {
+        "title": "“十四五”数字经济发展规划, 专栏 主要指标 (gov.cn, 2022-01-12)",
+        "url": "https://www.gov.cn/zhengce/content/2022-01/12/content_5667817.htm"
+      },
+      "placeholder": false,
+      "target_text": "4亿 → 8亿",
+      "note": "Official reports give floors only: '全国一体化政务服务平台实名用户已超过10亿人' (数字中国发展报告 2021 and 2022). No later official point value located; the 8亿 target was exceeded by 2021."
+    },
+    {
+      "id": "ndc3_total_compute",
+      "plan_id": "ndc3",
+      "category": "infrastructure",
+      "indicator_en": "Total computing power",
+      "indicator_zh": "总算力",
+      "unit": "EFLOPS",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "increase",
+      "target": {
+        "year": 2023,
+        "value": 200
+      },
+      "source": {
+        "title": "新型数据中心发展三年行动计划（2021—2023年） (gov.cn 政策文件库)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/2021-07/14/content_5624964.htm"
+      },
+      "placeholder": false,
+      "target_text": "总算力超过200 EFLOPS (by end-2023)",
+      "note": "MIIT's 算力总规模 series: 140 (2021), >180 (2022), 230 (2023) EFLOPS; 数字中国发展报告（2024年）states the basis as FP32. Not comparable with the FP16 智能算力 series reported from 2025."
+    },
+    {
+      "id": "ndc3_utilization",
+      "plan_id": "ndc3",
+      "category": "infrastructure",
+      "indicator_en": "National average data-center utilization",
+      "indicator_zh": "全国数据中心平均利用率",
+      "unit": "%",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "increase",
+      "target": {
+        "year": 2023,
+        "value": 60
+      },
+      "source": {
+        "title": "新型数据中心发展三年行动计划（2021—2023年） (gov.cn 政策文件库)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/2021-07/14/content_5624964.htm"
+      },
+      "placeholder": false,
+      "target_text": "平均利用率力争提升到60%以上",
+      "note": "Only a 2021 national figure exists (平均上架率超过55%, 数字中国发展报告 2021). No national 2023 figure located; the 62.72% (Mar-2024) covers the ten clusters and 63% (Jun-2024) the eight hub provinces."
+    },
+    {
+      "id": "ndc3_new_dc_pue",
+      "plan_id": "ndc3",
+      "category": "infrastructure",
+      "indicator_en": "PUE of newly built large and above data centers",
+      "indicator_zh": "新建大型及以上数据中心PUE",
+      "unit": "PUE",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "decrease",
+      "target": {
+        "year": 2023,
+        "value": 1.3
+      },
+      "source": {
+        "title": "新型数据中心发展三年行动计划（2021—2023年） (gov.cn 政策文件库)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/2021-07/14/content_5624964.htm"
+      },
+      "placeholder": false,
+      "target_text": "降低到1.3以下，严寒和寒冷地区力争降低到1.25以下",
+      "note": "The 2022 actual is the average DESIGN PUE of large data centers planned or under construction, the closest official proxy."
+    },
+    {
+      "id": "ndc3_hub_share",
+      "plan_id": "ndc3",
+      "category": "infrastructure",
+      "indicator_en": "Hub-node share of national computing power (stock)",
+      "indicator_zh": "国家枢纽节点算力规模占比",
+      "unit": "%",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "increase",
+      "target": {
+        "year": 2023,
+        "value": 70
+      },
+      "source": {
+        "title": "新型数据中心发展三年行动计划（2021—2023年） (gov.cn 政策文件库)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/2021-07/14/content_5624964.htm"
+      },
+      "placeholder": false,
+      "target_text": "国家枢纽节点算力规模占比超过70%",
+      "note": "Origin of the widely quoted '70%' hub share. No official stock-share figure for all computing has been published; later documents switched to a share of NEW capacity (edwc23_new_compute_share), and the NDA's July-2026 '超80%' is a stock share of 智算 only."
+    },
+    {
+      "id": "cpi23_total_compute",
+      "plan_id": "cpi23",
+      "category": "infrastructure",
+      "indicator_en": "Total computing power",
+      "indicator_zh": "算力规模",
+      "unit": "EFLOPS",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2023,
+        "value": 220
+      },
+      "target": {
+        "year": 2025,
+        "value": 300
+      },
+      "source": {
+        "title": "算力基础设施高质量发展行动计划 (cac.gov.cn, 2023-10-10)",
+        "url": "https://www.cac.gov.cn/2023-10/10/c_1698598959340810.htm"
+      },
+      "placeholder": false,
+      "target_text": "220 (2023) → 300 (2025)",
+      "note": "No official FP32 end-2025 figure exists: 数字中国发展报告（2025年）and MIIT's 2026 briefings report only FP16 智能算力 (1,590 EFLOPS end-2025), which cannot be compared with the 230→280 FP32 series. The target therefore stays unresolved rather than being scored on a mismatched unit."
+    },
+    {
+      "id": "cpi23_ai_share",
+      "plan_id": "cpi23",
+      "category": "infrastructure",
+      "indicator_en": "Intelligent (AI) computing share of total computing power",
+      "indicator_zh": "智能算力占比",
+      "unit": "%",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2023,
+        "value": 25
+      },
+      "target": {
+        "year": 2025,
+        "value": 35
+      },
+      "source": {
+        "title": "算力基础设施高质量发展行动计划 (cac.gov.cn, 2023-10-10)",
+        "url": "https://www.cac.gov.cn/2023-10/10/c_1698598959340810.htm"
+      },
+      "placeholder": false,
+      "target_text": "25 (2023) → 35 (2025)",
+      "note": "No official share has been published for any year: MIIT gives 智能算力 in FP16 EFLOPS and 算力总规模 in FP32, and dividing them would be a unit error. The 25.4% (2023) figure in circulation is CAICT's (secondary) and is not used."
+    },
+    {
+      "id": "cpi23_storage",
+      "plan_id": "cpi23",
+      "category": "infrastructure",
+      "indicator_en": "Total storage capacity",
+      "indicator_zh": "存储总量",
+      "unit": "EB",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2023,
+        "value": 1200
+      },
+      "target": {
+        "year": 2025,
+        "value": 1800
+      },
+      "source": {
+        "title": "算力基础设施高质量发展行动计划 (cac.gov.cn, 2023-10-10)",
+        "url": "https://www.cac.gov.cn/2023-10/10/c_1698598959340810.htm"
+      },
+      "placeholder": false,
+      "target_text": "1200 (2023) → 超过1800 (2025)",
+      "note": "存力总规模 (capacity): 800 EB (2021), >1,000 EB (2022), ≈1.2 ZB (2023), >1,680 EB (June 2025, MIIT). No official end-2025 total was found — 数字中国发展报告（2025年）gives 数据存储总量 2.53 ZB, a different metric (data stored, not capacity). Mid-2026 figures (2,021 EB) are CAICT's and are not used."
+    },
+    {
+      "id": "cpi23_adv_storage_share",
+      "plan_id": "cpi23",
+      "category": "infrastructure",
+      "indicator_en": "Advanced storage share of total capacity",
+      "indicator_zh": "先进存储容量占比",
+      "unit": "%",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2023,
+        "value": 25
+      },
+      "target": {
+        "year": 2025,
+        "value": 30
+      },
+      "source": {
+        "title": "算力基础设施高质量发展行动计划 (cac.gov.cn, 2023-10-10)",
+        "url": "https://www.cac.gov.cn/2023-10/10/c_1698598959340810.htm"
+      },
+      "placeholder": false,
+      "target_text": "25 (2023) → 30以上 (2025)",
+      "note": "No official 先进存力占比 has been published; the 32% (mid-2026) in circulation is CAICT's. The only official advanced-storage figure is the absolute 540 EB (2025) in the ICT 15th FYP table (see ict15_adv_storage)."
+    },
+    {
+      "id": "edwc23_new_compute_share",
+      "plan_id": "edwc23",
+      "category": "infrastructure",
+      "indicator_en": "Hub-node regions' share of national NEW computing power",
+      "indicator_zh": "国家枢纽节点地区各类新增算力占全国新增算力比重",
+      "unit": "%",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "increase",
+      "target": {
+        "year": 2025,
+        "value": 60
+      },
+      "source": {
+        "title": "关于深入实施“东数西算”工程 加快构建全国一体化算力网的实施意见 (ndrc.gov.cn, 2023-12-29)",
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202312/t20231229_1363000.html"
+      },
+      "placeholder": false,
+      "target_text": "60%以上 (by end-2025)",
+      "note": "Measured on NEW capacity each year, not the stock. 数字中国发展报告: 2024 '枢纽节点地区各类新增算力占全国新增算力的60%以上'; 2025 '80%以上' (p.9). Floors recorded as ≥60 and ≥80."
+    },
+    {
+      "id": "edwc23_green_power",
+      "plan_id": "edwc23",
+      "category": "energy",
+      "indicator_en": "Green-power share in newly built hub-node data centers",
+      "indicator_zh": "国家枢纽节点新建数据中心绿电占比",
+      "unit": "%",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "increase",
+      "target": {
+        "year": 2025,
+        "value": 80
+      },
+      "source": {
+        "title": "关于深入实施“东数西算”工程 加快构建全国一体化算力网的实施意见 (ndrc.gov.cn, 2023-12-29)",
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202312/t20231229_1363000.html"
+      },
+      "placeholder": false,
+      "target_text": "超过80% (by end-2025)",
+      "note": "No national outcome figure published: NEA/NDA restated the 80% target in March 2025; 数字中国发展报告（2024年）says only '甘肃庆阳等绿电使用率超过80%'. Cluster-level press claims (e.g. 和林格尔 >85%) are secondary and not used."
+    },
+    {
+      "id": "gdc24_utilization",
+      "plan_id": "gdc24",
+      "category": "infrastructure",
+      "indicator_en": "National data-center rack utilization (上架率)",
+      "indicator_zh": "全国数据中心整体上架率",
+      "unit": "%",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "increase",
+      "target": {
+        "year": 2025,
+        "value": 60
+      },
+      "source": {
+        "title": "数据中心绿色低碳发展专项行动计划 (gov.cn PDF, 2024-07-24)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/202407/P020240724272072479001.pdf"
+      },
+      "placeholder": false,
+      "target_text": "整体上架率不低于60% (by end-2025)",
+      "note": "National 上架率 was 71.4% at end-June 2026 (MIIT, 2026-07-20) — after the 2025 deadline, so the target reads unresolved. No end-2025 national figure located."
+    },
+    {
+      "id": "gdc24_avg_pue",
+      "plan_id": "gdc24",
+      "category": "energy",
+      "indicator_en": "National average data-center PUE",
+      "indicator_zh": "全国数据中心平均电能利用效率",
+      "unit": "PUE",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "decrease",
+      "target": {
+        "year": 2025,
+        "value": 1.5
+      },
+      "source": {
+        "title": "数据中心绿色低碳发展专项行动计划 (gov.cn PDF, 2024-07-24)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/202407/P020240724272072479001.pdf"
+      },
+      "placeholder": false,
+      "target_text": "平均电能利用效率降至1.5以下 (by end-2025)",
+      "note": "数字中国发展报告: all 算力中心 average 1.48 (2023), 1.46 (2024); MIIT: 1.42 at end-June 2025. DEFINITION CHANGE: the 2025 report switched to 超大型算力设施 only (1.34 at end-2025), which is not the same population and is not scored here."
+    },
+    {
+      "id": "gdc24_hub_pue",
+      "plan_id": "gdc24",
+      "category": "energy",
+      "indicator_en": "PUE of hub-node data-center projects",
+      "indicator_zh": "国家枢纽节点数据中心项目电能利用效率",
+      "unit": "PUE",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "decrease",
+      "target": {
+        "year": 2025,
+        "value": 1.2
+      },
+      "source": {
+        "title": "数据中心绿色低碳发展专项行动计划 (gov.cn PDF, 2024-07-24)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/202407/P020240724272072479001.pdf"
+      },
+      "placeholder": false,
+      "target_text": "不得高于1.2",
+      "note": "Applies to new hub-node projects. NDA (2025-03-18): hub clusters average 'PUE 1.3左右' across ALL existing facilities, so it does not score this target; no new-build average has been published."
+    },
+    {
+      "id": "gdc24_new_large_pue",
+      "plan_id": "gdc24",
+      "category": "energy",
+      "indicator_en": "PUE of new or expanded large and hyperscale data centers",
+      "indicator_zh": "新建及改扩建大型和超大型数据中心电能利用效率",
+      "unit": "PUE",
+      "binding": "unspecified",
+      "kind": "threshold",
+      "direction": "decrease",
+      "target": {
+        "year": 2025,
+        "value": 1.25
+      },
+      "source": {
+        "title": "数据中心绿色低碳发展专项行动计划 (gov.cn PDF, 2024-07-24)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/202407/P020240724272072479001.pdf"
+      },
+      "placeholder": false,
+      "target_text": "降至1.25以内",
+      "note": "2025 value is the '新建大型超大型算力设施运行电能利用效率（PUE）1.25' printed in the ICT 15th FYP indicator table (2025 column), the closest official statement of the new-build average."
+    },
+    {
+      "id": "ict15_ai_compute",
+      "plan_id": "ict15",
+      "category": "infrastructure",
+      "indicator_en": "Intelligent computing capacity (FP16)",
+      "indicator_zh": "智能算力规模",
+      "unit": "EFLOPS",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 1590
+      },
+      "target": {
+        "year": 2030,
+        "value": 9800
+      },
+      "source": {
+        "title": "信息通信行业发展“十五五”规划, 专栏1 主要指标 (MIIT PDF, p.2)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf"
+      },
+      "placeholder": false,
+      "target_text": "1590 → 9800",
+      "note": "FP16 (数字中国发展报告（2025年）: '智能算力规模达到159万PFLOPS（FP16，下同）'). 2025 baseline 1,590 EFLOPS; MIIT reported 2,185 EFLOPS at end-June 2026."
+    },
+    {
+      "id": "ict15_adv_storage",
+      "plan_id": "ict15",
+      "category": "infrastructure",
+      "indicator_en": "Advanced storage capacity",
+      "indicator_zh": "先进存力规模",
+      "unit": "EB",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "target": {
+        "year": 2030,
+        "value": 1700
+      },
+      "source": {
+        "title": "信息通信行业发展“十五五”规划, 专栏1 主要指标 (MIIT PDF, p.2)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf"
+      },
+      "placeholder": false,
+      "target_text": "540 → 1700 〔1160〕",
+      "note": "Plan table: '先进存力规模（EB） 2025年 540 2030年 1700 〔1160〕'. Modelled as a level target from the printed 2025 base. No official share of advanced storage is published.",
+      "baseline": {
+        "year": 2025,
+        "value": 540
+      }
+    },
+    {
+      "id": "ict15_gigabit_users",
+      "plan_id": "ict15",
+      "category": "infrastructure",
+      "indicator_en": "Gigabit-and-above broadband subscribers",
+      "indicator_zh": "千兆以上宽带用户数",
+      "unit": "million subscribers",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 238
+      },
+      "target": {
+        "year": 2030,
+        "value": 320
+      },
+      "source": {
+        "title": "信息通信行业发展“十五五”规划, 专栏1 主要指标 (MIIT PDF, p.2)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf"
+      },
+      "placeholder": false,
+      "target_text": "2.4亿户 → 3.2亿户",
+      "note": "Plan table prints 2.4亿户 (2025) → 3.2亿户 (2030); the 2025 通信业统计公报 gives 2.38亿户 and the NBS communiqué 23,839万户."
+    },
+    {
+      "id": "ict15_5g_penetration",
+      "plan_id": "ict15",
+      "category": "digital",
+      "indicator_en": "5G (including 5G-A) user penetration",
+      "indicator_zh": "5G（含5G-A）用户普及率",
+      "unit": "%",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "target": {
+        "year": 2030,
+        "value": 95
+      },
+      "source": {
+        "title": "信息通信行业发展“十五五”规划, 专栏1 主要指标 (MIIT PDF, p.2)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf"
+      },
+      "placeholder": false,
+      "target_text": "85.7 → 95 〔9.3〕",
+      "note": "MIIT's 普及率 is 5G users per 100 population (85.7 at end-2025), not the share of mobile subscribers (65.9% in the 2025 通信业统计公报). Plan table prints 85.7 → 95 〔9.3〕.",
+      "baseline": {
+        "year": 2025,
+        "value": 85.7
+      }
+    },
+    {
+      "id": "ict15_ict_revenue",
+      "plan_id": "ict15",
+      "category": "economy",
+      "indicator_en": "ICT industry revenue",
+      "indicator_zh": "信息通信行业收入",
+      "unit": "trillion yuan",
+      "binding": "unspecified",
+      "kind": "level",
+      "direction": "increase",
+      "baseline": {
+        "year": 2025,
+        "value": 3.8
+      },
+      "target": {
+        "year": 2030,
+        "value": 4.1
+      },
+      "source": {
+        "title": "信息通信行业发展“十五五”规划, 专栏1 主要指标 (MIIT PDF, p.2)",
+        "url": "https://www.miit.gov.cn/cms_files/filemanager/1226211233/attach/20269/3e520e61597143b69b6098beb479dc96.pdf"
+      },
+      "placeholder": false,
+      "target_text": "3.8 → 4.1",
+      "note": "Broad definition: 基础电信企业及规模以上互联网企业 revenue (footnote ③). The narrower 电信业务收入 (1.75万亿 in 2025) is a component, not this indicator."
+    }
+  ]
+}

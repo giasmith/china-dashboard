@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "plan_targets.schema.json",
+  "title": "Five-year plan targets",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plans",
+    "targets"
+  ],
+  "properties": {
+    "plans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_en",
+          "period"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "name_en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name_zh": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "period": {
+            "$ref": "#/$defs/period"
+          },
+          "source": {
+            "$ref": "#/$defs/source"
+          },
+          "issuer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "doc_number": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "note": {
+            "description": "Coverage and reading notes for the plan as a whole (e.g. which rows of the indicator table are omitted and why).",
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 900
+          }
+        }
+      }
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/target"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]*$",
+      "maxLength": 80
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1949,
+      "maximum": 2100
+    },
+    "period": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/year"
+        },
+        "end": {
+          "$ref": "#/$defs/year"
+        }
+      }
+    },
+    "yearValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "year",
+        "value"
+      ],
+      "properties": {
+        "year": {
+          "$ref": "#/$defs/year"
+        },
+        "value": {
+          "type": "number"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "url"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^https?://"
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "plan_id",
+        "category",
+        "indicator_en",
+        "unit",
+        "binding",
+        "kind",
+        "direction",
+        "target",
+        "source",
+        "placeholder"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "plan_id": {
+          "$ref": "#/$defs/id"
+        },
+        "category": {
+          "enum": [
+            "economy",
+            "innovation",
+            "digital",
+            "infrastructure",
+            "energy",
+            "environment",
+            "society",
+            "agriculture"
+          ]
+        },
+        "indicator_en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "indicator_zh": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding": {
+          "description": "binding = 约束性 (mandatory); anticipated = 预期性 (expected); unspecified = the document does not classify its targets (typical of ministerial action plans).",
+          "enum": [
+            "binding",
+            "anticipated",
+            "unspecified"
+          ]
+        },
+        "kind": {
+          "description": "level = reach a value relative to a baseline; threshold = stay at/above (or at/below) a value; rate = average annual rate over the plan period.",
+          "enum": [
+            "level",
+            "threshold",
+            "rate"
+          ]
+        },
+        "direction": {
+          "enum": [
+            "increase",
+            "decrease"
+          ]
+        },
+        "baseline": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/yearValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "period": {
+          "$ref": "#/$defs/period"
+        },
+        "target": {
+          "$ref": "#/$defs/yearValue"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "placeholder": {
+          "type": "boolean"
+        },
+        "target_text": {
+          "description": "The target exactly as printed in the plan (e.g. '〔13.5〕', '>7', '不高于1.2'), for traceability.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 200
+        },
+        "note": {
+          "description": "Modelling caveats shown in the UI: definition changes, proxies, cumulative vs annual, partial coverage.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 700
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "level"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "baseline"
+            ],
+            "properties": {
+              "baseline": {
+                "$ref": "#/$defs/yearValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "rate"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "period"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

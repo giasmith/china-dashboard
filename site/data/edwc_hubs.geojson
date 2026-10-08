@@ -1,0 +1,473 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.1,
+          40.72
+        ]
+      },
+      "properties": {
+        "id": "zhangjiakou",
+        "name_en": "Zhangjiakou cluster",
+        "name_zh": "张家口数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Beijing-Tianjin-Hebei",
+        "hub_zh": "京津冀枢纽",
+        "region": "east",
+        "province": "Hebei",
+        "status": "operating",
+        "designated": "2022-02",
+        "approval_doc": "发改高技〔2022〕212号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202202/t20220216_1315621.html",
+        "start_zone_zh": "张家口市怀来县、张北县、宣化区",
+        "start_zone_en": "Huailai County, Zhangbei County and Xuanhua District, Zhangjiakou",
+        "racks_k": 810,
+        "racks_as_of": "2026-04",
+        "compute_eflops": 30.1,
+        "compute_as_of": "2025-06",
+        "compute_note": "3.01万P (FP32 as reported); year-average PUE about 1.21.",
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": {
+          "title": "河北张家口：算力和电力协同发展 (新华社, 2026-04-09; 张家口市数据和政务服务局局长刘永刚: '已建成数据中心49个、投运标准机架81万架'); compute (3.01万P, 2025-06) from 北京日报 via kw.beijing.gov.cn",
+          "url": "https://www.news.cn/local/20260409/cc83e167d55f4b199f3254decd54d504/c.html",
+          "confidence": "medium"
+        },
+        "location_precision": "county",
+        "coord_reference": "Mean of the three start-zone county/district seats (en.wikipedia). Alibaba Zhangbei (114.70–114.86 E, 41.19 N) and Tencent Huailai (115.56 E, 40.49 N) bracket it.",
+        "note": "Rack figure is CITY-wide (张家口市) and counts racks in service (投运); it jumped from 46万 (June 2025) to 81万 (April 2026) and may reflect a different counting basis. 49 data centers built (April 2026). Approval target: PUE ≤1.25, rack utilization ≥65%.",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.9,
+          31.04
+        ]
+      },
+      "properties": {
+        "id": "csj_demo",
+        "name_en": "Yangtze River Delta demonstration-zone cluster",
+        "name_zh": "长三角生态绿色一体化发展示范区数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Yangtze River Delta",
+        "hub_zh": "长三角枢纽",
+        "region": "east",
+        "province": "Shanghai / Jiangsu / Zhejiang",
+        "status": "operating",
+        "designated": "2022-02",
+        "approval_doc": "发改高技〔2022〕211号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202202/t20220216_1315623.html",
+        "start_zone_zh": "上海市青浦区、江苏省苏州市吴江区、浙江省嘉兴市嘉善县",
+        "start_zone_en": "Qingpu District (Shanghai), Wujiang District (Suzhou) and Jiashan County (Jiaxing)",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": null,
+        "compute_as_of": null,
+        "compute_note": null,
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": {
+          "title": "长三角生态绿色一体化发展示范区数据中心集群建设取得新进展 (上海市青浦区人民政府, 2025-09-17)",
+          "url": "https://www.shqp.gov.cn/shqp/qpzdjcbs/xxdt/20250917/1328096.html",
+          "confidence": "high"
+        },
+        "location_precision": "district",
+        "coord_reference": "Mean of the Qingpu, Wujiang and Jiashan seats (en.wikipedia). Alibaba's YRD intelligent-computing base sits at 121.00 E, 30.87 N.",
+        "note": "Only project-level official figures (青浦区政府, 2025-09): 吴江算力调度中心1号 in service with ≈506 PFLOPS of 智算 (5,000 PFLOPS planned, >1万 high-power racks planned); 中国移动5G生态谷 4,768 racks accepted; 中国电信嘉兴算力中心 ≈1.56万 racks; 青浦云湖 ≈4,000 cabinets. No cluster-level total.",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.22,
+          31.33
+        ]
+      },
+      "properties": {
+        "id": "wuhu",
+        "name_en": "Wuhu cluster",
+        "name_zh": "芜湖数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Yangtze River Delta",
+        "hub_zh": "长三角枢纽",
+        "region": "east",
+        "province": "Anhui",
+        "status": "operating",
+        "designated": "2022-02",
+        "approval_doc": "发改高技〔2022〕211号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202202/t20220216_1315623.html",
+        "start_zone_zh": "芜湖市鸠江区、弋江区、无为市",
+        "start_zone_en": "Jiujiang District, Yijiang District and Wuwei City, Wuhu",
+        "racks_k": 120,
+        "racks_as_of": "2025-10",
+        "compute_eflops": 26,
+        "compute_as_of": "2025-10",
+        "compute_note": "智算 (AI) capacity only: 2.6万P = 26 EFLOPS, precision not stated (智算 figures are normally FP16). Racks are 建成 (built), not in use.",
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": {
+          "title": "从无到有 算力“芜”限 (芜湖市人民政府, 2025-10-31)",
+          "url": "https://www.wuhu.gov.cn/xwzx/zwyw/40341013.html",
+          "confidence": "high"
+        },
+        "location_precision": "district",
+        "coord_reference": "Between the Wuhu urban seat (118.43 E, 31.35 N) and Wuwei (117.90 E, 31.30 N); Huawei Wuhu-Jiangbei lies at 118.29 E, 31.35 N.",
+        "note": "15 data-center projects signed, 6 投运 (Oct 2025); designed capacity 64万 racks. End-2025 targets 18万 racks and >3.5万P; 2027 target 6万P.",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.6,
+          24.81
+        ]
+      },
+      "properties": {
+        "id": "shaoguan",
+        "name_en": "Shaoguan cluster",
+        "name_zh": "韶关数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Guangdong-Hong Kong-Macao Greater Bay Area",
+        "hub_zh": "粤港澳大湾区枢纽",
+        "region": "east",
+        "province": "Guangdong",
+        "status": "operating",
+        "designated": "2022-02",
+        "approval_doc": "发改高技〔2022〕66号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202202/t20220216_1315627.html",
+        "start_zone_zh": "韶关高新区",
+        "start_zone_en": "Shaoguan High-tech Industrial Development Zone",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": null,
+        "compute_as_of": null,
+        "compute_note": null,
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": {
+          "title": "迈入智能算力时代——记者探秘韶关数据中心集群落地后首个投入运营的智算中心 (韶关市人民政府门户网站, 2024-03-16)",
+          "url": "https://www.sg.gov.cn/zsyz/tzdt/content/post_2611472.html",
+          "confidence": "high"
+        },
+        "location_precision": "city",
+        "coord_reference": "Shaoguan municipal seat (en.wikipedia); the high-tech zone lies in the Wujiang/Zhenjiang urban districts.",
+        "note": "The municipal portal confirms the cluster's first 智算中心 (华南数谷) was operating by March 2024, so the status is 'operating' with a large build-out still under way. Capacity figures exist only in trade/press reports (e.g. 承载能力 17万标准机架, 2026-06; 22 projects / 621亿元 / 54.6万 planned racks, 2026-02) and are not used. 2025 targets in the approval letter: PUE 1.25, utilization 80%.",
+        "placeholder": false,
+        "verified": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.11,
+          30.58
+        ]
+      },
+      "properties": {
+        "id": "tianfu",
+        "name_en": "Tianfu cluster",
+        "name_zh": "天府数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Chengdu-Chongqing",
+        "hub_zh": "成渝枢纽",
+        "region": "east",
+        "province": "Sichuan",
+        "status": "operating",
+        "designated": "2022-02",
+        "approval_doc": "发改高技〔2022〕88号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202202/t20220216_1315625.html",
+        "start_zone_zh": "成都市双流区、郫都区、简阳市",
+        "start_zone_en": "Shuangliu District, Pidu District and Jianyang City, Chengdu",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": null,
+        "compute_as_of": null,
+        "compute_note": null,
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": null,
+        "location_precision": "district",
+        "coord_reference": "Mean of the Shuangliu, Pidu and Jianyang seats (en.wikipedia). GDS Chengdu (Pidu) is at 103.89 E, 30.76 N.",
+        "note": "No cluster-level official figure. Sichuan's 算力基础设施优化布局实施方案（2026—2028年）(Aug 2026) targets 60 EFLOPS of 智算 by end-2026 ('较十四五末翻番'), implying but not printing a 2025 base; province-wide figures quoted in trade press (36万 racks, 25.4 EFLOPS 智算, Dec 2025) are not used.",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.51,
+          29.55
+        ]
+      },
+      "properties": {
+        "id": "chongqing",
+        "name_en": "Chongqing cluster",
+        "name_zh": "重庆数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Chengdu-Chongqing",
+        "hub_zh": "成渝枢纽",
+        "region": "east",
+        "province": "Chongqing",
+        "status": "operating",
+        "designated": "2022-02",
+        "approval_doc": "发改高技〔2022〕88号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202202/t20220216_1315625.html",
+        "start_zone_zh": "重庆市两江新区水土新城、西部（重庆）科学城璧山片区、重庆经济技术开发区",
+        "start_zone_en": "Shuitu New Town (Liangjiang New Area), the Bishan section of Western (Chongqing) Science City, and Chongqing Economic & Technological Development Zone",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": null,
+        "compute_as_of": null,
+        "compute_note": null,
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": {
+          "title": "重庆市建设新型能源算力枢纽实施方案（2025—2027年）（公开征求意见稿） (重庆市大数据应用发展管理局, 2025-09)",
+          "url": "https://dsjj.cq.gov.cn/zwgk_533/zdmsxx/202509/W020250924641832088212.doc",
+          "confidence": "high"
+        },
+        "location_precision": "area",
+        "coord_reference": "Centroid of the three start-zone sites: Shuitu High-tech Park (106.52 E, 29.80 N, GDS/Telstra Chongqing in the owner's inventory), Bishan Range IDC campus (106.36 E, 29.35 N) and Chayuan (about 106.65 E, 29.50 N). The sites are about 40 km apart.",
+        "note": "City-level targets only: the draft 重庆市建设新型能源算力枢纽实施方案（2025—2027年）(dsjj.cq.gov.cn, Sept 2025) sets 调度智算 3万P (2025) → 11万P (2027), PUE 1.50 → 1.35, 绿色算力占比 50% → 70%. No cluster-level racks or EFLOPS published.",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.82,
+          40.54
+        ]
+      },
+      "properties": {
+        "id": "horinger",
+        "name_en": "Horinger cluster",
+        "name_zh": "和林格尔数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Inner Mongolia",
+        "hub_zh": "内蒙古枢纽",
+        "region": "west",
+        "province": "Inner Mongolia",
+        "status": "operating",
+        "designated": "2021-12",
+        "approval_doc": "发改高技〔2021〕1843号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202112/t20211229_1310524.html",
+        "start_zone_zh": "和林格尔新区和集宁大数据产业园",
+        "start_zone_en": "Horinger New Area (Hohhot) and Jining Big Data Industrial Park (Ulanqab) — two sites",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": null,
+        "compute_as_of": null,
+        "compute_note": null,
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": null,
+        "location_precision": "area",
+        "coord_reference": "Centroid of the operator data centers in the owner's site inventory (dhi/data/western_datacenters.geojson): China Mobile Hohhot (111.82 E, 40.54 N) and China Telecom Inner Mongolia (111.83 E, 40.54 N) inside Horinger New Area.",
+        "note": "The official start-up zone has two sites; the Jining site is drawn separately. No official cluster-level rack or EFLOPS figure located (provincial portals could not be read on 2026-10-04); province-wide 内蒙古算力规模 33.8万P was stated by a provincial official in Aug 2026 (press report, not used). Approval target: PUE <1.2. Unofficial figures seen in trade press, not used: 22万 racks (2023-12); 91 EFLOPS (2025-06).",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.24,
+          40.98
+        ]
+      },
+      "properties": {
+        "id": "horinger_jining",
+        "name_en": "Horinger cluster",
+        "name_zh": "和林格尔数据中心集群（集宁大数据产业园）",
+        "part_of": "horinger",
+        "site_label": "Jining Big Data Industrial Park site (Ulanqab)",
+        "hub": "Inner Mongolia",
+        "hub_zh": "内蒙古枢纽",
+        "region": "west",
+        "province": "Inner Mongolia",
+        "status": "operating",
+        "designated": "2021-12",
+        "approval_doc": "发改高技〔2021〕1843号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202112/t20211229_1310524.html",
+        "start_zone_zh": "集宁大数据产业园（乌兰察布市集宁区）",
+        "start_zone_en": "Jining Big Data Industrial Park, Jining District, Ulanqab",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": null,
+        "compute_as_of": null,
+        "compute_note": null,
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": null,
+        "location_precision": "area",
+        "coord_reference": "Centroid of the operator data centers in the owner's site inventory (dhi/data/western_datacenters.geojson): Alibaba, Huawei, Apple and UCloud Ulanqab campuses cluster around 113.24 E, 40.98 N.",
+        "note": "Second site of the Horinger cluster per 发改高技〔2021〕1843号. Metrics are carried on the primary feature to avoid double counting.",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.5,
+          26.37
+        ]
+      },
+      "properties": {
+        "id": "guian",
+        "name_en": "Gui'an cluster",
+        "name_zh": "贵安数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Guizhou",
+        "hub_zh": "贵州枢纽",
+        "region": "west",
+        "province": "Guizhou",
+        "status": "operating",
+        "designated": "2021-12",
+        "approval_doc": "发改高技〔2021〕1842号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202112/t20211229_1310520.html",
+        "start_zone_zh": "贵安新区贵安电子信息产业园",
+        "start_zone_en": "Gui'an Electronic Information Industrial Park, Gui'an New Area",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": 174,
+        "compute_as_of": "2026-07",
+        "compute_note": "贵阳贵安 scope (city + new area), 智算占比超98%, FP16 per NDRC 2026-08-31 (17.6万PFLOPS（FP16）); floor ('已突破174EFLOPS').",
+        "pue": 1.19,
+        "pue_as_of": "2026-07",
+        "metrics_source": {
+          "title": "文字实录 | 2026中国国际大数据产业博览会新闻发布会 (国家数据局, 2026-07-28; 贵阳市市长王宏) — '贵阳贵安算力规模已突破174EFLOPS、智算占比超98%、平均PUE低至1.19'",
+          "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0728/20260728171544950646970_pc.html",
+          "confidence": "high"
+        },
+        "location_precision": "area",
+        "coord_reference": "Centroid of the operator data centers in the owner's site inventory (dhi/data/western_datacenters.geojson): Apple, China Mobile/Telecom/Unicom, Huawei and Tencent facilities between 106.47–106.55 E and 26.35–26.39 N.",
+        "note": "Figures are for 贵阳贵安 (which contains the cluster start-up zone), not the start zone alone. Goals stated at the same briefing: 190 EFLOPS by end-2026, 300 EFLOPS by 2030. NDRC (2026-08-31): 17.6万PFLOPS（FP16）as of end-July 2026, PUE最低1.12. Latency to Chengdu/Chongqing about 6 ms. Approval target: PUE <1.2.",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.7,
+          35.73
+        ]
+      },
+      "properties": {
+        "id": "qingyang",
+        "name_en": "Qingyang cluster",
+        "name_zh": "庆阳数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Gansu",
+        "hub_zh": "甘肃枢纽",
+        "region": "west",
+        "province": "Gansu",
+        "status": "operating",
+        "designated": "2021-12",
+        "approval_doc": "发改高技〔2021〕1844号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202112/t20211229_1310522.html",
+        "start_zone_zh": "庆阳西峰数据信息产业聚集区",
+        "start_zone_en": "Xifeng Data and Information Industry Agglomeration Zone, Qingyang",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": null,
+        "compute_as_of": null,
+        "compute_note": null,
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": {
+          "title": "数字中国发展报告（2024年） (国家数据局, p.12) — green-power use >80%",
+          "url": "https://www.nda.gov.cn/sjj/ywpd/sjzg/0530/ff808081-96b465bf-0197-200a135e-0536.pdf",
+          "confidence": "high"
+        },
+        "location_precision": "area",
+        "coord_reference": "Centroid of the operator data centers in the owner's site inventory (dhi/data/western_datacenters.geojson): Chindata Qingyang campus (107.70 E, 35.73 N), 7 km east of the Xifeng district seat.",
+        "note": "Only official cluster-specific metric: 绿电使用率超过80% (数字中国发展报告（2024年）, p.12: '甘肃庆阳等绿电使用率超过80%'). Approval target: PUE <1.2. Unofficial figures seen in trade press, not used: 1.5万 racks (2023-12); 114 EFLOPS (2025-12).",
+        "placeholder": false,
+        "verified": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.34,
+          37.63
+        ]
+      },
+      "properties": {
+        "id": "zhongwei",
+        "name_en": "Zhongwei cluster",
+        "name_zh": "中卫数据中心集群",
+        "part_of": null,
+        "site_label": null,
+        "hub": "Ningxia",
+        "hub_zh": "宁夏枢纽",
+        "region": "west",
+        "province": "Ningxia",
+        "status": "operating",
+        "designated": "2021-12",
+        "approval_doc": "发改高技〔2021〕1841号",
+        "approval_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202112/t20211229_1310526.html",
+        "start_zone_zh": "中卫工业园西部云基地",
+        "start_zone_en": "Western Cloud Base, Zhongwei Industrial Park",
+        "racks_k": null,
+        "racks_as_of": null,
+        "compute_eflops": null,
+        "compute_as_of": null,
+        "compute_note": null,
+        "pue": null,
+        "pue_as_of": null,
+        "metrics_source": null,
+        "location_precision": "area",
+        "coord_reference": "Centroid of the operator data centers in the owner's site inventory (dhi/data/western_datacenters.geojson): China Mobile, China Telecom and China Unicom Ningxia data centers on Fengyun Road (105.34 E, 37.63 N) inside the Western Cloud Base; AWS sites lie 10–25 km south-west.",
+        "note": "No official cluster-level figure located (宁夏 portals carried no data-center statistics on 2026-10-04). Latency to Beijing 8–10 ms, Shanghai 15 ms, Guangdong 20 ms (2024-03). Approval target: PUE <1.2. Unofficial figures seen in trade press, not used: 130 EFLOPS (2025-12).",
+        "placeholder": false,
+        "verified": true
+      }
+    }
+  ]
+}

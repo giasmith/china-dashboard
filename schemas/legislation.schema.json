@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "legislation.schema.json",
+  "title": "Legislation and policy documents",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "documents"
+  ],
+  "properties": {
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title_en",
+          "doc_type",
+          "issuer",
+          "issuer_level",
+          "date_adopted",
+          "date_precision",
+          "status",
+          "topics",
+          "related_plan_ids",
+          "source",
+          "verified",
+          "placeholder"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_]*$",
+            "maxLength": 80
+          },
+          "title_en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title_zh": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "doc_type": {
+            "enum": [
+              "law",
+              "administrative_regulation",
+              "departmental_rule",
+              "plan",
+              "policy_notice",
+              "judicial_interpretation",
+              "other"
+            ]
+          },
+          "issuer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "issuer_level": {
+            "enum": [
+              "national",
+              "ministerial",
+              "provincial",
+              "local"
+            ]
+          },
+          "date_adopted": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "date_effective": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "date_precision": {
+            "description": "Precision of date_adopted. When month/year, the missing parts are filled with 01.",
+            "enum": [
+              "day",
+              "month",
+              "year"
+            ]
+          },
+          "status": {
+            "description": "in_force; expired = plan/action period ended without formal repeal; superseded = replaced by a named document; repealed; draft.",
+            "enum": [
+              "in_force",
+              "expired",
+              "superseded",
+              "repealed",
+              "draft"
+            ]
+          },
+          "superseded_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]*$"
+            },
+            "uniqueItems": true
+          },
+          "related_plan_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_]*$"
+            },
+            "uniqueItems": true
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "url",
+              "language"
+            ],
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^https?://"
+              },
+              "language": {
+                "enum": [
+                  "zh",
+                  "en"
+                ]
+              }
+            }
+          },
+          "verified": {
+            "description": "True only once the record has been checked against the primary source.",
+            "type": "boolean"
+          },
+          "placeholder": {
+            "type": "boolean"
+          },
+          "doc_number": {
+            "description": "发文字号 / order number, when the document has one.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 200
+          },
+          "date_published": {
+            "description": "Public release date when it differs from date_adopted.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 900
+          },
+          "summary_en": {
+            "description": "One or two sentences on what the document does and which numeric targets it sets.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 900
+          }
+        }
+      }
+    }
+  }
+}
