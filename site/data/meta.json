@@ -1,7 +1,7 @@
 {
   "schema_version": "0.3.0",
   "data_status": "partial",
-  "as_of": "2026-10-04",
-  "generated_at": "2026-10-04T19:30:00Z",
-  "notes": "All values come from official primary sources (government documents, statistical communiqués and bulletins, ministry briefings), or from Xinhua/People's Daily reproductions of them (tagged medium). Figures published as floors (超过/以上) are shown with ≥. Secondary estimates (CAICT, trade press) appear only in notes. Cluster metrics are the latest official figures and mix scopes (city, hub, AI-only); coordinates are start-up-zone centroids."
+  "as_of": "2026-10-12",
+  "generated_at": "2026-10-12T19:00:00Z",
+  "notes": "Plan targets, actuals and legislation come only from official primary sources (government documents, statistical communiqués, ministry briefings) or Xinhua/People's Daily reproductions (tagged medium); floors (超过/以上) are shown with ≥. Map layers: NBS yearbook tables (generation, consumption, water) are Tier A; the data-center inventory, GEM plant units and the May 2025 tariff compilation are secondary (Tier C) and shown at province level only."
 }

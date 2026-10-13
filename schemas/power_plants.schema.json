@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/china-dashboard/power_plants.schema.json",
+  "title": "Power-plant units projected to the map view box",
+  "type": "object",
+  "required": ["generated", "fields", "source", "plants"],
+  "additionalProperties": false,
+  "properties": {
+    "generated": { "type": "string", "format": "date" },
+    "fields": { "const": ["tech", "mw", "x", "y", "province"] },
+    "source": { "type": "object" },
+    "plants": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 5,
+        "maxItems": 5,
+        "prefixItems": [
+          { "enum": ["Coal", "Hydro", "Wind", "Solar", "Nuclear", "Bioenergy"] },
+          { "type": "number", "minimum": 0 },
+          { "type": "number" },
+          { "type": "number" },
+          { "type": ["string", "null"] }
+        ]
+      }
+    }
+  }
+}

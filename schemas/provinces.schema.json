@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/china-dashboard/provinces.schema.json",
+  "title": "Province outlines and indicators",
+  "type": "object",
+  "required": ["generated", "viewBox", "projection", "hubs", "sources", "provinces"],
+  "additionalProperties": false,
+  "properties": {
+    "generated": { "type": "string", "format": "date" },
+    "viewBox": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 },
+    "projection": { "type": "object" },
+    "hubs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name_en", "name_zh", "cluster"],
+        "properties": { "name_en": { "type": "string" }, "name_zh": { "type": "string" }, "cluster": { "type": "string" } }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["title", "publisher", "tier"],
+        "properties": {
+          "title": { "type": "string" },
+          "publisher": { "type": "string" },
+          "url": { "type": ["string", "null"] },
+          "unit": { "type": "string" },
+          "tier": { "enum": ["A", "B", "C"] },
+          "retrieved": { "type": "string", "format": "date" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "provinces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "nameZh", "region", "hub", "path", "cx", "cy", "indicators"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z_]+$" },
+          "name": { "type": "string", "minLength": 1 },
+          "nameZh": { "type": "string", "minLength": 1 },
+          "region": { "enum": ["North", "Northeast", "East", "Central", "South", "Southwest", "Northwest"] },
+          "hub": { "type": ["string", "null"] },
+          "path": { "type": "string", "pattern": "^M" },
+          "cx": { "type": "number" },
+          "cy": { "type": "number" },
+          "indicators": {
+            "type": "object",
+            "required": ["installed_mw", "installed_mw_total"],
+            "properties": {
+              "generation_2024": { "type": "number", "minimum": 0 },
+              "hydro_generation_2024": { "type": ["number", "null"], "minimum": 0 },
+              "consumption_2024": { "type": "number", "minimum": 0 },
+              "consumption_2020": { "type": "number", "minimum": 0 },
+              "generation_balance_2024": { "type": "number" },
+              "water_total_2024": { "type": "number", "minimum": 0 },
+              "water_surface_2024": { "type": "number", "minimum": 0 },
+              "water_ground_2024": { "type": "number", "minimum": 0 },
+              "water_per_capita_2024": { "type": "number", "minimum": 0 },
+              "water_use_total_2024": { "type": "number", "minimum": 0 },
+              "water_use_industrial_2024": { "type": "number", "minimum": 0 },
+              "water_use_per_capita_2024": { "type": "number", "minimum": 0 },
+              "water_stress_ratio_2024": { "type": "number", "minimum": 0 },
+              "tariff_single_1_10kv": { "type": "number", "exclusiveMinimum": 0, "maximum": 2 },
+              "tariff_two_part_1_10kv": { "type": ["number", "null"], "exclusiveMinimum": 0, "maximum": 2 },
+              "tariff_note": { "type": "string" },
+              "installed_mw": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } },
+              "installed_mw_total": { "type": "number", "minimum": 0 }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  }
+}

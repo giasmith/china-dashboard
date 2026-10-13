@@ -8,7 +8,7 @@
 # What it does, in order (stops at the first failure):
 #   1. installs the two GitHub Actions workflows from setup/github-workflows/ into .github/workflows/
 #   2. runs the data validator if Python + jsonschema are available (CI runs it again anyway)
-#   3. makes sure the git-ignored project inventory is NOT staged
+#   3. makes sure no facility coordinates or raw source exports are staged
 #   4. creates the first commit (replacing an empty, never-committed .git if one exists)
 #   5. creates the public repo and pushes - with the GitHub CLI if you have it, otherwise it tells you
 #      exactly what to click and then pushes over HTTPS
@@ -70,9 +70,11 @@ fi
 [[ -n "$(git config user.name || true)" ]] || git config user.name "$USER_NAME"
 
 git add -A
-if git diff --cached --name-only | grep -q "site/data/edwc_projects.json"; then
-  git reset -q site/data/edwc_projects.json
-  die "site/data/edwc_projects.json was about to be committed. It must stay private until its licence is confirmed. Check .gitignore."
+if git diff --cached --name-only | grep -qiE 'datacentermap|edwc_projects|\.xlsx$'; then
+  die "a raw source export (DataCenterMap / spreadsheet) is staged - only the province-level site/data files may be published"
+fi
+if [[ -f site/data/facilities.json ]] && grep -qE '"(lat|lon|latitude|longitude|address|city)"' site/data/facilities.json; then
+  die "site/data/facilities.json contains location fields - rebuild with scripts/build_dashboard_data.py --check"
 fi
 if git diff --cached --name-only | grep -qE '(^|/)\.env($|\.)'; then
   die "a .env file is staged - remove it before publishing"

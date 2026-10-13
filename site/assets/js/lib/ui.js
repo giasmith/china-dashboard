@@ -6,10 +6,9 @@ import { STATUS_META } from './status.js';
 import { formatIsoDate, safeUrl, EM_DASH } from './format.js';
 
 const NAV = [
-  { href: 'index.html', label: 'Overview' },
+  { href: 'index.html', label: 'Map' },
   { href: 'plan.html', label: 'Five-year plans' },
   { href: 'legislation.html', label: 'Legislation' },
-  { href: 'map.html', label: 'EDWC map' },
 ];
 
 const THEMES = ['auto', 'light', 'dark'];

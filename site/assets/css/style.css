@@ -111,6 +111,7 @@ a { color: var(--accent-text); }
 
 /* ---------- header / footer ---------- */
 .wrap { max-width: 1320px; margin: 0 auto; padding: 0 16px; }
+.wrap.wide { max-width: 1560px; }
 .site-header { position: sticky; top: 0; z-index: 30; background: var(--surface); border-bottom: 1px solid var(--border); }
 .site-header .wrap { display: flex; align-items: center; gap: 16px; min-height: 56px; flex-wrap: wrap; padding-top: 6px; padding-bottom: 6px; }
 .brand { font-weight: 700; font-size: 17px; color: var(--ink); text-decoration: none; margin-right: 8px; }
@@ -264,45 +265,9 @@ details.table-view td.src { max-width: 260px; overflow-wrap: anywhere; font-size
 details.table-view summary { cursor: pointer; color: var(--ink-2); font-size: 13px; }
 details.table-view table { margin-top: 8px; font-size: 13px; }
 
-/* ---------- map ---------- */
-.map-wrap { position: relative; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: #eef1f4;
-  /* The basemap tiles are always light, so markers use fixed light-surface tokens in either theme. */
-  --m-designated-fill: #fcfcfb; --m-designated-stroke: #1c5cab;
-  --m-construction-fill: #6da7ec; --m-construction-stroke: #1c5cab;
-  --m-operating-fill: #184f95; --m-operating-stroke: #fcfcfb;
-  color-scheme: light; color: #0b0b0b;
-}
-#map, .map-fallback { height: 520px; width: 100%; }
-@media (max-width: 860px) { #map, .map-fallback { height: 400px; } }
-.map-fallback { display: block; }
-.map-fallback text { font-family: var(--font); font-size: 11px; fill: #52514e; }
-.map-fallback .label-strong { fill: #0b0b0b; font-weight: 600; font-size: 12px; paint-order: stroke; stroke: #fcfcfb; stroke-width: 3px; stroke-linejoin: round; }
-.map-fallback .land { fill: #fcfcfb; stroke: #c3c2b7; }
-.map-fallback .graticule { stroke: #dcdad2; stroke-width: 1; }
-.map-note { position: absolute; right: 8px; top: 8px; z-index: 500; background: rgba(252, 252, 251, 0.94); border: 1px solid rgba(11, 11, 11, 0.12); border-radius: 6px; padding: 4px 8px; font-size: 12px; color: #52514e; max-width: calc(100% - 16px); }
-.marker-key { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--stroke); background: var(--fill); vertical-align: -2px; }
-.marker-key.square { border-radius: 1px; width: 10px; height: 10px; border-width: 1px; }
-/* Curated project sites: small neutral squares under the cluster markers (Leaflet divIcon and SVG fallback). */
-.project-marker { width: 9px; height: 9px; background: #52514e; border: 1px solid #fcfcfb; border-radius: 1px; box-sizing: border-box; }
-.project-square:hover { stroke-width: 2; }
-.project-list { list-style: none; margin: 0; padding: 0; }
-.project-item { padding: 6px 0; border-top: 1px solid var(--border); font-size: 14px; }
-.project-item:first-child { border-top: 0; }
-.leaflet-container { font-family: var(--font); }
-
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 @media (forced-colors: active) { .meter .fill, .statusbar .seg { forced-color-adjust: none; } .badge, .tag { border: 1px solid CanvasText; } }
 @media print { .site-header, .filters, .skip { display: none !important; } .layout, .layout.with-profile { grid-template-columns: 1fr; } }
-
-/* ---------- overview ---------- */
-.grid-2 { align-items: start; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
-.list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-.list li { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
-.list a { color: var(--ink); font-weight: 600; text-decoration: none; }
-.list a:hover { color: var(--accent-text); text-decoration: underline; }
-.card-foot { margin-top: 12px; font-size: 13px; }
-.cluster-counts { display: grid; gap: 8px; }
-.cluster-counts .line { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 
 .field-stack { display: grid; gap: 14px; align-content: start; min-width: 0; grid-template-columns: minmax(0, 1fr); }
 .nowrap { white-space: nowrap; flex-wrap: nowrap; }

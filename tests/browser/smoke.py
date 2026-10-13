@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Browser smoke test (Playwright + Chromium). Loads every page at desktop and phone width in light and dark
 mode and checks:
-  - no uncaught exceptions, no console errors, no failed requests (CDN/tile hosts are tolerated: the map has a
-    built-in fallback when they are unreachable)
+  - no uncaught exceptions, no console errors, no failed requests
   - no page-level horizontal scroll
   - no stray "null" / "undefined" / "NaN" text anywhere in the rendered page
   - key interactions work: search, status toggle, row selection, URL-hash state, invalid year range, empty state
+  - the map dashboard: layer tabs, filters, province selection, CSV export, and that no coordinate ever reaches
+    the browser for a facility
 
 Usage:
     python3 -m http.server 8000 --directory site &
@@ -22,37 +23,9 @@ from pathlib import Path
 
 from playwright.async_api import async_playwright
 
-PAGES = ["index.html", "plan.html", "legislation.html", "map.html"]
-TOLERATED_HOSTS = ("cdnjs.cloudflare.com", "tile.openstreetmap.org")
+PAGES = ["index.html", "plan.html", "legislation.html"]
+TOLERATED_HOSTS: tuple[str, ...] = ()
 BAD_TEXT = re.compile(r"\b(null|undefined|NaN)\b")
-
-LEAFLET_STUB = """
-window.__lf = { markers: 0, squares: 0, setView: [], fitBounds: [], tilesUrl: null, all: [] };
-window.L = {
-  map(el) {
-    const m = {
-      setView(c, z) { window.__lf.setView.push([c, z]); return m; },
-      fitBounds(b, o) { window.__lf.fitBounds.push([b, o]); return m; },
-      invalidateSize() { return m; },
-      remove() {},
-    };
-    return m;
-  },
-  tileLayer(url) { const t = { on() { return t; }, addTo() { window.__lf.tilesUrl = url; return t; } }; return t; },
-  layerGroup() { const g = { layers: [], clearLayers() { g.layers = []; window.__lf.markers = 0; window.__lf.squares = 0; return g; }, addTo() { return g; } }; return g; },
-  divIcon(o) { return { div: true, o }; },
-  marker(ll, o) {
-    const mk = { ll, o, square: true, on(ev, fn) { mk['_' + ev] = fn; return mk; }, bindTooltip() { return mk; },
-      addTo(g) { window.__lf.squares += 1; return mk; } };
-    return mk;
-  },
-  circleMarker(ll, o) {
-    const mk = { ll, o, on(ev, fn) { mk['_' + ev] = fn; return mk; }, bindTooltip() { return mk; },
-      addTo(g) { g.layers.push(mk); window.__lf.markers = g.layers.length; window.__lf.all = g.layers; return mk; } };
-    return mk;
-  },
-};
-"""
 
 failures: list[str] = []
 
@@ -182,60 +155,74 @@ async def interactions(browser, base):
     check(await page.locator("tbody tr").count() >= 1, "legislation: searching Chinese text finds records")
     await page.close()
 
-    # ---- map
-    page, _ = await new_page(ctx, base, "map.html#sel=horinger")
-    check(await page.locator(".profile h2").inner_text() == "Horinger cluster", "map: hash selects a cluster")
-    kpi_text = await page.locator(".kpis").inner_text()
-    check("10 national clusters" in kpi_text and "11 sites" in kpi_text, "map: KPIs count 10 clusters across 11 sites")
-    check("1843" in await page.locator(".profile").inner_text(), "map: the profile shows the NDRC approval letter number")
-    # The project layer is switched off (CONFIG.showProjectLayer = false) until its source licence is confirmed:
-    # nothing about it may appear, and the git-ignored inventory file must not even be requested.
-    prof = await page.locator(".profile").inner_text()
-    check("Announced projects" not in prof, "map: no project list while the project layer is disabled")
-    check("curated projects" not in kpi_text.lower(), "map: no project KPI while the project layer is disabled")
-    check(await page.locator("input[name=layers]").count() == 0, "map: no layer toggle while the project layer is disabled")
-    await page.goto(f"{base}/map.html#layers=projects&sel=horinger")
-    await page.wait_for_timeout(500)
-    check(await page.locator(".project-square").count() == 0, "map: a hand-edited #layers=projects hash cannot switch the layer on")
-    await page.locator("tbody .link-btn").nth(1).click()
+    # ---- map dashboard (index.html)
+    page, problems = await new_page(ctx, base, "index.html#view=cost")
+    check(not problems, f"map: no errors {problems[:2] if problems else ''}")
+    check(await page.locator(".db-tab.active").inner_text() == "Electricity cost", "map: the view is restored from the URL hash")
+    check(await page.locator("#db-provinces path").count() >= 31, "map: every province outline is drawn")
+    total = int((await page.locator("#db-k-count").inner_text()).replace(",", ""))
+    check(total > 400, f"map: KPI counts the inventory ({total})")
+    # Privacy: the facility payload must not carry any coordinate-like field; the DOM must not place facilities
+    # anywhere other than a province anchor (one bubble per province, never per facility).
+    payload = await page.evaluate("fetch('data/facilities.json').then(r => r.json())")
+    keys = set().union(*(f.keys() for f in payload["facilities"]))
+    check(not keys & {"lat", "lon", "latitude", "longitude", "coordinates", "address", "city", "x", "y"}, f"map: facilities.json carries no location fields ({sorted(keys)})")
+    check(await page.locator("#db-bubbles > g").count() <= 34, "map: at most one bubble per province (no per-facility points)")
+
+    await page.click(".db-tab[data-view=status]")
     await page.wait_for_timeout(200)
-    check("sel=" in page.url and "horinger" not in page.url, "map: selecting another cluster updates the hash")
+    check(await page.locator("#db-bubbles .db-slice").count() > 0, "map: the status view draws status wheels")
+    check("view=status" in page.url, "map: switching tabs updates the hash")
+    await page.click("details:has(#db-group-status) button:has-text('Clear')")
+    await page.wait_for_timeout(200)
+    check(await page.locator("#db-k-count").inner_text() == "0", "map: clearing a filter group empties the selection")
+    check(await page.locator("#db-bubbles > g").count() == 0, "map: no bubbles for an empty selection")
+    await page.click("details:has(#db-group-status) button:has-text('Select all')")
+    await page.fill("#db-search", "alibaba")
+    await page.wait_for_timeout(400)
+    n = int((await page.locator("#db-k-count").inner_text()).replace(",", ""))
+    check(0 < n < total, f"map: search narrows the selection ({n})")
+    await page.select_option("#db-province", "nei_mongol")
+    await page.wait_for_timeout(300)
+    m = int((await page.locator("#db-k-count").inner_text()).replace(",", ""))
+    check(0 < m <= n, f"map: province filter narrows further ({m})")
+    await page.click("#db-reset")
+    await page.wait_for_timeout(300)
+    check(await page.locator("#db-k-count").inner_text() == f"{total:,}", "map: reset restores the full inventory")
+
+    await page.locator("#db-provinces path[data-id=guangdong]").dispatch_event("click")
+    await page.wait_for_timeout(300)
+    detail = await page.locator("#db-detail").inner_text()
+    check(detail.startswith("SOUTH CHINA") or "Guangdong" in detail, "map: clicking a province opens its profile")
+    check("facility list" in detail.lower() and "7,355" in detail, "map: the profile lists facilities and the 2024 generation figure")
+    check(not re.search(r"\b\d{2,3}\.\d{4,}\b", detail), "map: the profile shows no coordinate-like numbers")
+    await page.locator("#db-detail .db-facility-list .link-btn").first.click()
+    await page.wait_for_timeout(200)
+    check("Location is published at province level only" in await page.locator("#db-detail").inner_text(), "map: facility profile states the location rule")
+
+    await page.click(".db-tab[data-view=generation]")
+    await page.wait_for_timeout(1500)
+    plants = await page.locator("#db-plants circle").count()
+    check(plants > 10000, f"map: the generation view loads the plant units ({plants})")
+    await page.select_option("#db-gen-tech", "Nuclear")
+    await page.wait_for_timeout(300)
+    check(await page.locator("#db-plants circle").count() < 100, "map: the technology filter narrows the plant layer")
+    await page.click(".db-tab[data-view=water]")
+    await page.wait_for_timeout(200)
+    check(await page.locator("#db-plants circle").count() == 0, "map: leaving the generation view clears the plant layer")
+    check(await page.locator("#db-water-measure").is_visible(), "map: the water view shows its measure control")
+    check(not await page.locator("#db-gen-tech").is_visible(), "map: other sub-controls are hidden")
+
+    async with page.expect_download() as dl:
+        await page.locator("#db-export").click()
+    path = await (await dl.value).path()
+    csv = Path(path).read_bytes()
+    header = csv.split(b"\r\n")[0]
+    check(b"province" in header and b"status" in header, "map: CSV has the expected header")
+    check(b"lat" not in header and b"lon" not in header and b"datacentermap.com" not in csv, "map: CSV carries no coordinates or profile links")
+    check(not problems, f"map: still no errors after interactions {problems[:2] if problems else ''}")
     await page.close()
     await ctx.close()
-
-    # ---- map: Leaflet code path against an API-faithful stub (the real library is a CDN script)
-    lctx = await browser.new_context(viewport={"width": 1360, "height": 900})
-    await lctx.add_init_script(LEAFLET_STUB)
-    # Where the CDN is reachable (e.g. CI) the real library would replace the stub, so keep it out of this context.
-    await lctx.route("**/cdnjs.cloudflare.com/**", lambda route: route.abort())
-    requested: list[str] = []
-    lctx.on("request", lambda r: requested.append(r.url))
-    page, problems = await new_page(lctx, base, "map.html")
-    check(not any("edwc_projects.json" in u for u in requested), "map: the git-ignored project inventory is never requested")
-    lf = await page.evaluate("window.__lf")
-    check(not problems, f"map[leaflet stub]: no errors {problems[:2] if problems else ''}")
-    check(lf["markers"] == 11, f"map[leaflet stub]: one marker per site, 11 for 10 clusters ({lf['markers']})")
-    check(lf["squares"] == 0, "map[leaflet stub]: no project squares while the layer is off")
-    check("{z}" in (lf["tilesUrl"] or ""), "map[leaflet stub]: tile URL template is passed through")
-    latlngs = lf["fitBounds"][0][0] if lf["fitBounds"] else []
-    check(len(latlngs) == 11 and all(18 <= a <= 54 and 73 <= b <= 135 for a, b in latlngs),
-          "map[leaflet stub]: markers are [lat, lon] (not swapped) and fit to bounds")
-    await page.fill("#f-q", "gui")
-    await page.wait_for_timeout(400)
-    lf = await page.evaluate("window.__lf")
-    check(lf["markers"] == 1, f"map[leaflet stub]: filtering to one cluster leaves one marker ({lf['markers']})")
-    check(lf["setView"] and lf["setView"][-1][1] == 7, "map[leaflet stub]: a single result zooms in instead of fitBounds")
-    await page.fill("#f-q", "")
-    await page.wait_for_timeout(400)
-    await page.evaluate("window.__lf.all[0]._click()")
-    await page.wait_for_timeout(200)
-    check("sel=" in page.url, "map[leaflet stub]: clicking a marker selects it (URL hash)")
-    await page.fill("#f-q", "zzzz")
-    await page.wait_for_timeout(400)
-    lf = await page.evaluate("window.__lf")
-    check(lf["markers"] == 0 and await page.locator(".empty").count() == 1, "map[leaflet stub]: no matches clears markers and shows empty state")
-    await page.close()
-    await lctx.close()
 
 
 async def main() -> int:

@@ -1,0 +1,117 @@
+/* Map dashboard (index.html). Builds on the tokens in style.css; map-specific tokens are defined for both themes. */
+
+:root {
+  --map-land: #e6e5dd;        /* province with nothing to show */
+  --map-nodata: #f3f2ee;      /* province outside the source */
+  --map-stroke: #fcfcfb;
+  --map-stroke-dim: rgba(11, 11, 11, 0.25);
+  --map-sea: #f4f6f8;
+  --bubble: rgba(11, 11, 11, 0.55);
+  --bubble-ring: #fcfcfb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --map-land: #2c2c2a; --map-nodata: #222221; --map-stroke: #0d0d0d; --map-stroke-dim: rgba(255, 255, 255, 0.25);
+    --map-sea: #141414; --bubble: rgba(255, 255, 255, 0.6); --bubble-ring: #0d0d0d;
+  }
+}
+:root[data-theme="dark"] {
+  --map-land: #2c2c2a; --map-nodata: #222221; --map-stroke: #0d0d0d; --map-stroke-dim: rgba(255, 255, 255, 0.25);
+  --map-sea: #141414; --bubble: rgba(255, 255, 255, 0.6); --bubble-ring: #0d0d0d;
+}
+
+.db-head { padding: 20px 0 4px; display: grid; gap: 4px; }
+.db-head h1 { font-size: 24px; }
+.db-head p { color: var(--ink-2); }
+.eyebrow { display: block; font-size: 11px; font-weight: 650; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+.field-label { font-size: 12px; font-weight: 650; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; }
+.select.small { width: auto; min-height: 32px; padding: 4px 8px; font-size: 13px; }
+.link-btn.small { font-size: 13px; font-weight: 500; color: var(--accent-text); }
+
+/* three columns: filters | main | detail */
+.db-workspace { display: grid; grid-template-columns: 272px minmax(0, 1fr) 320px; gap: 16px; align-items: start; margin-top: 12px; }
+.db-main { display: grid; gap: 16px; min-width: 0; }
+.db-filters, .db-detail { position: sticky; top: 72px; max-height: calc(100vh - 88px); overflow: auto; display: grid; gap: 14px; align-content: start; }
+@media (max-width: 1280px) { .db-workspace { grid-template-columns: 248px minmax(0, 1fr); } .db-detail { grid-column: 1 / -1; position: static; max-height: none; } }
+@media (max-width: 860px) { .db-workspace { grid-template-columns: minmax(0, 1fr); } .db-filters { position: static; max-height: none; } }
+
+.db-panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.db-panel-head h2 { font-size: 17px; }
+.db-group { border-top: 1px solid var(--border); padding-top: 10px; }
+.db-group summary { cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 650; list-style: none; }
+.db-group summary::-webkit-details-marker { display: none; }
+.db-group summary::before { content: "\25B8"; color: var(--ink-3); margin-right: 8px; font-size: 12px; }
+.db-group[open] summary::before { content: "\25BE"; }
+.db-group summary strong { font-weight: 500; color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums; }
+.db-group-actions { display: flex; gap: 12px; justify-content: flex-end; margin: 4px 0 2px; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.db-selection { display: grid; gap: 6px; border-top: 1px solid var(--border); padding-top: 12px; }
+.db-selection strong { font-size: 18px; }
+
+/* tabs + sub-controls */
+.db-toolbar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.db-tabs { display: flex; flex-wrap: wrap; gap: 2px; background: var(--wash); border-radius: 10px; padding: 3px; }
+.db-tab { border: 0; background: transparent; color: var(--ink-2); padding: 7px 11px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.db-tab:hover { background: var(--surface); }
+.db-tab.active { background: var(--surface); color: var(--accent-text); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); }
+.db-subcontrols { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 13px; color: var(--ink-2); }
+.db-sub { display: inline-flex; gap: 6px; align-items: center; }
+.db-sub[hidden] { display: none; }
+.db-map-actions { display: flex; gap: 4px; }
+.db-map-actions .btn { min-height: 32px; padding: 4px 10px; }
+
+/* map */
+.db-map-card { padding: 12px; }
+.db-map-shell { position: relative; background: var(--map-sea); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+#db-map { display: block; width: 100%; height: auto; aspect-ratio: 1000 / 620; touch-action: none; cursor: grab; }
+#db-map.dragging { cursor: grabbing; }
+.db-province { stroke: var(--map-stroke); stroke-width: 0.7; cursor: pointer; transition: fill 0.2s; vector-effect: non-scaling-stroke; }
+.db-province:hover { filter: brightness(1.08); stroke-width: 1.2; }
+.db-province:focus-visible { outline: none; stroke: var(--focus); stroke-width: 2; }
+.db-province.is-selected { stroke: var(--ink); stroke-width: 1.8; }
+.db-province.is-dim { opacity: 0.45; }
+.db-bubble { cursor: pointer; }
+.db-dot { fill: var(--bubble); }
+.db-bubble.pale .db-dot { fill: var(--bubble); opacity: 0.45; }
+.db-bubble-ring { fill: none; stroke: var(--bubble-ring); stroke-width: 1.2; vector-effect: non-scaling-stroke; pointer-events: none; }
+.db-slice { stroke: var(--bubble-ring); stroke-width: 0.6; vector-effect: non-scaling-stroke; }
+.db-plant { stroke: var(--map-sea); stroke-width: 0.25; opacity: 0.8; cursor: pointer; }
+.db-plant:hover { opacity: 1; stroke: var(--ink); stroke-width: 0.6; }
+.db-caption { position: absolute; left: 10px; bottom: 10px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); background: color-mix(in srgb, var(--surface) 88%, transparent); padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); pointer-events: none; max-width: calc(100% - 20px); }
+.db-caption span:first-child { font-weight: 650; color: var(--ink); }
+.db-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 12px; padding: 10px 4px 0; }
+.db-legend-item { display: inline-flex; gap: 6px; align-items: center; color: var(--ink-2); }
+.db-swatch { display: inline-block; width: 14px; height: 10px; border-radius: 2px; flex: none; border: 1px solid var(--border); }
+.db-swatch.ring { width: 10px; height: 10px; border-radius: 50%; }
+.db-legend-note { color: var(--ink-3); font-size: 11px; flex-basis: 100%; }
+@media (max-width: 700px) { .db-caption { position: static; margin-top: 8px; } }
+
+/* analysis row */
+.db-analysis { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; }
+@media (max-width: 900px) { .db-analysis { grid-template-columns: minmax(0, 1fr); } }
+.db-bars { display: grid; gap: 8px; margin-top: 12px; }
+.db-bar-row { display: grid; grid-template-columns: minmax(90px, 160px) 1fr max-content; gap: 10px; align-items: center; font-size: 13px; }
+.db-bar-label { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.db-bar-track { height: 10px; background: var(--grid); border-radius: 4px; overflow: hidden; }
+.db-bar-fill { height: 100%; border-radius: 4px; background: var(--series-1); min-width: 2px; }
+.db-insight h2 { font-size: 16px; margin-top: 4px; }
+.db-insight p { margin-top: 8px; color: var(--ink-2); }
+
+/* detail */
+.db-detail-empty { text-align: center; color: var(--ink-2); padding: 28px 8px; }
+.db-detail-empty h2 { font-size: 16px; margin: 10px 0 6px; color: var(--ink); }
+.db-marker { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-wash); }
+.db-detail-section { border-top: 1px solid var(--border); padding-top: 10px; display: grid; gap: 8px; }
+.db-detail-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); }
+.db-detail dl.facts { grid-template-columns: max-content minmax(0, 1fr); font-size: 13px; }
+.db-chip { display: inline-flex; align-items: center; gap: 6px; margin: 0 8px 4px 0; }
+.db-detail { overflow-x: hidden; overflow-wrap: anywhere; }
+.db-detail .tag { white-space: normal; display: block; }
+.db-detail dl.facts dt { min-width: 0; max-width: 150px; }
+#db-provinces.soft .db-province { opacity: 0.6; }
+.db-facility-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 13px; }
+.db-facility-list li { border-top: 1px dashed var(--border); padding-top: 6px; }
+.db-facility-list li:first-child { border-top: 0; padding-top: 0; }
+
+@media print { .db-filters, .db-map-actions, .db-tabs { display: none !important; } .db-workspace { grid-template-columns: 1fr; } }
+@media (forced-colors: active) { .db-province, .db-dot, .db-slice, .db-bar-fill, .db-swatch { forced-color-adjust: none; } }

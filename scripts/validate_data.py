@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter
 from datetime import date
@@ -38,17 +39,20 @@ FILES = {
     "targets": ("plan_targets.json", "plan_targets.schema.json"),
     "actuals": ("plan_actuals.json", "plan_actuals.schema.json"),
     "legislation": ("legislation.json", "legislation.schema.json"),
-    "hubs": ("edwc_hubs.geojson", "edwc_hubs.schema.json"),
-    "projects": ("edwc_projects.json", "edwc_projects.schema.json"),
+    "provinces": ("provinces.json", "provinces.schema.json"),
+    "facilities": ("facilities.json", "facilities.schema.json"),
+    "plants": ("power_plants.json", "power_plants.schema.json"),
 }
-# Files that may legitimately be absent (the project inventory is kept out of the public repo until its
-# licence is confirmed). When present they are validated like every other file.
-OPTIONAL = {"projects"}
+OPTIONAL: set[str] = set()
 
-# Rough bounding box that contains mainland China and its territorial extent.
-# Used only to catch swapped lat/lon or sign errors, not to assert geography.
-LON_RANGE = (73.0, 135.5)
-LAT_RANGE = (3.0, 54.0)
+# Keys that must never appear on a published facility record: the inventory is province-level by design.
+FORBIDDEN_FACILITY_KEYS = {"lat", "lon", "latitude", "longitude", "coordinates", "geometry", "address", "address_details",
+                           "postal", "city", "market", "link_profile", "link_website", "x", "y"}
+# Capacity classes as (label, lower bound inclusive, upper bound exclusive); must match the build script.
+CAPACITY_CLASSES = [
+    ("Mega campus (1,000+ MW)", 1000, float("inf")), ("Hyperscale (100–999 MW)", 100, 1000), ("Large (51–99 MW)", 51, 100),
+    ("Medium (11–50 MW)", 11, 51), ("Small (0–10 MW)", 0, 11),
+]
 
 EPS = 1e-9
 
@@ -233,128 +237,86 @@ def check_legislation(doc: dict, plan_ids: set[str], report: Report) -> None:
             report.error(where, "verified=true requires a source.url")
 
 
-def _parse_ym(value: str | None) -> date | None:
-    if value is None:
-        return None
-    try:
-        return date.fromisoformat(f"{value}-01")
-    except ValueError:
-        return None
+
+def _capacity_class(mw: float | None) -> str:
+    if mw is None:
+        return "Unknown"
+    for label, lo, hi in CAPACITY_CLASSES:
+        if lo <= mw < hi:
+            return label
+    return "Unknown"
 
 
-def check_hubs(doc: dict, meta: dict, report: Report) -> None:
-    feats = doc["features"]
-    as_of = _parse_iso(meta.get("as_of"))
-    for dup in _dupes([f["properties"]["id"] for f in feats]):
-        report.error("hubs", f"duplicate hub id '{dup}'")
-    by_id = {f["properties"]["id"]: f["properties"] for f in feats}
-    for f in feats:
-        props = f["properties"]
-        where = f"hubs/{props['id']}"
-        parent = props.get("part_of")
-        if parent is not None:
-            if parent == props["id"]:
-                report.error(where, "part_of points at itself")
-            elif parent not in by_id:
-                report.error(where, f"part_of '{parent}' does not exist")
-            elif by_id[parent].get("part_of"):
-                report.error(where, f"part_of '{parent}' is itself a secondary site; point at the primary feature")
-            else:
-                for key in ("hub", "region", "province", "status"):
-                    if props.get(key) != by_id[parent].get(key):
-                        report.warn(where, f"{key} differs from its primary feature '{parent}'")
-                if props.get("racks_k") is not None and by_id[parent].get("racks_k") is not None:
-                    report.warn(where, "both the primary feature and this site carry racks_k; cluster totals would double-count")
-        for key in ("designated", "racks_as_of", "compute_as_of"):
-            val = props.get(key)
-            if val is None:
-                continue
-            d = _parse_ym(val)
-            if d is None:
-                report.error(where, f"{key} '{val}' is not a real year-month")
-            elif as_of and d > as_of:
-                report.error(where, f"{key} {val} is after the dataset as_of date {meta['as_of']}")
-        if props.get("racks_k") is not None and props.get("racks_as_of") is None:
-            report.warn(where, "racks_k is set but racks_as_of is missing (readers cannot tell how old the figure is)")
-        if props.get("compute_eflops") is not None and props.get("compute_as_of") is None:
-            report.warn(where, "compute_eflops is set but compute_as_of is missing")
-        if (props.get("racks_k") is not None or props.get("compute_eflops") is not None) and not props.get("metrics_source"):
-            report.warn(where, "metrics are set but metrics_source is missing")
-        if props["verified"] and not props.get("approval_url"):
-            report.warn(where, "verified=true but no approval_url to check against")
-        lon, lat = f["geometry"]["coordinates"]
-        if not (LON_RANGE[0] <= lon <= LON_RANGE[1]) or not (LAT_RANGE[0] <= lat <= LAT_RANGE[1]):
-            hint = ""
-            if (LON_RANGE[0] <= lat <= LON_RANGE[1]) and (LAT_RANGE[0] <= lon <= LAT_RANGE[1]):
-                hint = " (looks like latitude/longitude are swapped; GeoJSON order is [lon, lat])"
-            report.error(where, f"coordinates [{lon}, {lat}] fall outside the expected China bounding box{hint}")
+def check_provinces(doc: dict, report: Report) -> None:
+    provs = doc["provinces"]
+    for dup in _dupes([p["id"] for p in provs]):
+        report.error("provinces", f"duplicate province id '{dup}'")
+    if len(provs) < 31:
+        report.error("provinces", f"expected at least the 31 mainland provinces, found {len(provs)}")
+    x0, y0, w, h = doc["viewBox"]
+    for p in provs:
+        where = f"provinces/{p['id']}"
+        if p["hub"] is not None and p["hub"] not in doc["hubs"]:
+            report.error(where, f"hub '{p['hub']}' is not defined in hubs")
+        if not (x0 <= p["cx"] <= x0 + w and y0 <= p["cy"] <= y0 + h):
+            report.error(where, f"anchor ({p['cx']}, {p['cy']}) falls outside the view box")
+        ind = p["indicators"]
+        gen, con = ind.get("generation_2024"), ind.get("consumption_2024")
+        if gen is not None and con is not None and ind.get("generation_balance_2024") is not None:
+            if abs(ind["generation_balance_2024"] - (gen - con)) > 0.05:
+                report.error(where, "generation_balance_2024 does not equal generation minus consumption")
+        tot, use = ind.get("water_total_2024"), ind.get("water_use_total_2024")
+        if tot and use is not None and ind.get("water_stress_ratio_2024") is not None:
+            if abs(ind["water_stress_ratio_2024"] - use / tot) > 0.002:
+                report.error(where, "water_stress_ratio_2024 does not equal use divided by resources")
+        if abs(sum(ind["installed_mw"].values()) - ind["installed_mw_total"]) > 0.5:
+            report.error(where, "installed_mw_total does not equal the sum of installed_mw by technology")
+    for key, src in doc["sources"].items():
+        if src["tier"] == "A" and not src.get("url"):
+            report.warn(f"sources/{key}", "tier A source without a URL")
 
 
-def check_projects(doc: dict, hubs: dict, meta: dict, report: Report) -> None:
-    """Project inventory: every project must hang off a real cluster feature, coordinates must be [lon, lat] inside
-    China, and the data-quality flags must agree with the fields they describe (a flag that lies is worse than none)."""
-    feats = {f["properties"]["id"]: f["properties"] for f in hubs["features"]}
-    projects = doc["projects"]
-    for dup in _dupes([p["id"] for p in projects]):
-        report.error("projects", f"duplicate project id '{dup}'")
-    as_of = _parse_iso(meta.get("as_of"))
-    compiled = _parse_iso(doc["source"].get("compiled"))
-    converted = _parse_iso(doc["source"].get("converted"))
-    if compiled is None:
-        report.error("projects/source", "compiled is not a real calendar date")
-    if converted and compiled and converted < compiled:
-        report.error("projects/source", "converted date is before the compiled date")
-    if as_of and compiled and compiled > as_of:
-        report.error("projects/source", f"compiled {doc['source']['compiled']} is after the dataset as_of date {meta['as_of']}")
+def check_facilities(doc: dict, provinces: dict, report: Report) -> None:
+    """Province-level inventory: ids unique, province ids real, no location detail, class consistent with MW."""
+    ids = {p["id"] for p in provinces["provinces"]}
+    facs = doc["facilities"]
+    for dup in _dupes([f["id"] for f in facs]):
+        report.error("facilities", f"duplicate facility id '{dup}'")
+    counts: Counter[str] = Counter()
+    for f in facs:
+        where = f"facilities/{f['id']}"
+        leaked = FORBIDDEN_FACILITY_KEYS & set(f)
+        if leaked:
+            report.error(where, f"location detail must not be published: {sorted(leaked)}")
+        for v in f.values():
+            if isinstance(v, str) and ("datacentermap.com" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
+                report.error(where, "a string field looks like a link or a coordinate")
+        if f["province"] not in ids:
+            report.error(where, f"province '{f['province']}' is not in provinces.json")
+        if f["capacity"] != _capacity_class(f["mw"]):
+            report.error(where, f"capacity class '{f['capacity']}' does not match mw={f['mw']}")
+        for s in f["sources"]:
+            counts[s] += 1
+    for s, n in counts.items():
+        if doc["sourceCounts"].get(s) != n:
+            report.error("facilities/sourceCounts", f"sourceCounts[{s}]={doc['sourceCounts'].get(s)} but {n} records cite it")
 
-    coord_count = Counter(tuple(p["coordinates"]) for p in projects if p.get("coordinates"))
-    for p in projects:
-        where = f"projects/{p['id']}"
-        cluster = feats.get(p["cluster_id"])
-        if cluster is None:
-            report.error(where, f"cluster_id '{p['cluster_id']}' is not a feature in edwc_hubs.geojson")
-        elif cluster.get("part_of"):
-            report.error(where, f"cluster_id '{p['cluster_id']}' is a secondary site; use the primary cluster id and set site_id")
-        site = p.get("site_id")
-        if site is not None:
-            sp = feats.get(site)
-            if sp is None:
-                report.error(where, f"site_id '{site}' is not a feature in edwc_hubs.geojson")
-            elif sp.get("part_of") != p["cluster_id"]:
-                report.error(where, f"site_id '{site}' is not part_of cluster '{p['cluster_id']}'")
-        if not p.get("name_zh") and not p.get("name_en"):
-            report.error(where, "project has neither name_zh nor name_en")
-        if not p.get("name_zh") and "no_name_zh" not in p["flags"]:
-            report.warn(where, "name_zh is empty but the no_name_zh flag is missing")
-        if p.get("source_url") is None and "no_source" not in p["flags"]:
-            report.warn(where, "source_url is null but the no_source flag is missing")
-        if p.get("source_url") is not None and "no_source" in p["flags"]:
-            report.warn(where, "no_source flag set although source_url is present")
-        if p["record_type"] == "park" and p.get("investment_planned_100m_cny") is not None:
-            report.warn(where, "park rows should carry area_investment_100m_cny, not a project investment figure")
-        if p.get("investment_text") and p.get("investment_planned_100m_cny") is not None and p.get("area_investment_100m_cny") is None:
-            report.warn(where, "investment_text is set although the investment was parsed")
-        coords = p.get("coordinates")
-        if coords is None:
-            if p.get("location_precision") is not None:
-                report.error(where, "location_precision is set but there are no coordinates")
-            continue
-        if p.get("location_precision") is None:
-            report.error(where, "coordinates are set but location_precision is null")
-        lon, lat = coords
-        if not (LON_RANGE[0] <= lon <= LON_RANGE[1]) or not (LAT_RANGE[0] <= lat <= LAT_RANGE[1]):
-            hint = " (looks like latitude/longitude are swapped; order is [lon, lat])" if (LON_RANGE[0] <= lat <= LON_RANGE[1] and LAT_RANGE[0] <= lon <= LAT_RANGE[1]) else ""
-            report.error(where, f"coordinates [{lon}, {lat}] fall outside the expected China bounding box{hint}")
-        shared = coord_count[tuple(coords)] >= 3
-        if shared and "shared_centroid" not in p["flags"]:
-            report.warn(where, f"coordinate pair is shared by {coord_count[tuple(coords)]} projects but the shared_centroid flag is missing")
-        if shared and p.get("location_precision") == "point":
-            report.warn(where, "shared coordinate pair cannot be an exact 'point' position")
-        # a project should sit in the same part of the country as its cluster (catches a row filed under the wrong section)
-        if cluster is not None:
-            clon, clat = next(f["geometry"]["coordinates"] for f in hubs["features"] if f["properties"]["id"] == (site or p["cluster_id"]))
-            if abs(clon - lon) > 4 or abs(clat - lat) > 4:
-                report.warn(where, f"project is {abs(clon - lon):.1f}° lon / {abs(clat - lat):.1f}° lat away from its cluster point; check the section it was filed under")
+
+def check_plants(doc: dict, provinces: dict, report: Report) -> None:
+    ids = {p["id"] for p in provinces["provinces"]}
+    x0, y0, w, h = provinces["viewBox"]
+    outside = 0
+    unknown_prov = Counter()
+    for row in doc["plants"]:
+        _tech, _mw, x, y, pid = row
+        if not (x0 - 20 <= x <= x0 + w + 20 and y0 - 20 <= y <= y0 + h + 20):
+            outside += 1
+        if pid is not None and pid not in ids:
+            unknown_prov[pid] += 1
+    if outside:
+        report.error("plants", f"{outside} units are projected outside the view box")
+    for pid, n in unknown_prov.items():
+        report.error("plants", f"{n} units reference unknown province '{pid}'")
 
 
 def check_placeholders(meta: dict, docs: dict[str, list[dict]], report: Report) -> None:
@@ -393,17 +355,15 @@ def validate_all(data_dir: Path, schema_dir: Path) -> Report:
     plan_ids = {p["id"] for p in loaded["targets"]["plans"]}
     check_targets(loaded["targets"], loaded["actuals"], loaded["meta"], report)
     check_legislation(loaded["legislation"], plan_ids, report)
-    check_hubs(loaded["hubs"], loaded["meta"], report)
-    if "projects" in loaded:
-        check_projects(loaded["projects"], loaded["hubs"], loaded["meta"], report)
+    check_provinces(loaded["provinces"], report)
+    check_facilities(loaded["facilities"], loaded["provinces"], report)
+    check_plants(loaded["plants"], loaded["provinces"], report)
     check_placeholders(
         loaded["meta"],
         {
             "targets": loaded["targets"]["targets"],
             "actuals": loaded["actuals"]["actuals"],
             "legislation": loaded["legislation"]["documents"],
-            "hubs": [f["properties"] for f in loaded["hubs"]["features"]],
-            "projects": loaded["projects"]["projects"] if "projects" in loaded else [],
         },
         report,
     )

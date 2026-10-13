@@ -1,12 +1,15 @@
 # China Dashboard
 
-A static dashboard (no build step, no runtime dependencies) that compares **Chinese five-year plan targets with
-reported results**, catalogues the **legislation and policy documents** behind them, and maps the
-**East Data West Computing** hubs and clusters. Designed to be published on GitHub Pages.
+A static dashboard (no build step, no runtime dependencies) modelled on the
+[U.S. Data Center Ecosystem Tracker](https://ntimbs.github.io/us-data-center-dashboard/): a **province map of China's
+data-center inventory** with layer tabs for status, capacity, installed power, 2024 generation, electricity cost and
+water, plus two secondary pages that compare **five-year plan targets with reported results** and catalogue the
+**legislation** behind them. Designed to be published on GitHub Pages.
 
-> **Status: scaffold.** The plan targets, actuals and cluster metrics shipped here are **synthetic placeholders**, and
-> the legislation records are **unverified**. The site says so in a banner. Do not cite anything until the checklist at
-> the bottom is done.
+> **Location rule.** The inventory merges a licensed DataCenterMap export with public crawls. It is published at
+> **province level only**: `site/data/facilities.json` holds no coordinates, addresses, cities or profile links, the
+> build script strips them, the validator and the browser test both assert their absence, and the map draws one
+> bubble per province. Hazard and opposition tabs are present for parity with the U.S. tracker but carry no data yet.
 
 ## Run it
 
@@ -21,17 +24,40 @@ The page tells you so if you try.
 
 ```
 site/                     the published site (this folder is what GitHub Pages serves)
-  index.html plan.html legislation.html map.html
-  assets/css/style.css    design tokens (light/dark), layout, components
-  assets/js/lib/          pure logic + small UI helpers   <- unit-tested
-  assets/js/pages/        one module per page
-  data/                   meta.json, plan_targets.json, plan_actuals.json, legislation.json, edwc_hubs.geojson
-schemas/                  JSON Schema for every data file (the contract the pipeline must meet)
-scripts/validate_data.py  schema + cross-file checks (referential integrity, coordinate order, date logic ...)
+  index.html              the map dashboard;  plan.html, legislation.html  the secondary pages
+  assets/css/style.css    design tokens (light/dark), layout, components;  dashboard.css  the map page
+  assets/js/lib/          pure logic + small UI helpers   <- unit-tested (inventory.js = map filtering/binning)
+  assets/js/pages/        one module per page (dashboard.js, plan.js, legislation.js)
+  data/                   meta.json, provinces.json, facilities.json, power_plants.json,
+                          plan_targets.json, plan_actuals.json, legislation.json
+data_sources/             hand-transcribed official tables that feed provinces.json (see data_sources/README.md)
+schemas/                  JSON Schema for every data file (the contract the build script must meet)
+scripts/build_dashboard_data.py   builds the three map files from the EDWC research folder (see Data below)
+scripts/validate_data.py  schema + cross-file checks (referential integrity, derived values, privacy rule, dates ...)
 pipeline/                 data-gathering pipeline (stub: polite fetcher, source registry) - see pipeline/README.md
 tests/js  tests/py  tests/browser   unit tests and a Playwright smoke test
 .github/workflows/        validate.yml (PRs) and pages.yml (deploy on push to main)
 ```
+
+## The map dashboard
+
+Layout follows the U.S. tracker: filters on the left (search, province, project status, facility type, reported
+capacity, inventory source), KPI tiles, a tab strip of map layers, a legend, a profile chart, a "how to read this
+view" card and a detail panel on the right. The map is a plain SVG (Albers equal-area outlines pre-projected by the
+build script), so there is no tile server, no map library and nothing loaded from a CDN.
+
+| Tab | Province shade | Points / bubbles | Source |
+|---|---|---|---|
+| Status | facility count in the selection | one status wheel per province, sized by count | inventory |
+| Capacity | known MW in the selection | bubble sized by known MW | inventory |
+| Power | installed MW of GEM units (choose a technology) | pale count bubbles | Global Energy Monitor |
+| Generation | 2024 generation (NBS yearbook 9-19) | GEM plant units by technology | NBS + GEM |
+| Electricity cost | 1–10 kV industrial & commercial rate, May 2025 | pale count bubbles | China Briefing compilation (tier C) |
+| Water scarcity | per-capita resources, use÷resources, totals, industrial use (2024) | pale count bubbles | MWR bulletin via NBS yearbook 8-8 / 8-9 |
+| Hazard, Opposition | none yet | pale count bubbles | — |
+| Policy | EDWC national-hub provinces | pale count bubbles | NDRC approvals; legislation topics in the chart |
+
+The URL hash carries the active tab (`#view=cost`), so a view can be linked to.
 
 ## How a target's status is computed
 
@@ -59,8 +85,7 @@ target, and every good year would score as "behind". The validator rejects that 
 ## Data
 
 All data lives in `site/data/` and is checked by `python3 scripts/validate_data.py` (also run in CI; a failing
-validation blocks deployment). Every record has a `placeholder` flag; legislation, clusters and projects also have
-`verified`. Setting `meta.json` `data_status` to `"live"` makes the validator reject any placeholder or unverified
+validation blocks deployment). Plan targets, actuals and legislation records carry `placeholder` / `verified` flags. Setting `meta.json` `data_status` to `"live"` makes the validator reject any placeholder or unverified
 record. The dataset is currently `partial` (compiled 2026-10-04).
 
 **Source rule.** Values come only from official primary sources — government documents, NBS/NHC/MOHRSS statistical
@@ -90,26 +115,32 @@ government page; the one exception (the 2018 等级保护条例 draft) says why 
 the issuing day is not published; the record then carries the first of the month and the release date in
 `date_published`.
 
-**EDWC clusters** (`edwc_hubs.geojson`): the 8 national hubs / 10 national clusters as approved by the NDRC letters
-of 2021-12-20 and 2022-02-07 (document numbers and URLs on each feature), with the official start-up-zone wording.
-The 和林格尔 cluster has two official sites and is drawn as two points (`part_of`). Coordinates are start-zone
-centroids, not facility locations. Rack, EFLOPS and PUE figures are kept only when an official body published them
-(currently 张家口, 芜湖, 贵阳贵安); each names its scope, date and source. Trade-press figures for the other clusters
-are quoted in `note` as unused context.
+**Province outlines and indicators** (`provinces.json`, built by `scripts/build_dashboard_data.py`): 31 provinces +
+Hong Kong and Macau, with SVG paths, a label anchor, the East Data West Computing hub each belongs to, and these
+indicators: 2024 generation and hydro generation (NBS yearbook table 9-19), 2020/2024 electricity consumption (9-14),
+2024 water resources and per-capita resources (8-8), 2024 water use incl. industrial (8-9), the May 2025 1–10 kV
+industrial-and-commercial tariff (China Briefing compilation, tier C — Jilin, Gansu, Tibet and the SARs are not in
+that source and Inner Mongolia shows the eastern grid only), and installed MW by technology summed from the GEM
+units inside each outline. Two values are computed and labelled as such in the UI: generation − consumption, and
+water use ÷ water resources. The transcribed source tables live in `data_sources/` with their URLs; the yearbook
+publishes them as images, so they were typed by hand and should be spot-checked before citation.
 
-**Project inventory** (`edwc_projects.json`, built by `scripts/convert_projects.py` from the owner's spreadsheet
-`EDWC_11.11.xlsx`): 94 announced data-center projects and 4 park-level rows across the 10 clusters, with company,
-planned investment (亿元, as announced — not audited spending), source link and, for 25 of them, coordinates. The
-converter never cleans silently: every oddity becomes a `flags` entry (`shared_centroid`, `no_source`,
-`company_mismatch`, `outside_start_zone`, …).
+**Facilities** (`facilities.json`): 527 records merged from the DataCenterMap export (licensed; 459), the baxtel
+crawl (101), the DCKB sample (11) and the two UVA geojsons (hyperscale 36, western 44), de-duplicated on source id,
+normalised name, and proximity (unnamed records within 400 m of a named one). Each record keeps name, operator,
+province, status (Operating / Development / Proposed / Unknown), facility type, reported MW and capacity class,
+PUE and online year where the source had them, and the list of sources. Twenty DataCenterMap rows have no
+coordinates in the export and were placed by their market name. Three rows fell outside every outline (one in
+Taiwan, which the map does not cover). Run with `--publish-names false` to anonymise names and operators.
 
-**This layer is switched off on the public site** until the spreadsheet's licence is confirmed: the generated file is
-git-ignored, `CONFIG.showProjectLayer` is `false`, and the map neither requests nor mentions it. Tests use a
-synthetic fixture (`tests/fixtures/edwc_projects.sample.json`). To publish it later: confirm the licence, run the
-converter, set `showProjectLayer: true` in `site/assets/js/config.js`, remove the `site/data/edwc_projects.json`
-line from `.gitignore`, and commit.
+**Power plants** (`power_plants.json`): 16,284 Global Energy Monitor units (coal, hydro, wind, solar, nuclear,
+bioenergy) projected to the view box with their province. Status was filtered to operating upstream in the IGARSS
+workflow; several units of one plant share a point. Gas, oil and waste plants came from OpenStreetMap in that
+workflow with capacities in kW, so they are excluded here.
 
-    python3 scripts/convert_projects.py path/to/EDWC_11.11.xlsx --compiled 2024-11-11
+Rebuild the three map files from the EDWC folder (this repository sits inside it):
+
+    python3 scripts/build_dashboard_data.py --edwc-root .. --check
 
 ## Deploy to GitHub Pages
 
@@ -143,19 +174,16 @@ python3 -m http.server 8000 --directory site & python3 tests/browser/smoke.py
 ```
 
 The browser smoke test loads every page at desktop and phone widths in light and dark mode, and fails on console
-errors, horizontal scroll, or stray `null`/`undefined`/`NaN` text. Where the Leaflet CDN is unreachable it exercises
-the SVG fallback; its Leaflet code path is tested against a stub of the Leaflet API.
+errors, horizontal scroll, or stray `null`/`undefined`/`NaN` text. On the map it switches tabs, filters, selects a
+province and a facility, exports the CSV, and asserts that no coordinate or profile link reaches the browser.
 
 ## Before you publish (checklist)
 
-- [ ] Confirm the licence / ownership of `EDWC_11.11.xlsx` before switching the project layer on (see Data → Project inventory).
+- [ ] Confirm that the DataCenterMap licence allows publishing facility names, operators and MW at province level; if not, rebuild with `--publish-names false`.
+- [ ] Spot-check the hand-transcribed yearbook tables in `data_sources/` against the source images.
+- [ ] Replace the China Briefing tariff compilation with the provincial 代理购电 notices (and fill Jilin, Gansu, Tibet, 蒙西).
 - [ ] Re-check the remaining `medium`-confidence actuals (Xinhua / People's Daily reproductions) against the ministry pages when they become reachable.
 - [ ] Add year-end 2025 figures if MIIT/NDA publish them (FP32 total compute, all-facility PUE, storage) so the `unresolved` 2025 targets resolve; add the NBS final 2025 digital-economy share (due ~Dec 2026).
-- [ ] Cluster-level official metrics for 和林格尔, 庆阳, 中卫, 天府, 重庆 and the 长三角 demonstration zone: the provincial portals were unreachable from the research environment; check them from a normal browser.
 - [ ] Set `meta.json` `data_status` to `live` only once every record is verified (the validator enforces this).
-- [ ] **Basemap:** `config.js` uses OpenStreetMap's public tiles, which are for light use. Review how the basemap draws
-      boundaries, and switch providers if needed.
-- [ ] **Leaflet** is loaded from cdnjs in `map.html`. For stricter supply-chain control, vendor it into
-      `site/assets/vendor/` and add Subresource Integrity attributes.
 - [ ] Set a real contact in the pipeline's `DEFAULT_UA`, and complete the access review for each source in
       `pipeline/config/sources.yml` before enabling it.

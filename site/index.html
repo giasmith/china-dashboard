@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Overview · China Dashboard</title>
-<meta name="description" content="Overview of China five-year plan targets, legislation and East Data West Computing clusters.">
+<title>China Dashboard · data-center ecosystem tracker</title>
+<meta name="description" content="Province-level tracker of China data-center facilities with generation, electricity-cost, water and policy context.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a78d6'/%3E%3Cpath d='M7 22l6-8 5 5 7-10' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <script>
@@ -12,17 +12,18 @@
   try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
 </script>
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header id="site-header" class="site-header"></header>
 <div id="banner"></div>
-<main id="main" class="wrap">
+<main id="main" class="wrap wide">
   <div id="app"><p class="muted" style="padding:24px 0">Loading…</p></div>
   <noscript><div class="card error-card"><h2>JavaScript is required</h2><p>This dashboard builds its charts and tables in the browser. Enable JavaScript to view it.</p></div></noscript>
 </main>
 <footer id="site-footer" class="site-footer"></footer>
 <div id="live" class="sr-only" role="status" aria-live="polite"></div>
-<script type="module" src="assets/js/pages/overview.js"></script>
+<script type="module" src="assets/js/pages/dashboard.js"></script>
 </body>
 </html>

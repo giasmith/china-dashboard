@@ -22,6 +22,6 @@ node_modules/
 pipeline/data/raw/
 pipeline/data/cache/
 
-# Project inventory generated from a spreadsheet whose licence is not yet confirmed. Kept local only;
-# see README "Project inventory" before publishing it (and set CONFIG.showProjectLayer = true).
-site/data/edwc_projects.json
+
+# Files superseded on 12 Oct 2026 (moved here instead of deleted); remove the folder when convenient.
+_to_delete/

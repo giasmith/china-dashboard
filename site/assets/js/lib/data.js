@@ -50,13 +50,14 @@ const SHAPES = {
   targets: ['plans', 'targets'],
   actuals: ['actuals'],
   legislation: ['documents'],
-  hubs: ['features'],
-  projects: ['projects'],
+  provinces: ['provinces'],
+  facilities: ['facilities'],
+  plants: ['plants'],
 };
 
 /**
  * Load the named datasets in parallel. Rejects with a DataError naming the first file that failed.
- * @param {Array<'meta'|'targets'|'actuals'|'legislation'|'hubs'|'projects'>} keys
+ * @param {Array<'meta'|'targets'|'actuals'|'legislation'|'provinces'|'facilities'|'plants'>} keys
  */
 export async function loadDatasets(keys) {
   const entries = await Promise.all(
