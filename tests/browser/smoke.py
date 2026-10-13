@@ -172,6 +172,13 @@ async def interactions(browser, base):
     await page.click(".db-tab[data-view=status]")
     await page.wait_for_timeout(200)
     check(await page.locator("#db-bubbles .db-slice").count() > 0, "map: the status view draws status wheels")
+    # Hovering a province shows a tooltip and must leave the rest of the page intact (regression: the tooltip
+    # element was once the <body> itself, so the first hover wiped the page).
+    await page.locator("#db-provinces path[data-id=nei_mongol]").dispatch_event("pointerenter", {"clientX": 600, "clientY": 500})
+    await page.wait_for_timeout(200)
+    check("Inner Mongolia" in await page.locator("#db-tooltip").inner_text(), "map: hovering a province shows its tooltip")
+    check(await page.locator("#db-map").count() == 1 and await page.locator("#db-provinces path").count() >= 31, "map: the page survives a hover")
+    await page.locator("#db-provinces path[data-id=nei_mongol]").dispatch_event("pointerleave")
     check("view=status" in page.url, "map: switching tabs updates the hash")
     await page.click("details:has(#db-group-status) button:has-text('Clear')")
     await page.wait_for_timeout(200)

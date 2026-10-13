@@ -51,6 +51,43 @@ export function checkGroup({ legend, name, options, onChange }) {
 }
 
 /**
+ * Multi-select presented as a dropdown: a <details> whose summary reads "All topics" / "3 selected" and whose panel
+ * holds the same checkbox list as checkGroup (counts included) plus a Clear link. Nothing checked = no restriction.
+ * Closes on outside click or Escape so it behaves like a native menu.
+ */
+export function dropdownCheckGroup({ id, label, placeholder = 'Any', options, onChange }) {
+  const boxes = new Map();
+  const summaryText = h('span', { class: 'dd-value' }, placeholder);
+  const selected = () => new Set([...boxes].filter(([, el]) => el.checked).map(([value]) => value));
+  const paint = () => {
+    const sel = selected();
+    summaryText.textContent = sel.size === 0 ? placeholder
+      : sel.size === 1 ? (options.find((o) => o.value === [...sel][0])?.label ?? placeholder)
+        : `${sel.size} selected`;
+  };
+  const list = h('div', { class: 'dd-list', role: 'group', 'aria-label': label },
+    options.map((o) => {
+      const input = h('input', { type: 'checkbox', name: id, value: o.value });
+      boxes.set(o.value, input);
+      input.addEventListener('change', () => { paint(); onChange(selected()); });
+      return h('label', { class: 'check' }, input, h('span', null, o.label), o.count !== undefined ? h('span', { class: 'count' }, String(o.count)) : null);
+    }));
+  const clear = h('button', { type: 'button', class: 'link-btn small', onclick: () => { for (const el of boxes.values()) el.checked = false; paint(); onChange(new Set()); } }, 'Clear');
+  const details = h('details', { class: 'dropdown', id },
+    h('summary', { class: 'select dd-summary' }, summaryText),
+    h('div', { class: 'dd-panel' }, h('div', { class: 'dd-actions' }, h('span', { class: 'hint' }, 'Any of the checked'), clear), list));
+  document.addEventListener('pointerdown', (e) => { if (details.open && !details.contains(e.target)) details.open = false; });
+  details.addEventListener('keydown', (e) => { if (e.key === 'Escape') { details.open = false; details.querySelector('summary').focus(); } });
+  return {
+    el: h('div', { class: 'field' }, h('label', { for: id }, label), details),
+    set: (sel) => {
+      for (const [value, el] of boxes) el.checked = sel.has(value);
+      paint();
+    },
+  };
+}
+
+/**
  * Year input that accepts only a strict integer in [min, max].
  * onChange(value | null). Invalid text shows an inline message and yields null (never 0 or NaN).
  */

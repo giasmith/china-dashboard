@@ -5,13 +5,15 @@ import { inSet } from '../lib/state.js';
 import { createStore } from '../lib/store.js';
 import { toCsv, downloadCsv } from '../lib/csv.js';
 import { renderShell, kpi, tag, emptyState, showError, announce, initFilterDisclosure, revealProfile } from '../lib/ui.js';
-import { searchField, selectField, checkGroup, yearField, resetButton } from '../lib/filters.js';
+import { searchField, selectField, checkGroup, dropdownCheckGroup, yearField, resetButton } from '../lib/filters.js';
 
 const TYPE_LABEL = {
   law: 'Law', administrative_regulation: 'Administrative regulation', departmental_rule: 'Departmental rule',
   plan: 'Plan', policy_notice: 'Policy notice', judicial_interpretation: 'Judicial interpretation', other: 'Other',
 };
 const STATUS_LABEL = { in_force: 'In force', expired: 'Plan period ended', superseded: 'Superseded', repealed: 'Repealed', draft: 'Draft' };
+const TOPIC_LABEL = { ai: 'AI', edwc: 'EDWC (East Data West Computing)', e_commerce: 'E-commerce', fintech: 'Fintech', five_year_plan: 'Five-year plan' };
+const topicLabel = (t) => TOPIC_LABEL[t] ?? humanize(t);
 const SORTS = [
   { value: '', label: 'Adopted (newest first)' },
   { value: 'date_asc', label: 'Adopted (oldest first)' },
@@ -74,7 +76,7 @@ function start({ meta, targets: tDoc, legislation }) {
     q: searchField({ id: 'f-q', label: 'Search', placeholder: 'Title (English or Chinese), issuer, topic', onInput: (v) => store.set({ q: v.replace(/\s+/g, ' ').trim().slice(0, 80) }) }),
     type: checkGroup({ legend: 'Document type', name: 'type', options: Object.keys(TYPE_LABEL).filter((k) => byType.has(k)).map((v) => ({ value: v, label: TYPE_LABEL[v], count: byType.get(v) })), onChange: (s) => store.set({ type: s }) }),
     status: checkGroup({ legend: 'Status', name: 'status', options: Object.keys(STATUS_LABEL).filter((k) => byStatus.has(k)).map((v) => ({ value: v, label: STATUS_LABEL[v], count: byStatus.get(v) })), onChange: (s) => store.set({ status: s }) }),
-    topic: checkGroup({ legend: 'Topic', name: 'topic', options: topics.map((v) => ({ value: v, label: humanize(v), count: byTopic.get(v) })), onChange: (s) => store.set({ topic: s }) }),
+    topic: dropdownCheckGroup({ id: 'f-topic', label: 'Topic', placeholder: 'All topics', options: topics.map((v) => ({ value: v, label: topicLabel(v), count: byTopic.get(v) })), onChange: (s) => store.set({ topic: s }) }),
     plan: selectField({ id: 'f-plan', label: 'Related plan', options: [{ value: '', label: 'Any' }, ...plans.map((p) => ({ value: p.id, label: p.name_en }))], onChange: (v) => store.set({ plan: v }) }),
     from: yearField({ id: 'f-from', label: 'Adopted from', min: minYear, max: maxYear, onChange: (v) => store.set({ from: v }) }),
     to: yearField({ id: 'f-to', label: 'Adopted to', min: minYear, max: maxYear, onChange: (v) => store.set({ to: v }) }),
@@ -84,9 +86,9 @@ function start({ meta, targets: tDoc, legislation }) {
   const details = h('details', { class: 'card filters' },
     h('summary', null, h('span', null, 'Filters')),
     h('div', { class: 'body' },
-      h('div', { class: 'field-stack' }, c.q.el, c.plan.el, c.sort.el,
+      h('div', { class: 'field-stack' }, c.q.el, c.topic.el, c.plan.el, c.sort.el,
         h('div', { class: 'row' }, h('div', { style: { flex: '1 1 90px' } }, c.from.el), h('div', { style: { flex: '1 1 90px' } }, c.to.el))),
-      c.type.el, c.status.el, c.topic.el,
+      c.type.el, c.status.el,
       h('div', { class: 'filters-foot' }, resetButton(() => store.reset(['sel'])), h('span', { class: 'hint' }, 'Leaving a group empty means no restriction.'))));
   initFilterDisclosure(details);
 
@@ -193,7 +195,7 @@ function start({ meta, targets: tDoc, legislation }) {
         h('dt', null, 'Effective'), h('dd', null, d.date_effective ? formatIsoDate(d.date_effective) : EM_DASH),
         d.superseded_by ? h('dt', null, 'Superseded by') : null,
         d.superseded_by ? h('dd', null, h('button', { type: 'button', class: 'link-btn', onclick: () => store.set({ sel: d.superseded_by }) }, docs.find((x) => x.id === d.superseded_by)?.title_en ?? d.superseded_by)) : null,
-        h('dt', null, 'Topics'), h('dd', null, d.topics.length ? h('span', { class: 'row' }, d.topics.map((t) => tag(humanize(t)))) : EM_DASH),
+        h('dt', null, 'Topics'), h('dd', null, d.topics.length ? h('span', { class: 'row' }, d.topics.map((t) => tag(topicLabel(t)))) : EM_DASH),
         h('dt', null, 'Plans'), h('dd', null, d.related_plan_ids.length ? d.related_plan_ids.map(planName).join(', ') : EM_DASH),
         h('dt', null, 'Source'), h('dd', null, src ? h('a', { href: src, rel: 'noopener' }, d.source.title) : `${d.source?.title ?? EM_DASH}`)),
       d.note ? h('p', { class: 'note-box', style: { marginTop: '12px' } }, d.note) : null,

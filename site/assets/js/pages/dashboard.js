@@ -244,7 +244,8 @@ function buildLayout() {
     detail: byId('db-detail'), powerTech: byId('db-power-tech'), genTech: byId('db-gen-tech'), costMeasure: byId('db-cost-measure'), waterMeasure: byId('db-water-measure'),
     mapShell: byId('db-map-shell'),
   };
-  els.tooltip = add(document.body, h('div', { class: 'tooltip', id: 'db-tooltip', role: 'tooltip' }));
+  els.tooltip = h('div', { class: 'tooltip', id: 'db-tooltip', role: 'tooltip' });
+  document.body.append(els.tooltip); // note: add() returns the parent, which is why this is not add(document.body, …)
 
   const onSearch = debounce(() => { state.filters.search = els.search.value.trim(); applyFilters(); }, 120);
   els.search.addEventListener('input', onSearch);

@@ -154,6 +154,18 @@ button, select, input[type="search"], input[type="number"], input[type="text"] {
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .row.between { justify-content: space-between; }
 
+/* dropdown multi-select */
+.dropdown { position: relative; }
+.dropdown > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.dropdown > summary::-webkit-details-marker { display: none; }
+.dropdown > summary::after { content: "\25BE"; color: var(--ink-3); flex: none; }
+.dropdown[open] > summary { border-color: var(--accent); }
+.dd-value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd-panel { position: absolute; z-index: 40; top: calc(100% + 4px); left: 0; min-width: 100%; width: max-content; max-width: min(360px, 90vw); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18); padding: 6px; }
+.dd-actions { display: flex; justify-content: space-between; align-items: center; padding: 2px 6px 6px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
+.dd-list { max-height: 320px; overflow: auto; display: grid; }
+.dd-list .check { min-height: 30px; }
+
 /* ---------- layout ---------- */
 .page-head { padding: 24px 0 8px; display: grid; gap: 4px; }
 .page-head p { color: var(--ink-2); max-width: 70ch; }
