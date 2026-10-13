@@ -9,12 +9,10 @@ import { CONFIG, DATA_FILES } from '../config.js';
 import { loadJson, DataError } from '../lib/data.js';
 import { renderShell, showError, announce, debounce } from '../lib/ui.js';
 import { formatNumber, EM_DASH } from '../lib/format.js';
-import { toCsv, downloadCsv } from '../lib/csv.js';
 import {
   STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, SOURCE_LABEL, TECH_ORDER,
   STATUS_COLOR, TECH_COLOR, SEQ_RAMP, SEQ_RAMP_WARM, colorOf, binIndex, binLabels,
   filterFacilities, countBy, summarizeByProvince, summarizeSelection, bubbleRadius, arcPath, quantileThresholds,
-  EXPORT_COLUMNS,
 } from '../lib/inventory.js';
 
 const app = byId('app');
@@ -27,7 +25,6 @@ const VIEW_H = 620;
 const VIEWS = {
   status: {
     label: 'Status', title: 'Operating status by province',
-    insight: ['Project status is the outcome anchor', 'Each province wheel shows the status mix of the facilities that match the filters; wheel size is the facility count. Status comes from the source inventories and is not independently verified.'],
     sourceKey: 'inventory', ramp: 'blue', unit: ' facilities', digits: 0,
     legendNote: 'Province shade: facility count. Wheel: status mix.',
     fill: (p, ctx) => ctx.byProvince.get(p.id)?.count ?? 0,
@@ -35,7 +32,6 @@ const VIEWS = {
   },
   capacity: {
     label: 'Capacity', title: 'Reported IT / built-out capacity',
-    insight: ['Capacity coverage is thin', 'Only facilities with a reported MW figure count towards the province total; unknown values stay visible as facilities but never become zero. Bubble size uses MW on this view.'],
     sourceKey: 'inventory', ramp: 'blue', unit: ' MW', digits: 0,
     legendNote: 'Province shade: known MW in the selection. Bubble: known MW.',
     fill: (p, ctx) => ctx.byProvince.get(p.id)?.mw ?? 0,
@@ -43,7 +39,6 @@ const VIEWS = {
   },
   power: {
     label: 'Power', title: 'Installed generating capacity (GEM units)',
-    insight: ['Supply context, not a supply relationship', 'Province totals sum the Global Energy Monitor units located inside each outline. Choose a technology to see where hydro, wind or coal capacity sits relative to the data-center inventory.'],
     sourceKey: 'plants', ramp: 'blue', unit: ' MW', digits: 0,
     legendNote: 'Province shade: installed MW of the chosen technology.',
     fill: (p, ctx) => (ctx.powerTech ? p.indicators.installed_mw?.[ctx.powerTech] ?? 0 : p.indicators.installed_mw_total ?? 0),
@@ -52,7 +47,6 @@ const VIEWS = {
   },
   generation: {
     label: 'Generation', title: '2024 electricity generation and plant locations',
-    insight: ['Generation is a separate evidence layer', 'Province shade is total 2024 generation from the NBS yearbook. Points are GEM plant units coloured by technology (one point per unit; several units can share a site). Proximity to a facility does not establish that a plant serves it.'],
     sourceKey: 'generation', ramp: 'blue', unit: ' 亿kWh', digits: 0,
     legendNote: 'Province shade: 2024 generation (亿 kWh). Points: GEM plant units.',
     fill: (p) => p.indicators.generation_2024 ?? null,
@@ -60,7 +54,6 @@ const VIEWS = {
   },
   cost: {
     label: 'Electricity cost', title: 'Industrial & commercial electricity price (1–10 kV)',
-    insight: ['Tariffs are a secondary compilation', 'Values are the 1–10 kV general industrial-and-commercial single-part (non-time-of-use) rate as of May 2025, compiled by China Briefing from grid-company price tables. They are not a facility\'s negotiated contract and should be verified against each province\'s monthly 代理购电 notice before citing.'],
     sourceKey: 'tariff', ramp: 'blue', unit: ' 元/kWh', digits: 2,
     legendNote: 'Province shade: 元 per kWh, May 2025. Grey: not in the source.',
     fill: (p, ctx) => (ctx.costMeasure === 'two' ? p.indicators.tariff_two_part_1_10kv : p.indicators.tariff_single_1_10kv) ?? null,
@@ -68,7 +61,6 @@ const VIEWS = {
   },
   water: {
     label: 'Water scarcity', title: 'Water resources and use, 2024',
-    insight: ['Water is screening context', 'Figures come from the Ministry of Water Resources bulletin as reprinted in the NBS yearbook. Per-capita resources and the use-to-resources ratio describe provincial pressure; they say nothing about a facility\'s cooling technology or withdrawals.'],
     sourceKey: 'water_resources', digits: (ctx) => (ctx.waterMeasure === 'stress' ? 2 : 0),
     // Abundance measures use the blue ramp (darker = more water); pressure measures use the warm ramp (darker = more stress).
     ramp: (ctx) => (ctx.waterMeasure === 'stress' || ctx.waterMeasure === 'industrial' ? 'warm' : 'blue'),
@@ -87,21 +79,18 @@ const VIEWS = {
   },
   hazard: {
     label: 'Hazard', title: 'Natural-hazard screening (not yet loaded)',
-    insight: ['Hazard data is not yet in the dashboard', 'A province-level hazard layer (drought, flood, heat, seismic) has not been sourced. The map keeps the facility bubbles so the tab stays comparable with the U.S. tracker; nothing here should be read as a risk rating.'],
     sourceKey: null, ramp: 'blue', unit: '', digits: 0, noData: true,
     legendNote: 'No hazard measure loaded yet.',
     fill: () => null, bins: () => [],
   },
   policy: {
     label: 'Policy', title: 'East Data West Computing hub designation',
-    insight: ['Policy is national, not provincial, in this library', 'The 88 records in the legislation library are national laws, State Council documents and ministerial measures; none is a provincial bill, so the map shows the eight national computing hubs designated under the East Data West Computing programme instead. Topic counts are in the chart below.'],
     sourceKey: null, ramp: 'blue', unit: '', digits: 0, categorical: true,
     legendNote: 'Hub provinces per the 2022 NDRC / MIIT / NEA / CAC approvals.',
     fill: (p) => (p.hub ? 1 : 0), bins: () => [],
   },
   opposition: {
     label: 'Opposition', title: 'Local opposition (no tracker available)',
-    insight: ['No opposition tracker exists for China in this dataset', 'The U.S. tracker joins facility records to local-action trackers. No equivalent public record has been identified for China, so this tab is intentionally empty rather than inferred.'],
     sourceKey: null, ramp: 'blue', unit: '', digits: 0, noData: true,
     legendNote: 'No opposition record loaded.',
     fill: () => null, bins: () => [],
@@ -191,9 +180,8 @@ function buildLayout() {
     filterGroup('source', 'Inventory source', SOURCE_ORDER, null, false, (k) => SOURCE_LABEL[k]),
     h('div', { class: 'db-selection' },
       h('span', { class: 'field-label' }, 'Current selection'),
-      h('strong', { id: 'db-selection-count' }, EM_DASH),
-      h('button', { class: 'btn', type: 'button', id: 'db-export' }, 'Export filtered CSV')),
-    h('div', { class: 'note-box' }, 'Facilities are shown at province level only. The published data holds no coordinates, addresses or city names, so proximity and counts describe provinces, not sites.'));
+      h('strong', { id: 'db-selection-count' }, EM_DASH)),
+    h('div', { class: 'note-box' }, 'Facilities are shown at province level only and are not downloadable. The published data holds no coordinates, addresses or city names, so proximity and counts describe provinces, not sites.'));
 
   const kpis = h('div', { class: 'kpis', 'aria-live': 'polite' },
     kpiTile('db-k-count', 'Facilities', 'of inventory'),
@@ -238,13 +226,7 @@ function buildLayout() {
       h('div', { class: 'db-panel-head' },
         h('div', null, h('span', { class: 'eyebrow', id: 'db-profile-eyebrow' }, 'Selection profile'), h('h2', { id: 'db-profile-title' }, 'Status distribution')),
         h('span', { class: 'muted', id: 'db-chart-total' })),
-      h('div', { id: 'db-chart', class: 'db-bars' })),
-    h('section', { class: 'card db-insight' },
-      h('span', { class: 'eyebrow' }, 'How to read this view'),
-      h('h2', { id: 'db-insight-title' }),
-      h('p', { id: 'db-insight-text' }),
-      h('p', { class: 'hint', id: 'db-insight-source' }),
-      h('p', { class: 'hint', id: 'db-coverage' })));
+      h('div', { id: 'db-chart', class: 'db-bars' })));
 
   const detail = h('aside', { class: 'db-detail card', id: 'db-detail', 'aria-label': 'Selected province details' });
 
@@ -255,11 +237,10 @@ function buildLayout() {
     h('div', { class: 'db-workspace' }, sidebar, h('div', { class: 'db-main' }, kpis, mapCard, analysis), detail));
 
   els = {
-    search: byId('db-search'), province: byId('db-province'), reset: byId('db-reset'), export: byId('db-export'),
+    search: byId('db-search'), province: byId('db-province'), reset: byId('db-reset'),
     selectionCount: byId('db-selection-count'), map: byId('db-map'), viewport: byId('db-viewport'), provinces: byId('db-provinces'),
     plants: byId('db-plants'), bubbles: byId('db-bubbles'), labels: byId('db-labels'), legend: byId('db-legend'), viewTitle: byId('db-view-title'),
     chart: byId('db-chart'), chartTotal: byId('db-chart-total'), profileEyebrow: byId('db-profile-eyebrow'), profileTitle: byId('db-profile-title'),
-    insightTitle: byId('db-insight-title'), insightText: byId('db-insight-text'), insightSource: byId('db-insight-source'), coverage: byId('db-coverage'),
     detail: byId('db-detail'), powerTech: byId('db-power-tech'), genTech: byId('db-gen-tech'), costMeasure: byId('db-cost-measure'), waterMeasure: byId('db-water-measure'),
     mapShell: byId('db-map-shell'),
   };
@@ -269,7 +250,6 @@ function buildLayout() {
   els.search.addEventListener('input', onSearch);
   els.province.addEventListener('change', () => { state.filters.province = els.province.value; applyFilters(); });
   els.reset.addEventListener('click', resetFilters);
-  els.export.addEventListener('click', exportCsv);
   els.powerTech.addEventListener('change', () => { state.powerTech = els.powerTech.value; repaint(); });
   els.genTech.addEventListener('change', () => { state.generationTech = els.genTech.value; repaint(); });
   els.costMeasure.addEventListener('change', () => { state.costMeasure = els.costMeasure.value; repaint(); });
@@ -405,7 +385,6 @@ function repaint() {
   renderBubbles(t);
   renderPlants(t);
   renderLegend(view, thresholds, ramp, t);
-  renderInsight(view);
   renderChart(view, t);
 }
 
@@ -449,7 +428,7 @@ async function renderPlants(t) {
     try {
       data.plants = await loadJson(DATA_FILES.plants);
     } catch (err) {
-      els.coverage.textContent = `Power-plant layer unavailable: ${err.message}`;
+      put(els.legend, h('div', { class: 'db-legend-note' }, `Power-plant layer unavailable: ${err.message}`));
       return;
     }
     if (state.view !== 'generation') return;
@@ -469,7 +448,6 @@ async function renderPlants(t) {
   }
   els.plants.append(frag);
   renderChart(VIEWS.generation, t);
-  renderCoverage(VIEWS.generation);
 }
 
 // Plant hover/click uses event delegation (there can be 16k circles).
@@ -576,7 +554,7 @@ function positionTooltip(e) {
 function hideTooltip() { els.tooltip.classList.remove('on'); }
 
 // ---------------------------------------------------------------------------------------------------------------
-// Legend, insight, chart
+// Legend, chart
 // ---------------------------------------------------------------------------------------------------------------
 function setView(key) {
   state.view = key;
@@ -607,36 +585,9 @@ function renderLegend(view, thresholds, ramp, t) {
   }
   if (state.view === 'status') STATUS_ORDER.forEach((k) => items.push(legendItem(colorOf(STATUS_COLOR, k, t), k, { ring: true })));
   if (state.view === 'generation') TECH_ORDER.forEach((k) => items.push(legendItem(colorOf(TECH_COLOR, k, t), `${k} unit`, { ring: true })));
-  put(els.legend, items, h('div', { class: 'db-legend-note' }, view.legendNote));
-}
-
-function renderInsight(view) {
-  els.insightTitle.textContent = view.insight[0];
-  els.insightText.textContent = view.insight[1];
   const src = view.sourceKey ? data.provinces.sources[view.sourceKey] : null;
-  put(els.insightSource, src ? ['Data source: ', src.url ? h('a', { href: src.url, rel: 'noopener', target: '_blank' }, src.title) : src.title, ` (${src.publisher}; tier ${src.tier}).`] : '');
-  renderCoverage(view);
-}
-
-function renderCoverage(view) {
-  const provs = data.provinces.provinces;
-  const c = ctx();
-  if (state.view === 'generation') {
-    if (!data.plants) { els.coverage.textContent = 'Loading plant units…'; return; }
-    const rows = data.plants.plants.filter((r) => (!state.generationTech || r[0] === state.generationTech) && (!state.filters.province || r[4] === state.filters.province));
-    const mw = rows.reduce((a, r) => a + r[1], 0);
-    els.coverage.textContent = `${formatNumber(rows.length)} GEM units shown (${formatNumber(mw / 1000, { digits: 1 })} GW)${state.filters.province ? ` in ${provinceById.get(state.filters.province)?.name}` : ' nationally'}. Units outside every province outline (offshore wind, border rounding) are kept but carry no province.`;
-  } else if (view.noData || view.categorical) {
-    els.coverage.textContent = view.categorical ? `${provs.filter((p) => p.hub).length} provinces and SARs belong to the eight national hubs.` : '';
-  } else if (state.view === 'status' || state.view === 'capacity') {
-    const known = filtered.filter((f) => Number.isFinite(f.mw)).length;
-    els.coverage.textContent = `Reported-MW coverage: ${filtered.length ? ((known / filtered.length) * 100).toFixed(1) : '0'}% of the selection. Inventory sources: ${Object.entries(data.facilities.sourceCounts).map(([k, v]) => `${SOURCE_LABEL[k] ?? k} ${v}`).join(', ')}.`;
-  } else {
-    const have = provs.filter((p) => view.fill(p, c) !== null && view.fill(p, c) !== undefined).length;
-    const sel = state.filters.province ? provinceById.get(state.filters.province) : null;
-    const selV = sel ? view.fill(sel, c) : null;
-    els.coverage.textContent = `${have} of ${provs.length} provinces/SARs have a value.${sel ? ` ${sel.name}: ${selV === null || selV === undefined ? 'no data' : formatNumber(selV, { digits: digitsOf(view) }) + unitOf(view)}.` : ''}`;
-  }
+  put(els.legend, items, h('div', { class: 'db-legend-note' }, view.legendNote, ' ',
+    src ? ['Source: ', src.url ? h('a', { href: src.url, rel: 'noopener', target: '_blank' }, src.title) : src.title, ` (${src.publisher}; tier ${src.tier}).`] : null));
 }
 
 function barRow(label, value, max, color, valueText) {
@@ -689,19 +640,69 @@ async function renderChart(view, t) {
     put(els.chart, rows.map(([p, v]) => barRow(p.name, v, max, 'var(--series-1)', `${formatNumber(v, { digits: digitsOf(view) })}${unitOf(view)}`)));
     return;
   }
-  // status / capacity / hazard / opposition: status distribution of the selection
-  const counts = countBy(filtered, (f) => f.status, STATUS_ORDER);
-  const max = Math.max(...counts.values(), 1);
+  // status / capacity / hazard / opposition: a donut of the selection, headline count in the middle
   els.profileEyebrow.textContent = 'Selection profile';
-  els.profileTitle.textContent = state.view === 'capacity' ? 'Capacity classes' : 'Status distribution';
   els.chartTotal.textContent = `${formatNumber(filtered.length)} records`;
-  if (state.view === 'capacity') {
-    const cc = countBy(filtered, (f) => f.capacity, CAPACITY_ORDER);
-    const m2 = Math.max(...cc.values(), 1);
-    put(els.chart, CAPACITY_ORDER.map((k) => barRow(k, cc.get(k), m2, 'var(--series-1)')));
-  } else {
-    put(els.chart, filtered.length ? STATUS_ORDER.map((k) => barRow(k, counts.get(k), max, colorOf(STATUS_COLOR, k, t))) : h('p', { class: 'muted' }, 'No facilities match these filters.'));
+  if (!filtered.length) {
+    els.profileTitle.textContent = 'Status distribution';
+    put(els.chart, h('p', { class: 'muted' }, 'No facilities match these filters.'));
+    return;
   }
+  if (state.view === 'capacity') {
+    els.profileTitle.textContent = 'Capacity classes';
+    const cc = countBy(filtered, (f) => f.capacity, CAPACITY_ORDER);
+    const known = filtered.filter((f) => Number.isFinite(f.mw)).length;
+    const seq = SEQ_RAMP[t];
+    const capColor = (k) => (k === 'Unknown' ? 'var(--grid)' : seq[Math.max(0, 4 - CAPACITY_ORDER.indexOf(k))]);
+    put(els.chart, donut(CAPACITY_ORDER.map((k) => [k, cc.get(k), capColor(k)]), { value: formatNumber(known), label: `with reported MW`, sub: `${((known / filtered.length) * 100).toFixed(0)}% of selection` }));
+  } else {
+    els.profileTitle.textContent = 'Status distribution';
+    const counts = countBy(filtered, (f) => f.status, STATUS_ORDER);
+    const op = counts.get('Operating') ?? 0;
+    put(els.chart, donut(STATUS_ORDER.map((k) => [k, counts.get(k), colorOf(STATUS_COLOR, k, t)]), { value: `${((op / filtered.length) * 100).toFixed(0)}%`, label: 'operating', sub: `${formatNumber(op)} of ${formatNumber(filtered.length)}` }));
+  }
+}
+
+/**
+ * Donut with a hero figure in the hole and a legend that carries count and share for every slice (so identity is
+ * never colour-alone). Slices thinner than 1.5° are drawn with a 1.5° minimum so tiny categories stay visible.
+ * rows: [[label, count, color], …]
+ */
+function donut(rows, hero) {
+  const total = rows.reduce((a, [, n]) => a + (n || 0), 0) || 1;
+  const R = 54; const r0 = 36; const cx = 60; const cy = 60;
+  const gap = 0.022; // radians of surface between slices
+  const minA = (1.5 * Math.PI) / 180;
+  let a = -Math.PI / 2;
+  const slices = [];
+  for (const [label, n, color] of rows) {
+    if (!n) continue;
+    let span = (n / total) * Math.PI * 2;
+    if (span < minA) span = minA;
+    const a0 = a + gap / 2; const a1 = a + span - gap / 2;
+    a += span;
+    if (a1 <= a0) continue;
+    const P = (ang, rad) => [cx + rad * Math.cos(ang), cy + rad * Math.sin(ang)];
+    const [x0, y0] = P(a0, R); const [x1, y1] = P(a1, R); const [x2, y2] = P(a1, r0); const [x3, y3] = P(a0, r0);
+    const large = a1 - a0 > Math.PI ? 1 : 0;
+    const d = `M${x0.toFixed(2)},${y0.toFixed(2)}A${R},${R} 0 ${large} 1 ${x1.toFixed(2)},${y1.toFixed(2)}L${x2.toFixed(2)},${y2.toFixed(2)}A${r0},${r0} 0 ${large} 0 ${x3.toFixed(2)},${y3.toFixed(2)}Z`;
+    const path = svg('path', { d, fill: color, class: 'db-donut-slice', 'aria-label': `${label}: ${formatNumber(n)} (${((n / total) * 100).toFixed(1)}%)` });
+    path.append(svg('title', null, `${label}: ${formatNumber(n)} · ${((n / total) * 100).toFixed(1)}%`));
+    slices.push(path);
+  }
+  const chart = svg('svg', { viewBox: '0 0 120 120', class: 'db-donut', role: 'img', 'aria-label': 'Distribution of the selected facilities' },
+    svg('circle', { cx, cy, r: (R + r0) / 2, fill: 'none', stroke: 'var(--grid)', 'stroke-width': R - r0 }),
+    slices,
+    svg('text', { x: cx, y: cy - 2, class: 'db-donut-hero', 'text-anchor': 'middle' }, hero.value),
+    svg('text', { x: cx, y: cy + 12, class: 'db-donut-label', 'text-anchor': 'middle' }, hero.label),
+    svg('text', { x: cx, y: cy + 23, class: 'db-donut-sub', 'text-anchor': 'middle' }, hero.sub));
+  const legend = h('ul', { class: 'db-donut-legend' }, rows.map(([label, n, color]) =>
+    h('li', { class: n ? '' : 'is-zero' },
+      h('span', { class: 'db-swatch ring', style: { background: color } }),
+      h('span', { class: 'db-donut-name' }, label),
+      h('strong', { class: 'num' }, formatNumber(n || 0)),
+      h('span', { class: 'num muted' }, `${(((n || 0) / total) * 100).toFixed(1)}%`))));
+  return h('div', { class: 'db-donut-wrap' }, chart, legend);
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -782,18 +783,7 @@ function renderDetail() {
         h('button', { class: 'link-btn', type: 'button', onclick: () => select({ kind: 'facility', id: f.id }) }, f.name),
         h('span', { class: 'cell-sub' }, [f.operator, f.status, f.facilityType, Number.isFinite(f.mw) ? `${formatNumber(f.mw, { digits: 0 })} MW` : null].filter(Boolean).join(' · ')))))
         : h('p', { class: 'muted' }, 'No facilities match the current filters.'),
-      facs.length > 200 ? h('p', { class: 'hint' }, `Showing 200 of ${facs.length}; export the CSV for the full list.`) : null));
-}
-
-// ---------------------------------------------------------------------------------------------------------------
-// Export
-// ---------------------------------------------------------------------------------------------------------------
-function exportCsv() {
-  const rows = filtered.map((f) => {
-    const p = provinceById.get(f.province);
-    return { ...f, provinceName: p?.name ?? f.province, provinceZh: p?.nameZh ?? '', hubName: p?.hub ? data.provinces.hubs[p.hub].name_en : '' };
-  });
-  downloadCsv(`china-data-centers-${new Date().toISOString().slice(0, 10)}.csv`, toCsv(rows, EXPORT_COLUMNS));
+      facs.length > 200 ? h('p', { class: 'hint' }, `Showing the 200 largest of ${facs.length}.`) : null));
 }
 
 main();

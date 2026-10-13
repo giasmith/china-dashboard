@@ -87,15 +87,27 @@
 @media (max-width: 700px) { .db-caption { position: static; margin-top: 8px; } }
 
 /* analysis row */
-.db-analysis { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; }
-@media (max-width: 900px) { .db-analysis { grid-template-columns: minmax(0, 1fr); } }
+.db-analysis { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .db-bars { display: grid; gap: 8px; margin-top: 12px; }
 .db-bar-row { display: grid; grid-template-columns: minmax(90px, 160px) 1fr max-content; gap: 10px; align-items: center; font-size: 13px; }
 .db-bar-label { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .db-bar-track { height: 10px; background: var(--grid); border-radius: 4px; overflow: hidden; }
 .db-bar-fill { height: 100%; border-radius: 4px; background: var(--series-1); min-width: 2px; }
-.db-insight h2 { font-size: 16px; margin-top: 4px; }
-.db-insight p { margin-top: 8px; color: var(--ink-2); }
+/* donut */
+.db-donut-wrap { display: grid; grid-template-columns: minmax(150px, 200px) minmax(0, 1fr); max-width: 560px; gap: 16px; align-items: center; margin-top: 12px; }
+.db-donut { width: 100%; height: auto; display: block; }
+.db-donut-slice { stroke: var(--surface); stroke-width: 0.5; }
+.db-donut-slice:hover { filter: brightness(1.08); }
+.db-donut-hero { font-size: 22px; font-weight: 700; fill: var(--ink); }
+.db-donut-label { font-size: 8px; fill: var(--ink-2); text-transform: uppercase; letter-spacing: 0.06em; }
+.db-donut-sub { font-size: 7.5px; fill: var(--ink-3); }
+.db-donut-legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 13px; }
+.db-donut-legend li { display: grid; grid-template-columns: 12px minmax(0, 1fr) max-content 44px; gap: 8px; align-items: center; }
+.db-donut-legend li.is-zero { opacity: 0.5; }
+.db-donut-legend .db-donut-name { color: var(--ink-2); line-height: 1.25; }
+.db-donut-legend .muted { text-align: right; font-size: 12px; }
+@media (max-width: 480px) { .db-donut-wrap { grid-template-columns: minmax(0, 1fr); justify-items: center; } .db-donut { max-width: 200px; } .db-donut-legend { width: 100%; } }
+
 
 /* detail */
 .db-detail-empty { text-align: center; color: var(--ink-2); padding: 28px 8px; }

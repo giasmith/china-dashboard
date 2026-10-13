@@ -5,8 +5,8 @@ mode and checks:
   - no page-level horizontal scroll
   - no stray "null" / "undefined" / "NaN" text anywhere in the rendered page
   - key interactions work: search, status toggle, row selection, URL-hash state, invalid year range, empty state
-  - the map dashboard: layer tabs, filters, province selection, CSV export, and that no coordinate ever reaches
-    the browser for a facility
+  - the map dashboard: layer tabs, filters, province selection, that there is no export/download control, and that
+    no coordinate ever reaches the browser for a facility
 
 Usage:
     python3 -m http.server 8000 --directory site &
@@ -213,13 +213,13 @@ async def interactions(browser, base):
     check(await page.locator("#db-water-measure").is_visible(), "map: the water view shows its measure control")
     check(not await page.locator("#db-gen-tech").is_visible(), "map: other sub-controls are hidden")
 
-    async with page.expect_download() as dl:
-        await page.locator("#db-export").click()
-    path = await (await dl.value).path()
-    csv = Path(path).read_bytes()
-    header = csv.split(b"\r\n")[0]
-    check(b"province" in header and b"status" in header, "map: CSV has the expected header")
-    check(b"lat" not in header and b"lon" not in header and b"datacentermap.com" not in csv, "map: CSV carries no coordinates or profile links")
+    # The inventory is not downloadable: no export control anywhere on the map page, and no <a download>.
+    check(await page.locator("#db-export, button:has-text('Export')").count() == 0, "map: no export control")
+    check(await page.locator("a[download]").count() == 0, "map: no download links")
+    await page.click(".db-tab[data-view=status]")
+    await page.wait_for_timeout(200)
+    check(await page.locator("#db-chart .db-donut-slice").count() >= 2, "map: the status profile is a donut")
+    check("operating" in (await page.locator("#db-chart").inner_text()).lower(), "map: the donut legend names the categories")
     check(not problems, f"map: still no errors after interactions {problems[:2] if problems else ''}")
     await page.close()
     await ctx.close()

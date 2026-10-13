@@ -169,20 +169,3 @@ export function niceRound(x) {
   for (const s of steps) if (Math.abs(s - m) < Math.abs(best - m)) best = s;
   return sign * best * mag;
 }
-
-/** Facility CSV columns (never includes location detail beyond the province). */
-export const EXPORT_COLUMNS = [
-  { label: 'id', key: 'id' },
-  { label: 'name', key: 'name' },
-  { label: 'operator', key: 'operator' },
-  { label: 'province', key: 'provinceName' },
-  { label: 'province_zh', key: 'provinceZh' },
-  { label: 'edwc_hub', key: 'hubName' },
-  { label: 'status', key: 'status' },
-  { label: 'facility_type', key: 'facilityType' },
-  { label: 'capacity_class', key: 'capacity' },
-  { label: 'reported_mw', key: 'mw' },
-  { label: 'pue', key: 'pue' },
-  { label: 'online_year', key: 'onlineYear' },
-  { label: 'sources', get: (r) => r.sources.map((s) => SOURCE_LABEL[s] ?? s) },
-];

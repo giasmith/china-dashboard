@@ -42,8 +42,9 @@ tests/js  tests/py  tests/browser   unit tests and a Playwright smoke test
 ## The map dashboard
 
 Layout follows the U.S. tracker: filters on the left (search, province, project status, facility type, reported
-capacity, inventory source), KPI tiles, a tab strip of map layers, a legend, a profile chart, a "how to read this
-view" card and a detail panel on the right. The map is a plain SVG (Albers equal-area outlines pre-projected by the
+capacity, inventory source; there is deliberately no CSV export, the inventory is view-only), KPI tiles, a tab
+strip of map layers, a legend that also carries the source attribution for the active layer, a profile chart (donut
+for the selection, ranked bars for province comparisons) and a detail panel on the right. The map is a plain SVG (Albers equal-area outlines pre-projected by the
 build script), so there is no tile server, no map library and nothing loaded from a CDN.
 
 | Tab | Province shade | Points / bubbles | Source |
@@ -175,7 +176,7 @@ python3 -m http.server 8000 --directory site & python3 tests/browser/smoke.py
 
 The browser smoke test loads every page at desktop and phone widths in light and dark mode, and fails on console
 errors, horizontal scroll, or stray `null`/`undefined`/`NaN` text. On the map it switches tabs, filters, selects a
-province and a facility, exports the CSV, and asserts that no coordinate or profile link reaches the browser.
+province and a facility, and asserts that there is no export control and no coordinate or profile link reaches the browser.
 
 ## Before you publish (checklist)
 
