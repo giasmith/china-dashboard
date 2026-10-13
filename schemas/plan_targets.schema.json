@@ -6,6 +6,7 @@
   "additionalProperties": false,
   "required": [
     "plans",
+    "themes",
     "targets"
   ],
   "properties": {
@@ -67,6 +68,64 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/target"
+      }
+    },
+    "themes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_en",
+          "description",
+          "map_view",
+          "legislation_topics"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "name_en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name_zh": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 600
+          },
+          "map_view": {
+            "description": "Map-dashboard tab that shows the related layer (index.html#view=...), or null.",
+            "enum": [
+              "status",
+              "capacity",
+              "power",
+              "generation",
+              "cost",
+              "water",
+              "hazard",
+              "policy",
+              "opposition",
+              null
+            ]
+          },
+          "legislation_topics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]*$"
+            },
+            "uniqueItems": true
+          }
+        }
       }
     }
   },
@@ -148,7 +207,8 @@
         "direction",
         "target",
         "source",
-        "placeholder"
+        "placeholder",
+        "theme"
       ],
       "properties": {
         "id": {
@@ -242,6 +302,10 @@
             "null"
           ],
           "maxLength": 700
+        },
+        "theme": {
+          "description": "Which part of the data-center story the target belongs to; must match an id in themes.",
+          "$ref": "#/$defs/id"
         }
       },
       "allOf": [

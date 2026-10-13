@@ -2758,6 +2758,38 @@
       "note": "Successor to the national green data centre recommendation programme; shows the operational use of GB 40879 grades and the 'standard rack' unit (definition in the notice annex). MIIT's own page not fetched; read on a Beijing municipal gov.cn repost.",
       "verified": true,
       "placeholder": false
+    },
+    {
+      "id": "most_ai_pilot_zone_guideline",
+      "title_en": "Work Guideline for Building National New-Generation AI Innovation Development Pilot Zones",
+      "title_zh": "国家新一代人工智能创新发展试验区建设工作指引",
+      "doc_type": "policy_notice",
+      "issuer": "科技部",
+      "issuer_level": "ministerial",
+      "doc_number": "国科发规〔2019〕298号",
+      "date_adopted": "2019-08-29",
+      "date_published": "2019-09-05",
+      "date_effective": "2019-08-29",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "ai",
+        "digital_economy",
+        "computing_power"
+      ],
+      "related_plan_ids": [
+        "most_ai_zones"
+      ],
+      "source": {
+        "title": "科技部关于印发《国家新一代人工智能创新发展试验区建设工作指引》的通知, 科技部",
+        "url": "https://www.most.gov.cn/xxgk/xinxifenlei/fdzdgknr/fgzc/gfxwj/gfxwj2019/201909/t20190905_148663.html",
+        "language": "zh"
+      },
+      "summary_en": "Sets up the city-level National New-Generation AI Innovation Development Pilot Zone programme: criteria, application route via provincial governments, and the target of about 20 zones by 2023 to test AI policy tools and build AI innovation hubs. Revised 2020-12-24.",
+      "note": "Revised version: https://www.most.gov.cn/xxgk/xinxifenlei/fdzdgknr/fgzc/gfxwj/gfxwj2020/202012/t20201224_171987.html . Count of 17 zones as of December 2021 is tracked in the plan tracker (most_ai_pilot_zones).",
+      "verified": true,
+      "placeholder": false
     }
   ]
 }

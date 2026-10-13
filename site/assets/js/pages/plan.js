@@ -28,7 +28,7 @@ const app = byId('app');
 async function main() {
   let data;
   try {
-    data = await loadDatasets(['meta', 'targets', 'actuals']);
+    data = await loadDatasets(['meta', 'targets', 'actuals', 'legislation']);
   } catch (err) {
     renderShell('plan.html', null);
     showError(app, err);
@@ -38,8 +38,17 @@ async function main() {
   start(data);
 }
 
-function start({ meta, targets: tDoc, actuals: aDoc }) {
+function start({ meta, targets: tDoc, actuals: aDoc, legislation: lDoc }) {
   const plans = tDoc.plans;
+  const themes = tDoc.themes;
+  const themeById = new Map(themes.map((th) => [th.id, th]));
+  const docs = lDoc.documents;
+  // Legislation that belongs to a theme: documents tied to one of the theme's plans, or tagged with one of its topics.
+  const docsForTheme = (th) => {
+    const planIds = new Set(tDoc.targets.filter((t) => t.theme === th.id).map((t) => t.plan_id));
+    return docs.filter((d) => d.related_plan_ids.some((id) => planIds.has(id)) || d.topics.some((tp) => th.legislation_topics.includes(tp)));
+  };
+  const themeDocs = new Map(themes.map((th) => [th.id, docsForTheme(th)]));
   const planById = new Map(plans.map((p) => [p.id, p]));
   const planName = (id) => planById.get(id)?.name_en ?? id; // tolerate a dangling plan_id instead of crashing
 
@@ -52,11 +61,11 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
     result: computeStatus(t, aDoc.actuals, { tolerance: CONFIG.statusTolerance, asOfYear }),
   }));
 
-  const categories = Object.keys(CATEGORY_LABEL).filter((c) => rows.some((r) => r.t.category === c));
+  const themeIds = themes.map((th) => th.id);
   const spec = {
     q: { type: 'text', max: 80 },
     plan: { type: 'choice', allowed: plans.map((p) => p.id) },
-    category: { type: 'set', allowed: categories },
+    theme: { type: 'set', allowed: themeIds },
     binding: { type: 'set', allowed: Object.keys(BINDING_LABEL) },
     status: { type: 'set', allowed: [...STATUS_ORDER] },
     sort: { type: 'choice', allowed: ['name', 'progress'] },
@@ -68,7 +77,7 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
     for (const r of rows) m.set(fn(r), (m.get(fn(r)) ?? 0) + 1);
     return m;
   };
-  const byCat = countBy((r) => r.t.category);
+  const byTheme = countBy((r) => r.t.theme);
   const byBinding = countBy((r) => r.t.binding);
   const byStatus = countBy((r) => r.result.status);
 
@@ -85,7 +94,7 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
       options: [{ value: '', label: 'All plans' }, ...plans.map((p) => ({ value: p.id, label: `${p.name_en} (${p.period.start}–${p.period.end})` }))],
       onChange: (v) => store.set({ plan: v }),
     }),
-    category: checkGroup({ legend: 'Category', name: 'category', options: categories.map((v) => ({ value: v, label: CATEGORY_LABEL[v], count: byCat.get(v) ?? 0 })), onChange: (s) => store.set({ category: s }) }),
+    theme: checkGroup({ legend: 'Theme', name: 'theme', options: themes.map((th) => ({ value: th.id, label: th.name_en, count: byTheme.get(th.id) ?? 0 })), onChange: (s) => store.set({ theme: s }) }),
     binding: checkGroup({ legend: 'Target type', name: 'binding', options: Object.keys(BINDING_LABEL).filter((v) => (byBinding.get(v) ?? 0) > 0).map((v) => ({ value: v, label: BINDING_LABEL[v], count: byBinding.get(v) ?? 0 })), onChange: (s) => store.set({ binding: s }) }),
     status: checkGroup({ legend: 'Status', name: 'status', options: STATUS_ORDER.filter((s) => (byStatus.get(s) ?? 0) > 0).map((v) => ({ value: v, label: STATUS_META[v].label, count: byStatus.get(v) ?? 0 })), onChange: (s) => store.set({ status: s }) }),
     sort: selectField({ id: 'f-sort', label: 'Sort by', options: SORTS, onChange: (v) => store.set({ sort: v }) }),
@@ -94,7 +103,7 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
   const details = h('details', { class: 'card filters' },
     h('summary', null, h('span', null, 'Filters')),
     h('div', { class: 'body' },
-      h('div', { class: 'field-stack' }, c.q.el, c.plan.el, c.sort.el), c.category.el, c.binding.el, c.status.el,
+      h('div', { class: 'field-stack' }, c.q.el, c.plan.el, c.sort.el), c.theme.el, c.binding.el, c.status.el,
       h('div', { class: 'filters-foot' }, resetButton(() => store.reset(['sel'])), h('span', { class: 'hint' }, 'Leaving a group empty means no restriction.'))));
   initFilterDisclosure(details);
 
@@ -105,15 +114,15 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
 
   put(app, 
     h('div', { class: 'page-head' },
-      h('h1', null, 'Five-year plan tracker'),
-      h('p', null, 'Each plan target is compared with the latest reported value. Progress is measured against the straight-line pace from the baseline to the target year, so a target can be on track even when far from complete.')),
+      h('h1', null, 'Policy targets behind the data-center build-out'),
+      h('p', null, 'The five-year plans and computing-power action plans set the numbers; the legislation library holds the documents that carry them; the map shows what has been built. This page groups every plan target by its role in that chain — compute to be delivered, the energy and PUE limits it must respect, the digital demand driving it, and the AI programmes seeding it — and compares each with the latest official figure. Progress is measured against the straight-line pace from baseline to target year, so a target can be on track while far from complete.')),
     h('div', { class: 'layout with-profile' }, details, h('div', { class: 'stack' }, kpis, statusCard, tableHost), profile));
 
   // ---------------- filtering / sorting
   const matches = (r, st, { ignoreStatus = false } = {}) =>
     textMatches(st.q, r.t.indicator_en, r.t.indicator_zh, r.t.id, r.planName) &&
     (!st.plan || r.t.plan_id === st.plan) &&
-    inSet(st.category, r.t.category) &&
+    inSet(st.theme, r.t.theme) &&
     inSet(st.binding, r.t.binding) &&
     (ignoreStatus || inSet(st.status, r.result.status));
 
@@ -131,7 +140,7 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
   function sync(st) {
     c.q.set(st.q);
     c.plan.set(st.plan);
-    c.category.set(st.category);
+    c.theme.set(st.theme);
     c.binding.set(st.binding);
     c.status.set(st.status);
     c.sort.set(st.sort);
@@ -176,20 +185,25 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
     return h('span', { class: 'num' }, `Avg ${formatNumber(res.average)}`);
   }
 
-  function renderTable(shown) {
+  function themeHeader(th, themeRows) {
+    const sum = summarizeStatuses(themeRows);
+    const related = themeDocs.get(th.id) ?? [];
+    const topicHash = th.legislation_topics.length ? `legislation.html#topic=${th.legislation_topics.map(encodeURIComponent).join(',')}` : 'legislation.html';
+    return h('div', { class: 'theme-head' },
+      h('div', { class: 'theme-title' },
+        h('h2', { id: `theme-${th.id}` }, th.name_en, th.name_zh ? h('span', { class: 'zh', style: { marginLeft: '8px' } }, th.name_zh) : null),
+        h('p', null, th.description)),
+      h('div', { class: 'theme-side' },
+        h('div', { class: 'theme-count' }, h('strong', null, String(themeRows.length)), ` target${themeRows.length === 1 ? '' : 's'}`,
+          sum.assessable ? ` · ${sum.healthy} of ${sum.assessable} scored on track or achieved` : ''),
+        h('div', { class: 'row', style: { gap: '12px' } },
+          th.map_view ? h('a', { href: `index.html#view=${th.map_view}` }, 'See on the map') : null,
+          related.length ? h('a', { href: topicHash }, `${related.length} related document${related.length === 1 ? '' : 's'}`) : h('span', { class: 'muted' }, 'No related documents yet'))));
+  }
+
+  function targetsTable(shown) {
     const st = store.state;
-    clear(tableHost);
-    const head = h('div', { class: 'row between', style: { 'margin-bottom': '8px' } },
-      h('span', { class: 'muted', 'aria-hidden': 'true' }, `${shown.length} target${shown.length === 1 ? '' : 's'}`),
-      h('button', {
-        type: 'button', class: 'btn', disabled: shown.length === 0,
-        onclick: () => downloadCsv(`china-plan-targets-${meta.as_of}.csv`, toCsv(shown, csvColumns)),
-      }, 'Export filtered CSV'));
-    if (shown.length === 0) {
-      add(tableHost, head, h('div', { class: 'card' }, emptyState('No targets match', 'Try clearing a filter or searching for a different word.')));
-      return;
-    }
-    add(tableHost, head, h('div', { class: 'table-wrap' },
+    return h('div', { class: 'table-wrap' },
       h('table', null,
         h('caption', { class: 'sr-only' }, 'Plan targets with latest reported value, progress and status'),
         h('thead', null, h('tr', null,
@@ -207,7 +221,35 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
               res.latest ? h('span', { class: 'cell-sub nowrap' }, res.latest.partial ? `${res.latest.year} · as of ${formatIsoDate(res.latest.as_of, 'month')}` : String(res.latest.year)) : null),
             h('td', null, progressCell(r)),
             h('td', null, statusBadge(res.status)));
-        })))));
+        }))));
+  }
+
+  function renderTable(shown) {
+    clear(tableHost);
+    const head = h('div', { class: 'row between', style: { 'margin-bottom': '8px' } },
+      h('span', { class: 'muted', 'aria-hidden': 'true' }, `${shown.length} target${shown.length === 1 ? '' : 's'}`),
+      h('button', {
+        type: 'button', class: 'btn', disabled: shown.length === 0,
+        onclick: () => downloadCsv(`china-plan-targets-${meta.as_of}.csv`, toCsv(shown, csvColumns)),
+      }, 'Export filtered CSV'));
+    if (shown.length === 0) {
+      add(tableHost, head, h('div', { class: 'card' }, emptyState('No targets match', 'Try clearing a filter or searching for a different word.')));
+      return;
+    }
+    add(tableHost, head);
+    // One section per theme, in the order the data file lists them. The last theme (macro/social context) is
+    // collapsed by default so the page opens on the data-center story.
+    for (const th of themes) {
+      const themeRows = shown.filter((r) => r.t.theme === th.id);
+      if (!themeRows.length) continue;
+      const section = h('section', { class: 'theme', 'aria-labelledby': `theme-${th.id}` }, themeHeader(th, themeRows), targetsTable(themeRows));
+      if (th.map_view === null && themes.length > 1) {
+        add(tableHost, h('details', { class: 'theme-collapsed', open: store.state.sel && themeRows.some((r) => r.t.id === store.state.sel) ? true : null },
+          h('summary', null, `${th.name_en} (${themeRows.length} target${themeRows.length === 1 ? '' : 's'})`), section));
+      } else {
+        add(tableHost, section);
+      }
+    }
   }
 
   function renderProfile() {
@@ -232,18 +274,36 @@ function start({ meta, targets: tDoc, actuals: aDoc }) {
       h('div', { style: { margin: '12px 0' } }, chartHost),
       h('dl', { class: 'facts' },
         h('dt', null, 'Plan'), h('dd', null, r.planName),
+        h('dt', null, 'Theme'), h('dd', null, themeById.get(t.theme)?.name_en ?? humanize(t.theme)),
         h('dt', null, 'Category'), h('dd', null, CATEGORY_LABEL[t.category] ?? humanize(t.category)),
         h('dt', null, 'Type'), h('dd', null, `${BINDING_LABEL[t.binding] ?? humanize(t.binding)} · ${t.kind}`),
         t.target_text ? h('dt', null, 'As printed') : null, t.target_text ? h('dd', null, t.target_text) : null,
         h('dt', null, 'Target'), h('dd', null, rangeText(t)),
         h('dt', null, 'Source'), h('dd', null, src ? h('a', { href: src, rel: 'noopener' }, t.source.title) : `${t.source?.title ?? EM_DASH} (no link yet)`)),
-      t.placeholder ? h('p', { class: 'note-box warn', style: { marginTop: '12px' } }, 'Values for this target are synthetic placeholders and must not be cited.') : null);
+      t.placeholder ? h('p', { class: 'note-box warn', style: { marginTop: '12px' } }, 'Values for this target are synthetic placeholders and must not be cited.') : null,
+      relatedDocs(r));
     chartHandle = mountTrajectory(chartHost, t, aDoc.actuals, res);
+  }
+
+  /** Documents tied to the target's plan first, then the rest of its theme's documents (newest first, capped). */
+  function relatedDocs(r) {
+    const th = themeById.get(r.t.theme);
+    const byPlan = docs.filter((d) => d.related_plan_ids.includes(r.t.plan_id));
+    const byTheme = (themeDocs.get(r.t.theme) ?? []).filter((d) => !byPlan.includes(d));
+    const list = [...byPlan, ...byTheme.sort((a, b) => b.date_adopted.localeCompare(a.date_adopted))].slice(0, 6);
+    if (!list.length) return null;
+    return h('div', { style: { marginTop: '14px' } },
+      h('h3', null, 'Related legislation and policy'),
+      h('ul', { class: 'list', style: { marginTop: '8px', gap: '8px' } }, list.map((d) =>
+        h('li', null, h('span', null, h('a', { href: `legislation.html#sel=${encodeURIComponent(d.id)}` }, d.title_en),
+          h('span', { class: 'cell-sub' }, `${d.issuer} · ${formatIsoDate(d.date_adopted, d.date_precision)}${byPlan.includes(d) ? ' · carries this plan' : ''}`))))),
+      th?.legislation_topics?.length ? h('p', { class: 'card-foot' }, h('a', { href: `legislation.html#topic=${th.legislation_topics.map(encodeURIComponent).join(',')}` }, `All ${(themeDocs.get(th.id) ?? []).length} documents for ${th.name_en.toLowerCase()}`)) : null);
   }
 
   const csvColumns = [
     { label: 'id', get: (r) => r.t.id },
     { label: 'plan', get: (r) => r.planName },
+    { label: 'theme', get: (r) => r.t.theme },
     { label: 'category', get: (r) => r.t.category },
     { label: 'indicator_en', get: (r) => r.t.indicator_en },
     { label: 'indicator_zh', get: (r) => r.t.indicator_zh },

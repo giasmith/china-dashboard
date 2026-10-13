@@ -1855,6 +1855,22 @@
       },
       "note": "Broad definition (basic telecom operators + above-scale internet firms). The narrower 电信业务收入 in the 2025年通信业统计公报 is 2025年电信业务收入累计完成1.75万亿元,比上年增长0.7% — a component, not the same indicator.",
       "placeholder": false
+    },
+    {
+      "target_id": "most_ai_pilot_zones",
+      "year": 2021,
+      "value": 17,
+      "as_of": "2021-12-06",
+      "source": {
+        "title": "国家新一代人工智能创新发展试验区已达17个 (新华网, 2021-12-07)",
+        "url": "http://www.xinhuanet.com/tech/20211207/fd8876f8bd884c93b427250fc2ac12f5/c.html",
+        "retrieved": "2026-10-13",
+        "quote": "我国目前已经有17个国家新一代人工智能创新发展试验区。",
+        "confidence": "medium"
+      },
+      "note": "Statement by MOST Vice Minister 李萌 at the 2021 International Forum on AI Cooperation and Governance, reported by Xinhua (Tier B). The 17: 北京, 上海, 天津, 深圳, 杭州, 合肥, 德清县, 重庆, 成都, 西安, 济南, 广州, 武汉, 苏州, 长沙, 郑州, 沈阳.",
+      "placeholder": false,
+      "qualifier": null
     }
   ]
 }

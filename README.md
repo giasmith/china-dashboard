@@ -97,21 +97,25 @@ floor or ceiling (超过 / 以上 / 不超过) carry `qualifier: "floor" | "ceil
 the status engine scores the printed value. No value is derived: five-year cumulative reductions are recorded only
 when an official document prints them, never compounded from annual rates.
 
-**Plan targets and actuals** (`plan_targets.json`, `plan_actuals.json`): the headline indicator tables of the 14th
+**Plan targets and actuals** (`plan_targets.json`, `plan_actuals.json`): every target carries a `theme` that places it in
+the data-center story (compute · energy/PUE/carbon · digital demand · AI/innovation · macro context); the `themes`
+block names the map tab and legislation topics each theme links to, and the plan page is grouped by it. The
+headline indicator tables of the 14th
 (2021–2025) and 15th (2026–2030) Five-Year Plan outlines (the 15th read from the NDRC PDF, whose table is text; the
 gov.cn copy is an image), the 14th FYP Digital Economy plan, the four data-center / computing-power action plans
-(MIIT 2021, MIIT 2023, NDRC EDWC opinions 2023, green data-center plan 2024) and the ICT industry 15th FYP (MIIT PDF,
-工信部规〔2026〕188号). Each actual carries `source.url`, a verbatim `quote`, `retrieved` and `confidence`. Target
+(MIIT 2021, MIIT 2023, NDRC EDWC opinions 2023, green data-center plan 2024), the ICT industry 15th FYP (MIIT PDF,
+工信部规〔2026〕188号) and the MOST national AI pilot-zone guideline (国科发规〔2019〕298号; 17 zones by Dec 2021 vs
+"about 20" by 2023, Xinhua count). Each actual carries `source.url`, a verbatim `quote`, `retrieved` and `confidence`. Target
 `note` fields record modelling choices and definition changes — read them before quoting a status: energy intensity
 switched to an adjusted basis in 2023; computing power is FP32 to 2024 and FP16 智能算力 from 2025; the national PUE
 series changed population in 2025; 5G 普及率 is per 100 population, not a share of mobile users. Known gaps with no
 official figure: total FP32 EFLOPS and all-facility PUE for end-2025, 智能算力占比, 先进存力占比, industrial-internet
 platform penetration, the hub green-power share, and a point value for the pension participation rate (floor only).
 
-**Legislation** (`legislation.json`): 88 national laws, regulations, departmental rules, standards, plans and policy
+**Legislation** (`legislation.json`): 89 national laws, regulations, departmental rules, standards, plans and policy
 notices on the digital economy — data governance and security, cybersecurity, AI, platform economy, e-commerce,
 fintech, digital government, computing power and data-center energy use — with document numbers,
-adoption/publication/effective dates and a short summary. `verified: true` (87 of 88) means the dates were read from a
+adoption/publication/effective dates and a short summary. `verified: true` (88 of 89) means the dates were read from a
 government page; the one exception (the 2018 等级保护条例 draft) says why in `note`. `date_precision: month` means
 the issuing day is not published; the record then carries the first of the month and the release date in
 `date_published`.

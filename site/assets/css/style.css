@@ -275,3 +275,19 @@ details.table-view table { margin-top: 8px; font-size: 13px; }
 table td:first-child { min-width: 190px; } /* let the table scroll sideways inside .table-wrap instead of squeezing the name column */
 td.nowrap, th.nowrap { white-space: nowrap; }
 .profile { scroll-margin-top: 72px; }
+
+/* ---------- plan tracker: theme sections ---------- */
+.theme { display: grid; gap: 10px; margin-top: 20px; }
+.theme-head { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 8px 24px; align-items: end; }
+.theme-title h2 { font-size: 18px; }
+.theme-title p { color: var(--ink-2); max-width: 80ch; margin-top: 4px; font-size: 14px; }
+.theme-side { display: grid; gap: 4px; justify-items: end; font-size: 13px; color: var(--ink-2); text-align: right; }
+.theme-count strong { color: var(--ink); font-size: 18px; margin-right: 4px; }
+@media (max-width: 700px) { .theme-head { grid-template-columns: minmax(0, 1fr); } .theme-side { justify-items: start; text-align: left; } }
+.theme-collapsed { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 12px; }
+.theme-collapsed summary { cursor: pointer; font-weight: 650; color: var(--ink-2); }
+.list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.list li { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.list a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.list a:hover { color: var(--accent-text); text-decoration: underline; }
+.card-foot { margin-top: 12px; font-size: 13px; }

@@ -122,6 +122,15 @@ def check_targets(targets_doc: dict, actuals_doc: dict, meta: dict, report: Repo
     targets = {t["id"]: t for t in targets_doc["targets"]}
     for dup in _dupes([t["id"] for t in targets_doc["targets"]]):
         report.error("targets", f"duplicate target id '{dup}'")
+    themes = {th["id"] for th in targets_doc["themes"]}
+    for dup in _dupes([th["id"] for th in targets_doc["themes"]]):
+        report.error("themes", f"duplicate theme id '{dup}'")
+    for t in targets_doc["targets"]:
+        if t["theme"] not in themes:
+            report.error(f"targets/{t['id']}", f"theme '{t['theme']}' is not defined in themes")
+    for th in targets_doc["themes"]:
+        if not any(t["theme"] == th["id"] for t in targets_doc["targets"]):
+            report.warn(f"themes/{th['id']}", "theme has no targets")
 
     as_of = _parse_iso(meta.get("as_of"))
 
