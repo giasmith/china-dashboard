@@ -42,6 +42,14 @@ export function formatPercent(fraction, { digits = 0 } = {}) {
   return `${formatNumber(fraction * 100, { digits })}%`;
 }
 
+/** Integer -> English ordinal: 1 -> "1st", 2 -> "2nd", 11 -> "11th", 23 -> "23rd". Non-integers -> em dash. */
+export function ordinal(n) {
+  if (!Number.isInteger(n)) return EM_DASH;
+  const suffix = ['th', 'st', 'nd', 'rd'];
+  const v = Math.abs(n) % 100;
+  return `${n}${suffix[(v - 20) % 10] || suffix[v] || suffix[0]}`;
+}
+
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /**

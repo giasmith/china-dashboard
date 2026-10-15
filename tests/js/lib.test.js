@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { formatNumber, formatValue, formatActual, qualifierPrefix, formatPercent, formatIsoDate, formatYearMonth, safeUrl, humanize, textMatches, EM_DASH } from '../../site/assets/js/lib/format.js';
+import { formatNumber, formatValue, formatActual, qualifierPrefix, formatPercent, formatIsoDate, formatYearMonth, safeUrl, humanize, textMatches, ordinal, EM_DASH } from '../../site/assets/js/lib/format.js';
 import { toCsv, csvCell } from '../../site/assets/js/lib/csv.js';
 import { parseHash, serializeState, inSet, defaultState } from '../../site/assets/js/lib/state.js';
 import { niceScale, yearTicks, linear } from '../../site/assets/js/lib/scale.js';
@@ -10,6 +10,12 @@ import { niceScale, yearTicks, linear } from '../../site/assets/js/lib/scale.js'
 test('formatNumber: null/undefined/NaN/strings give an em dash, never 0 or "NaN"', () => {
   for (const bad of [null, undefined, NaN, Infinity, -Infinity, '', '12', {}, []]) assert.equal(formatNumber(bad), EM_DASH);
   assert.equal(formatNumber(0), '0');
+});
+
+test('ordinal: English suffixes including the 11-13 and 111-113 exceptions; bad input gives an em dash', () => {
+  const cases = { 0: '0th', 1: '1st', 2: '2nd', 3: '3rd', 4: '4th', 10: '10th', 11: '11th', 12: '12th', 13: '13th', 21: '21st', 22: '22nd', 23: '23rd', 31: '31st', 101: '101st', 111: '111th', 112: '112th', 113: '113th' };
+  for (const [n, want] of Object.entries(cases)) assert.equal(ordinal(Number(n)), want);
+  for (const bad of [null, undefined, NaN, 2.5, '3', Infinity]) assert.equal(ordinal(bad), EM_DASH);
 });
 
 test('formatNumber: trims trailing zeros, groups thousands, normalises negative zero', () => {

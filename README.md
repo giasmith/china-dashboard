@@ -41,11 +41,18 @@ tests/js  tests/py  tests/browser   unit tests and a Playwright smoke test
 
 ## The map dashboard
 
-Layout follows the U.S. tracker: filters on the left (search, province, project status, facility type, reported
-capacity, inventory source; there is deliberately no CSV export, the inventory is view-only), KPI tiles, a tab
+Layout follows the U.S. tracker: filters on the left (search, project status, facility type, reported capacity,
+inventory source; there is deliberately no CSV export, the inventory is view-only), KPI tiles, a tab
 strip of map layers, a legend that also carries the source attribution for the active layer, a profile chart (donut
 for the selection, ranked bars for province comparisons) and a detail panel on the right. The map is a plain SVG (Albers equal-area outlines pre-projected by the
 build script), so there is no tile server, no map library and nothing loaded from a CDN.
+
+There is no province dropdown: **clicking a province on the map focuses the dashboard on it.** The KPI tiles, the
+sidebar counts and the profile card narrow to that province (on the Generation and Power tabs the card becomes its
+power infrastructure profile, GEM units or installed capacity by technology; on the comparison tabs its bar is
+highlighted, with its rank, even outside the top eight), and the Generation tab draws only its plant units. Other
+provinces dim but keep their bubbles and stay clickable. Clicking the province again, clicking empty map, Close or
+Reset returns to all of China; dragging the map never changes the focus.
 
 | Tab | Province shade | Points / bubbles | Source |
 |---|---|---|---|
@@ -179,8 +186,9 @@ python3 -m http.server 8000 --directory site & python3 tests/browser/smoke.py
 ```
 
 The browser smoke test loads every page at desktop and phone widths in light and dark mode, and fails on console
-errors, horizontal scroll, or stray `null`/`undefined`/`NaN` text. On the map it switches tabs, filters, selects a
-province and a facility, and asserts that there is no export control and no coordinate or profile link reaches the browser.
+errors, horizontal scroll, or stray `null`/`undefined`/`NaN` text. On the map it switches tabs, filters, focuses a
+province by clicking it (also with real mouse input, plus a drag that must not change the focus), opens a facility,
+and asserts that there is no export control and no coordinate or profile link reaches the browser.
 
 ## Before you publish (checklist)
 

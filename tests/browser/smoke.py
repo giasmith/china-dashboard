@@ -5,8 +5,9 @@ mode and checks:
   - no page-level horizontal scroll
   - no stray "null" / "undefined" / "NaN" text anywhere in the rendered page
   - key interactions work: search, status toggle, row selection, URL-hash state, invalid year range, empty state
-  - the map dashboard: layer tabs, filters, province selection, that there is no export/download control, and that
-    no coordinate ever reaches the browser for a facility
+  - the map dashboard: layer tabs, filters, province focus by map click (also with real mouse input, and a drag that
+    must not change it), that there is no export/download control, and that no coordinate ever reaches the browser
+    for a facility
 
 Usage:
     python3 -m http.server 8000 --directory site &
@@ -53,6 +54,23 @@ async def new_page(ctx, base, path):
     await page.goto(base + path, wait_until="networkidle")
     await page.wait_for_timeout(300)
     return page, problems
+
+
+async def point_on(page, selector):
+    """A viewport point whose topmost element is `selector`, so a real mouse click lands on it (None if covered)."""
+    return await page.evaluate(
+        """(sel) => {
+          const el = document.querySelector(sel);
+          if (!el) return null;
+          const b = el.getBoundingClientRect();
+          for (let i = 1; i < 20; i += 1) for (let j = 1; j < 20; j += 1) {
+            const x = b.left + (b.width * i) / 20, y = b.top + (b.height * j) / 20;
+            if (document.elementFromPoint(x, y) === el) return { x, y };
+          }
+          return null;
+        }""",
+        selector,
+    )
 
 
 async def matrix(browser, base, shots: Path | None):
@@ -189,13 +207,25 @@ async def interactions(browser, base):
     await page.wait_for_timeout(400)
     n = int((await page.locator("#db-k-count").inner_text()).replace(",", ""))
     check(0 < n < total, f"map: search narrows the selection ({n})")
-    await page.select_option("#db-province", "nei_mongol")
+    # The Province dropdown is gone: clicking a province on the map focuses the dashboard on it instead.
+    check(await page.locator("#db-province").count() == 0, "map: there is no Province dropdown")
+    await page.locator("#db-provinces path[data-id=nei_mongol]").dispatch_event("click")
     await page.wait_for_timeout(300)
     m = int((await page.locator("#db-k-count").inner_text()).replace(",", ""))
-    check(0 < m <= n, f"map: province filter narrows further ({m})")
+    check(0 < m <= n, f"map: clicking a province narrows the selection further ({m})")
+    check("Inner Mongolia" in await page.locator("#db-scope").inner_text(), "map: the sidebar names the focused province")
+    check("inner mongolia" in (await page.locator("#db-profile-eyebrow").inner_text()).lower(), "map: the profile card names the focused province")  # eyebrow is CSS-uppercased
+    check(await page.locator("#db-provinces path.is-dim").count() >= 30, "map: the other provinces dim")
+    check(await page.locator("#db-bubbles > g").count() > 1, "map: the other provinces keep their bubbles, so they stay clickable")
+    await page.locator("#db-provinces path[data-id=nei_mongol]").dispatch_event("click")
+    await page.wait_for_timeout(300)
+    check(await page.locator("#db-k-count").inner_text() == f"{n:,}", "map: clicking the focused province again returns to all of China")
+    await page.locator("#db-provinces path[data-id=nei_mongol]").dispatch_event("click")
+    await page.wait_for_timeout(300)
     await page.click("#db-reset")
     await page.wait_for_timeout(300)
     check(await page.locator("#db-k-count").inner_text() == f"{total:,}", "map: reset restores the full inventory")
+    check(await page.locator("#db-provinces path.is-dim").count() == 0 and "Select a province" in await page.locator("#db-detail").inner_text(), "map: reset also clears the province focus")
 
     await page.locator("#db-provinces path[data-id=guangdong]").dispatch_event("click")
     await page.wait_for_timeout(300)
@@ -207,10 +237,21 @@ async def interactions(browser, base):
     await page.wait_for_timeout(200)
     check("Location is published at province level only" in await page.locator("#db-detail").inner_text(), "map: facility profile states the location rule")
 
+    # The focus set by clicking Guangdong carries over to the Generation tab: only its plant units are drawn and the
+    # power infrastructure profile describes Guangdong. Close returns to all of China.
     await page.click(".db-tab[data-view=generation]")
     await page.wait_for_timeout(1500)
+    gd_plants = await page.locator("#db-plants circle").count()
+    title = await page.locator("#db-profile-title").inner_text()
+    check("Guangdong" in title, f"map: the power infrastructure profile follows the clicked province ({title!r})")
+    check(0 < gd_plants < 5000, f"map: the plant layer shows only the focused province ({gd_plants})")
+    gd_units = int((await page.locator("#db-chart-total").inner_text()).split()[0].replace(",", ""))
+    check(gd_units == gd_plants, f"map: the profile's unit count matches the drawn units ({gd_units} vs {gd_plants})")
+    await page.locator("#db-detail button:has-text('Close')").click()
+    await page.wait_for_timeout(400)
     plants = await page.locator("#db-plants circle").count()
-    check(plants > 10000, f"map: the generation view loads the plant units ({plants})")
+    check(plants > 10000, f"map: Close returns the generation view to all of China ({plants})")
+    check("all of China" in await page.locator("#db-profile-title").inner_text(), "map: the profile title then says all of China")
     await page.select_option("#db-gen-tech", "Nuclear")
     await page.wait_for_timeout(300)
     check(await page.locator("#db-plants circle").count() < 100, "map: the technology filter narrows the plant layer")
@@ -219,6 +260,28 @@ async def interactions(browser, base):
     check(await page.locator("#db-plants circle").count() == 0, "map: leaving the generation view clears the plant layer")
     check(await page.locator("#db-water-measure").is_visible(), "map: the water view shows its measure control")
     check(not await page.locator("#db-gen-tech").is_visible(), "map: other sub-controls are hidden")
+
+    # Real mouse input, not dispatch_event: capturing the pointer on pointerdown used to retarget every click to the
+    # <svg>, so a plain click on a province did nothing. A drag must pan without selecting or clearing anything.
+    await page.locator("#db-map").scroll_into_view_if_needed()
+    pt = await point_on(page, "#db-provinces path[data-id=hebei]")
+    check(pt is not None, "map: found an unobstructed point on Hebei")
+    if pt:
+        await page.mouse.click(pt["x"], pt["y"])
+        await page.wait_for_timeout(300)
+        check("Hebei" in await page.locator("#db-detail h2").first.inner_text(), "map: a real mouse click on a province selects it")
+        check(await page.locator("#db-chart .db-bar-row.is-focus").count() == 1, "map: the comparison chart highlights the focused province once")
+        check("Hebei ranks" in await page.locator("#db-chart").inner_text(), "map: the comparison chart states the province's rank")
+        await page.mouse.move(pt["x"], pt["y"])
+        await page.mouse.down()
+        await page.mouse.move(pt["x"] + 40, pt["y"] + 10, steps=4)
+        await page.mouse.move(pt["x"] + 80, pt["y"] + 20, steps=4)
+        await page.mouse.up()
+        await page.wait_for_timeout(300)
+        check("Hebei" in await page.locator("#db-detail h2").first.inner_text(), "map: dragging the map keeps the focused province")
+        await page.click("#db-zoom-reset")
+        await page.click("#db-reset")
+        await page.wait_for_timeout(300)
 
     # The inventory is not downloadable: no export control anywhere on the map page, and no <a download>.
     check(await page.locator("#db-export, button:has-text('Export')").count() == 0, "map: no export control")

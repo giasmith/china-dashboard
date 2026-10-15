@@ -125,5 +125,16 @@
 .db-facility-list li { border-top: 1px dashed var(--border); padding-top: 6px; }
 .db-facility-list li:first-child { border-top: 0; padding-top: 0; }
 
+/* province focus: a map click scopes the tiles, counts, profile card and plant layer (replaces the Province dropdown) */
+#db-provinces .db-province.is-dim { opacity: 0.45; }
+#db-provinces.soft .db-province.is-dim { opacity: 0.25; } /* beats the generation view's .soft fade */
+.db-bubble.is-dim { opacity: 0.35; }
+.db-scope { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; font-size: 13px; }
+.db-scope .db-chip { margin: 0; font-weight: 650; }
+.db-bars.has-focus .db-bar-row:not(.is-focus) .db-bar-fill { opacity: 0.4; }
+.db-bar-row.is-focus .db-bar-label { color: var(--ink); font-weight: 700; }
+.db-bar-gap { color: var(--ink-3); font-size: 12px; line-height: 1; padding-left: 4px; }
+.db-chart-note { margin: 4px 0 0; }
+
 @media print { .db-filters, .db-map-actions, .db-tabs { display: none !important; } .db-workspace { grid-template-columns: 1fr; } }
 @media (forced-colors: active) { .db-province, .db-dot, .db-slice, .db-bar-fill, .db-swatch { forced-color-adjust: none; } }

@@ -8,7 +8,7 @@ import { h, svg, byId, put, add, clear } from '../lib/dom.js';
 import { CONFIG, DATA_FILES } from '../config.js';
 import { loadJson, DataError } from '../lib/data.js';
 import { renderShell, showError, announce, debounce } from '../lib/ui.js';
-import { formatNumber, EM_DASH } from '../lib/format.js';
+import { formatNumber, formatPercent, ordinal, EM_DASH } from '../lib/format.js';
 import {
   STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, SOURCE_LABEL, TECH_ORDER,
   STATUS_COLOR, TECH_COLOR, SEQ_RAMP, SEQ_RAMP_WARM, colorOf, binIndex, binLabels,
@@ -101,17 +101,21 @@ const VIEW_KEYS = Object.keys(VIEWS);
 // ---------------------------------------------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------------------------------------------
+const defaultFilters = () => ({ search: '', status: new Set(STATUS_ORDER), type: new Set(TYPE_ORDER), capacity: new Set(CAPACITY_ORDER), source: new Set(SOURCE_ORDER) });
 const state = {
   view: 'status',
-  filters: { search: '', province: '', status: new Set(STATUS_ORDER), type: new Set(TYPE_ORDER), capacity: new Set(CAPACITY_ORDER), source: new Set(SOURCE_ORDER) },
+  filters: defaultFilters(),
+  // Province picked on the map ('' = all of China). It replaces the old Province dropdown: it scopes the KPI tiles,
+  // the sidebar counts, the profile card and the plant layer, while every province stays drawn and clickable.
+  focus: '',
   powerTech: '', generationTech: '', costMeasure: 'single', waterMeasure: 'percap',
   selected: null, // {kind:'province'|'facility'|'plant', id}
   transform: { k: 1, x: 0, y: 0 },
 };
 let data = null; // { provinces, facilities, plants, legislation }
 let els = {};
-let filtered = [];
-let byProvince = new Map();
+let filtered = []; // facilities passing the sidebar filters AND the province focus (KPIs, counts, donut)
+let byProvince = new Map(); // per-province rollup of the sidebar filters only (map shading, bubbles, tooltips)
 let provinceById = new Map();
 
 function theme() {
@@ -162,17 +166,12 @@ function readHash() {
 // Layout
 // ---------------------------------------------------------------------------------------------------------------
 function buildLayout() {
-  const provinces = [...data.provinces.provinces].sort((a, b) => a.name.localeCompare(b.name));
   const sidebar = h('aside', { class: 'db-filters card', 'aria-label': 'Dashboard filters' },
     h('div', { class: 'db-panel-head' },
       h('div', null, h('span', { class: 'eyebrow' }, 'Explore'), h('h2', null, 'Filter facilities')),
       h('button', { class: 'link-btn', type: 'button', id: 'db-reset' }, 'Reset')),
     h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Search'),
       h('input', { id: 'db-search', class: 'input', type: 'search', placeholder: 'Name, operator, province', autocomplete: 'off' })),
-    h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Province'),
-      h('select', { id: 'db-province', class: 'select' },
-        h('option', { value: '' }, 'All provinces'),
-        provinces.map((p) => h('option', { value: p.id }, `${p.name} ${p.nameZh}`)))),
     h('p', { class: 'hint' }, 'All categories begin selected. Clear a group, then check the types you want to compare.'),
     filterGroup('status', 'Project status', STATUS_ORDER, (k) => colorOf(STATUS_COLOR, k, theme()), true),
     filterGroup('type', 'Facility type', TYPE_ORDER, null, false),
@@ -180,7 +179,8 @@ function buildLayout() {
     filterGroup('source', 'Inventory source', SOURCE_ORDER, null, false, (k) => SOURCE_LABEL[k]),
     h('div', { class: 'db-selection' },
       h('span', { class: 'field-label' }, 'Current selection'),
-      h('strong', { id: 'db-selection-count' }, EM_DASH)),
+      h('strong', { id: 'db-selection-count' }, EM_DASH),
+      h('div', { class: 'db-scope', id: 'db-scope' })),
     h('div', { class: 'note-box' }, 'Facilities are shown at province level only and are not downloadable. The published data holds no coordinates, addresses or city names, so proximity and counts describe provinces, not sites.'));
 
   const kpis = h('div', { class: 'kpis', 'aria-live': 'polite' },
@@ -218,7 +218,7 @@ function buildLayout() {
   const mapCard = h('div', { class: 'db-map-card card' },
     h('div', { class: 'db-toolbar' }, tabs, subcontrols),
     h('div', { class: 'db-map-shell', id: 'db-map-shell' }, map,
-      h('div', { class: 'db-caption' }, h('span', { id: 'db-view-title' }), h('span', null, 'Scroll to zoom · drag to pan · select a province for details'))),
+      h('div', { class: 'db-caption' }, h('span', { id: 'db-view-title' }), h('span', null, 'Scroll to zoom · drag to pan · select a province to focus on it'))),
     h('div', { class: 'db-legend', id: 'db-legend', 'aria-label': 'Map legend' }));
 
   const analysis = h('div', { class: 'db-analysis' },
@@ -237,7 +237,7 @@ function buildLayout() {
     h('div', { class: 'db-workspace' }, sidebar, h('div', { class: 'db-main' }, kpis, mapCard, analysis), detail));
 
   els = {
-    search: byId('db-search'), province: byId('db-province'), reset: byId('db-reset'),
+    search: byId('db-search'), reset: byId('db-reset'), scope: byId('db-scope'),
     selectionCount: byId('db-selection-count'), map: byId('db-map'), viewport: byId('db-viewport'), provinces: byId('db-provinces'),
     plants: byId('db-plants'), bubbles: byId('db-bubbles'), labels: byId('db-labels'), legend: byId('db-legend'), viewTitle: byId('db-view-title'),
     chart: byId('db-chart'), chartTotal: byId('db-chart-total'), profileEyebrow: byId('db-profile-eyebrow'), profileTitle: byId('db-profile-title'),
@@ -249,7 +249,6 @@ function buildLayout() {
 
   const onSearch = debounce(() => { state.filters.search = els.search.value.trim(); applyFilters(); }, 120);
   els.search.addEventListener('input', onSearch);
-  els.province.addEventListener('change', () => { state.filters.province = els.province.value; applyFilters(); });
   els.reset.addEventListener('click', resetFilters);
   els.powerTech.addEventListener('change', () => { state.powerTech = els.powerTech.value; repaint(); });
   els.genTech.addEventListener('change', () => { state.generationTech = els.genTech.value; repaint(); });
@@ -291,11 +290,22 @@ function setAll(key, order, on) {
   applyFilters();
 }
 function resetFilters() {
-  state.filters = { search: '', province: '', status: new Set(STATUS_ORDER), type: new Set(TYPE_ORDER), capacity: new Set(CAPACITY_ORDER), source: new Set(SOURCE_ORDER) };
+  state.filters = defaultFilters();
+  state.focus = ''; // Reset also returns the dashboard to all of China
+  state.selected = null;
   els.search.value = '';
-  els.province.value = '';
   app.querySelectorAll('.db-group input').forEach((i) => { i.checked = true; });
   applyFilters();
+}
+
+/** Sidebar line naming the focused province (set by clicking the map), with a way back to all of China. */
+function renderScope(focusP) {
+  if (focusP) {
+    put(els.scope, h('span', { class: 'db-chip' }, `${focusP.name} ${focusP.nameZh}`),
+      h('button', { class: 'link-btn small', type: 'button', onclick: () => select(null) }, 'Show all of China'));
+  } else {
+    put(els.scope, h('span', { class: 'muted' }, 'All of China. Select a province on the map to focus on it.'));
+  }
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -303,12 +313,15 @@ function resetFilters() {
 // ---------------------------------------------------------------------------------------------------------------
 function applyFilters() {
   const all = data.facilities.facilities;
-  filtered = filterFacilities(all, state.filters, provinceById);
-  byProvince = summarizeByProvince(filtered);
+  const passing = filterFacilities(all, state.filters, provinceById);
+  byProvince = summarizeByProvince(passing); // the map keeps every province so another one can be clicked
+  filtered = state.focus ? passing.filter((f) => f.province === state.focus) : passing;
+  const focusP = provinceById.get(state.focus);
   const sum = summarizeSelection(filtered, all.length, provinceById);
   els.selectionCount.textContent = `${formatNumber(sum.count)} ${sum.count === 1 ? 'facility' : 'facilities'}`;
+  renderScope(focusP);
   byId('db-k-count').textContent = formatNumber(sum.count);
-  byId('db-k-count-note').textContent = `${(sum.share * 100).toFixed(1)}% of inventory`;
+  byId('db-k-count-note').textContent = `${(sum.share * 100).toFixed(1)}% of inventory${focusP ? ` · ${focusP.name}` : ''}`;
   byId('db-k-mw').textContent = sum.mwKnown ? `${formatNumber(sum.mwTotal, { digits: 1 })} MW` : EM_DASH;
   byId('db-k-mw-note').textContent = `Known MW, ${formatNumber(sum.mwKnown)} of ${formatNumber(sum.count)} records`;
   byId('db-k-op').textContent = sum.operatingShare === null ? EM_DASH : `${(sum.operatingShare * 100).toFixed(1)}%`;
@@ -324,7 +337,7 @@ function applyFilters() {
   const srcCounts = new Map(SOURCE_ORDER.map((s) => [s, filtered.filter((f) => f.sources.includes(s)).length]));
   byId('db-group-source').querySelectorAll('[data-count]').forEach((el) => { el.textContent = formatNumber(srcCounts.get(el.dataset.count) ?? 0); });
   byId('db-sel-source').textContent = `${state.filters.source.size} of ${SOURCE_ORDER.length}`;
-  announce(`${sum.count} facilities match the filters`);
+  announce(`${sum.count} ${sum.count === 1 ? 'facility matches' : 'facilities match'} the filters${focusP ? ` in ${focusP.name}` : ''}`);
   repaint();
   renderDetail();
 }
@@ -380,7 +393,7 @@ function repaint() {
     const id = path.dataset.id;
     path.style.fill = fills.get(id);
     path.classList.toggle('is-selected', state.selected?.kind === 'province' && state.selected.id === id);
-    path.classList.toggle('is-dim', Boolean(state.filters.province) && state.filters.province !== id);
+    path.classList.toggle('is-dim', Boolean(state.focus) && state.focus !== id);
   }
   els.provinces.classList.toggle('soft', state.view === 'generation'); // let the plant points read over the fill
   renderBubbles(t);
@@ -400,7 +413,7 @@ function renderBubbles(t) {
     const value = byMw ? s.mw : s.count;
     const r = bubbleRadius(value, max, pale ? { min: 2.5, max: 16 } : { min: 3.5, max: 26 });
     if (!r) continue;
-    const g = svg('g', { class: `db-bubble${pale ? ' pale' : ''}`, dataset: { id: p.id } });
+    const g = svg('g', { class: `db-bubble${pale ? ' pale' : ''}${state.focus && state.focus !== p.id ? ' is-dim' : ''}`, dataset: { id: p.id } });
     if (state.view === 'status' && s.count) {
       let a = 0;
       for (const k of STATUS_ORDER) {
@@ -436,7 +449,7 @@ async function renderPlants(t) {
   }
   const frag = document.createDocumentFragment();
   const [TI, MI, XI, YI, PI] = [0, 1, 2, 3, 4];
-  const prov = state.filters.province;
+  const prov = state.focus;
   const tech = state.generationTech;
   let maxMw = 0;
   for (const row of data.plants.plants) if (row[MI] > maxMw) maxMw = row[MI];
@@ -460,7 +473,11 @@ function plantFromEvent(e) {
 }
 
 function installPanZoom() {
+  // Pointer capture starts only once the pointer has really moved. Capturing on pointerdown retargets the click that
+  // follows to the <svg> itself (Chromium), so a plain click on a province never reached it and was read as a click
+  // on empty map instead.
   let drag = null;
+  let suppressClick = false;
   els.map.addEventListener('wheel', (e) => {
     e.preventDefault();
     const rect = els.map.getBoundingClientRect();
@@ -470,25 +487,35 @@ function installPanZoom() {
   }, { passive: false });
   els.map.addEventListener('pointerdown', (e) => {
     if (e.button !== 0) return;
-    drag = { x: e.clientX, y: e.clientY, tx: state.transform.x, ty: state.transform.y, moved: false };
-    els.map.setPointerCapture(e.pointerId);
+    suppressClick = false;
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, tx: state.transform.x, ty: state.transform.y, moved: false };
   });
   els.map.addEventListener('pointermove', (e) => {
-    if (!drag) return;
+    if (!drag || e.pointerId !== drag.id) return;
     const rect = els.map.getBoundingClientRect();
     const dx = ((e.clientX - drag.x) / rect.width) * VIEW_W;
     const dy = ((e.clientY - drag.y) / rect.height) * VIEW_H;
-    if (Math.abs(dx) + Math.abs(dy) > 2) drag.moved = true;
+    if (!drag.moved && Math.abs(dx) + Math.abs(dy) > 2) {
+      drag.moved = true;
+      els.map.setPointerCapture(e.pointerId);
+      els.map.classList.add('dragging');
+    }
     if (drag.moved) {
       state.transform.x = drag.tx + dx;
       state.transform.y = drag.ty + dy;
-      els.map.classList.add('dragging');
       updateTransform();
     }
   });
-  const end = () => { if (drag?.moved) els.map.classList.remove('dragging'); drag = null; };
-  els.map.addEventListener('pointerup', end);
-  els.map.addEventListener('pointercancel', end);
+  els.map.addEventListener('pointerup', () => {
+    if (drag?.moved) { els.map.classList.remove('dragging'); suppressClick = true; }
+    drag = null;
+  });
+  els.map.addEventListener('pointercancel', () => { els.map.classList.remove('dragging'); drag = null; });
+  // The click that ends a drag is swallowed here (capture phase, before any province or bubble handler), so panning
+  // never selects a province or clears the focus.
+  els.map.addEventListener('click', (e) => {
+    if (suppressClick) { suppressClick = false; e.stopImmediatePropagation(); }
+  }, true);
   els.map.addEventListener('click', (e) => {
     const plant = plantFromEvent(e);
     if (plant) { e.stopPropagation(); select({ kind: 'plant', plant }); return; }
@@ -591,27 +618,73 @@ function renderLegend(view, thresholds, ramp, t) {
     src ? ['Source: ', src.url ? h('a', { href: src.url, rel: 'noopener', target: '_blank' }, src.title) : src.title, ` (${src.publisher}; tier ${src.tier}).`] : null));
 }
 
-function barRow(label, value, max, color, valueText) {
-  return h('div', { class: 'db-bar-row' },
+function barRow(label, value, max, color, valueText, { focus = false } = {}) {
+  return h('div', { class: focus ? 'db-bar-row is-focus' : 'db-bar-row' },
     h('span', { class: 'db-bar-label', title: label }, label),
     h('div', { class: 'db-bar-track' }, h('div', { class: 'db-bar-fill', style: { width: `${max ? (value / max) * 100 : 0}%`, background: color } })),
     h('strong', { class: 'num' }, valueText ?? formatNumber(value)));
 }
 
+/** Provinces with a non-zero value for the current view, highest first: [[province, value], …]. */
+function rankProvinces(view, c) {
+  return data.provinces.provinces.map((p) => [p, view.fill(p, c)])
+    .filter(([, v]) => Number.isFinite(v) && v !== 0)
+    .sort((a, b) => b[1] - a[1]);
+}
+
+/** Plain-language name of the measure behind the current comparison view, used in the rank sentence. */
+function measurePhrase() {
+  if (state.view === 'cost') return state.costMeasure === 'two' ? 'the two-part 1–10 kV energy rate' : 'the single-part 1–10 kV rate';
+  if (state.view === 'water') return { percap: 'per-capita water resources', stress: 'the use ÷ resources ratio', total: 'total water resources', industrial: 'industrial water use' }[state.waterMeasure] ?? 'the chosen measure';
+  return `${state.powerTech || 'total'} installed capacity`;
+}
+
+function rankNote(p, ranked) {
+  const i = ranked.findIndex(([q]) => q.id === p.id);
+  return i < 0 ? `No value for ${measurePhrase()} in ${p.name}.` : `${p.name} ranks ${ordinal(i + 1)} highest of ${ranked.length} provinces for ${measurePhrase()}.`;
+}
+
+// The profile card follows the province focus: the Generation and Power tabs show that province's power
+// infrastructure, the comparison tabs highlight it, and the donut tabs count only its facilities.
 async function renderChart(view, t) {
   const c = ctx();
   const provs = data.provinces.provinces;
+  const focusP = provinceById.get(state.focus) ?? null;
+  els.chart.classList.remove('has-focus');
   if (state.view === 'generation') {
     els.profileEyebrow.textContent = 'Power infrastructure profile';
-    els.profileTitle.textContent = 'GEM units by technology';
-    if (!data.plants) { put(els.chart, h('p', { class: 'muted' }, 'Loading…')); return; }
-    const rows = data.plants.plants.filter((r) => !state.filters.province || r[4] === state.filters.province);
+    els.profileTitle.textContent = focusP ? `${focusP.name} · GEM units by technology` : 'GEM units by technology · all of China';
+    if (!data.plants) { els.chartTotal.textContent = ''; put(els.chart, h('p', { class: 'muted' }, 'Loading…')); return; }
+    const all = data.plants.plants;
+    const rows = focusP ? all.filter((r) => r[4] === focusP.id) : all;
+    els.chartTotal.textContent = `${formatNumber(rows.length)} units`;
+    if (!rows.length) { put(els.chart, h('p', { class: 'muted' }, `No operating GEM units are recorded in ${focusP?.name ?? 'the data'}.`)); return; }
     const mwBy = new Map(TECH_ORDER.map((k) => [k, 0]));
     const nBy = new Map(TECH_ORDER.map((k) => [k, 0]));
-    for (const r of rows) { mwBy.set(r[0], (mwBy.get(r[0]) ?? 0) + r[1]); nBy.set(r[0], (nBy.get(r[0]) ?? 0) + 1); }
+    let mw = 0;
+    for (const r of rows) { mwBy.set(r[0], (mwBy.get(r[0]) ?? 0) + r[1]); nBy.set(r[0], (nBy.get(r[0]) ?? 0) + 1); mw += r[1]; }
     const max = Math.max(...mwBy.values(), 1);
-    els.chartTotal.textContent = `${formatNumber(rows.length)} units`;
-    put(els.chart, TECH_ORDER.map((k) => barRow(k, mwBy.get(k), max, colorOf(TECH_COLOR, k, t), `${formatNumber(mwBy.get(k) / 1000, { digits: 1 })} GW · ${formatNumber(nBy.get(k))}`)));
+    const nationalMw = all.reduce((a, r) => a + r[1], 0);
+    if (state.generationTech) els.chart.classList.add('has-focus');
+    put(els.chart,
+      TECH_ORDER.map((k) => barRow(k, mwBy.get(k), max, colorOf(TECH_COLOR, k, t), `${formatNumber(mwBy.get(k) / 1000, { digits: 1 })} GW · ${formatNumber(nBy.get(k))}`, { focus: k === state.generationTech })),
+      h('p', { class: 'hint db-chart-note' }, focusP
+        ? `${formatNumber(mw / 1000, { digits: 1 })} GW across ${formatNumber(rows.length)} units, ${formatPercent(nationalMw ? mw / nationalMw : null, { digits: 1 })} of China's GEM total. Bars show GW · unit count.`
+        : 'Bars show GW · unit count. Select a province on the map to see its own mix.'));
+    return;
+  }
+  if (state.view === 'power' && focusP) {
+    const inst = focusP.indicators.installed_mw ?? {};
+    const total = focusP.indicators.installed_mw_total ?? 0;
+    els.profileEyebrow.textContent = 'Power infrastructure profile';
+    els.profileTitle.textContent = `${focusP.name} · installed capacity by technology`;
+    els.chartTotal.textContent = total ? `${formatNumber(total / 1000, { digits: 1 })} GW installed` : '';
+    if (!total) { put(els.chart, h('p', { class: 'muted' }, `No GEM generating units are recorded in ${focusP.name}.`)); return; }
+    const max = Math.max(...TECH_ORDER.map((k) => inst[k] ?? 0), 1);
+    if (state.powerTech) els.chart.classList.add('has-focus');
+    put(els.chart,
+      TECH_ORDER.map((k) => barRow(k, inst[k] ?? 0, max, colorOf(TECH_COLOR, k, t), `${formatNumber((inst[k] ?? 0) / 1000, { digits: 1 })} GW`, { focus: k === state.powerTech })),
+      h('p', { class: 'hint db-chart-note' }, rankNote(focusP, rankProvinces(view, c))));
     return;
   }
   if (state.view === 'policy') {
@@ -627,26 +700,37 @@ async function renderChart(view, t) {
     for (const d of docs) for (const tpc of d.topics ?? []) counts.set(tpc, (counts.get(tpc) ?? 0) + 1);
     const rows = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
     const max = rows[0]?.[1] ?? 1;
+    const hub = focusP?.hub ? data.provinces.hubs[focusP.hub] : null;
     els.chartTotal.textContent = `${formatNumber(docs.length)} documents`;
-    put(els.chart, rows.map(([k, n]) => barRow(k.replace(/_/g, ' '), n, max, 'var(--series-1)')),
+    put(els.chart,
+      focusP ? h('p', { class: 'hint db-chart-note' }, hub
+        ? `${focusP.name} is part of the ${hub.name_en} (${hub.cluster}). The topic counts below cover the national library, not this province.`
+        : `${focusP.name} is not an EDWC hub province. The topic counts below cover the national library, not this province.`) : null,
+      rows.map(([k, n]) => barRow(k.replace(/_/g, ' '), n, max, 'var(--series-1)')),
       h('p', { class: 'hint', style: { marginTop: '8px' } }, h('a', { href: 'legislation.html' }, 'Open the legislation library')));
     return;
   }
   if (['cost', 'water', 'power'].includes(state.view)) {
-    const rows = provs.map((p) => [p, view.fill(p, c)]).filter(([, v]) => Number.isFinite(v) && v !== 0).sort((a, b) => b[1] - a[1]).slice(0, 8);
-    const max = rows[0]?.[1] ?? 1;
+    const ranked = rankProvinces(view, c);
+    const fmt = (v) => `${formatNumber(v, { digits: digitsOf(view) })}${unitOf(view)}`;
+    const max = ranked[0]?.[1] ?? 1;
+    const fi = focusP ? ranked.findIndex(([p]) => p.id === focusP.id) : -1;
     els.profileEyebrow.textContent = 'Province comparison';
     els.profileTitle.textContent = state.view === 'cost' ? 'Highest 1–10 kV rates' : state.view === 'water' ? 'Highest values for the chosen measure' : `Largest installed ${state.powerTech || 'total'} capacity`;
     els.chartTotal.textContent = `${provs.filter((p) => Number.isFinite(view.fill(p, c))).length} provinces`;
-    put(els.chart, rows.map(([p, v]) => barRow(p.name, v, max, 'var(--series-1)', `${formatNumber(v, { digits: digitsOf(view) })}${unitOf(view)}`)));
+    const rows = ranked.slice(0, 8).map(([p, v]) => barRow(p.name, v, max, 'var(--series-1)', fmt(v), { focus: p.id === state.focus }));
+    // A focused province outside the top eight is appended after a gap, so it is always on the chart.
+    if (fi >= 8) rows.push(h('div', { class: 'db-bar-gap', 'aria-hidden': 'true' }, '⋯'), barRow(focusP.name, ranked[fi][1], max, 'var(--series-1)', fmt(ranked[fi][1]), { focus: true }));
+    if (fi >= 0) els.chart.classList.add('has-focus');
+    put(els.chart, rows, focusP ? h('p', { class: 'hint db-chart-note' }, rankNote(focusP, ranked)) : null);
     return;
   }
   // status / capacity / hazard / opposition: a donut of the selection, headline count in the middle
-  els.profileEyebrow.textContent = 'Selection profile';
+  els.profileEyebrow.textContent = focusP ? `Selection profile · ${focusP.name}` : 'Selection profile';
   els.chartTotal.textContent = `${formatNumber(filtered.length)} records`;
   if (!filtered.length) {
     els.profileTitle.textContent = 'Status distribution';
-    put(els.chart, h('p', { class: 'muted' }, 'No facilities match these filters.'));
+    put(els.chart, h('p', { class: 'muted' }, focusP ? `No facilities in ${focusP.name} match these filters.` : 'No facilities match these filters.'));
     return;
   }
   if (state.view === 'capacity') {
@@ -709,11 +793,26 @@ function donut(rows, hero) {
 // ---------------------------------------------------------------------------------------------------------------
 // Detail panel
 // ---------------------------------------------------------------------------------------------------------------
+/**
+ * Open a province, facility or plant in the detail panel. Selecting a province also focuses the dashboard on it (the
+ * job the Province dropdown used to do). Selecting the open province again, clicking empty map, Close or Reset returns
+ * to all of China. Facilities and plants opened while a province is focused keep that focus.
+ */
 function select(sel) {
-  state.selected = sel;
-  repaint();
-  renderDetail();
-  if (window.matchMedia('(max-width: 1100px)').matches && sel) els.detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const again = sel?.kind === 'province' && state.selected?.kind === 'province' && state.selected.id === sel.id;
+  const next = again ? null : sel;
+  const focus = !next ? '' : next.kind === 'province' ? next.id : state.focus;
+  state.selected = next;
+  if (focus !== state.focus) {
+    state.focus = focus;
+    applyFilters(); // re-scopes the tiles and counts, then repaints the map, chart and detail panel
+    const p = provinceById.get(focus);
+    announce(p ? `Focused on ${p.name}: ${formatNumber(filtered.length)} ${filtered.length === 1 ? 'facility' : 'facilities'}. Select it again or press Close to show all of China.` : 'Showing all of China');
+  } else {
+    repaint();
+    renderDetail();
+  }
+  if (window.matchMedia('(max-width: 1100px)').matches && next) els.detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function fact(label, value) {
@@ -723,7 +822,7 @@ function fact(label, value) {
 function renderDetail() {
   const sel = state.selected;
   if (!sel) {
-    put(els.detail, h('div', { class: 'db-detail-empty' }, h('span', { class: 'db-marker' }), h('h2', null, 'Select a province'), h('p', null, 'Choose a province on the map to review its facilities and the context layers. Facilities are listed without locations.')));
+    put(els.detail, h('div', { class: 'db-detail-empty' }, h('span', { class: 'db-marker' }), h('h2', null, 'Select a province'), h('p', null, 'Choose a province on the map to review its facilities and context layers. Selecting a province also focuses the tiles and the profile chart on it; select it again to return to all of China. Facilities are listed without locations.')));
     return;
   }
   const close = h('button', { class: 'link-btn small', type: 'button', onclick: () => select(null) }, 'Close');
@@ -731,7 +830,8 @@ function renderDetail() {
     const p = sel.plant;
     put(els.detail, h('div', { class: 'db-panel-head' }, h('div', null, h('span', { class: 'eyebrow' }, 'Power plant unit'), h('h2', null, `${p.tech} unit`)), close),
       h('dl', { class: 'facts' }, fact('Capacity', `${formatNumber(p.mw, { digits: 1 })} MW`), fact('Province', provinceById.get(p.province)?.name ?? 'Outside province outlines'), fact('Source', 'Global Energy Monitor trackers (operating units)')),
-      h('p', { class: 'hint' }, 'GEM publishes plant names and operators; this build keeps only technology, capacity and location to keep the file small.'));
+      h('p', { class: 'hint' }, 'GEM publishes plant names and operators; this build keeps only technology, capacity and location to keep the file small.'),
+      state.focus ? h('p', null, h('button', { class: 'link-btn small', type: 'button', onclick: () => select({ kind: 'province', id: state.focus }) }, `Back to ${provinceById.get(state.focus)?.name ?? 'province'}`)) : null);
     return;
   }
   if (sel.kind === 'facility') {
