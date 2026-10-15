@@ -62,18 +62,12 @@ export function renderShell(activeHref, meta) {
       themeButton()),
   );
 
+  // No data-status banner above the pages (removed at Gia's request, 15 Oct 2026). The footer still states the
+  // dataset status, and each map layer's legend carries its source and tier.
   const banner = document.getElementById('banner');
   if (banner) {
     clear(banner);
-    if (meta && meta.data_status !== 'live') {
-      banner.className = 'banner';
-      banner.setAttribute('role', 'note');
-      add(banner, 
-        h('div', { class: 'wrap' },
-          h('strong', null, meta.data_status === 'scaffold' ? 'Scaffold data. ' : 'Partial data. '),
-          meta.notes ?? 'Some records are placeholders or unverified. Do not cite these figures.'),
-      );
-    }
+    banner.hidden = true;
   }
 
   const footer = document.getElementById('site-footer');

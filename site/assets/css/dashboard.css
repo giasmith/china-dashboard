@@ -36,6 +36,7 @@
 @media (max-width: 860px) { .db-workspace { grid-template-columns: minmax(0, 1fr); } .db-filters { position: static; max-height: none; } }
 
 .db-panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.db-panel-head > .link-btn { flex: none; white-space: nowrap; } /* "Close" never breaks into "Clos / e" beside a long name */
 .db-panel-head h2 { font-size: 17px; }
 .db-group { border-top: 1px solid var(--border); padding-top: 10px; }
 .db-group summary { cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 650; list-style: none; }

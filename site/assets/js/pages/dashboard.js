@@ -236,7 +236,7 @@ function buildLayout() {
 
   put(app,
     h('div', { class: 'db-head' },
-      h('h1', null, 'China data-center ecosystem tracker'),
+      h('h1', null, 'China Data-Center Ecosystem Tracker'),
       h('p', null, 'Province view · facilities, generation, electricity cost and water context. ', h('a', { href: 'plan.html' }, 'Five-year plan tracker'), ' · ', h('a', { href: 'legislation.html' }, 'Legislation library'))),
     h('div', { class: 'db-workspace' }, sidebar, h('div', { class: 'db-main' }, kpis, mapCard, analysis), detail));
 
@@ -943,7 +943,7 @@ function renderDetail() {
         fact('Operator', f.operator), fact('Province', p ? `${p.name} ${p.nameZh}` : f.province), fact('Status', f.status), fact('Facility type', f.facilityType),
         fact('Reported capacity', Number.isFinite(f.mw) ? `${formatNumber(f.mw, { digits: 1 })} MW (${f.capacity})` : f.capacity),
         fact('PUE (reported)', Number.isFinite(f.pue) ? formatNumber(f.pue, { digits: 2 }) : null), fact('Online year', f.onlineYear),
-        fact('Sources', f.sources.map((s) => SOURCE_LABEL[s] ?? s).join(', ')), fact('EDWC hub', p?.hub ? data.provinces.hubs[p.hub].name_en : 'Not a hub province')),
+        fact('EDWC hub', p?.hub ? data.provinces.hubs[p.hub].name_en : 'Not a hub province')),
       h('p', { class: 'hint' }, 'Location is published at province level only.'),
       h('p', null, h('button', { class: 'link-btn small', type: 'button', onclick: () => select({ kind: 'province', id: f.province }) }, `Back to ${p?.name ?? 'province'}`)));
     return;
