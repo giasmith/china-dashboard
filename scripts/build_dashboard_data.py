@@ -622,7 +622,7 @@ SOURCE_NOTES = {
     "plants": {"title": "Global Energy Monitor plant trackers (coal, hydro, nuclear, solar, wind, bioenergy), China subset cleaned for the IGARSS workflow",
                "publisher": "Global Energy Monitor (CC BY 4.0)", "url": "https://globalenergymonitor.org/", "unit": "MW", "tier": "C", "retrieved": "2026-04-27",
                "note": "Operating units only (status was filtered upstream); a plant with several units appears once per unit at the same point. Gas, oil and waste plants were taken from OpenStreetMap in the IGARSS merge and are excluded here because their capacities are in kW."},
-    "inventory": {"title": "Data-center inventory: DataCenterMap export (licensed), baxtel crawl (China subset), DCKB sample, UVA dhi geojsons",
+    "inventory": {"title": "Data-center inventory: commercial directory, baxtel crawl (China subset), DCKB sample, UVA dhi geojsons",
                   "publisher": "various", "url": None, "unit": "facilities; MW where reported", "tier": "C",
                   "note": "Published at province level only. Coordinates, addresses and profile links are stripped by the build script and never written to site/data/."},
 }

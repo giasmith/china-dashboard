@@ -7,6 +7,13 @@ export const CONFIG = Object.freeze({
   // Set to your repository URL once it exists, e.g. 'https://github.com/<user>/china-dashboard'.
   repoUrl: 'https://github.com/giasmith/china-dashboard',
 
+  // Partner logos at the top left of every page (files in site/assets/img/). width/height are the files' pixel sizes;
+  // they only reserve the aspect ratio before the image loads - the CSS sets the displayed height.
+  partners: [
+    { src: 'assets/img/uva-nsi.png', alt: 'University of Virginia National Security Institute', width: 1142, height: 120 },
+    { src: 'assets/img/scsp.png', alt: 'Special Competitive Studies Project', width: 597, height: 120 },
+  ],
+
 
 
   // Share of the full baseline->target distance a target may trail the expected pace before it is "behind".

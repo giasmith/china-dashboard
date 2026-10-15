@@ -271,6 +271,10 @@ class ValidatorTest(unittest.TestCase):
         self._edit("power_plants.json", lambda d: d["plants"][0].__setitem__(0, "Fusion"))
         self.assertTrue(self._run().errors)
 
+    def test_directory_attribution_must_not_return(self) -> None:
+        self._edit("provinces.json", lambda d: d["sources"]["inventory"].__setitem__("title", "Inventory: DataCenterMap export"))
+        self.assertHasError(self._run(), "names the commercial directory")
+
     # -- transmission lines (power_lines.json) ---------------------------------
     def test_line_province_must_exist(self) -> None:
         self._edit("power_lines.json", lambda d: d["paths"].__setitem__("atlantis", {"500": "M1,1 2,2"}))

@@ -5,7 +5,7 @@ export const CAPACITY_ORDER = ['Mega campus (1,000+ MW)', 'Hyperscale (100–999
 export const TYPE_ORDER = ['Colocation', 'Hyperscale', 'Carrier-Neutral', 'Carrier', 'Mobile', 'Fintech', 'Content', 'Real Estate', 'Enterprise', 'MSP', 'Unknown'];
 export const SOURCE_ORDER = ['dcm', 'baxtel', 'dckb', 'dhi_hyperscale', 'dhi_western'];
 export const SOURCE_LABEL = {
-  dcm: 'DataCenterMap export', baxtel: 'baxtel crawl', dckb: 'DCKB sample',
+  dcm: 'Commercial directory', baxtel: 'baxtel crawl', dckb: 'DCKB sample',
   dhi_hyperscale: 'UVA hyperscale set', dhi_western: 'UVA western set',
 };
 export const TECH_ORDER = ['Coal', 'Hydro', 'Wind', 'Solar', 'Nuclear', 'Bioenergy'];

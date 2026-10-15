@@ -53,6 +53,9 @@ export function renderShell(activeHref, meta) {
   const header = byId('site-header');
   put(header, 
     h('div', { class: 'wrap' },
+      CONFIG.partners?.length
+        ? h('div', { class: 'partner-logos' }, CONFIG.partners.map((p) => h('img', { src: p.src, alt: p.alt, width: p.width, height: p.height, decoding: 'async' })))
+        : null,
       h('a', { class: 'brand', href: 'index.html' }, CONFIG.siteName, h('small', null, CONFIG.tagline)),
       h('nav', { class: 'nav', 'aria-label': 'Primary' },
         NAV.map((n) => h('a', { href: n.href, 'aria-current': n.href === activeHref ? 'page' : null }, n.label))),

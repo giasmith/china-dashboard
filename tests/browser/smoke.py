@@ -185,6 +185,14 @@ async def interactions(browser, base):
     payload = await page.evaluate("fetch('data/facilities.json').then(r => r.json())")
     keys = set().union(*(f.keys() for f in payload["facilities"]))
     check(not keys & {"lat", "lon", "latitude", "longitude", "coordinates", "address", "city", "x", "y"}, f"map: facilities.json carries no location fields ({sorted(keys)})")
+    # Partner logos at the top left, loaded and labelled; the commercial directory is not named anywhere.
+    logos = await page.evaluate("[...document.querySelectorAll('.partner-logos img')].map(i => [i.alt, i.naturalWidth, Math.round(i.getBoundingClientRect().left)])")
+    check(len(logos) == 2 and all(alt and w > 0 for alt, w, _ in logos), f"map: both partner logos load with alt text ({logos})")
+    check(bool(logos) and logos[0][2] < 40, "map: the logos sit at the top left of the page")
+    for view in ("status", "capacity"):
+        await page.click(f".db-tab[data-view={view}]")
+        await page.wait_for_timeout(150)
+        check(not re.search(r"data\s*-?\s*center\s*-?\s*map", await page.locator("body").inner_text(), re.I), f"map: the {view} view does not name the commercial directory")
     check(await page.locator("#db-bubbles > g").count() <= 34, "map: at most one bubble per province (no per-facility points)")
 
     await page.click(".db-tab[data-view=status]")

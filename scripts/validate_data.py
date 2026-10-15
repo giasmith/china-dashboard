@@ -57,6 +57,9 @@ CAPACITY_CLASSES = [
 
 EPS = 1e-9
 
+# The commercial directory behind most of the inventory is not named anywhere on the published site (Gia, 15 Oct 2026).
+NO_ATTRIBUTION = re.compile(r"data\s*-?\s*center\s*-?\s*map", re.IGNORECASE)
+
 
 class Report:
     def __init__(self) -> None:
@@ -372,6 +375,24 @@ def check_lines(doc: dict, provinces: dict, report: Report) -> None:
             report.error(f"lines/classes/{key}", f"km {c['km']} does not equal the province sum {sums[key]:.1f}")
 
 
+def _strings(node, path=""):
+    if isinstance(node, str):
+        yield path, node
+    elif isinstance(node, dict):
+        for k, v in node.items():
+            yield from _strings(v, f"{path}/{k}")
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            yield from _strings(v, f"{path}[{i}]")
+
+
+def check_no_directory_attribution(loaded: dict, report: Report) -> None:
+    for key, doc in loaded.items():
+        for path, text in _strings(doc):
+            if NO_ATTRIBUTION.search(text):
+                report.error(f"{FILES[key][0]}{path}", "names the commercial directory, which must not appear on the site")
+
+
 def check_placeholders(meta: dict, docs: dict[str, list[dict]], report: Report) -> None:
     """A dataset marked 'live' must not contain placeholder or unverified records."""
     if meta.get("data_status") != "live":
@@ -412,6 +433,7 @@ def validate_all(data_dir: Path, schema_dir: Path) -> Report:
     check_facilities(loaded["facilities"], loaded["provinces"], report)
     check_plants(loaded["plants"], loaded["provinces"], report)
     check_lines(loaded["lines"], loaded["provinces"], report)
+    check_no_directory_attribution(loaded, report)
     check_placeholders(
         loaded["meta"],
         {

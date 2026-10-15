@@ -6,6 +6,7 @@
   color-scheme: light;
   --page: #f9f9f7;
   --surface: #fcfcfb;
+  --logo-plate: transparent; /* partner logos are dark ink: no plate needed on the light header */
   --ink: #0b0b0b;
   --ink-2: #52514e;
   --ink-3: #6b6a65; /* secondary-muted text; passes 4.5:1 on --surface */
@@ -42,6 +43,7 @@
     color-scheme: dark;
     --page: #0d0d0d;
     --surface: #1a1a19;
+    --logo-plate: #ffffff;
     --ink: #ffffff;
     --ink-2: #c3c2b7;
     --ink-3: #a5a49b;
@@ -66,6 +68,7 @@
   color-scheme: dark;
   --page: #0d0d0d;
   --surface: #1a1a19;
+  --logo-plate: #ffffff;
   --ink: #ffffff;
   --ink-2: #c3c2b7;
   --ink-3: #a5a49b;
@@ -116,8 +119,20 @@ a { color: var(--accent-text); }
 .site-header .wrap { display: flex; align-items: center; gap: 16px; min-height: 56px; flex-wrap: wrap; padding-top: 6px; padding-bottom: 6px; }
 .brand { font-weight: 700; font-size: 17px; color: var(--ink); text-decoration: none; margin-right: 8px; }
 .brand small { display: block; font-weight: 400; font-size: 12px; color: var(--ink-3); }
-.nav { display: flex; gap: 4px; flex-wrap: wrap; flex: 1; }
-.nav a { padding: 8px 12px; border-radius: 8px; color: var(--ink-2); text-decoration: none; font-weight: 500; }
+/* Partner logos, top left of every page. The marks are dark ink on a transparent background; in dark mode they sit on
+   a white plate (--logo-plate) so they stay legible without being recoloured. */
+.partner-logos { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; padding: 4px 8px; margin-left: -8px; background: var(--logo-plate); border-radius: 8px; }
+.partner-logos img { display: block; height: 30px; width: auto; max-width: 100%; }
+.partner-logos + .brand { padding-left: 16px; border-left: 1px solid var(--border); }
+@media (max-width: 1360px) { .partner-logos + .brand small { max-width: 190px; } } /* let the tagline wrap so the header keeps one row */
+@media (max-width: 700px) {
+  .partner-logos img { height: 26px; }
+  .partner-logos + .brand { padding-left: 0; border-left: 0; }
+  .site-header { position: static; } /* logos + title + nav are too tall to pin on a phone */
+}
+@media (max-width: 420px) { .partner-logos { gap: 6px 10px; } .partner-logos img { height: 22px; } }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; flex: 1 1 auto; } /* basis auto: the nav moves to the next row as a unit, then wraps only if it must */
+.nav a { white-space: nowrap; padding: 8px 12px; border-radius: 8px; color: var(--ink-2); text-decoration: none; font-weight: 500; }
 .nav a:hover { background: var(--wash); }
 .nav a[aria-current="page"] { background: var(--accent-wash); color: var(--accent-text); font-weight: 650; }
 .site-footer { margin-top: 40px; border-top: 1px solid var(--border); padding: 20px 0 40px; color: var(--ink-3); font-size: 13px; }

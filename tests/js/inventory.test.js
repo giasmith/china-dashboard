@@ -3,8 +3,13 @@ import assert from 'node:assert/strict';
 import {
   STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, binIndex, binLabels, matchesSearch, filterFacilities, countBy,
   summarizeByProvince, summarizeSelection, bubbleRadius, arcPath, quantileThresholds, niceRound, colorOf, STATUS_COLOR,
-  LINE_RAMP,
+  LINE_RAMP, SOURCE_ORDER as SOURCES, SOURCE_LABEL,
 } from '../../site/assets/js/lib/inventory.js';
+
+test('SOURCE_LABEL: every inventory source has a label, and the commercial directory is not named', () => {
+  for (const k of SOURCES) assert.ok(SOURCE_LABEL[k], `missing label for ${k}`);
+  for (const label of Object.values(SOURCE_LABEL)) assert.doesNotMatch(label, /data\s*-?\s*center\s*-?\s*map/i);
+});
 
 // Relative luminance (WCAG) of a #rrggbb colour.
 const luminance = (hex) => {
