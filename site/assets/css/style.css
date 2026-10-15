@@ -129,7 +129,14 @@ a { color: var(--accent-text); }
   .site-header { position: static; } /* nav + logos are too tall to pin on a phone */
 }
 @media (max-width: 420px) { .partner-logos { gap: 6px 10px; } .partner-logos img { height: 22px; } .brand { white-space: normal; font-size: 16px; } }
-.nav { display: flex; gap: 4px; flex-wrap: wrap; flex: 1 1 auto; } /* basis auto: the nav moves to the next row as a unit, then wraps only if it must */
+.nav { display: flex; gap: 4px; flex-wrap: wrap; flex: 0 1 auto; } /* basis auto: the nav moves under the title as a unit, then wraps only if it must */
+.header-left { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 16px; flex: 1 1 0; min-width: 0; }
+.header-right { display: flex; align-items: center; gap: 12px; flex: none; margin-left: auto; }
+/* phones: title + nav on top, then theme + logos; this must come after the base rules above to override them */
+@media (max-width: 700px) {
+  .header-left, .header-right { flex: 1 1 100%; }
+  .header-right { flex-wrap: wrap; margin-left: 0; }
+}
 .nav a { white-space: nowrap; padding: 8px 12px; border-radius: 8px; color: var(--ink-2); text-decoration: none; font-weight: 500; }
 .nav a:hover { background: var(--wash); }
 .nav a[aria-current="page"] { background: var(--accent-wash); color: var(--accent-text); font-weight: 650; }
