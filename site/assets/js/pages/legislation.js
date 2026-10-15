@@ -14,6 +14,18 @@ const TYPE_LABEL = {
 const STATUS_LABEL = { in_force: 'In force', expired: 'Plan period ended', superseded: 'Superseded', repealed: 'Repealed', draft: 'Draft' };
 const TOPIC_LABEL = { ai: 'AI', edwc: 'EDWC (East Data West Computing)', e_commerce: 'E-commerce', fintech: 'Fintech', five_year_plan: 'Five-year plan' };
 const topicLabel = (t) => TOPIC_LABEL[t] ?? humanize(t);
+// Relevance to data-center expansion, derived from topics so it never drifts from the record. Core = governs where
+// and how capacity is built; demand = policies that create computing load; governance = the data/cyber framework
+// that shapes where data (and therefore facilities) may sit.
+const CORE_TOPICS = new Set(['data_center', 'computing_power', 'edwc', 'energy_efficiency', 'green_development', 'carbon', 'cloud', 'energy_law']);
+const DEMAND_TOPICS = new Set(['ai', 'digital_economy', 'digital_china', 'industrial_internet', 'e_commerce', 'platform_economy', 'smart_city', 'telecom', 'five_year_plan', 'fintech', 'digital_government']);
+const RELEVANCE_LABEL = { core: 'Core: data-center build-out', demand: 'Demand: digital economy and AI', governance: 'Governance context' };
+const RELEVANCE_SHORT = { core: 'Core', demand: 'Demand', governance: 'Governance' };
+function relevanceOf(doc) {
+  if (doc.topics.some((t) => CORE_TOPICS.has(t))) return 'core';
+  if (doc.topics.some((t) => DEMAND_TOPICS.has(t))) return 'demand';
+  return 'governance';
+}
 const SORTS = [
   { value: '', label: 'Adopted (newest first)' },
   { value: 'date_asc', label: 'Adopted (oldest first)' },
@@ -52,6 +64,7 @@ function start({ meta, targets: tDoc, legislation }) {
     status: { type: 'set', allowed: Object.keys(STATUS_LABEL) },
     topic: { type: 'set', allowed: topics },
     plan: { type: 'choice', allowed: plans.map((p) => p.id) },
+    rel: { type: 'choice', allowed: Object.keys(RELEVANCE_LABEL) },
     from: { type: 'int', min: minYear, max: maxYear },
     to: { type: 'int', min: minYear, max: maxYear },
     sort: { type: 'choice', allowed: ['date_asc', 'title'] },
@@ -77,6 +90,7 @@ function start({ meta, targets: tDoc, legislation }) {
     type: checkGroup({ legend: 'Document type', name: 'type', options: Object.keys(TYPE_LABEL).filter((k) => byType.has(k)).map((v) => ({ value: v, label: TYPE_LABEL[v], count: byType.get(v) })), onChange: (s) => store.set({ type: s }) }),
     status: checkGroup({ legend: 'Status', name: 'status', options: Object.keys(STATUS_LABEL).filter((k) => byStatus.has(k)).map((v) => ({ value: v, label: STATUS_LABEL[v], count: byStatus.get(v) })), onChange: (s) => store.set({ status: s }) }),
     topic: dropdownCheckGroup({ id: 'f-topic', label: 'Topic', placeholder: 'All topics', options: topics.map((v) => ({ value: v, label: topicLabel(v), count: byTopic.get(v) })), onChange: (s) => store.set({ topic: s }) }),
+    rel: selectField({ id: 'f-rel', label: 'Relevance to data centers', options: [{ value: '', label: 'All documents' }, ...Object.entries(RELEVANCE_LABEL).map(([value, label]) => ({ value, label: `${label} (${docs.filter((d) => relevanceOf(d) === value).length})` }))], onChange: (v) => store.set({ rel: v }) }),
     plan: selectField({ id: 'f-plan', label: 'Related plan', options: [{ value: '', label: 'Any' }, ...plans.map((p) => ({ value: p.id, label: p.name_en }))], onChange: (v) => store.set({ plan: v }) }),
     from: yearField({ id: 'f-from', label: 'Adopted from', min: minYear, max: maxYear, onChange: (v) => store.set({ from: v }) }),
     to: yearField({ id: 'f-to', label: 'Adopted to', min: minYear, max: maxYear, onChange: (v) => store.set({ to: v }) }),
@@ -86,7 +100,7 @@ function start({ meta, targets: tDoc, legislation }) {
   const details = h('details', { class: 'card filters' },
     h('summary', null, h('span', null, 'Filters')),
     h('div', { class: 'body' },
-      h('div', { class: 'field-stack' }, c.q.el, c.topic.el, c.plan.el, c.sort.el,
+      h('div', { class: 'field-stack' }, c.q.el, c.rel.el, c.topic.el, c.plan.el, c.sort.el,
         h('div', { class: 'row' }, h('div', { style: { flex: '1 1 90px' } }, c.from.el), h('div', { style: { flex: '1 1 90px' } }, c.to.el))),
       c.type.el, c.status.el,
       h('div', { class: 'filters-foot' }, resetButton(() => store.reset(['sel'])), h('span', { class: 'hint' }, 'Leaving a group empty means no restriction.'))));
@@ -99,7 +113,7 @@ function start({ meta, targets: tDoc, legislation }) {
   put(app, 
     h('div', { class: 'page-head' },
       h('h1', null, 'Legislation and policy library'),
-      h('p', null, 'Laws, plans and policy notices relevant to the plan targets and to East Data West Computing. Records marked Unverified have not yet been checked against the primary source.')),
+      h('p', null, 'The documents behind the plan targets and the data-center build-out, each with its number, dates and a link to the primary source. "Core" records govern where and how capacity is built (hub approvals, PUE and green-power rules, carbon and energy-efficiency plans); "Demand" records create computing load (digital economy, AI); "Governance" records are the data and cyber framework that decides where data may sit. Records marked Unverified have not yet been checked against the primary source.')),
     h('div', { class: 'layout with-profile' }, details, h('div', { class: 'stack' }, kpis, tableHost), profile));
 
   const cmpTitle = (a, b) => a.title_en.localeCompare(b.title_en);
@@ -115,6 +129,7 @@ function start({ meta, targets: tDoc, legislation }) {
     c.status.set(st.status);
     c.topic.set(st.topic);
     c.plan.set(st.plan);
+    c.rel.set(st.rel);
     c.from.set(st.from);
     c.to.set(st.to);
     c.sort.set(st.sort);
@@ -131,13 +146,14 @@ function start({ meta, targets: tDoc, legislation }) {
         inSet(st.type, d.doc_type) && inSet(st.status, d.status) &&
         (st.topic.size === 0 || d.topics.some((t) => st.topic.has(t))) &&
         (!st.plan || d.related_plan_ids.includes(st.plan)) &&
+        (!st.rel || relevanceOf(d) === st.rel) &&
         (st.from === null || y >= st.from) && (st.to === null || y <= st.to);
     }).sort(comparators[st.sort] ?? comparators['']);
 
     const inForce = shown.filter((d) => d.status === 'in_force').length;
     const unverified = shown.filter((d) => !d.verified).length;
     put(kpis, 
-      kpi('Documents shown', String(shown.length), `of ${docs.length} total`),
+      kpi('Documents shown', String(shown.length), `of ${docs.length} total · ${shown.filter((d) => relevanceOf(d) === 'core').length} core`),
       kpi('In force', String(inForce), shown.length ? `${shown.length - inForce} not in force` : 'None in view'),
       kpi('Unverified', String(unverified), 'not yet checked against the source'),
     );
@@ -167,7 +183,7 @@ function start({ meta, targets: tDoc, legislation }) {
               h('button', { type: 'button', class: 'link-btn', onclick: () => { store.set({ sel: d.id }); revealProfile(profile); } }, d.title_en),
               d.title_zh ? h('span', { class: 'cell-sub zh', lang: 'zh' }, d.title_zh) : null,
               !d.verified ? tag('Unverified', { warn: true }) : null),
-            h('td', null, TYPE_LABEL[d.doc_type] ?? humanize(d.doc_type)),
+            h('td', null, TYPE_LABEL[d.doc_type] ?? humanize(d.doc_type), h('span', { class: `cell-sub rel-${relevanceOf(d)}` }, RELEVANCE_SHORT[relevanceOf(d)])),
             h('td', null, d.issuer),
             h('td', { class: 'num' }, formatIsoDate(d.date_adopted, d.date_precision)),
             h('td', { class: 'nowrap' }, STATUS_LABEL[d.status] ?? humanize(d.status))))))));

@@ -2790,6 +2790,168 @@
       "note": "Revised version: https://www.most.gov.cn/xxgk/xinxifenlei/fdzdgknr/fgzc/gfxwj/gfxwj2020/202012/t20201224_171987.html . Count of 17 zones as of December 2021 is tracked in the plan tracker (most_ai_pilot_zones).",
       "verified": true,
       "placeholder": false
+    },
+    {
+      "id": "green_data_center_guidance_2019",
+      "title_en": "Guiding Opinions on Strengthening the Construction of Green Data Centers",
+      "title_zh": "关于加强绿色数据中心建设的指导意见",
+      "doc_type": "policy_notice",
+      "issuer": "工业和信息化部、国家机关事务管理局、国家能源局",
+      "issuer_level": "ministerial",
+      "doc_number": "工信部联节〔2019〕24号",
+      "date_adopted": "2019-01-21",
+      "date_published": "2019-02-12",
+      "date_effective": "2019-01-21",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "data_center",
+        "energy_efficiency",
+        "green_development"
+      ],
+      "related_plan_ids": [],
+      "source": {
+        "title": "关于加强绿色数据中心建设的指导意见 (工信部联节〔2019〕24号), reproduced on ningguo.gov.cn",
+        "url": "https://www.ningguo.gov.cn/OpennessContent/download/316059.html",
+        "language": "zh"
+      },
+      "summary_en": "First national green-data-center policy: by 2022 average data-center energy use should reach the international advanced level and new large and hyperscale data centers should have a PUE of 1.4 or lower; sets up the green data-center standards, evaluation and third-party service system that later PUE rules build on.",
+      "note": "Quote: '到2022年，数据中心平均能耗基本达到国际先进水平，新建大型、超大型数据中心的电能使用效率值达到1.4以下'. The MIIT original page could not be fetched from the research environment; the source link is a county-government reproduction of the full text (check against miit.gov.cn before citing).",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "carbon_peak_action_plan_2021",
+      "title_en": "Action Plan for Carbon Dioxide Peaking Before 2030",
+      "title_zh": "2030年前碳达峰行动方案",
+      "doc_type": "policy_notice",
+      "issuer": "国务院",
+      "issuer_level": "national",
+      "doc_number": "国发〔2021〕23号",
+      "date_adopted": "2021-10-24",
+      "date_published": "2021-10-26",
+      "date_effective": "2021-10-24",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "carbon",
+        "green_development",
+        "energy_efficiency",
+        "data_center"
+      ],
+      "related_plan_ids": [
+        "fyp14"
+      ],
+      "source": {
+        "title": "国务院关于印发2030年前碳达峰行动方案的通知 (gov.cn, 2021-10-26)",
+        "url": "https://www.gov.cn/zhengce/content/2021-10/26/content_5644984.htm",
+        "language": "zh"
+      },
+      "summary_en": "The State Council's carbon-peaking roadmap. For data centers it requires coordinated, non-duplicative siting of new infrastructure and brings every data center using more than 10,000 tce a year into the national online energy-monitoring system with energy-metering audits.",
+      "note": "Quotes: '统筹谋划、科学配置数据中心等新型基础设施，避免低水平重复建设。' and '加强新型基础设施用能管理，将年综合能耗超过1万吨标准煤的数据中心全部纳入重点用能单位能耗在线监测系统，开展能源计量审查。'",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "industrial_energy_efficiency_action_plan_2022",
+      "title_en": "Industrial Energy Efficiency Improvement Action Plan",
+      "title_zh": "工业能效提升行动计划",
+      "doc_type": "plan",
+      "issuer": "工业和信息化部、国家发展改革委、财政部、生态环境部、国务院国资委、市场监管总局",
+      "issuer_level": "ministerial",
+      "doc_number": "工信部联节〔2022〕76号",
+      "date_adopted": "2022-06-23",
+      "date_published": "2022-06-29",
+      "date_effective": "2022-06-23",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "energy_efficiency",
+        "data_center",
+        "green_development"
+      ],
+      "related_plan_ids": [
+        "fyp14"
+      ],
+      "source": {
+        "title": "工业和信息化部等六部门关于印发工业能效提升行动计划的通知 (gov.cn, 2022-06-29; plan text in the attached PDF)",
+        "url": "https://www.gov.cn/zhengce/zhengceku/2022-06/29/content_5698410.htm",
+        "language": "zh"
+      },
+      "summary_en": "Sets the 2025 PUE ceiling that the data-center action plans inherit: new large and hyperscale data centers must achieve a PUE better than 1.3; continues the national green data-center list, pushes liquid cooling, free cooling, HVDC supply, waste-heat recovery and retrofits of old facilities.",
+      "note": "Quote (attached PDF): '到 2025 年，新建大型、超大型数据中心电能利用效率（PUE，指数据中心总耗电量与信息设备耗电量的比值）优于 1.3。' PDF: https://www.gov.cn/zhengce/zhengceku/2022-06/29/5698410/files/e5be6f181bce4f89acb0b60d18d1acf6.pdf",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "new_info_infrastructure_coordination_notice_2024",
+      "title_en": "Notice on Matters Concerning the Coordinated Development of New-Type Information Infrastructure",
+      "title_zh": "关于推动新型信息基础设施协调发展有关事项的通知",
+      "doc_type": "policy_notice",
+      "issuer": "工业和信息化部、中央网信办、教育部、财政部、自然资源部、住房城乡建设部、农业农村部、国家卫生健康委、中国人民银行、国务院国资委、中国国家铁路集团有限公司",
+      "issuer_level": "ministerial",
+      "doc_number": "工信部联通信〔2024〕165号",
+      "date_adopted": "2024-08-19",
+      "date_published": "2024-09-04",
+      "date_effective": "2024-08-19",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "computing_power",
+        "data_center",
+        "edwc",
+        "telecom"
+      ],
+      "related_plan_ids": [
+        "edwc23"
+      ],
+      "source": {
+        "title": "工业和信息化部等十一部门关于推动新型信息基础设施协调发展有关事项的通知 (reproduced on ncsti.gov.cn, 2024-09-06)",
+        "url": "https://www.ncsti.gov.cn/zcfg/zcwj/202409/t20240906_178098.html",
+        "language": "zh"
+      },
+      "summary_en": "Eleven-department notice that turns the hub strategy into siting policy: local governments must use differentiated energy-quota and land policies to steer large and hyperscale data centers, intelligent-computing and supercomputing centers to the national hub nodes, build data-center clusters together with renewable-energy bases, and raise the share of intelligent computing.",
+      "note": "Quotes: '各地要实施差异化能耗、用地等政策，引导面向全国、区域提供服务的大型及超大型数据中心、智能计算中心、超算中心在枢纽节点部署。' '支持数据中心集群与新能源基地协同建设，推动算力基础设施与能源、水资源协调发展。' Source is a government reproduction (ncsti.gov.cn); MIIT original not fetched.",
+      "verified": true,
+      "placeholder": false
+    },
+    {
+      "id": "renewable_substitution_action_opinions_2024",
+      "title_en": "Guiding Opinions on Vigorously Implementing the Renewable Energy Substitution Action",
+      "title_zh": "关于大力实施可再生能源替代行动的指导意见",
+      "doc_type": "policy_notice",
+      "issuer": "国家发展改革委、工业和信息化部、住房城乡建设部、交通运输部、国家能源局、国家数据局",
+      "issuer_level": "ministerial",
+      "doc_number": "发改能源〔2024〕1537号",
+      "date_adopted": "2024-10-18",
+      "date_published": "2024-10-30",
+      "date_effective": "2024-10-18",
+      "date_precision": "day",
+      "status": "in_force",
+      "superseded_by": null,
+      "topics": [
+        "green_development",
+        "data_center",
+        "edwc",
+        "carbon"
+      ],
+      "related_plan_ids": [
+        "edwc23",
+        "gdc24"
+      ],
+      "source": {
+        "title": "关于大力实施可再生能源替代行动的指导意见 (ndrc.gov.cn, 2024-10-30)",
+        "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241030_1394119.html",
+        "language": "zh"
+      },
+      "summary_en": "Ties data-center growth to renewables: new data centers must raise their renewable share year by year, hub-node areas with cold-water resources are supported for big-data-center construction, old small data centers get green retrofits, and data centers are to integrate with PV, heat pumps and storage.",
+      "note": "Quotes: '推动新建数据中心逐年稳步提升可再生能源使用比例。' '支持国家枢纽节点中具有冷水资源的地区建设大数据中心。' '推动5G基站、数据中心、超算中心等与光伏、热泵、储能等融合发展。'",
+      "verified": true,
+      "placeholder": false
     }
   ]
 }

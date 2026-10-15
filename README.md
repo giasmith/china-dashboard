@@ -112,10 +112,10 @@ series changed population in 2025; 5G 普及率 is per 100 population, not a sha
 official figure: total FP32 EFLOPS and all-facility PUE for end-2025, 智能算力占比, 先进存力占比, industrial-internet
 platform penetration, the hub green-power share, and a point value for the pension participation rate (floor only).
 
-**Legislation** (`legislation.json`): 89 national laws, regulations, departmental rules, standards, plans and policy
+**Legislation** (`legislation.json`): 94 national laws, regulations, departmental rules, standards, plans and policy
 notices on the digital economy — data governance and security, cybersecurity, AI, platform economy, e-commerce,
 fintech, digital government, computing power and data-center energy use — with document numbers,
-adoption/publication/effective dates and a short summary. `verified: true` (88 of 89) means the dates were read from a
+adoption/publication/effective dates and a short summary. `verified: true` (93 of 94) means the dates were read from a
 government page; the one exception (the 2018 等级保护条例 draft) says why in `note`. `date_precision: month` means
 the issuing day is not published; the record then carries the first of the month and the release date in
 `date_published`.
