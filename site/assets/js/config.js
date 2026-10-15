@@ -21,4 +21,5 @@ export const DATA_FILES = Object.freeze({
   provinces: 'data/provinces.json',
   facilities: 'data/facilities.json',
   plants: 'data/power_plants.json',
+  lines: 'data/power_lines.json',
 });

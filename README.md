@@ -28,11 +28,12 @@ site/                     the published site (this folder is what GitHub Pages s
   assets/css/style.css    design tokens (light/dark), layout, components;  dashboard.css  the map page
   assets/js/lib/          pure logic + small UI helpers   <- unit-tested (inventory.js = map filtering/binning)
   assets/js/pages/        one module per page (dashboard.js, plan.js, legislation.js)
-  data/                   meta.json, provinces.json, facilities.json, power_plants.json,
+  data/                   meta.json, provinces.json, facilities.json, power_plants.json, power_lines.json,
                           plan_targets.json, plan_actuals.json, legislation.json
 data_sources/             hand-transcribed official tables that feed provinces.json (see data_sources/README.md)
 schemas/                  JSON Schema for every data file (the contract the build script must meet)
 scripts/build_dashboard_data.py   builds the three map files from the EDWC research folder (see Data below)
+scripts/build_power_lines.py      builds power_lines.json from the OpenStreetMap GeoPackage (see Data below)
 scripts/validate_data.py  schema + cross-file checks (referential integrity, derived values, privacy rule, dates ...)
 pipeline/                 data-gathering pipeline (stub: polite fetcher, source registry) - see pipeline/README.md
 tests/js  tests/py  tests/browser   unit tests and a Playwright smoke test
@@ -58,8 +59,8 @@ Reset returns to all of China; dragging the map never changes the focus.
 |---|---|---|---|
 | Status | facility count in the selection | one status wheel per province, sized by count | inventory |
 | Capacity | known MW in the selection | bubble sized by known MW | inventory |
-| Power | installed MW of GEM units (choose a technology) | pale count bubbles | Global Energy Monitor |
-| Generation | 2024 generation (NBS yearbook 9-19) | GEM plant units by technology | NBS + GEM |
+| Power | installed MW of GEM units (choose a technology) | pale count bubbles; transmission lines ≥250 kV | Global Energy Monitor; OpenStreetMap (ODbL) |
+| Generation | 2024 generation (NBS yearbook 9-19) | GEM plant units by technology; transmission lines ≥250 kV | NBS + GEM; OpenStreetMap (ODbL) |
 | Electricity cost | 1–10 kV industrial & commercial rate, May 2025 | pale count bubbles | China Briefing compilation (tier C) |
 | Water scarcity | per-capita resources, use÷resources, totals, industrial use (2024) | pale count bubbles | MWR bulletin via NBS yearbook 8-8 / 8-9 |
 | Hazard, Opposition | none yet | pale count bubbles | — |
@@ -150,9 +151,25 @@ bioenergy) projected to the view box with their province. Status was filtered to
 workflow; several units of one plant share a point. Gas, oil and waste plants came from OpenStreetMap in that
 workflow with capacities in kW, so they are excluded here.
 
-Rebuild the three map files from the EDWC folder (this repository sits inside it):
+**Transmission lines** (`power_lines.json`, built by `scripts/build_power_lines.py`): OpenStreetMap `power=line`
+ways from the November 2025 China extract (`_SCSP_export_large/EDWC_China_GIS/04_grid_transmission_osm/`), kept when
+`max_voltage` is at least 250 kV. China has no voltage class between 220 and 330 kV, so this means 330 kV and up
+(330/500/750 kV AC, ±400 to ±1100 kV DC, 1000 kV UHV AC); every 220 kV line is left out. Four classes are drawn, by
+colour and width: 330–400 kV, 500 kV, 660–750 kV and UHV ≥800 kV. Result: 22,284 ways, about 292,600 km of mapped
+route (500 kV 183,800 · UHV 42,600 · 330–400 kV 35,200 · 660–750 kV 31,100). Read the km as a lower bound on route
+length, not as official circuit length: 30% of OSM power lines carry no voltage tag and are dropped, and parallel
+lines mapped as separate ways count separately. Ways tagged construction or disused (93) are excluded. Lines are
+simplified to about 1 km, split at province borders (each segment goes to the province holding its midpoint) and
+dimmed outside a focused province; the paths never take pointer events, so province clicks pass through them.
+**The GeoPackage stores every power line twice** (22,376 OSM ids appear twice with identical tags and geometry, and
+the same is true of `01_working/data/working/osm_filtered.gpkg`); the build de-duplicates by OSM id, but any
+analysis that sums lengths straight from either file double-counts. OSM data is © OpenStreetMap contributors under
+the ODbL; `power_lines.json` is a derived database under the same licence, and the map legend carries the credit.
+
+Rebuild the map files from the EDWC folder (this repository sits inside it):
 
     python3 scripts/build_dashboard_data.py --edwc-root .. --check
+    python3 scripts/build_power_lines.py --edwc-root ..            # after provinces.json; --min-kv 220 to add 220 kV
 
 ## Deploy to GitHub Pages
 

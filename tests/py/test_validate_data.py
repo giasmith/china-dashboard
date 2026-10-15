@@ -271,6 +271,41 @@ class ValidatorTest(unittest.TestCase):
         self._edit("power_plants.json", lambda d: d["plants"][0].__setitem__(0, "Fusion"))
         self.assertTrue(self._run().errors)
 
+    # -- transmission lines (power_lines.json) ---------------------------------
+    def test_line_province_must_exist(self) -> None:
+        self._edit("power_lines.json", lambda d: d["paths"].__setitem__("atlantis", {"500": "M1,1 2,2"}))
+        self.assertHasError(self._run(), "unknown province")
+
+    def test_line_coordinates_must_stay_on_the_map(self) -> None:
+        def fn(d):
+            pid = next(iter(d["paths"]))
+            key = next(iter(d["paths"][pid]))
+            d["paths"][pid][key] += "M5000,10 5001,11"
+        self._edit("power_lines.json", fn)
+        self.assertHasError(self._run(), "outside the view box")
+
+    def test_line_class_total_must_equal_the_province_sum(self) -> None:
+        self._edit("power_lines.json", lambda d: d["classes"][0].__setitem__("km", d["classes"][0]["km"] + 100))
+        self.assertHasError(self._run(), "does not equal the province sum")
+
+    def test_line_attribution_is_required(self) -> None:
+        self._edit("power_lines.json", lambda d: d["source"].__setitem__("licence", "public domain"))
+        self.assertHasError(self._run(), "ODbL")
+
+    def test_line_class_must_be_declared(self) -> None:
+        def fn(d):
+            d["classes"] = [c for c in d["classes"] if c["key"] != "uhv"]
+        self._edit("power_lines.json", fn)
+        self.assertHasError(self._run(), "is not declared")
+
+    def test_line_path_with_letters_fails_schema(self) -> None:
+        def fn(d):
+            pid = next(iter(d["paths"]))
+            key = next(iter(d["paths"][pid]))
+            d["paths"][pid][key] = "M1,1 L<script>"
+        self._edit("power_lines.json", fn)
+        self.assertTrue(self._run().errors)
+
     def test_actual_qualifier_must_be_a_known_token(self) -> None:
         self._edit("plan_actuals.json", lambda d: d["actuals"][0].update(qualifier="roughly"))
         self.assertHasError(self._run(), "qualifier")

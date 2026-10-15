@@ -131,10 +131,20 @@
 .db-bubble.is-dim { opacity: 0.35; }
 .db-scope { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; font-size: 13px; }
 .db-scope .db-chip { margin: 0; font-weight: 650; }
-.db-bars.has-focus .db-bar-row:not(.is-focus) .db-bar-fill { opacity: 0.4; }
+.db-bars.has-focus > .db-bar-row:not(.is-focus) .db-bar-fill { opacity: 0.4; }
 .db-bar-row.is-focus .db-bar-label { color: var(--ink); font-weight: 700; }
 .db-bar-gap { color: var(--ink-3); font-size: 12px; line-height: 1; padding-left: 4px; }
 .db-chart-note { margin: 4px 0 0; }
 
+/* transmission lines (OpenStreetMap) on the energy tabs; they never take pointer events */
+.db-line { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.db-line.is-dim { opacity: 0.2; }
+.db-swatch.line { width: 18px; border: 0; border-radius: 2px; align-self: center; }
+.db-chip .db-swatch.line { width: 14px; height: 4px; }
+.db-sub-check { cursor: pointer; }
+.db-sub-check input { margin: 0; accent-color: var(--accent); }
+.db-line-bars { display: grid; gap: 8px; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--border); }
+.db-chart-sub { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); margin: 0; }
+
 @media print { .db-filters, .db-map-actions, .db-tabs { display: none !important; } .db-workspace { grid-template-columns: 1fr; } }
-@media (forced-colors: active) { .db-province, .db-dot, .db-slice, .db-bar-fill, .db-swatch { forced-color-adjust: none; } }
+@media (forced-colors: active) { .db-province, .db-dot, .db-slice, .db-bar-fill, .db-swatch, .db-line { forced-color-adjust: none; } }

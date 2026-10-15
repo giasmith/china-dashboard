@@ -6,8 +6,8 @@ mode and checks:
   - no stray "null" / "undefined" / "NaN" text anywhere in the rendered page
   - key interactions work: search, status toggle, row selection, URL-hash state, invalid year range, empty state
   - the map dashboard: layer tabs, filters, province focus by map click (also with real mouse input, and a drag that
-    must not change it), that there is no export/download control, and that no coordinate ever reaches the browser
-    for a facility
+    must not change it), the transmission-line overlay on the energy tabs, that there is no export/download control,
+    and that no coordinate ever reaches the browser for a facility
 
 Usage:
     python3 -m http.server 8000 --directory site &
@@ -282,6 +282,40 @@ async def interactions(browser, base):
         await page.click("#db-zoom-reset")
         await page.click("#db-reset")
         await page.wait_for_timeout(300)
+
+    # Transmission lines (OpenStreetMap, >= 250 kV): an overlay on the energy tabs only.
+    await page.click(".db-tab[data-view=power]")
+    await page.wait_for_timeout(1500)
+    n_lines = await page.locator("#db-lines path").count()
+    check(n_lines > 50, f"map: the Power tab draws the transmission lines ({n_lines} paths)")
+    check(await page.locator("#db-lines-toggle").is_visible(), "map: the Power tab shows the transmission toggle")
+    legend = await page.locator("#db-legend").inner_text()
+    check("OpenStreetMap" in legend and "ODbL" in legend, "map: the legend credits OpenStreetMap (ODbL)")
+    check("500 kV line" in legend, "map: the legend lists the voltage classes")
+    pe = await page.evaluate("getComputedStyle(document.querySelector('#db-lines path')).pointerEvents")
+    check(pe == "none", f"map: lines never take pointer events, so province clicks pass through ({pe})")
+    await page.locator("#db-provinces path[data-id=gansu]").dispatch_event("click")
+    await page.wait_for_timeout(300)
+    check(await page.locator("#db-lines path.is-dim").count() > 0
+          and await page.locator("#db-lines path[data-province=gansu]:not(.is-dim)").count() > 0,
+          "map: focusing a province dims the other provinces' lines")
+    detail = await page.locator("#db-detail").inner_text()
+    check(re.search(r"Transmission ≥250 kV\s+[\d,]+ km mapped", detail) is not None, "map: the province detail gives mapped transmission km")
+    check("km mapped" in (await page.locator("#db-chart").inner_text()).lower(), "map: the power infrastructure profile includes transmission km")  # sub-heading is CSS-uppercased
+    check(not BAD_TEXT.search(await page.locator("main, #app").first.inner_text()), "map: no null/undefined/NaN on the Power tab with a province focused")
+    await page.uncheck("#db-lines-toggle")
+    await page.wait_for_timeout(200)
+    check(await page.locator("#db-lines path").count() == 0, "map: the toggle hides the lines")
+    await page.check("#db-lines-toggle")
+    await page.click(".db-tab[data-view=generation]")
+    await page.wait_for_timeout(800)
+    check(await page.locator("#db-lines path").count() > 50, "map: the Generation tab draws the lines too")
+    await page.click(".db-tab[data-view=status]")
+    await page.wait_for_timeout(200)
+    check(await page.locator("#db-lines path").count() == 0, "map: the lines are only drawn on the energy tabs")
+    check(not await page.locator("#db-lines-toggle").is_visible(), "map: the toggle is hidden on the other tabs")
+    await page.click("#db-reset")
+    await page.wait_for_timeout(200)
 
     # The inventory is not downloadable: no export control anywhere on the map page, and no <a download>.
     check(await page.locator("#db-export, button:has-text('Export')").count() == 0, "map: no export control")

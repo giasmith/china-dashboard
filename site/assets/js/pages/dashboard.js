@@ -11,7 +11,7 @@ import { renderShell, showError, announce, debounce } from '../lib/ui.js';
 import { formatNumber, formatPercent, ordinal, EM_DASH } from '../lib/format.js';
 import {
   STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, SOURCE_LABEL, TECH_ORDER,
-  STATUS_COLOR, TECH_COLOR, SEQ_RAMP, SEQ_RAMP_WARM, colorOf, binIndex, binLabels,
+  STATUS_COLOR, TECH_COLOR, SEQ_RAMP, SEQ_RAMP_WARM, LINE_RAMP, colorOf, binIndex, binLabels,
   filterFacilities, countBy, summarizeByProvince, summarizeSelection, bubbleRadius, arcPath, quantileThresholds,
 } from '../lib/inventory.js';
 
@@ -109,10 +109,11 @@ const state = {
   // the sidebar counts, the profile card and the plant layer, while every province stays drawn and clickable.
   focus: '',
   powerTech: '', generationTech: '', costMeasure: 'single', waterMeasure: 'percap',
+  showLines: true, // transmission-line overlay on the energy tabs (Power, Generation)
   selected: null, // {kind:'province'|'facility'|'plant', id}
   transform: { k: 1, x: 0, y: 0 },
 };
-let data = null; // { provinces, facilities, plants, legislation }
+let data = null; // { provinces, facilities, plants, legislation, lines }
 let els = {};
 let filtered = []; // facilities passing the sidebar filters AND the province focus (KPIs, counts, donut)
 let byProvince = new Map(); // per-province rollup of the sidebar filters only (map shading, bubbles, tooltips)
@@ -207,6 +208,9 @@ function buildLayout() {
         h('option', { value: 'stress' }, 'Use ÷ resources (pressure ratio)'),
         h('option', { value: 'total' }, 'Total water resources (亿 m³)'),
         h('option', { value: 'industrial' }, 'Industrial water use (亿 m³)'))),
+    h('label', { class: 'db-sub db-sub-check', dataset: { for: 'power generation' }, hidden: true },
+      h('input', { type: 'checkbox', id: 'db-lines-toggle', checked: true }),
+      h('span', { id: 'db-lines-label' }, 'Transmission lines ≥250 kV')),
     h('div', { class: 'db-map-actions' },
       h('button', { class: 'btn', type: 'button', id: 'db-zoom-out', 'aria-label': 'Zoom out' }, '−'),
       h('button', { class: 'btn', type: 'button', id: 'db-zoom-reset' }, 'Reset view'),
@@ -214,7 +218,7 @@ function buildLayout() {
 
   const map = svg('svg', { id: 'db-map', viewBox: `0 0 ${VIEW_W} ${VIEW_H}`, role: 'img', 'aria-label': 'Map of China by province', preserveAspectRatio: 'xMidYMid meet' },
     svg('g', { id: 'db-viewport' },
-      svg('g', { id: 'db-provinces' }), svg('g', { id: 'db-plants' }), svg('g', { id: 'db-bubbles' }), svg('g', { id: 'db-labels' })));
+      svg('g', { id: 'db-provinces' }), svg('g', { id: 'db-lines', 'aria-hidden': 'true' }), svg('g', { id: 'db-plants' }), svg('g', { id: 'db-bubbles' }), svg('g', { id: 'db-labels' })));
   const mapCard = h('div', { class: 'db-map-card card' },
     h('div', { class: 'db-toolbar' }, tabs, subcontrols),
     h('div', { class: 'db-map-shell', id: 'db-map-shell' }, map,
@@ -242,7 +246,7 @@ function buildLayout() {
     plants: byId('db-plants'), bubbles: byId('db-bubbles'), labels: byId('db-labels'), legend: byId('db-legend'), viewTitle: byId('db-view-title'),
     chart: byId('db-chart'), chartTotal: byId('db-chart-total'), profileEyebrow: byId('db-profile-eyebrow'), profileTitle: byId('db-profile-title'),
     detail: byId('db-detail'), powerTech: byId('db-power-tech'), genTech: byId('db-gen-tech'), costMeasure: byId('db-cost-measure'), waterMeasure: byId('db-water-measure'),
-    mapShell: byId('db-map-shell'),
+    mapShell: byId('db-map-shell'), lines: byId('db-lines'), linesToggle: byId('db-lines-toggle'), linesLabel: byId('db-lines-label'),
   };
   els.tooltip = h('div', { class: 'tooltip', id: 'db-tooltip', role: 'tooltip' });
   document.body.append(els.tooltip); // note: add() returns the parent, which is why this is not add(document.body, …)
@@ -254,6 +258,7 @@ function buildLayout() {
   els.genTech.addEventListener('change', () => { state.generationTech = els.genTech.value; repaint(); });
   els.costMeasure.addEventListener('change', () => { state.costMeasure = els.costMeasure.value; repaint(); });
   els.waterMeasure.addEventListener('change', () => { state.waterMeasure = els.waterMeasure.value; repaint(); });
+  els.linesToggle.addEventListener('change', () => { state.showLines = els.linesToggle.checked; repaint(); });
   byId('db-zoom-in').addEventListener('click', () => zoom(1.35));
   byId('db-zoom-out').addEventListener('click', () => zoom(1 / 1.35));
   byId('db-zoom-reset').addEventListener('click', resetView);
@@ -397,6 +402,7 @@ function repaint() {
   }
   els.provinces.classList.toggle('soft', state.view === 'generation'); // let the plant points read over the fill
   renderBubbles(t);
+  renderLines(t);
   renderPlants(t);
   renderLegend(view, thresholds, ramp, t);
   renderChart(view, t);
@@ -433,6 +439,88 @@ function renderBubbles(t) {
     g.addEventListener('click', (e) => { e.stopPropagation(); select({ kind: 'province', id: p.id }); });
     els.bubbles.append(g);
   }
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Transmission lines (OpenStreetMap, at or above the build threshold, 250 kV by default): an overlay on the energy
+// tabs. The paths never take pointer events, so clicks and hovers still reach the province underneath.
+// ---------------------------------------------------------------------------------------------------------------
+const LINE_VIEWS = new Set(['power', 'generation']);
+const LINE_WIDTH = { 220: 0.6, 330: 0.8, 500: 1.1, 750: 1.6, uhv: 2.4 }; // px, non-scaling; width encodes voltage too
+let linesPromise = null;
+
+/** Load power_lines.json once, then repaint: the legend, the profile card and the detail panel use it as well. */
+function ensureLines() {
+  if (!linesPromise) {
+    linesPromise = loadJson(DATA_FILES.lines)
+      .then((d) => {
+        if (!Array.isArray(d?.classes) || !d.paths || !d.km_by_province) throw new DataError(`${DATA_FILES.lines} is missing "classes", "paths" or "km_by_province".`);
+        data.lines = d;
+        els.linesLabel.textContent = `Transmission lines ≥${formatNumber(d.min_kv)} kV`;
+      })
+      .catch((err) => { data.linesError = err.message; })
+      .finally(() => { repaint(); renderDetail(); });
+  }
+  return linesPromise;
+}
+
+function linesShown() { return state.showLines && LINE_VIEWS.has(state.view); }
+
+/** Colour of class i of n (lowest voltage first): the last n steps of LINE_RAMP. */
+function lineColor(i, n, t) {
+  const ramp = LINE_RAMP[t];
+  return ramp[Math.min(ramp.length - 1, Math.max(0, ramp.length - n + i))];
+}
+
+function renderLines(t) {
+  clear(els.lines);
+  if (!linesShown()) return;
+  if (!data.lines) { if (!data.linesError) ensureLines(); return; }
+  const { classes, paths } = data.lines;
+  const frag = document.createDocumentFragment();
+  classes.forEach((c, i) => { // lowest voltage first, so the heavier lines draw on top
+    const stroke = lineColor(i, classes.length, t);
+    for (const [pid, byClass] of Object.entries(paths)) {
+      if (!byClass[c.key]) continue;
+      frag.append(svg('path', { d: byClass[c.key], class: state.focus && state.focus !== pid ? 'db-line is-dim' : 'db-line', stroke, 'stroke-width': LINE_WIDTH[c.key] ?? 1, dataset: { cls: c.key, province: pid } }));
+    }
+  });
+  els.lines.append(frag);
+}
+
+/** Mapped km per class for a province ({} if none); null before the data has loaded. */
+function lineKm(pid) {
+  return data.lines ? data.lines.km_by_province[pid] ?? {} : null;
+}
+const sumKm = (byClass) => Object.values(byClass ?? {}).reduce((a, b) => a + b, 0);
+
+/** Profile-card block: mapped km per voltage class for one province, or for all of China when pid is empty. */
+function lineBars(pid, t) {
+  if (!data.lines) { if (!data.linesError) ensureLines(); return null; }
+  const { classes } = data.lines;
+  const km = pid ? lineKm(pid) : Object.fromEntries(classes.map((c) => [c.key, c.km]));
+  const total = sumKm(km);
+  const max = Math.max(...classes.map((c) => km[c.key] ?? 0), 1);
+  return h('div', { class: 'db-line-bars' },
+    h('h3', { class: 'db-chart-sub' }, `Transmission lines ≥${formatNumber(data.lines.min_kv)} kV · ${formatNumber(total, { digits: 0 })} km mapped`),
+    total
+      ? classes.map((c, i) => barRow(c.label, km[c.key] ?? 0, max, lineColor(i, classes.length, t), `${formatNumber(km[c.key] ?? 0, { digits: 0 })} km`))
+      : h('p', { class: 'muted' }, 'No line at this voltage is mapped in OpenStreetMap here.'),
+    h('p', { class: 'hint db-chart-note' }, 'Route length of voltage-tagged OpenStreetMap ways, not official circuit length; untagged lines are left out, so read it as a lower bound.'));
+}
+
+/** Detail-panel value: total km and a chip per class. */
+function transmissionFact(pid, t) {
+  if (data.linesError) return 'Unavailable';
+  if (!data.lines) { ensureLines(); return 'Loading…'; }
+  const km = lineKm(pid);
+  const total = sumKm(km);
+  if (!total) return 'None mapped';
+  const { classes } = data.lines;
+  return [h('span', { class: 'db-chip' }, `${formatNumber(total, { digits: 0 })} km mapped`),
+    classes.filter((c) => km[c.key]).map((c) => h('span', { class: 'db-chip' },
+      h('span', { class: 'db-swatch line', style: { background: lineColor(classes.indexOf(c), classes.length, t) } }),
+      `${c.label} ${formatNumber(km[c.key], { digits: 0 })} km`))];
 }
 
 async function renderPlants(t) {
@@ -557,6 +645,7 @@ function showProvinceTooltip(e, p) {
   if (!view.noData && !view.categorical && state.view !== 'status' && state.view !== 'capacity') {
     rows.push(h('div', { class: 't-label' }, `${view.title}: ${v === null || v === undefined ? 'no data' : formatNumber(v, { digits: digitsOf(view) }) + unitOf(view)}`));
   }
+  if (linesShown() && data.lines) rows.push(h('div', { class: 't-label' }, `Transmission ≥${formatNumber(data.lines.min_kv)} kV: ${formatNumber(sumKm(lineKm(p.id)), { digits: 0 })} km mapped`));
   if (p.hub) rows.push(h('div', { class: 't-label' }, `EDWC: ${data.provinces.hubs[p.hub]?.name_en}`));
   put(els.tooltip, rows);
   els.tooltip.classList.add('on');
@@ -587,7 +676,7 @@ function hideTooltip() { els.tooltip.classList.remove('on'); }
 function setView(key) {
   state.view = key;
   app.querySelectorAll('.db-tab').forEach((b) => { b.setAttribute('aria-selected', b.dataset.view === key ? 'true' : 'false'); b.classList.toggle('active', b.dataset.view === key); });
-  app.querySelectorAll('.db-sub').forEach((el) => { el.hidden = el.dataset.for !== key; });
+  app.querySelectorAll('.db-sub').forEach((el) => { el.hidden = !el.dataset.for.split(' ').includes(key); });
   if (location.hash !== `#view=${key}`) history.replaceState(null, '', `#view=${key}`);
   repaint();
 }
@@ -613,9 +702,18 @@ function renderLegend(view, thresholds, ramp, t) {
   }
   if (state.view === 'status') STATUS_ORDER.forEach((k) => items.push(legendItem(colorOf(STATUS_COLOR, k, t), k, { ring: true })));
   if (state.view === 'generation') TECH_ORDER.forEach((k) => items.push(legendItem(colorOf(TECH_COLOR, k, t), `${k} unit`, { ring: true })));
+  const lines = linesShown() ? data.lines : null;
+  if (lines) {
+    lines.classes.forEach((c, i) => items.push(h('div', { class: 'db-legend-item' },
+      h('span', { class: 'db-swatch line', style: { background: lineColor(i, lines.classes.length, t), height: `${Math.max(2, Math.round((LINE_WIDTH[c.key] ?? 1) * 1.6))}px` } }),
+      h('span', null, `${c.label} line`))));
+  }
   const src = view.sourceKey ? data.provinces.sources[view.sourceKey] : null;
   put(els.legend, items, h('div', { class: 'db-legend-note' }, view.legendNote, ' ',
-    src ? ['Source: ', src.url ? h('a', { href: src.url, rel: 'noopener', target: '_blank' }, src.title) : src.title, ` (${src.publisher}; tier ${src.tier}).`] : null));
+    src ? ['Source: ', src.url ? h('a', { href: src.url, rel: 'noopener', target: '_blank' }, src.title) : src.title, ` (${src.publisher}; tier ${src.tier}).`] : null,
+    lines ? [` Transmission lines: OpenStreetMap ways tagged ≥${formatNumber(lines.min_kv)} kV, `, h('a', { href: lines.source.url, rel: 'noopener', target: '_blank' }, lines.source.publisher),
+      `, ODbL (tier ${lines.source.tier}; lines without a voltage tag are omitted).`] : null,
+    linesShown() && data.linesError ? ` Transmission layer unavailable: ${data.linesError}` : null));
 }
 
 function barRow(label, value, max, color, valueText, { focus = false } = {}) {
@@ -670,7 +768,8 @@ async function renderChart(view, t) {
       TECH_ORDER.map((k) => barRow(k, mwBy.get(k), max, colorOf(TECH_COLOR, k, t), `${formatNumber(mwBy.get(k) / 1000, { digits: 1 })} GW · ${formatNumber(nBy.get(k))}`, { focus: k === state.generationTech })),
       h('p', { class: 'hint db-chart-note' }, focusP
         ? `${formatNumber(mw / 1000, { digits: 1 })} GW across ${formatNumber(rows.length)} units, ${formatPercent(nationalMw ? mw / nationalMw : null, { digits: 1 })} of China's GEM total. Bars show GW · unit count.`
-        : 'Bars show GW · unit count. Select a province on the map to see its own mix.'));
+        : 'Bars show GW · unit count. Select a province on the map to see its own mix.'),
+      lineBars(focusP?.id ?? '', t));
     return;
   }
   if (state.view === 'power' && focusP) {
@@ -684,7 +783,8 @@ async function renderChart(view, t) {
     if (state.powerTech) els.chart.classList.add('has-focus');
     put(els.chart,
       TECH_ORDER.map((k) => barRow(k, inst[k] ?? 0, max, colorOf(TECH_COLOR, k, t), `${formatNumber((inst[k] ?? 0) / 1000, { digits: 1 })} GW`, { focus: k === state.powerTech })),
-      h('p', { class: 'hint db-chart-note' }, rankNote(focusP, rankProvinces(view, c))));
+      h('p', { class: 'hint db-chart-note' }, rankNote(focusP, rankProvinces(view, c))),
+      lineBars(focusP.id, t));
     return;
   }
   if (state.view === 'policy') {
@@ -871,6 +971,7 @@ function renderDetail() {
         fact('Balance (computed)', i.generation_balance_2024 != null ? `${i.generation_balance_2024 > 0 ? '+' : ''}${formatNumber(i.generation_balance_2024, { digits: 0 })} 亿kWh` : null),
         fact('Installed (GEM units)', i.installed_mw_total ? `${formatNumber(i.installed_mw_total / 1000, { digits: 1 })} GW` : null),
         fact('By technology', Object.keys(inst).length ? TECH_ORDER.filter((k) => inst[k]).map((k) => h('span', { class: 'db-chip' }, h('span', { class: 'db-swatch ring', style: { background: colorOf(TECH_COLOR, k, t) } }), `${k} ${formatNumber(inst[k] / 1000, { digits: 1 })} GW`)) : null),
+        fact(`Transmission ≥${data.lines ? formatNumber(data.lines.min_kv) : 250} kV`, transmissionFact(p.id, t)),
         fact('1–10 kV rate (May 2025)', i.tariff_single_1_10kv != null ? `${formatNumber(i.tariff_single_1_10kv, { digits: 3 })} 元/kWh single-part${i.tariff_two_part_1_10kv != null ? ` · ${formatNumber(i.tariff_two_part_1_10kv, { digits: 3 })} two-part` : ''}` : 'Not in source'),
         i.tariff_note ? fact('Tariff note', i.tariff_note) : null)),
     h('section', { class: 'db-detail-section' }, h('h3', null, 'Water (2024)'),

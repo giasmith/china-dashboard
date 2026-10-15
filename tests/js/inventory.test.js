@@ -3,7 +3,28 @@ import assert from 'node:assert/strict';
 import {
   STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, binIndex, binLabels, matchesSearch, filterFacilities, countBy,
   summarizeByProvince, summarizeSelection, bubbleRadius, arcPath, quantileThresholds, niceRound, colorOf, STATUS_COLOR,
+  LINE_RAMP,
 } from '../../site/assets/js/lib/inventory.js';
+
+// Relative luminance (WCAG) of a #rrggbb colour.
+const luminance = (hex) => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+
+test('LINE_RAMP: higher voltage reads stronger - darker on light, brighter on dark - with no repeated step', () => {
+  for (const t of ['light', 'dark']) {
+    const ramp = LINE_RAMP[t];
+    assert.ok(ramp.length >= 4, `${t} ramp needs a step per class`);
+    assert.equal(new Set(ramp).size, ramp.length);
+    for (let i = 1; i < ramp.length; i += 1) {
+      const [a, b] = [luminance(ramp[i - 1]), luminance(ramp[i])];
+      if (t === 'light') assert.ok(b < a, `light step ${i} must be darker`);
+      else assert.ok(b > a, `dark step ${i} must be brighter`);
+    }
+  }
+});
 
 const provinces = new Map([
   ['beijing', { id: 'beijing', name: 'Beijing', hub: 'jingjinji' }],

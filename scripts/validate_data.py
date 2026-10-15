@@ -42,6 +42,7 @@ FILES = {
     "provinces": ("provinces.json", "provinces.schema.json"),
     "facilities": ("facilities.json", "facilities.schema.json"),
     "plants": ("power_plants.json", "power_plants.schema.json"),
+    "lines": ("power_lines.json", "power_lines.schema.json"),
 }
 OPTIONAL: set[str] = set()
 
@@ -328,6 +329,49 @@ def check_plants(doc: dict, provinces: dict, report: Report) -> None:
         report.error("plants", f"{n} units reference unknown province '{pid}'")
 
 
+def check_lines(doc: dict, provinces: dict, report: Report) -> None:
+    """Transmission lines: declared classes, known provinces, totals that add up, coordinates on the map, and the
+    OpenStreetMap / ODbL attribution the licence requires."""
+    ids = {p["id"] for p in provinces["provinces"]}
+    declared = {c["key"]: c for c in doc["classes"]}
+    for dup in _dupes([c["key"] for c in doc["classes"]]):
+        report.error("lines/classes", f"duplicate class '{dup}'")
+    for c in doc["classes"]:
+        if c["max_kv"] is not None and c["max_kv"] <= doc["min_kv"]:
+            report.error(f"lines/classes/{c['key']}", f"class lies entirely below the {doc['min_kv']} kV threshold")
+    src = doc["source"]
+    if "OpenStreetMap" not in src.get("publisher", "") or "ODbL" not in src.get("licence", ""):
+        report.error("lines/source", "OpenStreetMap data needs the '© OpenStreetMap contributors' credit and the ODbL licence")
+    x0, y0, w, h = provinces["viewBox"]
+    num = re.compile(r"-?\d+(?:\.\d+)?")
+    for pid, by_class in doc["paths"].items():
+        if pid not in ids:
+            report.error("lines/paths", f"unknown province '{pid}'")
+        if pid not in doc["km_by_province"]:
+            report.error(f"lines/paths/{pid}", "province is drawn but has no km_by_province entry")
+        for key, d in by_class.items():
+            if key not in declared:
+                report.error(f"lines/paths/{pid}", f"class '{key}' is not declared in classes")
+            vals = [float(v) for v in num.findall(d)]
+            if len(vals) % 2:
+                report.error(f"lines/paths/{pid}/{key}", "odd number of coordinates")
+            xs, ys = vals[0::2], vals[1::2]
+            if xs and (min(xs) < x0 - 20 or max(xs) > x0 + w + 20 or min(ys) < y0 - 20 or max(ys) > y0 + h + 20):
+                report.error(f"lines/paths/{pid}/{key}", "coordinates fall outside the view box")
+    sums: Counter = Counter()
+    for pid, by_class in doc["km_by_province"].items():
+        if pid not in ids:
+            report.error("lines/km_by_province", f"unknown province '{pid}'")
+        for key, km in by_class.items():
+            if key not in declared:
+                report.error(f"lines/km_by_province/{pid}", f"class '{key}' is not declared in classes")
+            sums[key] += km
+    for key, c in declared.items():
+        tolerance = 0.05 * (len(doc["km_by_province"]) + 1)  # each figure is rounded to 0.1 km
+        if abs(sums[key] - c["km"]) > tolerance:
+            report.error(f"lines/classes/{key}", f"km {c['km']} does not equal the province sum {sums[key]:.1f}")
+
+
 def check_placeholders(meta: dict, docs: dict[str, list[dict]], report: Report) -> None:
     """A dataset marked 'live' must not contain placeholder or unverified records."""
     if meta.get("data_status") != "live":
@@ -367,6 +411,7 @@ def validate_all(data_dir: Path, schema_dir: Path) -> Report:
     check_provinces(loaded["provinces"], report)
     check_facilities(loaded["facilities"], loaded["provinces"], report)
     check_plants(loaded["plants"], loaded["provinces"], report)
+    check_lines(loaded["lines"], loaded["provinces"], report)
     check_placeholders(
         loaded["meta"],
         {

@@ -30,6 +30,15 @@ export const SEQ_RAMP = {
   light: ['#cde2fb', '#9ec5f4', '#5598e7', '#256abf', '#104281'],
   dark: ['#184f95', '#256abf', '#3987e5', '#6da7ec', '#b7d3f6'],
 };
+/**
+ * Transmission-line overlay, lowest to highest voltage class (the last N steps are used for N classes). Oranges at
+ * mid lightness so a line stays visible over both ends of the blue choropleth; darker (light theme) or brighter (dark
+ * theme) for higher voltage, and line width encodes the class as well, so identity is never colour-alone.
+ */
+export const LINE_RAMP = {
+  light: ['#f09a6e', '#e8743f', '#d95926', '#c04516', '#9c3a15'],
+  dark: ['#a8431a', '#c2501f', '#d95926', '#e8743f', '#f2915c'],
+};
 /** Second sequential hue (orange) for the water-pressure measure, where "more" means more stress. */
 export const SEQ_RAMP_WARM = {
   light: ['#fbe3d6', '#f4b899', '#ec8c5b', '#d9582a', '#9c3a15'],
