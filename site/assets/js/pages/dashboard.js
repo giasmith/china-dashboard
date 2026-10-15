@@ -10,7 +10,7 @@ import { loadJson, DataError } from '../lib/data.js';
 import { renderShell, showError, announce, debounce } from '../lib/ui.js';
 import { formatNumber, formatPercent, ordinal, EM_DASH } from '../lib/format.js';
 import {
-  STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, SOURCE_LABEL, TECH_ORDER,
+  STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, TECH_ORDER,
   STATUS_COLOR, TECH_COLOR, SEQ_RAMP, SEQ_RAMP_WARM, LINE_RAMP, colorOf, binIndex, binLabels,
   filterFacilities, countBy, summarizeByProvince, summarizeSelection, bubbleRadius, arcPath, quantileThresholds, separateBubbles,
 } from '../lib/inventory.js';
@@ -101,6 +101,7 @@ const VIEW_KEYS = Object.keys(VIEWS);
 // ---------------------------------------------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------------------------------------------
+// No inventory-source filter on the page (removed at Gia's request, 15 Oct 2026); every source stays selected.
 const defaultFilters = () => ({ search: '', status: new Set(STATUS_ORDER), type: new Set(TYPE_ORDER), capacity: new Set(CAPACITY_ORDER), source: new Set(SOURCE_ORDER) });
 const state = {
   view: 'status',
@@ -177,7 +178,6 @@ function buildLayout() {
     filterGroup('status', 'Project status', STATUS_ORDER, (k) => colorOf(STATUS_COLOR, k, theme()), true),
     filterGroup('type', 'Facility type', TYPE_ORDER, null, false),
     filterGroup('capacity', 'Reported capacity', CAPACITY_ORDER, null, true),
-    filterGroup('source', 'Inventory source', SOURCE_ORDER, null, false, (k) => SOURCE_LABEL[k]),
     h('div', { class: 'db-selection' },
       h('span', { class: 'field-label' }, 'Current selection'),
       h('strong', { id: 'db-selection-count' }, EM_DASH),
@@ -347,9 +347,6 @@ function applyFilters() {
     group.querySelectorAll('[data-count]').forEach((el) => { el.textContent = formatNumber(counts.get(el.dataset.count) ?? 0); });
     byId(`db-sel-${key}`).textContent = `${state.filters[key].size} of ${order.length}`;
   }
-  const srcCounts = new Map(SOURCE_ORDER.map((s) => [s, filtered.filter((f) => f.sources.includes(s)).length]));
-  byId('db-group-source').querySelectorAll('[data-count]').forEach((el) => { el.textContent = formatNumber(srcCounts.get(el.dataset.count) ?? 0); });
-  byId('db-sel-source').textContent = `${state.filters.source.size} of ${SOURCE_ORDER.length}`;
   announce(`${sum.count} ${sum.count === 1 ? 'facility matches' : 'facilities match'} the filters${focusP ? ` in ${focusP.name}` : ''}`);
   repaint();
   renderDetail();

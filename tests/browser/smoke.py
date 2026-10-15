@@ -199,6 +199,7 @@ async def interactions(browser, base):
     await page.wait_for_timeout(150)
     flag = await page.locator(".db-filters .db-flag").inner_text()
     check("do not prove" in flag and await page.locator(".db-filters .db-flag svg").count() == 1, "map: the sidebar carries the screening caveat with its info icon")
+    check(await page.locator("#db-group-source").count() == 0 and "Inventory source" not in await page.locator(".db-filters").inner_text(), "map: there is no inventory-source filter")
     for view in ("status", "capacity"):
         await page.click(f".db-tab[data-view={view}]")
         await page.wait_for_timeout(150)
