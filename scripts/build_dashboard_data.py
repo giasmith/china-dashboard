@@ -402,14 +402,25 @@ def read_dcm(path: Path, flags: list[str]):
     return out
 
 
-def read_baxtel(path: Path):
+def load_baxtel_names(path: Path) -> dict[str, dict]:
+    """Baxtel's own site names for crawl rows (the crawl itself carries no names), keyed by "baxtel:<id>".
+    `match` pairs the row with a record from another source by that record's name ("new" = a site of its own, never
+    merged by proximity). Source: Baxtel site listings transcribed by Gia (Guizhou, 15 Oct 2026)."""
+    if not path.exists():
+        return {}
+    return {f"baxtel:{r['baxtel_id'].strip()}": r for r in csv.DictReader(path.open(encoding="utf-8", newline=""))}
+
+
+def read_baxtel(path: Path, names: dict[str, dict] | None = None):
     out = []
     for r in csv.DictReader(path.open(encoding="utf-8", newline="")):
         stage = (r.get("primary_stage") or "").strip().lower()
+        sid = f"baxtel:{r['id']}"
         out.append({
-            "src": "baxtel", "src_id": f"baxtel:{r['id']}", "name": None, "operator": None,
+            "src": "baxtel", "src_id": sid, "name": None, "operator": None,
             "status": STATUS_MAP.get(stage, "Unknown"), "ftype": r.get("company_type") or None, "listing": "Facility",
             "lat": fnum(r["Latitude"]), "lon": fnum(r["Longitude"]), "mw": None, "pue": None, "year": None, "country": "China",
+            "match": ((names or {}).get(sid) or {}).get("match") or None,
         })
     return out
 
@@ -530,19 +541,30 @@ def merge_inventory(records: list[dict], flags: list[str]):
         if t is not None:
             absorb(t, r, "same source id")
             continue
+        explicit = r.get("match")
+        if explicit and explicit != "new":
+            t = by_name.get(norm_name(explicit))
+            if t is not None:
+                absorb(t, r, "listed as the same site (data_sources/baxtel_site_names.csv)")
+                by_id[r["src_id"]] = t
+                continue
+            flags.append(f"{r['src_id']}: should match '{explicit}', which is not in the inventory; kept as its own site")
         nn = norm_name(r["name"])
         if nn and nn in by_name and (r["lat"] is None or by_name[nn]["lat"] is None or
                                      haversine_km(r["lat"], r["lon"], by_name[nn]["lat"], by_name[nn]["lon"]) < 25):
             absorb(by_name[nn], r, "same name")
             by_id[r["src_id"]] = by_name[nn]
             continue
-        if r["src"] in ("baxtel", "dckb", "dhi_western") and r["lat"] is not None:
-            near = None
+        if r["src"] in ("baxtel", "dckb", "dhi_western") and r["lat"] is not None and explicit != "new":
+            # The NEAREST listed facility within 400 m, not the first one found: in dense campuses (Gui'an) several
+            # operators' buildings sit within 400 m of each other, and first-found folded a China Unicom row into
+            # China Mobile.
+            near, best = None, 0.4
             for m in merged:
-                if m["lat"] is not None and abs(m["lat"] - r["lat"]) < 0.01 and abs(m["lon"] - r["lon"]) < 0.01 and \
-                        haversine_km(r["lat"], r["lon"], m["lat"], m["lon"]) < 0.4:
-                    near = m
-                    break
+                if m["lat"] is not None and abs(m["lat"] - r["lat"]) < 0.01 and abs(m["lon"] - r["lon"]) < 0.01:
+                    d = haversine_km(r["lat"], r["lon"], m["lat"], m["lon"])
+                    if d < best:
+                        near, best = m, d
             if near is not None:
                 absorb(near, r, "within 400 m of a listed facility")
                 by_id[r["src_id"]] = near
@@ -651,8 +673,22 @@ def main():
     records += read_dcm(edwc / "01_working/data/clean/datacentermap 2.csv", flags)
     records += read_dhi(edwc / "dhi/data/hyperscale_datacenters.geojson", edwc / "dhi/data/western_datacenters.geojson")
     records += read_dckb(edwc / "archive/DCKB_cleaned_latlon_CHINA.xlsx")
-    records += read_baxtel(edwc / "data/dc/data_center_data.csv")
+    baxtel_names = load_baxtel_names(SOURCES / "baxtel_site_names.csv")
+    records += read_baxtel(edwc / "data/dc/data_center_data.csv", baxtel_names)
     merged = merge_inventory(records, flags)
+    # Where Baxtel lists a site, its name and operator replace those from the other sources (Gia, 15 Oct 2026);
+    # facility type, status and MW stay as merged.
+    renamed = 0
+    for m in merged:
+        o = next((baxtel_names[s] for s in sorted(m["source_ids"]) if s in baxtel_names), None)
+        if o:
+            m["name"] = o["name"].strip() or m["name"]
+            m["operator"] = o["operator"].strip() or m["operator"]
+            renamed += 1
+    unused = sorted(set(baxtel_names) - {s for m in merged for s in m["source_ids"]})
+    if unused:
+        flags.append(f"baxtel_site_names.csv: ids not found in the crawl: {unused}")
+    flags.append(f"baxtel_site_names.csv: {renamed} facilities named from the Baxtel listing")
 
     lat = np.array([m["lat"] if m["lat"] is not None else np.nan for m in merged], dtype=float)
     lon = np.array([m["lon"] if m["lon"] is not None else np.nan for m in merged], dtype=float)

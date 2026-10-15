@@ -1,0 +1,8 @@
+baxtel_id,name,operator,match,baxtel_type,baxtel_stages,province,note
+v3Imyk,Apple Guizhou,Apple,Apple Guiyang Data Center,Hyperscale,Operational,guizhou,
+B5IMa9,Huawei Global Yun Data Center,Huawei Cloud,Huawei Global Yun Data Center,Content,Operational,guizhou,
+e6Iw6g,Tencent: Gui'an Qixing,Tencent Cloud,Tencent's Gui'an Seven-Star Data Center,Content,Operational,guizhou,Qixing = Seven-Star
+oMIRVP,"China Mobile: Guian, Guizhou",China Mobile,China Mobile Guiyang,Mobile,Operational,guizhou,
+EMIg56,China Telecom: Guizhou Information Park,China Telecom,China Telecom Guiyang,Carrier,Operational,guizhou,"one of two Carrier rows in Gui'an; paired by distance (about 450 m from the China Telecom point, 730 m from China Unicom)"
+OvI40b,"China Unicom: Guian, Guizhou",China Unicom Global,China Unicom Guian,Carrier,Operational,guizhou,"the other Carrier row (about 220 m from the China Unicom point, 300 m from China Telecom); the old first-match 400 m rule had folded it into China Mobile"
+8bIa51,"NetEase: Guian, Guizhou","NetEase, Inc.",new,Content,"Operational, Construction",guizhou,the only Guizhou row with a Construction stage

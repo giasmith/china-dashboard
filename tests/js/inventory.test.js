@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {
   STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, binIndex, binLabels, matchesSearch, filterFacilities, countBy,
   summarizeByProvince, summarizeSelection, bubbleRadius, arcPath, quantileThresholds, niceRound, colorOf, STATUS_COLOR,
-  LINE_RAMP, SOURCE_ORDER as SOURCES, SOURCE_LABEL,
+  LINE_RAMP, SOURCE_ORDER as SOURCES, SOURCE_LABEL, separateBubbles,
 } from '../../site/assets/js/lib/inventory.js';
 
 test('SOURCE_LABEL: every inventory source has a label, and the commercial directory is not named', () => {
@@ -148,4 +148,42 @@ test('colorOf: unknown keys fall back to the neutral swatch in both themes', () 
   assert.equal(colorOf(STATUS_COLOR, 'Operating', 'dark'), STATUS_COLOR.Operating.dark);
   assert.equal(colorOf(STATUS_COLOR, 'Mystery', 'light'), STATUS_COLOR.Unknown.light);
   assert.equal(colorOf({}, 'x', 'light'), '#898781');
+});
+
+// ---- bubble separation -------------------------------------------------------------------------------------------
+
+const overlaps = (bs, gap) => {
+  const out = [];
+  for (let i = 0; i < bs.length; i += 1) for (let j = i + 1; j < bs.length; j += 1) {
+    if (Math.hypot(bs[i].x - bs[j].x, bs[i].y - bs[j].y) < bs[i].r + bs[j].r + gap - 1e-6) out.push([i, j]);
+  }
+  return out;
+};
+
+test('separateBubbles: a Beijing / Tianjin / Hebei-like cluster ends with no overlap and keeps its anchors', () => {
+  const items = [{ id: 'hebei', x: 660, y: 240, r: 26 }, { id: 'beijing', x: 655, y: 228, r: 24 }, { id: 'tianjin', x: 668, y: 236, r: 12 }];
+  const out = separateBubbles(items, { gap: 1.5 });
+  assert.deepEqual(overlaps(out, 1.5), []);
+  assert.deepEqual(out.map((o) => [o.ax, o.ay]), items.map((o) => [o.x, o.y]), 'anchors are kept for leader lines');
+});
+
+test('separateBubbles: in a pair, the small wheel moves and the big one stays close to its anchor', () => {
+  const [big, small] = separateBubbles([{ x: 100, y: 100, r: 30 }, { x: 105, y: 100, r: 5 }], { gap: 1.5 });
+  const moved = (o) => Math.hypot(o.x - o.ax, o.y - o.ay);
+  assert.ok(moved(small) > 4 * moved(big), `small ${moved(small)} vs big ${moved(big)}`);
+});
+
+test('separateBubbles: coincident anchors, bounds and determinism', () => {
+  const items = [{ x: 10, y: 10, r: 8 }, { x: 10, y: 10, r: 8 }, { x: 12, y: 11, r: 5 }];
+  const a = separateBubbles(items, { bounds: [0, 0, 100, 100] });
+  const b = separateBubbles(items, { bounds: [0, 0, 100, 100] });
+  assert.deepEqual(a, b);
+  assert.deepEqual(overlaps(a, 1.5), []);
+  for (const o of a) assert.ok(o.x - o.r >= -1e-9 && o.y - o.r >= -1e-9 && o.x + o.r <= 100 && o.y + o.r <= 100, 'stays inside the bounds');
+  assert.deepEqual(separateBubbles([], {}), []);
+});
+
+test('separateBubbles: bubbles that do not touch stay exactly on their anchors', () => {
+  const items = [{ x: 100, y: 100, r: 10 }, { x: 200, y: 100, r: 10 }];
+  for (const o of separateBubbles(items)) assert.deepEqual([o.x, o.y], [o.ax, o.ay]);
 });

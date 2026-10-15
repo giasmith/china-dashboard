@@ -2,6 +2,7 @@
 
 export const CONFIG = Object.freeze({
   siteName: 'China Dashboard',
+  siteTitle: 'China Data-Center Ecosystem Tracker', // shown at the left of the header bar on every page
   tagline: 'Data centers, power, water and policy by province',
 
   // Set to your repository URL once it exists, e.g. 'https://github.com/<user>/china-dashboard'.

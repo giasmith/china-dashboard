@@ -138,8 +138,8 @@ units inside each outline. Two values are computed and labelled as such in the U
 water use ÷ water resources. The transcribed source tables live in `data_sources/` with their URLs; the yearbook
 publishes them as images, so they were typed by hand and should be spot-checked before citation.
 
-**Facilities** (`facilities.json`): 527 records merged from the DataCenterMap export (licensed; 459), the baxtel
-crawl (101), the DCKB sample (11) and the two UVA geojsons (hyperscale 36, western 44), de-duplicated on source id,
+**Facilities** (`facilities.json`): 526 records merged from the DataCenterMap export (licensed; 459), the baxtel
+crawl (108), the DCKB sample (11) and the two UVA geojsons (hyperscale 36, western 44), de-duplicated on source id,
 normalised name, and proximity (unnamed records within 400 m of a named one). Each record keeps name, operator,
 province, status (Operating / Development / Proposed / Unknown), facility type, reported MW and capacity class,
 PUE and online year where the source had them, and the list of sources. Twenty DataCenterMap rows have no

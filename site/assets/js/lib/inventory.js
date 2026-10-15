@@ -142,6 +142,49 @@ export function bubbleRadius(value, maxValue, { min = 3, max = 26 } = {}) {
   return min + (max - min) * Math.sqrt(value / maxValue);
 }
 
+/**
+ * Push overlapping province bubbles apart so every wheel stays readable. items: [{x, y, r, ...}] in view-box units
+ * (x, y = the province anchor). Returns copies with the new x, y plus ax, ay = the anchor, for a leader line.
+ * The smaller bubble of a pair moves more, so big provinces keep their wheel on their anchor; a weak pull back to
+ * the anchor keeps the layout geographic; a final pass without the pull removes any overlap the pull reintroduced.
+ * `bounds` [x0, y0, x1, y1] keeps bubbles inside the map. Deterministic: same input, same layout.
+ */
+export function separateBubbles(items, { gap = 1.5, iterations = 160, pull = 0.03, bounds = null } = {}) {
+  const b = items.map((it) => ({ ...it, ax: it.x, ay: it.y }));
+  const clamp = (p) => {
+    if (!bounds) return;
+    p.x = Math.min(bounds[2] - p.r, Math.max(bounds[0] + p.r, p.x));
+    p.y = Math.min(bounds[3] - p.r, Math.max(bounds[1] + p.r, p.y));
+  };
+  const relax = (k) => {
+    let moved = false;
+    for (let i = 0; i < b.length; i += 1) {
+      for (let j = i + 1; j < b.length; j += 1) {
+        const p = b[i];
+        const q = b[j];
+        let dx = q.x - p.x;
+        let dy = q.y - p.y;
+        let d = Math.hypot(dx, dy);
+        const min = p.r + q.r + gap;
+        if (d >= min) continue;
+        if (d < 1e-6) { dx = 1; dy = 0; d = 1; } // coincident anchors: separate sideways, deterministically
+        const push = (min - d) / d;
+        const wp = q.r / (p.r + q.r);
+        const wq = p.r / (p.r + q.r);
+        p.x -= dx * push * wp; p.y -= dy * push * wp;
+        q.x += dx * push * wq; q.y += dy * push * wq;
+        clamp(p); clamp(q);
+        moved = true;
+      }
+    }
+    if (k > 0) for (const p of b) { p.x += (p.ax - p.x) * k; p.y += (p.ay - p.y) * k; }
+    return moved;
+  };
+  for (let it = 0; it < iterations; it += 1) relax(pull);
+  for (let it = 0; it < iterations && relax(0); it += 1);
+  return b;
+}
+
 /** Arc path for a pie slice (used for the per-province status wheel). Angles in radians from 12 o'clock. */
 export function arcPath(cx, cy, r, a0, a1) {
   if (a1 - a0 >= Math.PI * 2 - 1e-6) {

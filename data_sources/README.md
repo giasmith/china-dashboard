@@ -11,6 +11,7 @@ source before they are cited. Units are in the column names.
 | `nbs_2025_yearbook_8-8_water_resources_2024.csv` | 中国统计年鉴 2025, 表 8-8 水资源情况 (from 水利部《中国水资源公报》), https://www.stats.gov.cn/sj/ndsj/2025/html/C08-08.jpg | A |
 | `nbs_2025_yearbook_8-9_water_use_2024.csv` | 中国统计年鉴 2025, 表 8-9 供水用水情况, https://www.stats.gov.cn/sj/ndsj/2025/html/C08-09.jpg | A |
 | `tariff_china_briefing_may2025.csv` | China Briefing, "China's Industrial Power Rates 2025" (1–10 kV general industrial & commercial, non-TOU, as of May 2025), https://www.china-briefing.com/news/chinas-industrial-power-rates-category-electricity-usage-region-classification/ | C |
+| `baxtel_site_names.csv` | Baxtel site listings (names, operators, Baxtel type and stages) for baxtel crawl rows, which carry no names; transcribed by Gia from baxtel.com on 2026-10-15 (Guizhou). `match` pairs a row with the inventory record from another source that is the same site ("new" = a site of its own). Used by `build_dashboard_data.py`: Baxtel's name and operator replace the other sources' for these sites; type, status and MW stay as merged. | C |
 
 Notes
 
@@ -21,3 +22,8 @@ Notes
 - The tariff file is a secondary compilation. It lacks Jilin, Gansu, Tibet, Hong Kong and Macau; the Inner Mongolia
   row is the eastern (State Grid) network only. Replace with the monthly provincial 代理购电 price notices when
   those can be fetched.
+- `baxtel_site_names.csv`: the crawl rows were paired with the listing by Baxtel type and stage (the one Guizhou row
+  with a Construction stage is NetEase) and, for the two Carrier rows, by distance to the China Telecom and China
+  Unicom points. The 400 m proximity merge now takes the nearest listed facility, not the first one found; under the
+  old rule the China Unicom row had been folded into China Mobile. The eighth Guizhou crawl row (Fintech, under
+  construction, Guiyang city) is not in the listing and stays unnamed.

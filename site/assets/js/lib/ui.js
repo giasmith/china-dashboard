@@ -52,14 +52,16 @@ function themeButton() {
 export function renderShell(activeHref, meta) {
   const header = byId('site-header');
   put(header, 
+    // Like the U.S. tracker: the tracker's title and the navigation on the left, partner logos at the top right
+    // (Gia, 15 Oct 2026).
     h('div', { class: 'wrap' },
-      CONFIG.partners?.length
-        ? h('div', { class: 'partner-logos' }, CONFIG.partners.map((p) => h('img', { src: p.src, alt: p.alt, width: p.width, height: p.height, decoding: 'async' })))
-        : null,
-      h('a', { class: 'brand', href: 'index.html' }, CONFIG.siteName, h('small', null, CONFIG.tagline)),
+      h('a', { class: 'brand', href: 'index.html' }, CONFIG.siteTitle),
       h('nav', { class: 'nav', 'aria-label': 'Primary' },
         NAV.map((n) => h('a', { href: n.href, 'aria-current': n.href === activeHref ? 'page' : null }, n.label))),
-      themeButton()),
+      themeButton(),
+      CONFIG.partners?.length
+        ? h('div', { class: 'partner-logos' }, CONFIG.partners.map((p) => h('img', { src: p.src, alt: p.alt, width: p.width, height: p.height, decoding: 'async' })))
+        : null),
   );
 
   // No data-status banner above the pages (removed at Gia's request, 15 Oct 2026). The footer still states the

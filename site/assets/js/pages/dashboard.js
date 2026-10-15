@@ -12,7 +12,7 @@ import { formatNumber, formatPercent, ordinal, EM_DASH } from '../lib/format.js'
 import {
   STATUS_ORDER, CAPACITY_ORDER, TYPE_ORDER, SOURCE_ORDER, SOURCE_LABEL, TECH_ORDER,
   STATUS_COLOR, TECH_COLOR, SEQ_RAMP, SEQ_RAMP_WARM, LINE_RAMP, colorOf, binIndex, binLabels,
-  filterFacilities, countBy, summarizeByProvince, summarizeSelection, bubbleRadius, arcPath, quantileThresholds,
+  filterFacilities, countBy, summarizeByProvince, summarizeSelection, bubbleRadius, arcPath, quantileThresholds, separateBubbles,
 } from '../lib/inventory.js';
 
 const app = byId('app');
@@ -182,7 +182,7 @@ function buildLayout() {
       h('span', { class: 'field-label' }, 'Current selection'),
       h('strong', { id: 'db-selection-count' }, EM_DASH),
       h('div', { class: 'db-scope', id: 'db-scope' })),
-    h('div', { class: 'note-box' }, 'Facilities are shown at province level only and are not downloadable. The published data holds no coordinates, addresses or city names, so proximity and counts describe provinces, not sites.'));
+    flagNote('These measures support screening and comparison. Province totals, mapped transmission lines and inventory listings do not prove grid service, causation, or project-level effects. Facilities are shown at province level only and are not downloadable.'));
 
   const kpis = h('div', { class: 'kpis', 'aria-live': 'polite' },
     kpiTile('db-k-count', 'Facilities', 'of inventory'),
@@ -235,9 +235,8 @@ function buildLayout() {
   const detail = h('aside', { class: 'db-detail card', id: 'db-detail', 'aria-label': 'Selected province details' });
 
   put(app,
-    h('div', { class: 'db-head' },
-      h('h1', null, 'China Data-Center Ecosystem Tracker'),
-      h('p', null, 'Province view · facilities, generation, electricity cost and water context. ', h('a', { href: 'plan.html' }, 'Five-year plan tracker'), ' · ', h('a', { href: 'legislation.html' }, 'Legislation library'))),
+    // No visible title block (Gia, 15 Oct 2026); the h1 stays for screen readers and document outline.
+    h('h1', { class: 'sr-only' }, 'China Data-Center Ecosystem Tracker'),
     h('div', { class: 'db-workspace' }, sidebar, h('div', { class: 'db-main' }, kpis, mapCard, analysis), detail));
 
   els = {
@@ -265,6 +264,15 @@ function buildLayout() {
   installPanZoom();
   renderProvinces();
   renderDetail();
+}
+
+/** Caveat line with an info icon (as on the U.S. tracker). */
+function flagNote(text) {
+  const icon = svg('svg', { viewBox: '0 0 16 16', class: 'db-flag-icon', 'aria-hidden': 'true', focusable: 'false' },
+    svg('circle', { cx: 8, cy: 8, r: 7, fill: 'none', stroke: 'currentColor', 'stroke-width': 1.3 }),
+    svg('rect', { x: 7.3, y: 6.8, width: 1.4, height: 5, rx: 0.7, fill: 'currentColor' }),
+    svg('circle', { cx: 8, cy: 4.7, r: 0.9, fill: 'currentColor' }));
+  return h('p', { class: 'db-flag', role: 'note' }, icon, h('span', null, text));
 }
 
 function kpiTile(id, label, note) {
@@ -413,32 +421,49 @@ function renderBubbles(t) {
   const byMw = state.view === 'capacity';
   const max = Math.max(0, ...[...byProvince.values()].map((s) => (byMw ? s.mw : s.count)));
   const pale = !['status', 'capacity'].includes(state.view);
+  const items = [];
   for (const p of data.provinces.provinces) {
     const s = byProvince.get(p.id);
     if (!s) continue;
     const value = byMw ? s.mw : s.count;
     const r = bubbleRadius(value, max, pale ? { min: 2.5, max: 16 } : { min: 3.5, max: 26 });
-    if (!r) continue;
-    const g = svg('g', { class: `db-bubble${pale ? ' pale' : ''}${state.focus && state.focus !== p.id ? ' is-dim' : ''}`, dataset: { id: p.id } });
+    if (r) items.push({ x: p.cx, y: p.cy, r, p, s });
+  }
+  // Wheels of neighbouring provinces (Beijing / Tianjin / Hebei, Shanghai / Jiangsu / Zhejiang, Guangdong / Hong Kong /
+  // Macau) used to overlap. Push them apart, tie a wheel that left its province to it with a leader line, and draw
+  // the largest first so a small wheel is never hidden under a big one.
+  const placed = separateBubbles(items, { gap: 1.5, bounds: [0, 0, VIEW_W, VIEW_H] }).sort((a, b) => b.r - a.r);
+  const leaders = svg('g', { class: 'db-leaders', 'aria-hidden': 'true' });
+  for (const b of placed) {
+    const { p, s, r, x: cx, y: cy } = b;
+    const dim = Boolean(state.focus) && state.focus !== p.id;
+    const off = Math.hypot(cx - b.ax, cy - b.ay);
+    if (off > r) { // the wheel no longer covers its anchor: draw a line from the province to the wheel's edge
+      const k = (off - r) / off;
+      leaders.append(svg('line', { x1: b.ax, y1: b.ay, x2: b.ax + (cx - b.ax) * k, y2: b.ay + (cy - b.ay) * k, class: dim ? 'db-leader is-dim' : 'db-leader' }));
+      leaders.append(svg('circle', { cx: b.ax, cy: b.ay, r: 1.4, class: dim ? 'db-anchor is-dim' : 'db-anchor' }));
+    }
+    const g = svg('g', { class: `db-bubble${pale ? ' pale' : ''}${dim ? ' is-dim' : ''}`, dataset: { id: p.id } });
     if (state.view === 'status' && s.count) {
       let a = 0;
       for (const k of STATUS_ORDER) {
         const n = s.status.get(k) ?? 0;
         if (!n) continue;
         const a1 = a + (n / s.count) * Math.PI * 2;
-        g.append(svg('path', { d: arcPath(p.cx, p.cy, r, a, a1), fill: colorOf(STATUS_COLOR, k, t), class: 'db-slice' }));
+        g.append(svg('path', { d: arcPath(cx, cy, r, a, a1), fill: colorOf(STATUS_COLOR, k, t), class: 'db-slice' }));
         a = a1;
       }
     } else {
-      g.append(svg('circle', { cx: p.cx, cy: p.cy, r, class: 'db-dot' }));
+      g.append(svg('circle', { cx, cy, r, class: 'db-dot' }));
     }
-    g.append(svg('circle', { cx: p.cx, cy: p.cy, r, class: 'db-bubble-ring' }));
+    g.append(svg('circle', { cx, cy, r, class: 'db-bubble-ring' }));
     g.addEventListener('pointerenter', (e) => showProvinceTooltip(e, p));
     g.addEventListener('pointermove', positionTooltip);
     g.addEventListener('pointerleave', hideTooltip);
     g.addEventListener('click', (e) => { e.stopPropagation(); select({ kind: 'province', id: p.id }); });
     els.bubbles.append(g);
   }
+  if (leaders.childNodes.length) els.bubbles.prepend(leaders); // under every wheel; absent when nothing moved
 }
 
 // ---------------------------------------------------------------------------------------------------------------

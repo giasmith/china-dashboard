@@ -20,16 +20,13 @@
   --map-sea: #141414; --bubble: rgba(255, 255, 255, 0.6); --bubble-ring: #0d0d0d;
 }
 
-.db-head { padding: 20px 0 4px; display: grid; gap: 4px; }
-.db-head h1 { font-size: 24px; }
-.db-head p { color: var(--ink-2); }
 .eyebrow { display: block; font-size: 11px; font-weight: 650; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
 .field-label { font-size: 12px; font-weight: 650; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; }
 .select.small { width: auto; min-height: 32px; padding: 4px 8px; font-size: 13px; }
 .link-btn.small { font-size: 13px; font-weight: 500; color: var(--accent-text); }
 
 /* three columns: filters | main | detail */
-.db-workspace { display: grid; grid-template-columns: 272px minmax(0, 1fr) 320px; gap: 16px; align-items: start; margin-top: 12px; }
+.db-workspace { display: grid; grid-template-columns: 272px minmax(0, 1fr) 320px; gap: 16px; align-items: start; margin-top: 20px; }
 .db-main { display: grid; gap: 16px; min-width: 0; }
 .db-filters, .db-detail { position: sticky; top: 72px; max-height: calc(100vh - 88px); overflow: auto; display: grid; gap: 14px; align-content: start; }
 @media (max-width: 1280px) { .db-workspace { grid-template-columns: 248px minmax(0, 1fr); } .db-detail { grid-column: 1 / -1; position: static; max-height: none; } }
@@ -74,7 +71,10 @@
 .db-bubble { cursor: pointer; }
 .db-dot { fill: var(--bubble); }
 .db-bubble.pale .db-dot { fill: var(--bubble); opacity: 0.45; }
-.db-bubble-ring { fill: none; stroke: var(--bubble-ring); stroke-width: 1.2; vector-effect: non-scaling-stroke; pointer-events: none; }
+.db-bubble-ring { fill: none; stroke: var(--bubble-ring); stroke-width: 1.6; vector-effect: non-scaling-stroke; pointer-events: none; }
+.db-leader { stroke: var(--ink-2); stroke-width: 1; vector-effect: non-scaling-stroke; pointer-events: none; }
+.db-anchor { fill: var(--ink-2); stroke: var(--bubble-ring); stroke-width: 0.8; vector-effect: non-scaling-stroke; pointer-events: none; }
+.db-leaders .is-dim { opacity: 0.35; }
 .db-slice { stroke: var(--bubble-ring); stroke-width: 0.6; vector-effect: non-scaling-stroke; }
 .db-plant { stroke: var(--map-sea); stroke-width: 0.25; opacity: 0.8; cursor: pointer; }
 .db-plant:hover { opacity: 1; stroke: var(--ink); stroke-width: 0.6; }
@@ -146,6 +146,10 @@
 .db-sub-check input { margin: 0; accent-color: var(--accent); }
 .db-line-bars { display: grid; gap: 8px; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--border); }
 .db-chart-sub { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); margin: 0; }
+
+/* caveat flag (info icon + muted text), as on the U.S. tracker */
+.db-flag { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 8px; align-items: start; margin: 0; font-size: 12.5px; line-height: 1.45; color: var(--ink-3); border-top: 1px solid var(--border); padding-top: 12px; }
+.db-flag-icon { width: 16px; height: 16px; margin-top: 1px; }
 
 @media print { .db-filters, .db-map-actions, .db-tabs { display: none !important; } .db-workspace { grid-template-columns: 1fr; } }
 @media (forced-colors: active) { .db-province, .db-dot, .db-slice, .db-bar-fill, .db-swatch, .db-line { forced-color-adjust: none; } }

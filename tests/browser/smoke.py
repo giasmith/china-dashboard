@@ -186,9 +186,12 @@ async def interactions(browser, base):
     keys = set().union(*(f.keys() for f in payload["facilities"]))
     check(not keys & {"lat", "lon", "latitude", "longitude", "coordinates", "address", "city", "x", "y"}, f"map: facilities.json carries no location fields ({sorted(keys)})")
     # Partner logos at the top left, loaded and labelled; the commercial directory is not named anywhere.
-    logos = await page.evaluate("[...document.querySelectorAll('.partner-logos img')].map(i => [i.alt, i.naturalWidth, Math.round(i.getBoundingClientRect().left)])")
-    check(len(logos) == 2 and all(alt and w > 0 for alt, w, _ in logos), f"map: both partner logos load with alt text ({logos})")
-    check(bool(logos) and logos[0][2] < 40, "map: the logos sit at the top left of the page")
+    logos = await page.evaluate("[...document.querySelectorAll('.partner-logos img')].map(i => [i.alt, i.naturalWidth, Math.round(innerWidth - i.getBoundingClientRect().right), Math.round(i.getBoundingClientRect().top)])")
+    check(len(logos) == 2 and all(alt and w > 0 for alt, w, _r, _t in logos), f"map: both partner logos load with alt text ({logos})")
+    check(bool(logos) and logos[-1][2] < 40 and logos[-1][3] < 40, f"map: the logos sit at the top right of the page ({logos})")
+    check((await page.locator(".site-header .brand").inner_text()).strip() == "China Data-Center Ecosystem Tracker", "map: the header carries the tracker title (no tagline)")
+    flag = await page.locator(".db-filters .db-flag").inner_text()
+    check("do not prove" in flag and await page.locator(".db-filters .db-flag svg").count() == 1, "map: the sidebar carries the screening caveat with its info icon")
     for view in ("status", "capacity"):
         await page.click(f".db-tab[data-view={view}]")
         await page.wait_for_timeout(150)
@@ -198,6 +201,9 @@ async def interactions(browser, base):
     await page.click(".db-tab[data-view=status]")
     await page.wait_for_timeout(200)
     check(await page.locator("#db-bubbles .db-slice").count() > 0, "map: the status view draws status wheels")
+    wheels = await page.evaluate("""[...document.querySelectorAll('#db-bubbles .db-bubble-ring')].map(c => [+c.getAttribute('cx'), +c.getAttribute('cy'), +c.getAttribute('r')])""")
+    clash = [(a, b) for i, a in enumerate(wheels) for b in wheels[i + 1:] if ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5 < a[2] + b[2] - 0.01]
+    check(not clash, f"map: no two status wheels overlap ({len(clash)} overlapping pairs)")
     # Hovering a province shows a tooltip and must leave the rest of the page intact (regression: the tooltip
     # element was once the <body> itself, so the first hover wiped the page).
     await page.locator("#db-provinces path[data-id=nei_mongol]").dispatch_event("pointerenter", {"clientX": 600, "clientY": 500})
