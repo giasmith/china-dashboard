@@ -191,6 +191,8 @@ button, select, input[type="search"], input[type="number"], input[type="text"] {
 .page-head p { color: var(--ink-2); max-width: 70ch; }
 .layout { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); align-items: start; margin-top: 12px; }
 .layout.with-profile { grid-template-columns: minmax(0, 1fr) minmax(300px, 380px); }
+/* pages whose visible title block was removed keep the same gap under the header as the map (20px) */
+h1.sr-only + .layout { margin-top: 20px; }
 .layout > .filters { grid-column: 1 / -1; }
 .layout.with-profile > .profile { position: sticky; top: 72px; max-height: calc(100vh - 88px); overflow: auto; }
 @media (max-width: 1100px) {

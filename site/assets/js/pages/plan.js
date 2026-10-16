@@ -113,9 +113,8 @@ function start({ meta, targets: tDoc, actuals: aDoc, legislation: lDoc }) {
   const profile = h('aside', { class: 'card profile', 'aria-label': 'Selected target' });
 
   put(app, 
-    h('div', { class: 'page-head' },
-      h('h1', null, 'Policy targets behind the data-center build-out'),
-      h('p', null, 'The five-year plans and computing-power action plans set the numbers; the legislation library holds the documents that carry them; the map shows what has been built. This page groups every plan target by its role in that chain — compute to be delivered, the energy and PUE limits it must respect, the digital demand driving it, and the AI programmes seeding it — and compares each with the latest official figure. Progress is measured against the straight-line pace from baseline to target year, so a target can be on track while far from complete.')),
+    // Visible heading and intro removed at Gia's request (16 Oct 2026); the h1 stays for screen readers.
+    h('h1', { class: 'sr-only' }, 'Plan targets and reported results'),
     h('div', { class: 'layout with-profile' }, details, h('div', { class: 'stack' }, kpis, statusCard, tableHost), profile));
 
   // ---------------- filtering / sorting
