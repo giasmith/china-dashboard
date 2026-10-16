@@ -3,10 +3,10 @@
 export const STATUS_ORDER = ['Operating', 'Development', 'Proposed', 'Unknown'];
 export const CAPACITY_ORDER = ['Mega campus (1,000+ MW)', 'Hyperscale (100–999 MW)', 'Large (51–99 MW)', 'Medium (11–50 MW)', 'Small (0–10 MW)', 'Unknown'];
 export const TYPE_ORDER = ['Colocation', 'Hyperscale', 'Carrier-Neutral', 'Carrier', 'Mobile', 'Fintech', 'Content', 'Real Estate', 'Enterprise', 'MSP', 'Unknown'];
-export const SOURCE_ORDER = ['dcm', 'baxtel', 'dckb', 'dhi_hyperscale', 'dhi_western'];
+export const SOURCE_ORDER = ['dcm', 'baxtel', 'dckb', 'dhi_hyperscale', 'dhi_western', 'dccom'];
 export const SOURCE_LABEL = {
   dcm: 'Commercial directory', baxtel: 'baxtel crawl', dckb: 'DCKB sample',
-  dhi_hyperscale: 'UVA hyperscale set', dhi_western: 'UVA western set',
+  dhi_hyperscale: 'UVA hyperscale set', dhi_western: 'UVA western set', dccom: 'Second commercial directory (reviewed)',
 };
 export const TECH_ORDER = ['Coal', 'Hydro', 'Wind', 'Solar', 'Nuclear', 'Bioenergy'];
 

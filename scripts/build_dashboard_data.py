@@ -7,6 +7,8 @@ Inputs (all outside the published site; paths relative to --edwc-root, the EDWC 
                                                                      addresses or links)
   baxtel      data/dc/data_center_data.csv                          (China subset of the baxtel crawl)
   DCKB        archive/DCKB_cleaned_latlon_CHINA.xlsx                (14 sites with IT power)
+  dccom       china-dashboard/data_sources/datacenters_com_sites.csv (datacenters.com listings Gia approved on 2026-10-15;
+                                                                     province only: no coordinates, addresses or links)
   dhi         dhi/data/hyperscale_datacenters.geojson, dhi/data/western_datacenters.geojson
   GEM plants  01_working/data/clean/ENERGY_CHINA_CLEAN/china_gem_{bioenergy,coal,hydro,nuclear,solar,wind}.csv
   indicators  china-dashboard/data_sources/*.csv  (hand-transcribed official tables, see data_sources/README.md)
@@ -425,6 +427,44 @@ def read_baxtel(path: Path, names: dict[str, dict] | None = None):
     return out
 
 
+DCCOM_STATUS = {"Operating", "Development", "Proposed", "Unknown"}
+
+
+def read_dccom(path: Path, flags: list[str]):
+    """Datacenters.com China listings that Gia approved after comparing the directory with this inventory (15 Oct
+    2026; the review workbook and the map back to the directory pages are kept outside the repo). The CSV holds a
+    hashed id, name, operator, province, status and optional facility type / explicit match: no coordinates,
+    addresses, cities or page links, so these records are placed by province only."""
+    if not path.exists():
+        return []
+    valid = {pid for pid, *_ in PROVINCES}
+    out, seen = [], set()
+    for n, r in enumerate(csv.DictReader(path.open(encoding="utf-8", newline="")), start=2):
+        where = f"{path.name} line {n}"
+        if any(("http" in (v or "")) or ("www." in (v or "")) for v in r.values()):
+            sys.exit(f"{where}: carries a link; this file must not")
+        sid = (r.get("dccom_id") or "").strip()
+        if not sid or sid in seen:
+            sys.exit(f"{where}: missing or repeated dccom_id {sid!r}")
+        seen.add(sid)
+        prov = (r.get("province") or "").strip()
+        if prov not in valid:
+            sys.exit(f"{where}: unknown province id {prov!r}")
+        status = (r.get("status") or "").strip() or "Unknown"
+        if status not in DCCOM_STATUS:
+            sys.exit(f"{where}: status {status!r} is not one of {sorted(DCCOM_STATUS)}")
+        if not (r.get("name") or "").strip():
+            sys.exit(f"{where}: empty name")
+        out.append({
+            "src": "dccom", "src_id": f"dccom:{sid}", "name": r["name"].strip(), "operator": (r.get("operator") or "").strip() or None,
+            "status": status, "ftype": (r.get("facility_type") or "").strip() or None, "listing": "Facility",
+            "lat": None, "lon": None, "mw": None, "pue": None, "year": None, "country": "China",
+            "province_hint": prov, "match": (r.get("match") or "").strip() or None,
+        })
+    flags.append(f"dccom: {len(out)} approved datacenters.com listings read (province level only)")
+    return out
+
+
 def read_xlsx_rows(path: Path):
     """Minimal .xlsx reader (first sheet) without openpyxl: shared strings + inline values."""
     with zipfile.ZipFile(path) as z:
@@ -510,10 +550,11 @@ def haversine_km(lat1, lon1, lat2, lon2):
 
 
 def merge_inventory(records: list[dict], flags: list[str]):
-    """De-duplicate across sources. Order of trust: DCM > dhi (DCM-derived) > DCKB > baxtel.
+    """De-duplicate across sources. Order of trust: DCM > dhi (DCM-derived) > DCKB > baxtel > dccom.
     Rules: identical source id (dhi hyperscale rows are DCM rows), same normalised name, or an unnamed record
-    (baxtel) within 400 m of a named one. Merged records keep every source id and fill missing fields."""
-    rank = {"dcm": 0, "dhi_hyperscale": 1, "dhi_western": 2, "dckb": 3, "baxtel": 4}
+    (baxtel) within 400 m of a named one. dccom records have no coordinates, so they merge only by an explicit
+    `match` or the same normalised name. Merged records keep every source id and fill missing fields."""
+    rank = {"dcm": 0, "dhi_hyperscale": 1, "dhi_western": 2, "dckb": 3, "baxtel": 4, "dccom": 5}
     records = sorted(records, key=lambda r: rank[r["src"]])
     merged: list[dict] = []
     by_id: dict[str, dict] = {}
@@ -545,7 +586,7 @@ def merge_inventory(records: list[dict], flags: list[str]):
         if explicit and explicit != "new":
             t = by_name.get(norm_name(explicit))
             if t is not None:
-                absorb(t, r, "listed as the same site (data_sources/baxtel_site_names.csv)")
+                absorb(t, r, f"listed as the same site (data_sources/{'baxtel_site_names' if r['src'] == 'baxtel' else 'datacenters_com_sites'}.csv)")
                 by_id[r["src_id"]] = t
                 continue
             flags.append(f"{r['src_id']}: should match '{explicit}', which is not in the inventory; kept as its own site")
@@ -644,7 +685,7 @@ SOURCE_NOTES = {
     "plants": {"title": "Global Energy Monitor plant trackers (coal, hydro, nuclear, solar, wind, bioenergy), China subset cleaned for the IGARSS workflow",
                "publisher": "Global Energy Monitor (CC BY 4.0)", "url": "https://globalenergymonitor.org/", "unit": "MW", "tier": "C", "retrieved": "2026-04-27",
                "note": "Operating units only (status was filtered upstream); a plant with several units appears once per unit at the same point. Gas, oil and waste plants were taken from OpenStreetMap in the IGARSS merge and are excluded here because their capacities are in kW."},
-    "inventory": {"title": "Data-center inventory: commercial directory, baxtel crawl (China subset), DCKB sample, UVA dhi geojsons",
+    "inventory": {"title": "Data-center inventory: commercial directory, baxtel crawl (China subset), DCKB sample, UVA dhi geojsons, reviewed listings from a second commercial directory",
                   "publisher": "various", "url": None, "unit": "facilities; MW where reported", "tier": "C",
                   "note": "Published at province level only. Coordinates, addresses and profile links are stripped by the build script and never written to site/data/."},
 }
@@ -675,6 +716,7 @@ def main():
     records += read_dckb(edwc / "archive/DCKB_cleaned_latlon_CHINA.xlsx")
     baxtel_names = load_baxtel_names(SOURCES / "baxtel_site_names.csv")
     records += read_baxtel(edwc / "data/dc/data_center_data.csv", baxtel_names)
+    records += read_dccom(SOURCES / "datacenters_com_sites.csv", flags)
     merged = merge_inventory(records, flags)
     # Where Baxtel lists a site, its name and operator replace those from the other sources (Gia, 15 Oct 2026);
     # facility type, status and MW stay as merged.
@@ -798,7 +840,7 @@ def check_privacy():
             if k in FORBIDDEN_KEYS:
                 bad.append((f["id"], k))
         for v in f.values():
-            if isinstance(v, str) and ("datacentermap.com" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
+            if isinstance(v, str) and ("datacentermap.com" in v or "datacenters.com" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
                 bad.append((f["id"], v))
     if bad:
         sys.exit(f"privacy check FAILED: {bad[:5]}")

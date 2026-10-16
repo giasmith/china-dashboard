@@ -77,23 +77,11 @@ const VIEWS = {
       : ctx.waterMeasure === 'industrial' ? [10, 20, 40, 70]
         : ctx.waterMeasure === 'total' ? [100, 500, 1000, 2000] : [500, 1000, 2000, 4000]),
   },
-  hazard: {
-    label: 'Hazard', title: 'Natural-hazard screening (not yet loaded)',
-    sourceKey: null, ramp: 'blue', unit: '', digits: 0, noData: true,
-    legendNote: 'No hazard measure loaded yet.',
-    fill: () => null, bins: () => [],
-  },
   policy: {
     label: 'Policy', title: 'East Data West Computing hub designation',
     sourceKey: null, ramp: 'blue', unit: '', digits: 0, categorical: true,
     legendNote: 'Hub provinces per the 2022 NDRC / MIIT / NEA / CAC approvals.',
     fill: (p) => (p.hub ? 1 : 0), bins: () => [],
-  },
-  opposition: {
-    label: 'Opposition', title: 'Local opposition (no tracker available)',
-    sourceKey: null, ramp: 'blue', unit: '', digits: 0, noData: true,
-    legendNote: 'No opposition record loaded.',
-    fill: () => null, bins: () => [],
   },
 };
 const VIEW_KEYS = Object.keys(VIEWS);
@@ -392,7 +380,6 @@ function repaint() {
     const v = view.fill(p, c);
     let fill = 'var(--map-nodata)';
     if (view.categorical) fill = v ? ramp[3] : 'var(--map-land)';
-    else if (view.noData) fill = 'var(--map-land)';
     else if (v !== null && v !== undefined) {
       const i = binIndex(v, thresholds);
       fill = (v === 0 && view.zeroLabel) ? 'var(--map-land)' : ramp[Math.max(0, Math.min(ramp.length - 1, i))];
@@ -664,7 +651,7 @@ function showProvinceTooltip(e, p) {
     h('div', { class: 't-value' }, `${p.name} · ${p.nameZh}`),
     h('div', { class: 't-label' }, `${formatNumber(s?.count ?? 0)} facilities in selection${s?.mwKnown ? ` · ${formatNumber(s.mw, { digits: 0 })} MW known` : ''}`),
   ];
-  if (!view.noData && !view.categorical && state.view !== 'status' && state.view !== 'capacity') {
+  if (!view.categorical && state.view !== 'status' && state.view !== 'capacity') {
     rows.push(h('div', { class: 't-label' }, `${view.title}: ${v === null || v === undefined ? 'no data' : formatNumber(v, { digits: digitsOf(view) }) + unitOf(view)}`));
   }
   if (linesShown() && data.lines) rows.push(h('div', { class: 't-label' }, `Transmission ≥${formatNumber(data.lines.min_kv)} kV: ${formatNumber(sumKm(lineKm(p.id)), { digits: 0 })} km mapped`));
@@ -712,8 +699,6 @@ function renderLegend(view, thresholds, ramp, t) {
   const items = [];
   if (view.categorical) {
     items.push(legendItem(ramp[3], 'EDWC national hub province'), legendItem('var(--map-land)', 'Other province'));
-  } else if (view.noData) {
-    items.push(legendItem('var(--map-land)', 'No measure loaded'));
   } else {
     const labels = binLabels(thresholds, { unit: unitOf(view), digits: digitsOf(view), integer: digitsOf(view) === 0 });
     labels.forEach((label, i) => {
@@ -847,7 +832,7 @@ async function renderChart(view, t) {
     put(els.chart, rows, focusP ? h('p', { class: 'hint db-chart-note' }, rankNote(focusP, ranked)) : null);
     return;
   }
-  // status / capacity / hazard / opposition: a donut of the selection, headline count in the middle
+  // status / capacity: a donut of the selection, headline count in the middle
   els.profileEyebrow.textContent = focusP ? `Selection profile · ${focusP.name}` : 'Selection profile';
   els.chartTotal.textContent = `${formatNumber(filtered.length)} records`;
   if (!filtered.length) {

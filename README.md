@@ -9,7 +9,8 @@ water, plus two secondary pages that compare **five-year plan targets with repor
 > **Location rule.** The inventory merges a licensed DataCenterMap export with public crawls. It is published at
 > **province level only**: `site/data/facilities.json` holds no coordinates, addresses, cities or profile links, the
 > build script strips them, the validator and the browser test both assert their absence, and the map draws one
-> bubble per province. Hazard and opposition tabs are present for parity with the U.S. tracker but carry no data yet.
+> bubble per province. Map tabs are shown only for layers that have data (the U.S. tracker's hazard and
+> opposition tabs are left out until a source exists).
 
 ## Run it
 
@@ -63,7 +64,6 @@ Reset returns to all of China; dragging the map never changes the focus.
 | Generation | 2024 generation (NBS yearbook 9-19) | GEM plant units by technology; transmission lines ≥250 kV | NBS + GEM; OpenStreetMap (ODbL) |
 | Electricity cost | 1–10 kV industrial & commercial rate, May 2025 | pale count bubbles | China Briefing compilation (tier C) |
 | Water scarcity | per-capita resources, use÷resources, totals, industrial use (2024) | pale count bubbles | MWR bulletin via NBS yearbook 8-8 / 8-9 |
-| Hazard, Opposition | none yet | pale count bubbles | — |
 | Policy | EDWC national-hub provinces | pale count bubbles | NDRC approvals; legislation topics in the chart |
 
 The URL hash carries the active tab (`#view=cost`), so a view can be linked to.
@@ -138,13 +138,20 @@ units inside each outline. Two values are computed and labelled as such in the U
 water use ÷ water resources. The transcribed source tables live in `data_sources/` with their URLs; the yearbook
 publishes them as images, so they were typed by hand and should be spot-checked before citation.
 
-**Facilities** (`facilities.json`): 526 records merged from the DataCenterMap export (licensed; 459), the baxtel
-crawl (108), the DCKB sample (11) and the two UVA geojsons (hyperscale 36, western 44), de-duplicated on source id,
-normalised name, and proximity (unnamed records within 400 m of a named one). Each record keeps name, operator,
+**Facilities** (`facilities.json`): 833 records merged from the DataCenterMap export (licensed; 459), the baxtel
+crawl (108), the DCKB sample (11), the two UVA geojsons (hyperscale 36, western 44) and 307 datacenters.com listings
+(see below), de-duplicated on source id, normalised name, and proximity (unnamed records within 400 m of a named one). Each record keeps name, operator,
 province, status (Operating / Development / Proposed / Unknown), facility type, reported MW and capacity class,
 PUE and online year where the source had them, and the list of sources. Twenty DataCenterMap rows have no
 coordinates in the export and were placed by their market name. Three rows fell outside every outline (one in
 Taiwan, which the map does not cover). Run with `--publish-names false` to anonymise names and operators.
+
+The datacenters.com rows (`data_sources/datacenters_com_sites.csv`, source key `dccom`) are China listings that were
+compared with this inventory on 15 Oct 2026 and approved one by one: listings already in the inventory, resellers and
+cloud regions, and uncertain matches were left out. The directory gives no status, so these records are entered as
+Operating with facility type Unknown and no MW; they carry no coordinates and are placed by province. Where the
+inventory holds only one city-level record for an operator (for example "China Telecom Shanghai") and the directory
+names several buildings, at most one of those buildings can be that record, so such cities may be over-counted by one.
 
 **Power plants** (`power_plants.json`): 16,284 Global Energy Monitor units (coal, hydro, wind, solar, nuclear,
 bioenergy) projected to the view box with their province. Status was filtered to operating upstream in the IGARSS

@@ -1,0 +1,308 @@
+dccom_id,name,operator,province,status,facility_type,match,note
+a8d7fb070c,China Telecom Anhui Telecom Computer Room Data Center,China Telecom,anhui,Operating,,,ours also has a city-level record for this operator
+a36cf56c8b,China Telecom Hefei Shengquan Road IDC,China Telecom,anhui,Operating,,,ours also has a city-level record for this operator
+60d73248fc,China Telecom Hefei Telecom Chuangxin Building IDC,China Telecom,anhui,Operating,,,ours also has a city-level record for this operator
+c5899f5843,China Telecom Wuhu Cloud Computing Data Center,China Telecom,anhui,Operating,,,ours also has a city-level record for this operator
+fba1fdee91,China Unicom Yangtze River Delta (Hefei) Data Center,China Unicom,anhui,Operating,,,
+58b120c8e2,China Unicom Yangtze River Delta (Wuhu) DC2,China Unicom,anhui,Operating,,,
+2f2c421021,China Unicom Yangtze River Delta (Wuhu) Intelligent Computing Center DC3,China Unicom,anhui,Operating,,,
+528714632b,Amazon AWS BJS10 Chaoyang,Amazon AWS,beijing,Operating,,,
+35b9e86fb1,Amazon AWS BJS11 Shunyi District,Amazon AWS,beijing,Operating,,,
+8725cdbb2d,Amazon AWS BJS12 Daxing District,Amazon AWS,beijing,Operating,,,
+fd9a08b1e5,Amazon AWS BJS9 Tongzhou,Amazon AWS,beijing,Operating,,,
+18cd7842a8,CIDS Beijing Data Center,CIDS Data System China,beijing,Operating,,,
+75e7aa95e4,CITIC DataHOUSE @ JXQ,CITIC Telecom CPC,beijing,Operating,,,
+671c24afbf,CITIC DataHOUSE @ KC,CITIC Telecom CPC,beijing,Operating,,,
+d985d50f41,China Telecom Beijing 263 Data Port Data Center,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+de4c3d2ea5,China Telecom Beijing Dajiaoting IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+f5834bb1f9,China Telecom Beijing Desheng IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+f5d2928646,China Telecom Beijing Digital Building IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+8dfc4a2f20,China Telecom Beijing Jingan IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+0216e3daf2,China Telecom Beijing Jiu Xian Qiao Data Center,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+9f2110fb9a,China Telecom Beijing Shangdi IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+dfdf40b1d1,China Telecom Beijing Wangjing Data Center,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+fa44c10c51,China Telecom Beijing Xidan IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+20a7f63537,China Telecom Beijing Xierqi IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+3bc1eccfa2,China Telecom Beijing Yangqiao IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+7b786f11b9,China Telecom Beijing Yongfeng IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+e152f31c8b,China Telecom Beijing Zhaowei IDC,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+cea8ed7e5b,China Telecom Beijing Zhong Jing Cloud Data Center,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+e0a02a7942,China Telecom Daily-Tech Chaolai Data Center,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+888b1e46a4,China Telecom Daily-Tech Guanzhuang Data Center,China Telecom,beijing,Operating,,,ours also has a city-level record for this operator
+d70395e0c8,China Unicom Beijing Shougang Park Data Center,China Unicom,beijing,Operating,,,ours also has a city-level record for this operator
+7895c69494,"Sinnet Jiuxianqiao IDC – Beijing, China",Sinnet,beijing,Operating,,,
+5f5324b034,Yovole Beijing Yongfeng E-Data Cloud Computing Data Center,Yovole,beijing,Operating,,,
+1fe577a9ae,China Mobile Chongqing Jiangnan Data Center,China Mobile International,chongqing,Operating,,,
+824d67f289,China Mobile Chongqing Shuitu Data Center,China Mobile International,chongqing,Operating,,,
+f2418da15f,China Telecom Chongqing New Archway IDC,China Telecom,chongqing,Operating,,,
+af8f7be4b9,China Telecom Chongqing Wulidian IDC,China Telecom,chongqing,Operating,,,
+5bd2ca38a9,China Unicom Southwest (Chongqing Shuitu) Data Center,China Unicom,chongqing,Operating,,,
+eafbb0cb4c,China Mobile Fujian Binhai Data Center,China Mobile International,fujian,Operating,,,
+29319bf315,China Telecom Fujian Pudong IDC,China Telecom,fujian,Operating,,,
+88c419515e,China Telecom Fujian Zhangzhou Telecom Data Center,China Telecom,fujian,Operating,,,
+e2a24fc187,China Telecom Fuzhou Dongmen IDC,China Telecom,fujian,Operating,,,
+0c83b9fe78,China Telecom Fuzhou Mawei IDC,China Telecom,fujian,Operating,,,
+02e8d8d524,China Telecom Longyan Telecom Command Building Data Center,China Telecom,fujian,Operating,,,
+17fa6b5476,China Telecom Quanzhou Pre-IDC,China Telecom,fujian,Operating,,,
+4c23a85353,China Unicom Zhi·Yun Data Center,China Unicom,fujian,Operating,,,
+4f397c8e58,China Telecom Lanzhou Second Hub Data Center,China Telecom,gansu,Operating,,,
+a5eb57fea9,China Unicom Lanzhou New Area Data Center,China Unicom,gansu,Operating,,,
+91c13405ce,China Unicom Qingyang Intelligent Computing Data Center,China Unicom,gansu,Operating,,,
+1334a9889b,China Mobile Greater Bay Area Shaoguan Data Center,China Mobile International,guangdong,Operating,,,
+1aef85368f,China Telecom Chaozhou Hub Building Data Center,China Telecom,guangdong,Operating,,,
+a954bb4a57,China Telecom Dongguan City IDC,China Telecom,guangdong,Operating,,,
+909c0a6db4,China Telecom FUO1 Guangdong Sheng Data Center,China Telecom,guangdong,Operating,,,
+ef1a1c20e8,China Telecom Foshan Century Interconnect IDC,China Telecom,guangdong,Operating,,,
+643f9f8e0e,China Telecom Foshan Guijiang IDC,China Telecom,guangdong,Operating,,,
+cb9be9d639,China Telecom Foshan Information Building IDC,China Telecom,guangdong,Operating,,,
+cd38dc3a82,China Telecom Foshan Kepler Data Center,China Telecom,guangdong,Operating,,,
+f61c0180ff,China Telecom Foshan Qinren IDC,China Telecom,guangdong,Operating,,,
+078722a0d2,China Telecom Foshan Sanshui IDC,China Telecom,guangdong,Operating,,,
+884d35dd9d,China Telecom Foshan Shunde IDC,China Telecom,guangdong,Operating,,,
+2ad1486800,China Telecom Guangdong Dongchong Data Center,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+07bdc8cc38,China Telecom Guangdong Huizhou Dongping IDC,China Telecom,guangdong,Operating,,,
+067532d1e8,China Telecom Guangdong Huizhou Longhu Data Center,China Telecom,guangdong,Operating,,,
+22dc12c738,China Telecom Guangdong Keyun Data Center,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+3675f74b24,China Telecom Guangdong Nanshayungu Data Center,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+cef6e63bfc,China Telecom Guangdong Telecom Building IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+f188cf2ed6,China Telecom Guangdong Telecom Maoming Data Center,China Telecom,guangdong,Operating,,,
+f690170bcb,China Telecom Guangdong West District IDC Center,China Telecom,guangdong,Operating,,,
+a1c5620a5f,China Telecom Guangdong Zhongneng Data Center,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+06891014c0,China Telecom Guangdong Zhuhai IDC,China Telecom,guangdong,Operating,,,
+0cf7a4a2b3,China Telecom Guangzhou Accelerator Data Center,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+ecc0ee9ff1,China Telecom Guangzhou Cloud-computing Data Center,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+a35de3a60a,China Telecom Guangzhou Huadiwan IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+b5479990bc,China Telecom Guangzhou People's Middle Road IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+987814d7e0,China Telecom Guangzhou Shiji Aircraft Building IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+8dc47956b6,China Telecom Guangzhou Tianhe Aircraft Building IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+8ef4ca2d3c,China Telecom Jiangmen Data Center,China Telecom,guangdong,Operating,,,
+6adaf8c29f,China Telecom Jieyang Jidong Data Center,China Telecom,guangdong,Operating,,,
+fd4ff02fe6,China Telecom Maoming Mountain IDC,China Telecom,guangdong,Operating,,,
+37e4eb1f2a,China Telecom Meizhou Telecom Hub Building Data Center,China Telecom,guangdong,Operating,,,
+aca13a72c5,China Telecom Qingyuan Data Integration Data Center,China Telecom,guangdong,Operating,,,
+9e736c4457,China Telecom Qixinggang IDC,China Telecom,guangdong,Operating,,,
+9bef1d01f4,China Telecom Shahe IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+fae8c22aa5,China Telecom Shantou Yuedong IDC,China Telecom,guangdong,Operating,,,
+5fe70cbc0a,China Telecom Shantou Zhuchi IDC,China Telecom,guangdong,Operating,,,
+595f5dcd38,China Telecom Shanwei Data Center,China Telecom,guangdong,Operating,,,
+8378d954d7,China Telecom Shaoguan Xinhua North IDC,China Telecom,guangdong,Operating,,,
+2fcb6e3640,China Telecom Shenzhen Fuyong IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+85c30f4274,China Telecom Shenzhen Gaoke Building IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+029ff3869f,China Telecom Shenzhen High-Tech Zone IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+637f613057,China Telecom Shenzhen Hongbo IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+a08fcd3dff,China Telecom Shenzhen Information Hub Data Center,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+32421ccaeb,China Telecom Shenzhen Longgang IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+dee6016138,China Telecom Shenzhen Luohu East Gate IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+660fc33982,China Telecom Shenzhen Runxun Qianhai Data Center,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+199c0eb5c4,China Telecom Shiji IDC,China Telecom,guangdong,Operating,,,ours also has a city-level record for this operator
+7aebff8356,China Telecom Yangjiang IDC,China Telecom,guangdong,Operating,,,
+adc23afc1f,China Telecom Yunfu IDC,China Telecom,guangdong,Operating,,,
+93c3a7ef7a,China Telecom Zhanjiang Tunxi Data Center,China Telecom,guangdong,Operating,,,
+4800802b7d,China Telecom Zhaoqing IDC,China Telecom,guangdong,Operating,,,
+8ec5cd8a50,China Telecom Zhongshan Huoju Cloud Data Center,China Telecom,guangdong,Operating,,,
+0a055890a7,China Telecom Zhuhai Xiangzhou IDC,China Telecom,guangdong,Operating,,,
+9c3492a10b,China Telecom Zhuhai Xinxiangzhou IDC,China Telecom,guangdong,Operating,,,
+78aabbb8a4,China Unicom Guangdong–Hong Kong–Macao Greater Bay Area Hub (Shaoguan) Data Center,China Unicom,guangdong,Operating,,,
+48db7fa0a1,Keppel Guangdong Data Centre 1,Keppel Data Centres,guangdong,Operating,,,
+026a5fbc43,Keppel Guangdong Data Centre 2,Keppel Data Centres,guangdong,Operating,,,
+5658ee0fcd,Keppel Guangdong Data Centre 3,Keppel Data Centres,guangdong,Operating,,,
+7cdeb75af6,Runxun BanTian,Runxun,guangdong,Operating,,,
+047f4f369f,Runxun Gaoxun,Runxun,guangdong,Operating,,,
+8cf2a88096,Zenlayer CAN5 Guangzhou Data Center,Zenlayer,guangdong,Operating,,,ours also has a city-level record for this operator
+e0198b60a7,Zenlayer CAN8 Guangzhou Data Center,Zenlayer,guangdong,Operating,,,ours also has a city-level record for this operator
+597ee839dc,Zenlayer SZX1 Shenzhen Data Center,Zenlayer,guangdong,Operating,,,
+f688b19683,Zenlayer SZX2 Shenzhen Data Center,Zenlayer,guangdong,Operating,,,
+96a6e09e03,China Telecom Guilin IDC,China Telecom,guangxi,Operating,,,
+fa74880421,China Telecom Nanning Huangmaoping IDC,China Telecom,guangxi,Operating,,,
+612a4c7dd8,China Telecom Nanning IDC,China Telecom,guangxi,Operating,,,
+fd7a68a97b,China Unicom China–ASEAN International Data Center,China Unicom,guangxi,Operating,,,
+cb157a8f35,China Telecom Guizhou Telecom Second Hub Data Center,China Telecom,guizhou,Operating,,,ours also has a city-level record for this operator
+3d7cb2192e,Amazon AWS BJS20,Amazon AWS,hebei,Operating,,,
+cefc0d1b0a,China Telecom Tangshan IDC,China Telecom,hebei,Operating,,,
+9fc81ca6b1,China Unicom Hebei Government Cloud Computing Center,China Unicom,hebei,Operating,,,
+d3bdfe5f4a,Princeton Digital LF2,Princeton Digital Group,hebei,Operating,,,"LF = Langfang; datacenters.com puts LF1 and LF2 at one Mianyang address, and LF1 is in Hebei in our inventory"
+be8ec52137,China Mobile Harbin Data Center,China Mobile International,heilongjiang,Operating,,,
+b3ef80b40b,China Telecom Heilongjian Telecom Data Center,China Telecom,heilongjiang,Operating,,,
+cb57d9a0ab,China Unicom (Harbin) Green Electricity Intelligent Computing Center,China Unicom,heilongjiang,Operating,,,
+e08a592502,China Mobile Henan Zhengzhou Airport Economic Zone Data Center,China Mobile International,henan,Operating,,,ours also has a city-level record for this operator
+ea9a9d6c3c,China Mobile Henan Zhengzhou High-Tech Zone Data Center,China Mobile International,henan,Operating,,,ours also has a city-level record for this operator
+086c2e0c2c,China Mobile Luoyang Data Center,China Mobile International,henan,Operating,,,
+6d16bbf39b,China Unicom Zhengzhou Artificial Intelligence Computing Center,China Unicom,henan,Operating,,,
+7d8379f971,Zenlayer CGO3 Zhengzhou Data Center,Zenlayer,henan,Operating,,,
+3ebdb4cbab,China Mobile Wuhan Intelligent Computing Center,China Mobile International,hubei,Operating,,,
+ed5140e4e2,China Telecom Enshi Microwave Building Data Center,China Telecom,hubei,Operating,,,
+8bd039ecc9,China Telecom Ezhou Data Center,China Telecom,hubei,Operating,,,
+dcef379255,China Telecom Huanggang Data Center,China Telecom,hubei,Operating,,,
+17ff5d5c67,China Telecom Huangshihua Lake IDC,China Telecom,hubei,Operating,,,
+6924b7d5c9,China Telecom Hubei Yichang Telecom Data Center,China Telecom,hubei,Operating,,,
+163ec0164d,China Telecom Luxiang IDC,China Telecom,hubei,Operating,,,
+e945721eb5,China Telecom Qianjiang Telecom Data Center,China Telecom,hubei,Operating,,,
+6b3999494c,China Telecom Shiyan Data Center,China Telecom,hubei,Operating,,,
+a691f8ab88,China Telecom Tianmen Telecom Data Center,China Telecom,hubei,Operating,,,
+534079e1ad,China Telecom Wuhan Evergreen IDC,China Telecom,hubei,Operating,,,
+5cb9c5522a,China Telecom Wuhan Hongshan District Data Center,China Telecom,hubei,Operating,,,
+4ec32952cd,China Telecom Wuhan Jinyinhu Data Center,China Telecom,hubei,Operating,,,
+5bd4c7e49d,China Telecom Wuhan Nanxun IDC,China Telecom,hubei,Operating,,,
+3ed3c0064e,China Telecom Xiangyang IDC,China Telecom,hubei,Operating,,,
+263137da8d,China Telecom Xianning Data Center,China Telecom,hubei,Operating,,,
+80aaedfc08,China Telecom Xiantao Fuyang Avenue Data Center,China Telecom,hubei,Operating,,,
+01859b56c6,China Telecom Xiaogan Telecom Data Center,China Telecom,hubei,Operating,,,
+cbe706f06b,China Unicom Central China Zhiyun Data Center,China Unicom,hubei,Operating,,,
+723ec2922a,China Telecom Changsha Second Hub Data Center,China Telecom,hunan,Operating,,,
+0c27b31f41,China Telecom Changsha Shigu IDC,China Telecom,hunan,Operating,,,
+7235411ab5,China Telecom Dongjiang Lake Big Data Center,China Telecom,hunan,Operating,,,
+dcbf86067a,China Telecom Hengyang Data Center,China Telecom,hunan,Operating,,,
+188d4209a6,China Telecom Hunan Changsha Dongtang IDC,China Telecom,hunan,Operating,,,
+230755c453,China Telecom Zhuzhou Hexi Telecom Data Center,China Telecom,hunan,Operating,,,
+9a60b651e7,China Telecom Zhuzhou Huanghe South Road Data Center,China Telecom,hunan,Operating,,,
+a9fc81aef7,China Unicom Changsha Cloud Data Center,China Unicom,hunan,Operating,,,
+dc24feb0cb,China Mobile Fenhu Intelligent Computing Center,China Mobile International,jiangsu,Operating,,,
+42d922c459,China Mobile Jiangbei Yangtze River Data Center,China Mobile International,jiangsu,Operating,,,
+e42ac36248,China Telecom Changzhou Houyang Street IDC,China Telecom,jiangsu,Operating,,,ours also has a city-level record for this operator
+ffd9129489,China Telecom Changzhou Qingliang Road IDC,China Telecom,jiangsu,Operating,,,ours also has a city-level record for this operator
+4247b2577e,China Telecom Changzhou Qinye Road IDC,China Telecom,jiangsu,Operating,,,ours also has a city-level record for this operator
+253d5377d4,China Telecom Jiangsu Suzhou Telecom Technology City IDC,China Telecom,jiangsu,Operating,,,
+6ba3d5deb5,China Telecom Jiangsu Yangzhou Telecom Data Center,China Telecom,jiangsu,Operating,,,
+dfa255f7e4,China Telecom Jiangsu huai 'an IDC,China Telecom,jiangsu,Operating,,,
+7f891aa275,China Telecom Lianyungang Hailian Road IDC,China Telecom,jiangsu,Operating,,,
+c5a2962803,China Telecom Liyang Kunlun Road IDC,China Telecom,jiangsu,Operating,,,ours also has a city-level record for this operator
+7a7fd468b7,China Telecom Nanjing Hexi International IDC,China Telecom,jiangsu,Operating,,,
+b1cf896632,China Telecom Nanjing Liyuan IDC,China Telecom,jiangsu,Operating,,,
+31b0a471ab,China Telecom Nanjing Longjiang IDC,China Telecom,jiangsu,Operating,,,
+1a573e1ae8,China Telecom Nanjing Taishan New Village IDC,China Telecom,jiangsu,Operating,,,
+66f597d87b,China Telecom Nanjing Youfu West IDC,China Telecom,jiangsu,Operating,,,
+7c0bcc5583,China Telecom Nantong Changqiao IDC,China Telecom,jiangsu,Operating,,,
+205975b7a0,China Telecom Nantong Yijiaqiao IDC,China Telecom,jiangsu,Operating,,,
+8c0754b8d1,China Telecom Suqian Jingdong Data Center,China Telecom,jiangsu,Operating,,,
+78bae8bff8,China Telecom Suqian Suyu IDC,China Telecom,jiangsu,Operating,,,
+da3e95300d,China Telecom Suzhou Chang'an Road Data Center,China Telecom,jiangsu,Operating,,,
+8765cd6cf0,China Telecom Suzhou Jinji Lake IDC,China Telecom,jiangsu,Operating,,,
+63e8249b44,China Telecom Suzhou Nanshi Street IDC,China Telecom,jiangsu,Operating,,,
+a31f61ceb7,China Telecom Suzhou Qianshan Road IDC,China Telecom,jiangsu,Operating,,,
+461d5ba582,China Telecom Suzhou Wujiang IDC,China Telecom,jiangsu,Operating,,,
+cbd5b53c73,China Telecom Suzhou Zhuhui IDC,China Telecom,jiangsu,Operating,,,
+b69637e915,China Telecom Taizhou Telecom South Jiangyan Data Center,China Telecom,jiangsu,Operating,,,
+7199b41c18,China Telecom Taizhou Yangzhou Road IDC,China Telecom,jiangsu,Operating,,,
+cb03d66219,China Telecom Wuxi Dafu IDC,China Telecom,jiangsu,Operating,,,ours also has a city-level record for this operator
+4f2fc08700,China Telecom Wuxi Guomai IDC,China Telecom,jiangsu,Operating,,,ours also has a city-level record for this operator
+15b8a14a30,China Telecom Wuxi International IDC,China Telecom,jiangsu,Operating,,,ours also has a city-level record for this operator
+f2564092c9,China Telecom Xuzhou Cultural Road IDC,China Telecom,jiangsu,Operating,,,
+a74c945bae,China Telecom Yancheng Jiefang North IDC,China Telecom,jiangsu,Operating,,,
+d8ee61fe25,China Telecom Zhenjiang IDC,China Telecom,jiangsu,Operating,,,
+0870ed5cf4,Zenlayer NTG1 Data Center,Zenlayer,jiangsu,Operating,,,
+6288eada99,Zenlayer SZV2 Suzhou Data Center,Zenlayer,jiangsu,Operating,,,
+c4417fca9c,Zenlayer WUX2 Wuxi Data Center,Zenlayer,jiangsu,Operating,,,ours also has a city-level record for this operator
+698b6ad0ac,Zenlayer WUX3 Data Center,Zenlayer,jiangsu,Operating,,,ours also has a city-level record for this operator
+4e096b591b,China Telecom Ji'an Data Center,China Telecom,jiangxi,Operating,,,
+3a0bf05ec7,China Telecom Jiangxi Second Hub Data Center,China Telecom,jiangxi,Operating,,,
+aff57e5b31,China Telecom Jingdezhen City Data Center,China Telecom,jiangxi,Operating,,,
+bb5ee95f01,China Telecom Jiujiang Hub Building Data Center,China Telecom,jiangxi,Operating,,,
+602e6f95b6,China Telecom Nanchang Honggutan Data Center,China Telecom,jiangxi,Operating,,,
+2dac829c99,China Telecom Nanchang Ruzi Road IDC,China Telecom,jiangxi,Operating,,,
+c1257e9eed,China Telecom Shangrao Telecom Second Exchange Bureau Data Center,China Telecom,jiangxi,Operating,,,
+1724591c98,China Telecom Xinyu Data Center,China Telecom,jiangxi,Operating,,,
+6acd4dc67d,China Telecom Yichun Data Center,China Telecom,jiangxi,Operating,,,
+3f84e99c69,China Telecom Yingtan Data Center,China Telecom,jiangxi,Operating,,,
+1ea49d50ca,China Unicom Nanchang Linkong Zhiyun Data Center,China Unicom,jiangxi,Operating,,,
+374e46b716,China Telecom Jilin Telecom Hub Building IDC Center Data Center,China Telecom,jilin,Operating,,,
+0d86b498fd,China Telecom Shenyang Data Center,China Telecom,liaoning,Operating,,,
+d6f9cb5fc5,China Unicom Minning Green Electricity Digital Intelligence Application Center,China Unicom,ningxia,Operating,,,
+1c57aa2217,Zenlayer ZHY1 Ningxia Data Center,Zenlayer,ningxia,Operating,,,
+c0b5a0412d,Zenlayer ZHY2 Ningxia Data Center,Zenlayer,ningxia,Operating,,,
+7a4e2848cc,China Mobile Qinghai Plateau Big Data Center,China Mobile International,qinghai,Operating,,,
+13c520481f,China Unicom Sanjiangyuan Green Electricity Intelligent Computing Center,China Unicom,qinghai,Operating,,,
+fad9790a93,Zenlayer XIY5 Xi'an Data Center,Zenlayer,shaanxi,Operating,,,
+af83d736f1,China Mobile Shandong Jinan Data Center,China Mobile International,shandong,Operating,,,
+89a0c49ee2,China Telecom Jinan Hub Building Data Center,China Telecom,shandong,Operating,,,ours also has a city-level record for this operator
+ee89469a54,China Telecom Weihai Telecom Huancui Communication Data Center,China Telecom,shandong,Operating,,,ours also has a city-level record for this operator
+324c1356bc,China Telecom Zibo Telecom Xingxue Street Data Center,China Telecom,shandong,Operating,,,ours also has a city-level record for this operator
+3caa50218d,China Unicom Jinan Intelligent Computing Center,China Unicom,shandong,Operating,,,
+f4fb234da3,China Unicom Qingdao Intelligent Computing Center,China Unicom,shandong,Operating,,,
+354b7ef20d,GDS Jinyu High-tech Industrial Park Campus,GDS,shandong,Operating,,,
+da1c15eaae,Zenlayer TNA4 Jinan Data Center,Zenlayer,shandong,Operating,,,
+3f2d16f103,CITIC DataHOUSE @ BAO,CITIC Telecom CPC,shanghai,Operating,,,
+f126570468,CITIC DataHOUSE @ WGQ,CITIC Telecom CPC,shanghai,Operating,,,
+0b963a2ceb,China Telecom Nanhui IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+2344208887,China Telecom Shanghai Beiai IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+8f812b4d65,China Telecom Shanghai Changxin Caobao Road Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+436ba11742,China Telecom Shanghai East Gate IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+6347051f9f,China Telecom Shanghai Fuhua IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+92da3542c4,China Telecom Shanghai Guoding IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+ec26233448,China Telecom Shanghai Haining Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+810276bfa6,China Telecom Shanghai Hengbin IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+c980c82eb9,China Telecom Shanghai Huajing IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+8c2bc39475,China Telecom Shanghai Hulan IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+b46753ba80,China Telecom Shanghai Huma IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+0663dc4201,China Telecom Shanghai Jianan Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+8602ce9cfa,China Telecom Shanghai Jinhai IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+987c7c951e,China Telecom Shanghai Lujiazui IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+2148a85b13,China Telecom Shanghai Nanwaitan Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+248954207f,China Telecom Shanghai New Taopu IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+cea667cc7c,China Telecom Shanghai Ouyang Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+b2d663745f,China Telecom Shanghai Qinzhou IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+efd623729c,China Telecom Shanghai Shenjia Lane IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+fb7e35b714,China Telecom Shanghai Telecom Caoxi Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+d0af8a3178,China Telecom Shanghai Telecom Guoli Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+e650bc75f2,China Telecom Shanghai Telecom Quiqiao Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+ab764e9cf1,China Telecom Shanghai Tongpu IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+7c6ae7726c,China Telecom Shanghai Wusheng IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+3330e49f6f,China Telecom Shanghai Xingshun Data Center,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+befaa71b09,China Telecom Shanghai Yunlian IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+bff1dd110d,China Telecom Shanghai Zhangdong IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+c6007236df,China Telecom Shanghai Zhenru IDC,China Telecom,shanghai,Operating,,,ours also has a city-level record for this operator
+04f5d83d69,China Unicom Pujiang Cloud Data Center A1,China Unicom,shanghai,Operating,,,ours also has a city-level record for this operator
+86acb6764a,China Unicom Zhoupu Cloud Data Center,China Unicom,shanghai,Operating,,,ours also has a city-level record for this operator
+0c6f041c24,Keppel Shanghai Data Centre 1,Keppel Data Centres,shanghai,Operating,,,
+c58a7ff256,"Sinnet Shanghai Jiading Cloud Computing Center – Shanghai, China",Sinnet,shanghai,Operating,,,
+9d90cece05,China Telecom CTU1 Sichuan Sheng Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+36bf9b6ab1,China Telecom Chengdu 6 Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+29364f6ac2,China Telecom Chengdu Guanghua IDC,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+97d87bd466,China Telecom Chengdu Lotus IDC,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+c6e42383f6,China Telecom Chengdu Shahebao IDC,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+599a996f3e,China Telecom Chengdu Taisheng IDC,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+a4c04a0548,China Telecom Chengdu Xixin IDC,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+7c720a61bc,China Telecom Chengdu Xixin West District Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+ae77b506c5,China Telecom Deyang Zhujiang Road Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+d868ab3fbc,China Telecom Leshan Tianxing Road Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+654ee184ed,China Telecom Mianyang China Telecom Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+981d11d62a,China Telecom Mianyang Yongxing Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+e0a9a241ec,China Telecom Panzhihua Renmin Street Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+c3bc2b6e1a,China Telecom Tianfu Hotline 2 Hub Data Center,China Telecom,sichuan,Operating,,,ours also has a city-level record for this operator
+6f3d6c4cb2,China Unicom Tianfu Information Center Data Center,China Unicom,sichuan,Operating,,,
+c84069cd8d,Zenlayer CTU4 Chengdu Data Center,Zenlayer,sichuan,Operating,,,
+d2f4c89300,BCIDS Tianjin Data Center,CIDS Data System China,tianjin,Operating,,,
+333929ee81,China Telecom Tianjin Dagang Data Center,China Telecom,tianjin,Operating,,,
+756a90ef9c,China Telecom Tianjin Tianbo Data Center,China Telecom,tianjin,Operating,,,
+ff26708466,"Sinnet Tianjin Baodi Cloud Computing Center – Tianjin, China",Sinnet,tianjin,Operating,,,
+f5f2d30b4d,Zenlayer TSN1 Tianjin Data Center,Zenlayer,tianjin,Operating,,,ours also has a city-level record for this operator
+a520bb9779,Zenlayer TSN2 Tianjin Data Center,Zenlayer,tianjin,Operating,,,ours also has a city-level record for this operator
+ff64589061,China Mobile Hami Yiwu China Mobile–Alibaba Cloud Intelligent Computing Cente,China Mobile International,xinjiang,Operating,,,
+fcd2d31d3f,China Telecom Bazhou Comprehensive Building Data Center,China Telecom,xinjiang,Operating,,,
+4033b07a6e,China Telecom Urumqi II Hub IDC,China Telecom,xinjiang,Operating,,,
+2c6a7ccdba,China Unicom (Xinjiang) Cloud Data Center,China Unicom,xinjiang,Operating,,,
+e4e5701d88,China Telecom Kunming 72 Bureau IDC,China Telecom,yunnan,Operating,,,
+87f56887a0,China Unicom Two-Asia International Intelligent Computing Center,China Unicom,yunnan,Operating,,,
+bdd1e512ec,China Mobile Jiashan Intelligent Computing Center,China Mobile International,zhejiang,Operating,,,
+6d568e3b0f,China Telecom Daily-Tech Xun-Net Data Center,China Telecom,zhejiang,Operating,,,ours also has a city-level record for this operator
+858716a2c6,China Telecom Hangzhou Binjiang IDC,China Telecom,zhejiang,Operating,,,
+4d37f5ecd1,China Telecom Hangzhou Dongguan IDC,China Telecom,zhejiang,Operating,,,
+14560990e8,China Telecom Hangzhou Dongxin IDC,China Telecom,zhejiang,Operating,,,
+3ad2123409,China Telecom Hangzhou Liu Xia IDC,China Telecom,zhejiang,Operating,,,
+172f7bbbe0,China Telecom Hangzhou Second Hub Building IDC,China Telecom,zhejiang,Operating,,,
+a5c93d6813,China Telecom Hangzhou Xingli IDC,China Telecom,zhejiang,Operating,,,
+e8e03cae4f,China Telecom Huzhou Phoenix IDC,China Telecom,zhejiang,Operating,,,ours also has a city-level record for this operator
+c4c1baddb5,China Telecom Jiaxing Qinghe IDC,China Telecom,zhejiang,Operating,,,
+3b9e1cfb07,China Telecom Jinhua Telecom IDC,China Telecom,zhejiang,Operating,,,
+706cb72b0d,China Telecom Lishui Chengdong IDC,China Telecom,zhejiang,Operating,,,
+ccc21af8ae,China Telecom Ningbo High-tech Zone IDC,China Telecom,zhejiang,Operating,,,
+d89013e5dd,China Telecom Ningbo Jiebei Hub IDC,China Telecom,zhejiang,Operating,,,
+f813ecd0ea,China Telecom Ningbo Telecom Data Center,China Telecom,zhejiang,Operating,,,
+1b9cfd33a2,China Telecom Ningbo Yizhong IDC,China Telecom,zhejiang,Operating,,,
+c4ceff0318,China Telecom Ningbo Zhuang City IDC,China Telecom,zhejiang,Operating,,,
+d78c8ab254,China Telecom Taizhou Telecom Hub IDC,China Telecom,zhejiang,Operating,,,
+11ab7ffb9e,China Telecom Wenzhou Cangnan Chengdong IDC,China Telecom,zhejiang,Operating,,,
+69f19d9112,China Telecom Wenzhou Rui'an Anyang IDC,China Telecom,zhejiang,Operating,,,
+1775ca80e3,China Telecom Wenzhou Telecom IDC,China Telecom,zhejiang,Operating,,,
+a3e855866e,China Telecom Yinzhou Telecom Hub Building IDC,China Telecom,zhejiang,Operating,,,
+3dfbf0f269,China Telecom Zhejiang Lishui Shuige IDC,China Telecom,zhejiang,Operating,,,
+a3f1ee7832,Zenlayer HGH2 Data Center,Zenlayer,zhejiang,Operating,,,

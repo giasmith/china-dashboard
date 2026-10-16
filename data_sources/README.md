@@ -12,6 +12,7 @@ source before they are cited. Units are in the column names.
 | `nbs_2025_yearbook_8-9_water_use_2024.csv` | 中国统计年鉴 2025, 表 8-9 供水用水情况, https://www.stats.gov.cn/sj/ndsj/2025/html/C08-09.jpg | A |
 | `tariff_china_briefing_may2025.csv` | China Briefing, "China's Industrial Power Rates 2025" (1–10 kV general industrial & commercial, non-TOU, as of May 2025), https://www.china-briefing.com/news/chinas-industrial-power-rates-category-electricity-usage-region-classification/ | C |
 | `baxtel_site_names.csv` | Baxtel site listings (names, operators, Baxtel type and stages) for baxtel crawl rows, which carry no names; transcribed by Gia from baxtel.com on 2026-10-15 (Guizhou). `match` pairs a row with the inventory record from another source that is the same site ("new" = a site of its own). Used by `build_dashboard_data.py`: Baxtel's name and operator replace the other sources' for these sites; type, status and MW stay as merged. | C |
+| `datacenters_com_sites.csv` | datacenters.com China directory listings approved by Gia on 2026-10-15 after a province-by-province comparison with the inventory (645 listings reviewed). Columns: hashed `dccom_id`, name, operator, province, status, optional facility type and explicit `match`. No addresses, cities, coordinates or page links; the map from ids back to directory pages is kept outside the repo. | C |
 
 Notes
 
@@ -27,3 +28,9 @@ Notes
   Unicom points. The 400 m proximity merge now takes the nearest listed facility, not the first one found; under the
   old rule the China Unicom row had been folded into China Mobile. The eighth Guizhou crawl row (Fintech, under
   construction, Guiyang city) is not in the listing and stays unnamed.
+- `datacenters_com_sites.csv`: of 645 listings, rows already in the inventory, resellers/brokers and cloud regions
+  were skipped; 143 uncertain rows and 13 more found on a second look (likely duplicates of inventory records, e.g.
+  "Xi'an IDC" vs "China Telecom Xian", and Chindata's ChinaNorth codes) are held for review. Status is Operating by
+  decision (the directory lists existing sites), type Unknown. Princeton Digital LF2 is filed under Hebei (LF =
+  Langfang) although the directory gives the same Mianyang address as LF1. The directory is a commercial site; check
+  its terms before reusing the data elsewhere.

@@ -302,7 +302,7 @@ def check_facilities(doc: dict, provinces: dict, report: Report) -> None:
         if leaked:
             report.error(where, f"location detail must not be published: {sorted(leaked)}")
         for v in f.values():
-            if isinstance(v, str) and ("datacentermap.com" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
+            if isinstance(v, str) and ("datacentermap.com" in v or "datacenters.com" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
                 report.error(where, "a string field looks like a link or a coordinate")
         if f["province"] not in ids:
             report.error(where, f"province '{f['province']}' is not in provinces.json")
