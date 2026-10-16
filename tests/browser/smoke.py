@@ -190,6 +190,8 @@ async def interactions(browser, base):
     check(len(logos) == 2 and all(alt and w > 0 for alt, w, _r, _t in logos), f"map: both partner logos load with alt text ({logos})")
     check(bool(logos) and logos[-1][2] < 40 and logos[-1][3] < 60, f"map: the logos sit at the top right of the page ({logos})")
     check((await page.locator(".site-header .brand").inner_text()).strip() == "China Data-Center Ecosystem Tracker", "map: the header carries the tracker title (no tagline)")
+    nav = [t.strip() for t in await page.locator(".site-header .nav a").all_inner_texts()]
+    check(nav == ["Map", "Plan targets", "Legislation"], f"map: the nav reads Map / Plan targets / Legislation ({nav})")
     for width in (1024, 1280):
         await page.set_viewport_size({"width": width, "height": 900})
         await page.wait_for_timeout(150)

@@ -2,7 +2,7 @@
   "name": "china-dashboard",
   "version": "0.1.0",
   "private": true,
-  "description": "Static dashboard: China data-center inventory by province with power, cost and water context; five-year plan targets vs. reported actuals; legislation library. No runtime dependencies.",
+  "description": "Static dashboard: China data-center inventory by province with power, cost and water context; plan targets (five-year and action plans) vs. reported actuals; legislation library. No runtime dependencies.",
   "type": "module",
   "scripts": {
     "test": "node --test",

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "plan_targets.schema.json",
-  "title": "Five-year plan targets",
+  "title": "Plan targets (five-year plans and action plans)",
   "type": "object",
   "additionalProperties": false,
   "required": [

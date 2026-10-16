@@ -3,7 +3,7 @@
 A static dashboard (no build step, no runtime dependencies) modelled on the
 [U.S. Data Center Ecosystem Tracker](https://ntimbs.github.io/us-data-center-dashboard/): a **province map of China's
 data-center inventory** with layer tabs for status, capacity, installed power, 2024 generation, electricity cost and
-water, plus two secondary pages that compare **five-year plan targets with reported results** and catalogue the
+water, plus two secondary pages that compare **plan targets (five-year plans and computing-power action plans) with reported results** and catalogue the
 **legislation** behind them. Designed to be published on GitHub Pages.
 
 > **Location rule.** The inventory merges a licensed DataCenterMap export with public crawls. It is published at

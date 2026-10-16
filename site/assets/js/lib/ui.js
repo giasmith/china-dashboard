@@ -7,7 +7,7 @@ import { formatIsoDate, safeUrl, EM_DASH } from './format.js';
 
 const NAV = [
   { href: 'index.html', label: 'Map' },
-  { href: 'plan.html', label: 'Five-year plans' },
+  { href: 'plan.html', label: 'Plan targets' },
   { href: 'legislation.html', label: 'Legislation' },
 ];
 
