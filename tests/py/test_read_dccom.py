@@ -84,3 +84,56 @@ class ReadDccomTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+DETAIL_COLUMNS = ["facility_id", "facility_name", "racks", "compute_pflops", "ai_accelerators", "building_area_m2", "pue",
+                  "pue_basis", "basis", "note", "source", "retrieved"]
+DETAIL = {"facility_id": "dc_0123456789", "facility_name": "Example DC", "racks": "100", "compute_pflops": "", "ai_accelerators": "",
+          "building_area_m2": "", "pue": "1.25", "pue_basis": "design", "basis": "vendor-reported", "note": "",
+          "source": "Example vendor case study, 2026", "retrieved": "2026-10-16"}
+
+
+class FacilityDetailsTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp())
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _write(self, rows: list[dict]) -> Path:
+        path = self.tmp / "facility_details.csv"
+        with path.open("w", encoding="utf-8", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=DETAIL_COLUMNS)
+            w.writeheader()
+            w.writerows(rows)
+        return path
+
+    def test_committed_file_loads(self) -> None:
+        details = bd.load_facility_details(ROOT / "data_sources" / "facility_details.csv")
+        self.assertGreater(len(details), 0)
+        for fid, row in details.items():
+            self.assertRegex(fid, r"^dc_[0-9a-f]{10}$")
+            self.assertTrue(row["details"]["source"] and row["details"]["basis"])
+
+    def test_a_row_is_parsed(self) -> None:
+        d = bd.load_facility_details(self._write([DETAIL]))["dc_0123456789"]["details"]
+        self.assertEqual((d["racks"], d["pue"], d["pueBasis"], d["basis"]), (100, 1.25, "design", "vendor-reported"))
+        self.assertNotIn("note", d)
+
+    def test_links_are_rejected(self) -> None:
+        with self.assertRaises(SystemExit):
+            bd.load_facility_details(self._write([dict(DETAIL, source="https://example.org/case-study")]))
+
+    def test_source_and_basis_are_required(self) -> None:
+        for col in ("source", "basis"):
+            with self.subTest(col=col), self.assertRaises(SystemExit):
+                bd.load_facility_details(self._write([dict(DETAIL, **{col: ""})]))
+
+    def test_bad_numbers_are_rejected(self) -> None:
+        for col, v in (("racks", "12.5"), ("racks", "-3"), ("pue", "0.9"), ("compute_pflops", "lots")):
+            with self.subTest(col=col, v=v), self.assertRaises(SystemExit):
+                bd.load_facility_details(self._write([dict(DETAIL, **{col: v})]))
+
+    def test_a_row_without_any_figure_is_rejected(self) -> None:
+        with self.assertRaises(SystemExit):
+            bd.load_facility_details(self._write([dict(DETAIL, racks="", pue="")]))

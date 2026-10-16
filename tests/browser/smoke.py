@@ -263,6 +263,19 @@ async def interactions(browser, base):
     await page.locator("#db-detail .db-facility-list .link-btn").first.click()
     await page.wait_for_timeout(200)
     check("Location is published at province level only" in await page.locator("#db-detail").inner_text(), "map: facility profile states the location rule")
+    # facility_details.csv: extra figures carry their basis and citation in the facility profile
+    await page.locator("#db-provinces path[data-id=xinjiang]").dispatch_event("click")
+    await page.wait_for_timeout(300)
+    await page.locator("#db-detail .db-facility-list .link-btn", has_text="China Unicom (Xinjiang)").first.click()
+    await page.wait_for_timeout(200)
+    fac = await page.locator("#db-detail").inner_text()
+    check("18,876 (vendor-reported)" in fac and "8,192 PFLOPS" in fac and "design figure" in fac and "Figures from" in fac,
+          "map: a facility with extra figures shows racks, compute and PUE with their basis and source")
+    check(not re.search(r"https?://|www\.", fac), "map: the facility profile carries no links")
+    await page.locator("#db-provinces path[data-id=xinjiang]").dispatch_event("click")
+    await page.wait_for_timeout(300)
+    await page.locator("#db-provinces path[data-id=guangdong]").dispatch_event("click")
+    await page.wait_for_timeout(300)
 
     # The focus set by clicking Guangdong carries over to the Generation tab: only its plant units are drawn and the
     # power infrastructure profile describes Guangdong. Close returns to all of China.

@@ -945,11 +945,19 @@ function renderDetail() {
     const f = data.facilities.facilities.find((x) => x.id === sel.id);
     if (!f) { select(null); return; }
     const p = provinceById.get(f.province);
+    const d = f.details ?? null; // extra figures from data_sources/facility_details.csv, each with its basis and citation
+    const basis = d?.basis ? ` (${d.basis})` : '';
     put(els.detail, h('div', { class: 'db-panel-head' }, h('div', null, h('span', { class: 'eyebrow' }, 'Facility'), h('h2', null, f.name)), close),
       h('dl', { class: 'facts' },
         fact('Operator', f.operator), fact('Province', p ? `${p.name} ${p.nameZh}` : f.province), fact('Status', f.status), fact('Facility type', f.facilityType),
         fact('Reported capacity', Number.isFinite(f.mw) ? `${formatNumber(f.mw, { digits: 1 })} MW (${f.capacity})` : f.capacity),
-        fact('PUE (reported)', Number.isFinite(f.pue) ? formatNumber(f.pue, { digits: 2 }) : null), fact('Online year', f.onlineYear),
+        fact('PUE (reported)', Number.isFinite(f.pue) ? `${formatNumber(f.pue, { digits: 2 })}${d?.pueBasis ? ` (${d.pueBasis})` : ''}` : null), fact('Online year', f.onlineYear),
+        d && Number.isFinite(d.racks) ? fact('Standard racks', `${formatNumber(d.racks, { digits: 0 })}${basis}`) : null,
+        d && Number.isFinite(d.computePflops) ? fact('Computing power', `${formatNumber(d.computePflops, { digits: 0 })} PFLOPS${basis}`) : null,
+        d && Number.isFinite(d.aiAccelerators) ? fact('AI accelerator cards', `${formatNumber(d.aiAccelerators, { digits: 0 })}${basis}`) : null,
+        d && Number.isFinite(d.buildingAreaM2) ? fact('Building area', `${formatNumber(d.buildingAreaM2, { digits: 0 })} m²${basis}`) : null,
+        d?.note ? fact('Notes', d.note) : null,
+        d ? fact('Figures from', d.source) : null,
         fact('EDWC hub', p?.hub ? data.provinces.hubs[p.hub].name_en : 'Not a hub province')),
       h('p', { class: 'hint' }, 'Location is published at province level only.'),
       h('p', null, h('button', { class: 'link-btn small', type: 'button', onclick: () => select({ kind: 'province', id: f.province }) }, `Back to ${p?.name ?? 'province'}`)));

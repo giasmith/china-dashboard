@@ -153,6 +153,11 @@ Operating with facility type Unknown and no MW; they carry no coordinates and ar
 inventory holds only one city-level record for an operator (for example "China Telecom Shanghai") and the directory
 names several buildings, at most one of those buildings can be that record, so such cities may be over-counted by one.
 
+`data_sources/facility_details.csv` adds figures that the inventory sources do not carry (standard racks, computing
+power, AI accelerator cards, building area, PUE) to individual facilities. Each row names its basis (for example
+"vendor-reported" or "first-phase design") and its sources, and the facility profile on the map shows both. These
+figures are not used in the MW totals or capacity classes.
+
 **Power plants** (`power_plants.json`): 16,284 Global Energy Monitor units (coal, hydro, wind, solar, nuclear,
 bioenergy) projected to the view box with their province. Status was filtered to operating upstream in the IGARSS
 workflow; several units of one plant share a point. Gas, oil and waste plants came from OpenStreetMap in that

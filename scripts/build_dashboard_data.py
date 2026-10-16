@@ -7,6 +7,8 @@ Inputs (all outside the published site; paths relative to --edwc-root, the EDWC 
                                                                      addresses or links)
   baxtel      data/dc/data_center_data.csv                          (China subset of the baxtel crawl)
   DCKB        archive/DCKB_cleaned_latlon_CHINA.xlsx                (14 sites with IT power)
+  details     china-dashboard/data_sources/facility_details.csv      (per-facility racks / compute / accelerators / floor
+                                                                     area / PUE with their basis and citation; no locations)
   dccom       china-dashboard/data_sources/datacenters_com_sites.csv (datacenters.com listings Gia approved on 2026-10-15;
                                                                      province only: no coordinates, addresses or links)
   dhi         dhi/data/hyperscale_datacenters.geojson, dhi/data/western_datacenters.geojson
@@ -465,6 +467,55 @@ def read_dccom(path: Path, flags: list[str]):
     return out
 
 
+DETAIL_NUMBERS = {  # CSV column -> (key in facilities.json, integer?)
+    "racks": ("racks", True), "compute_pflops": ("computePflops", False),
+    "ai_accelerators": ("aiAccelerators", True), "building_area_m2": ("buildingAreaM2", False),
+}
+
+
+def load_facility_details(path: Path) -> dict[str, dict]:
+    """Per-facility figures that no inventory source carries (racks, computing power, AI accelerator cards, building
+    area, PUE), each row citing where they come from and on what basis ("vendor-reported", "first-phase design" ...).
+    Keyed by facility id; the row's facility_name must match the built record, so a stale id fails loudly."""
+    if not path.exists():
+        return {}
+    out = {}
+    for n, r in enumerate(csv.DictReader(path.open(encoding="utf-8", newline="")), start=2):
+        where = f"{path.name} line {n}"
+        if any(("http" in (v or "")) or ("www." in (v or "")) for v in r.values()):
+            sys.exit(f"{where}: carries a link; cite the source in words")
+        fid = (r.get("facility_id") or "").strip()
+        if not re.fullmatch(r"dc_[0-9a-f]{10}", fid) or fid in out:
+            sys.exit(f"{where}: bad or repeated facility_id {fid!r}")
+        d = {}
+        for col, (key, integer) in DETAIL_NUMBERS.items():
+            v = (r.get(col) or "").strip()
+            if v:
+                num = fnum(v)
+                if num is None or num <= 0 or (integer and num != int(num)):
+                    sys.exit(f"{where}: {col} must be a positive {'integer' if integer else 'number'}, got {v!r}")
+                d[key] = int(num) if integer or float(num).is_integer() else num
+        pue = (r.get("pue") or "").strip()
+        if pue:
+            p = fnum(pue)
+            if p is None or not 1 <= p <= 3:
+                sys.exit(f"{where}: pue must be between 1 and 3, got {pue!r}")
+            d["pue"] = p
+            if (r.get("pue_basis") or "").strip():
+                d["pueBasis"] = r["pue_basis"].strip()
+        for col in ("basis", "source"):
+            if not (r.get(col) or "").strip():
+                sys.exit(f"{where}: {col} is required")
+        if not any(k in d for k in ("racks", "computePflops", "aiAccelerators", "buildingAreaM2", "pue")):
+            sys.exit(f"{where}: no figure given")
+        d["basis"] = r["basis"].strip()
+        if (r.get("note") or "").strip():
+            d["note"] = r["note"].strip()
+        d["source"] = r["source"].strip()
+        out[fid] = {"name": (r.get("facility_name") or "").strip(), "details": d}
+    return out
+
+
 def read_xlsx_rows(path: Path):
     """Minimal .xlsx reader (first sheet) without openpyxl: shared strings + inline values."""
     with zipfile.ZipFile(path) as z:
@@ -737,6 +788,7 @@ def main():
     x, y = proj(lon, lat)
     xy = to_view(np.column_stack([x, -y]))
     pids = assign_province(prov, xy[:, 0], xy[:, 1], snap_px=6.0)  # ~30 km at this scale
+    facility_details = load_facility_details(SOURCES / "facility_details.csv")
     facilities = []
     unplaced = 0
     for m, pid in zip(merged, pids):
@@ -762,6 +814,22 @@ def main():
             "onlineYear": m["year"],
             "sources": sorted(m["sources"]),
         })
+        extra = facility_details.pop(fid, None)
+        if extra:
+            if norm_name(extra["name"]) != norm_name(m["name"]):
+                sys.exit(f"facility_details.csv: {fid} is '{m['name']}' in the build, not '{extra['name']}'")
+            d = dict(extra["details"])
+            pue = d.pop("pue", None)
+            if pue is not None:
+                if facilities[-1]["pue"] is not None and abs(facilities[-1]["pue"] - pue) > 1e-9:
+                    flags.append(f"facility_details.csv: {fid} PUE {pue} differs from the inventory's {facilities[-1]['pue']}; inventory value kept")
+                    d.pop("pueBasis", None)
+                else:
+                    facilities[-1]["pue"] = pue
+            facilities[-1]["details"] = d
+    if facility_details:
+        sys.exit(f"facility_details.csv: ids not in the inventory: {sorted(facility_details)}")
+    flags.append(f"facility_details.csv: figures added to {sum(1 for f in facilities if 'details' in f)} facilities")
     facilities.sort(key=lambda f: (f["province"], f["name"]))
 
     # ---- power plants -----------------------------------------------------------------------------------------
@@ -839,8 +907,12 @@ def check_privacy():
         for k in f:
             if k in FORBIDDEN_KEYS:
                 bad.append((f["id"], k))
-        for v in f.values():
-            if isinstance(v, str) and ("datacentermap.com" in v or "datacenters.com" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
+        values = list(f.values()) + list((f.get("details") or {}).values())
+        for k in (f.get("details") or {}):
+            if k in FORBIDDEN_KEYS:
+                bad.append((f["id"], f"details.{k}"))
+        for v in values:
+            if isinstance(v, str) and ("datacentermap.com" in v or "datacenters.com" in v or "http" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
                 bad.append((f["id"], v))
     if bad:
         sys.exit(f"privacy check FAILED: {bad[:5]}")

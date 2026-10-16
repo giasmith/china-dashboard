@@ -301,9 +301,11 @@ def check_facilities(doc: dict, provinces: dict, report: Report) -> None:
         leaked = FORBIDDEN_FACILITY_KEYS & set(f)
         if leaked:
             report.error(where, f"location detail must not be published: {sorted(leaked)}")
-        for v in f.values():
-            if isinstance(v, str) and ("datacentermap.com" in v or "datacenters.com" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
+        for v in list(f.values()) + list((f.get("details") or {}).values()):
+            if isinstance(v, str) and ("datacentermap.com" in v or "datacenters.com" in v or "http" in v or re.search(r"\d{1,3}\.\d{4,}", v)):
                 report.error(where, "a string field looks like a link or a coordinate")
+        if "pueBasis" in (f.get("details") or {}) and f["pue"] is None:
+            report.error(where, "details.pueBasis is set but the facility has no PUE")
         if f["province"] not in ids:
             report.error(where, f"province '{f['province']}' is not in provinces.json")
         if f["capacity"] != _capacity_class(f["mw"]):

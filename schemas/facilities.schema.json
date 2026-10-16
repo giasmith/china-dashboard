@@ -26,7 +26,23 @@
           "capacity": { "enum": ["Mega campus (1,000+ MW)", "Hyperscale (100–999 MW)", "Large (51–99 MW)", "Medium (11–50 MW)", "Small (0–10 MW)", "Unknown"] },
           "pue": { "type": ["number", "null"], "minimum": 1, "maximum": 3 },
           "onlineYear": { "type": ["integer", "null"], "minimum": 1990, "maximum": 2040 },
-          "sources": { "type": "array", "minItems": 1, "items": { "enum": ["dcm", "baxtel", "dckb", "dhi_hyperscale", "dhi_western", "dccom"] } }
+          "sources": { "type": "array", "minItems": 1, "items": { "enum": ["dcm", "baxtel", "dckb", "dhi_hyperscale", "dhi_western", "dccom"] } },
+          "details": {
+            "description": "Figures from data_sources/facility_details.csv that no inventory source carries, with their basis and citation.",
+            "type": "object",
+            "required": ["basis", "source"],
+            "additionalProperties": false,
+            "properties": {
+              "racks": { "type": "integer", "minimum": 1 },
+              "computePflops": { "type": "number", "exclusiveMinimum": 0 },
+              "aiAccelerators": { "type": "integer", "minimum": 1 },
+              "buildingAreaM2": { "type": "number", "exclusiveMinimum": 0 },
+              "pueBasis": { "type": "string", "minLength": 1 },
+              "basis": { "type": "string", "minLength": 1 },
+              "note": { "type": "string", "minLength": 1 },
+              "source": { "type": "string", "minLength": 1 }
+            }
+          }
         }
       }
     }
